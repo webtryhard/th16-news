@@ -278,3 +278,7 @@ img:hover,.bg_cover:hover{
 	font-size:20px;
 	text-decoration:none
 }
+
+#toggle-search, .dropdown-toggle{
+	text-align: center;
+}
