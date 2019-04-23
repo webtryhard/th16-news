@@ -1,3 +1,4 @@
+
 div.logo{
     width: 100%;
     background-color: #D72924;
@@ -148,4 +149,132 @@ img:hover,.bg_cover:hover{
 	-size:cover;
 	background-position:center;
 	background-repeat:no-repeat
+}
+
+.tab_item>.panel>.panel-heading{
+	background-color:transparent !important;
+	padding:0;
+	border:0;
+	margin-bottom:2px
+}
+
+.tab_item>.panel-heading{
+	-bottom:0
+}
+
+.tab_item>.list-inline>li.active a{
+	color:#fff !important
+}
+
+.tab_item .list-inline li a{
+	font-weight:700;color:#777
+}
+
+.list-inline>li.active{
+	border-bottom:0;
+	padding-left:10px;
+	padding-right:13px;
+	background:#d9534f;
+	border-color:#d9534f
+}
+
+.list-inline>li.active:before{
+	width:100%;
+	height:2px;
+	background:#d9534f;
+	bottom:-2px !important;
+	top:auto;
+	left:0;
+	right:0;
+	text-align:center;
+	border:0 !important
+}
+
+.list-inline.tags-list>li:before{
+	border-left:0
+}
+
+.list-inline{
+	margin-left:0;
+	border-bottom:2px solid #d9534f
+}
+
+.list-inline>li{
+	padding-top:10px;
+	padding-bottom:10px
+}
+
+.list-inline>li.active a{
+	position:relative;
+	color:#fff
+}
+
+.social .list-inline>li:before{
+	content:"";border-left:0
+}
+
+
+.list-inline>li{
+	position:relative
+}
+
+.list-inline>li:last-child:before{
+	border:0
+}
+
+.tab_item>.panel .panel-body{
+	padding:0 !important;
+	padding-top:15px !important
+}
+
+@media (min-width:897px){
+	.slide_topnews .item{
+	height:380px !important
+	}
+	.images_list_host_{
+	display:table-cell;
+	vertical-align:middle
+	}
+	.list_img_video{
+	height:160px
+	}
+	.footer_item{
+	display:table-cell;
+	vertical-align:middle
+	}
+}
+
+.slide_topnews .carousel-control{
+	background:rgba(0,0,0,.58);
+	top:45%;
+	visibility:hidden;
+	-webkit-transition:visibility .5s,opacity .5s linear;
+	-o-transition:visibility .5s,opacity .5s linear;
+	transition:visibility .5s,opacity .5s linear;
+	opacity:0
+}
+
+.slide_topnews:hover .carousel-control{
+	visibility:visible;
+	-webkit-transition:visibility 0s,opacity .8s linear;
+	-o-transition:visibility 0s,opacity .8s linear;
+	transition:visibility 0s,opacity .8s linear;
+	opacity:1
+}
+
+.slide_topnews .carousel-caption{
+	text-align:left;
+	text-shadow:none;
+	background:rgba(0,0,0,.44);
+	width:100%;
+	left:0;
+	right:0;
+	bottom:0;
+	padding-left:15px
+}
+
+.slide_topnews .carousel-caption a{
+	color:#fff;
+	font-size:20px;
+	text-decoration:none
 }
