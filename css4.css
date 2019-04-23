@@ -174,8 +174,8 @@ img:hover,.bg_cover:hover{
 	border-bottom:0;
 	padding-left:10px;
 	padding-right:13px;
-	background:#d9534f;
-	border-color:#d9534f
+	background:#BD2C3E;
+	border-color:#BD2C3E;
 }
 
 .list-inline>li.active:before{
@@ -224,7 +224,7 @@ img:hover,.bg_cover:hover{
 
 .tab_item>.panel .panel-body{
 	padding:0 !important;
-	padding-top:15px !important
+	padding-top:8px !important
 }
 
 @media (min-width:897px){
@@ -282,3 +282,14 @@ img:hover,.bg_cover:hover{
 #toggle-search, .dropdown-toggle{
 	text-align: center;
 }
+
+.title_top10_category{
+	background-color: #D9534F;
+	text-align: center;
+	height: 25px;
+}
+
+.title_top10_category a{
+	color: #ffffff;
+}
+
