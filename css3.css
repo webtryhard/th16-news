@@ -1,4 +1,17 @@
- <style type="text/css" media="screen">
+/* <style type="text/css" media="screen"> */
+
+
+
+div.logo{
+    width: 100%;
+    background-color: #D72924;
+}
+
+img.logo{
+    height: 90px;
+    margin-top: 2px;
+    margin-left: 150px;
+}
 
  .container {
     max-width: 1280px !important;
