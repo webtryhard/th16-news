@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs =====================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Site Title- -->
+  <title>TH16-News Online</title>
+
+  <link rel="stylesheet" href="css1.css">
+  <link rel="stylesheet" href="css4.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+  <div  class = "logo">
+    <a href="#Trangchu">
+      <img class="logo" src="bao_files/logo.png" alt="logo">
+    </a>
+  </div>
+  <div >
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
+      <div class="container"> 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-justified">
+
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Thời sự
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">Tin tức</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Quốc hội</a>
+                </li>
+              </ul>
+            </li>
+
+             <li class="font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Kinh tế
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
+                </li>
+              </ul>
+            </li>
+
+             <li class="  font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Nhịp sống
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">An ninh trật tự</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Đời sống</a>
+                </li>
+              </ul>
+            </li>
+           
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Bất động sản
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">Thị trường</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Phân tích - Nhận định</a>
+                </li>
+              </ul>
+            </li>
+
+             <li class="  font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Xã hội
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">Phóng sự - kí sự</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Xã hội từ thiện</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Pháp luật
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">Tư vấn</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Văn bản mới</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="http://kinhtenongthon.vn/thoi-su.html">
+                Sức khỏe
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/tin-tuc.html" data-color="#d9534f" class="cat_c">An toàn vệ sinh thực phẩm</a>
+                </li>
+                <li class="">
+                  <a href="http://kinhtenongthon.vn/quoc-hoi.html" data-color="#d9534f" class="cat_c">Sống khỏe</a>
+                </li>
+              </ul>
+            </li>
+            
+             <li class="search_ hidden-xs hidden-sm">
+              <a href="#" class="color_fff " id="toggle-search">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+              </a>
+            </li>
+            
+            <li class="search_ hidden-xs hidden-sm">
+              <a href="#" class="color_fff " id="toggle-search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+              
+            </li>
+            <div class="div_search sr_none">
+                <form method="get" action="http://kinhtenongthon.vn/tim-kiem" class="formsearch hidden-xs hidden-sm" id="search-form">
+                  <div class="search_fm">
+                    <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+              </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <!-- BEGIN-MAIN -->
+    <main >
+      
+      <section class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+          <!-- BEGIN:Title -->
+          <div class="tab_item">
+            <div class="panel">
+              <hgroup class="panel-heading">
+                <ul class="list-inline">
+                  <li class="active">
+                    <a href="#" title="Thời sự"><h2 class="font-bold">Thời sự</h2>
+                    </a>
+                  </li>
+                  <li class="hidden-xs ">
+                    <a href="#" title="Hỏi đáp chính sách BHTG">Tin tức</a>
+                  </li>
+                  <li class="hidden-xs ">
+                    <a href="#" title="Doanh nghiệp">Quốc hội</a>
+                  </li>
+                </ul>
+              </hgroup>
+            </div>
+          </div>
+          <!-- END: Title -->
+          <!-- BEGIN:Tin nổi bật -->
+          <div class="ovlhidd col-md-6 large">
+            <div class="row">
+              <div class="grid-feature-item ">
+                <a href="#thu-tuong-viet-nam-romania-hoi-dam" class="fixhieght hieght_col">
+                  <img class="media-object" src="http://kinhtenongthon.vn/media/news/3eb931199407fd6fd76b8b96bb49a2f5/thumb/thu-tuong-viet-nam-romania-hoi-dam-ttcp-thumb43.jpg" alt="Thủ tướng Việt Nam, Romania hội đàm" title="Thủ tướng Việt Nam, Romania hội đàm" width="100%" height="100%">
+                </a>
+                <div class="title_top_header">
+                  <a href="#thu-tuong-viet-nam-romania-hoi-dam">
+                    <h4> Thủ tướng Việt Nam, Romania hội đàm</h4>
+                  </a>
+                  <p class="meta text-muted fs-08 font-normal">
+                    <span>
+                      <time class="friendly" datetime="2019-04-15 18:50:00">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>18:50 - 
+                        <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                      </time>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ovlhidd col-sm-6 col-md-3 small">
+            <div class="row">
+              <div class="grid-feature-item ">
+                <a href="#khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach" class="fixhieght hieght_col">
+                  <img class="media-object" src="http://kinhtenongthon.vn/media/news/440bcbe45a6a4e361b606228f0c86365/thumb/khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach-ss1-thumb43.jpg" alt="Khu du lịch Thác Bạc Suối Sao: Ngang nhiên phá vỡ quy hoạch?" title="Khu du lịch Thác Bạc Suối Sao: Ngang nhiên phá vỡ quy hoạch?" width="100%" height="100%">
+                </a>
+                <div class="title_top_header">
+                  <a href="#khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach">
+                    <h4> Khu du lịch Thác Bạc Suối Sao: Ngang nhiên phá vỡ quy hoạch?</h4>
+                  </a>
+                  <p class="meta text-muted fs-08 font-normal">
+                    <span>
+                      <time class="friendly" datetime="2019-04-15 08:00:00">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>08:00 - 
+                        <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                      </time>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ovlhidd col-sm-6 col-md-3 small">
+            <div class="row">
+              <div class="grid-feature-item ">
+                <a href="#trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra" class="fixhieght hieght_col">
+                  <img class="media-object" src="http://kinhtenongthon.vn/media/news/679a55e13acf1a9769c193fa010d5934/thumb/trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra-xk-vao-tq-thumb43.jpg" alt="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" title="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" width="100%" height="100%">
+                </a>
+                <div class="title_top_header">
+                  <a href="#trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra">
+                    <h4> Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra</h4>
+                  </a>
+                  <p class="meta text-muted fs-08 font-normal">
+                    <span>
+                      <time class="friendly" datetime="2019-04-15 10:41:17">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>10:41 - 
+                        <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                      </time>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ovlhidd col-sm-6 col-md-3 small">
+            <div class="row">
+              <div class="grid-feature-item ">
+                <a href="#41-nguoi-chet-vi-tai-nan-giao-thong-trong-hai-ngay-nghi-le-gio-to" class="fixhieght hieght_col">
+                  <img class="media-object" src="http://kinhtenongthon.vn/media/news/0829da38b0b43a8cb034f0f8cbce906c/thumb/41-nguoi-chet-vi-tai-nan-giao-thong-trong-hai-ngay-nghi-le-gio-to-tai-nan-thumb43.jpg" alt="41 người chết vì tai nạn giao thông trong hai ngày nghỉ lễ Giỗ tổ" title="41 người chết vì tai nạn giao thông trong hai ngày nghỉ lễ Giỗ tổ" width="100%" height="100%">
+                </a>
+                <div class="title_top_header">
+                  <a href="#41-nguoi-chet-vi-tai-nan-giao-thong-trong-hai-ngay-nghi-le-gio-to">
+                    <h4> 41 người chết vì tai nạn giao thông trong hai ngày nghỉ lễ Giỗ ...</h4>
+                  </a>
+                  <p class="meta text-muted fs-08 font-normal">
+                    <span>
+                      <time class="friendly" datetime="2019-04-15 09:50:29">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>09:50 - 
+                        <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                      </time>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ovlhidd col-sm-6 col-md-3 small">
+            <div class="row">
+              <div class="grid-feature-item ">
+                <a href="#tong-bi-thu-chu-tich-nuoc-nguyen-phu-trong-lam-viec-tai-kien-giang" class="fixhieght hieght_col">
+                  <img class="media-object" src="http://kinhtenongthon.vn/media/news/407db1f4e4ad1fc027d01a09ed569d7d/thumb/tong-bi-thu-chu-tich-nuoc-nguyen-phu-trong-lam-viec-tai-kien-giang-tbt-3-thumb43.jpg" alt="Tổng Bí thư, Chủ tịch nước Nguyễn Phú Trọng làm việc tại Kiên Giang" title="Tổng Bí thư, Chủ tịch nước Nguyễn Phú Trọng làm việc tại Kiên Giang" width="100%" height="100%">
+                </a>
+                <div class="title_top_header">
+                  <a href="#tong-bi-thu-chu-tich-nuoc-nguyen-phu-trong-lam-viec-tai-kien-giang">
+                    <h4> Tổng Bí thư, Chủ tịch nước Nguyễn Phú Trọng làm việc tại ...</h4>
+                  </a>
+                  <p class="meta text-muted fs-08 font-normal">
+                    <span>
+                      <time class="friendly" datetime="2019-04-14 20:56:00">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>20:56 - 
+                        <i class="fa fa-calendar" aria-hidden="true"></i>Chủ nhật, 14/04/2019
+                      </time>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col_fix visible-xs">
+            <!-- BEGIN:tin hot nhất -->
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+              <div class="row">
+                <!-- BEGIN:Host-top1 -->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                  <div class="row">
+                   <!-- BEGIN:tin top1 -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <section class="slide_topnews">
+                        <div id="carouselhot" class="carousel slide" data-ride="carousel"> 
+                          <!--  Control -->
+                          <a class="left carousel-control" href="http://kinhtenongthon.vn/?fbclid=IwAR33O7s7-RJnsbm9YVtpua9su4zT2Mk2qSwRIgdVEu-VFDMZyyuCtWCKNsE#carouselhot" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                          </a>
+                          <a class="right carousel-control" href="http://kinhtenongthon.vn/?fbclid=IwAR33O7s7-RJnsbm9YVtpua9su4zT2Mk2qSwRIgdVEu-VFDMZyyuCtWCKNsE#carouselhot" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </section>
+                    </div>
+                  <!-- END -->
+                  </div>
+                </div>
+              <!-- END -->
+              </div>
+            </div>
+          </div>
+          <!-- END: Tin nổi bật -->
+        </div>
+        <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3 ">
+          <div class="model_right">
+            <div class="banner hidden righthome1" fix=""></div>  
+            <!-- BEGIN: Tin nhiều người đọc -->
+              <div class="panel panel-info">
+              <div class="panel-heading panel-item text-center font-bold">
+                <span>Tin nhiều người đọc</span>
+              </div>
+              <div class="panel-body">
+
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/le-duc-anh-mot-nguoi-sau-sac-va-binh-di-post27157.html" title="Lê Đức Anh – một người sâu sắc và bình dị">
+                    <img src="http://kinhtenongthon.vn/media/news/cf4298addd63275b043eb83dc27f0ed3/thumb/le-duc-anh-mot-nguoi-sau-sac-va-binh-di-lda-thumb11.jpg" alt="Lê Đức Anh – một người sâu sắc và bình dị">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/le-duc-anh-mot-nguoi-sau-sac-va-binh-di-post27157.html" title="Lê Đức Anh – một người sâu sắc và bình dị"><h4 class="fs-1 mall0">Lê Đức Anh – một người sâu sắc và bình dị </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:12:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:12 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-post27158.html" title="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế">
+                    <img src="http://kinhtenongthon.vn/media/news/d2b36aae8e6dba855dd0ab395058a493/thumb/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-nqh08120-thumb11.jpg" alt="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-post27158.html" title="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế"><h4 class="fs-1 mall0">Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:39:57"><i class="fa fa-clock-o" aria-hidden="true"></i>09:39 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-post27153.html" title="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững">
+                    <img src="http://kinhtenongthon.vn/cache/news/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-img_56671-thumb11.jpg" alt="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-post27153.html" title="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững"><h4 class="fs-1 mall0">Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:50:20"><i class="fa fa-clock-o" aria-hidden="true"></i>09:50 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>    
+              </div>
+          </div>
+          <!-- END: Tin nhiều người đọc -->
+          </div> 
+        </div>
+        <div class="clearfix"></div>
+      </section>
+    </main>
+  </div>
+  
+</body>
+</html>

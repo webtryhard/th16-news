@@ -162,12 +162,27 @@ img:hover,.bg_cover:hover{
 	-bottom:0
 }
 
+.tab_item>.panel{
+	border:0;
+	-webkit-box-shadow:none;
+	box-shadow:none
+}
+.list-inline>li:before{
+	content:"";
+	border-left:1px solid #ddd;
+	position:absolute;
+	right:-1px;
+	top:32%;
+	height:40%
+}
+
 .tab_item>.list-inline>li.active a{
 	color:#fff !important
 }
 
 .tab_item .list-inline li a{
-	font-weight:700;color:#777
+	font-weight:700;
+	color:#777
 }
 
 .list-inline>li.active{
@@ -204,18 +219,17 @@ img:hover,.bg_cover:hover{
 	padding-bottom:10px
 }
 
-.list-inline>li.active a{
-	position:relative;
-	color:#fff
+.list-inline>li.active a {
+    position: relative;
+    color: #fff;
 }
 
 .social .list-inline>li:before{
 	content:"";border-left:0
 }
 
-
-.list-inline>li{
-	position:relative
+.list-inline>li {
+    position: relative;
 }
 
 .list-inline>li:last-child:before{
