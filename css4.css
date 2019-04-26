@@ -307,3 +307,16 @@ img:hover,.bg_cover:hover{
 	color: #ffffff;
 }
 
+.images_360_small{
+	width:90px;
+	display:inline-block
+}
+
+.media-object {
+    display: block;
+}
+
+.media{
+	position:relative
+}
+
