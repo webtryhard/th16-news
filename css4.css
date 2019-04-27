@@ -320,3 +320,73 @@ img:hover,.bg_cover:hover{
 	position:relative
 }
 
+
+#backtotop {
+    display:none;
+    overflow: hidden;
+    position: fixed;
+    bottom: 30px;
+    background: #ff0000 !important;
+    border-radius: 50%;
+    border: 0;
+    text-align: center;
+    z-index: 9999;
+}
+#backtotop:hover {
+    text-decoration:none;
+    background: #ff0000 !important;
+    cursor: pointer;
+}
+#backtotop .fa {
+    width: 21px;
+    height: 24px;
+    position: absolute;
+    top: 0;right: 0;bottom: 0;left: 0;
+    margin: auto;
+    text-decoration: none;
+    color: #fff;
+    font-size: 21px;
+    line-height: 21px;
+}
+#backtotop:hover .fa {
+    animation: ScrolltoTop .8s linear infinite;
+    -webkit-animation: ScrolltoTop .8s linear infinite;
+}
+@keyframes ScrolltoTop{
+    0%      {bottom: -50px;}
+    100%    {top: -50px}
+}
+@-webkit-keyframes ScrolltoTop{
+    0%      {bottom: -50px;}
+    100%    {top: -50px;}
+}
+@media(max-width:767px) {
+    #backtotop {
+        width: 30px;
+        height: 30px;
+        right: 0;
+        border-radius: 4px 0 0 4px;
+        background: rgba(66, 139, 202,.2);
+    }
+}
+@media(min-width:768px) {
+    #backtotop {
+        width: 36px;
+        height: 36px;
+        right: 10px;
+    }
+}
+@media(min-width:992px) {
+    #backtotop {
+        width: 39px;
+        height: 39px;
+        right: 10px;
+    }
+}
+@media(min-width:1200px) {
+    #backtotop {
+        width: 50px;
+        height: 50px;
+        right: 15px;
+    }
+}
