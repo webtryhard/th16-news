@@ -390,3 +390,28 @@ img:hover,.bg_cover:hover{
         right: 15px;
     }
 }
+
+.panel-info>.panel-heading a{
+	color:#ffffff;
+	background-color:#BD2C3E;
+	border-color:#BD2C3E
+}
+
+.list{
+	margin-top: 10px;
+	border-bottom:2px solid #ddd;
+}
+
+.tag_in_item {
+    display: block;
+    clear: both;
+    background-color: white;
+    padding: 8px 5px 0px 10px;
+}
+
+.tag_in_item a {
+    color: #069!important;
+    font-style: italic!important;
+    font-weight: normal!important;
+    font-size: 15px!important;
+}
