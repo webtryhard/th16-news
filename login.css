@@ -35,7 +35,7 @@
 } */
 /* style inputs and link buttons */
 .logininput input,
-.btn {
+.btnLogin {
 	width: 100%;
 	padding: 12px;
 	border: none;
@@ -49,7 +49,7 @@
 }
 
 .logininput input:hover,
-.btn:hover {
+.btnLogin:hover {
 	opacity: 1;
 }
 
@@ -108,4 +108,8 @@
 
 .centertext a{
 	color: #337ab7;
+}
+
+.login_icon:hover{
+	background-color: #ff0000
 }

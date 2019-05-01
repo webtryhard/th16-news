@@ -16,13 +16,15 @@
   <link rel="stylesheet" href="login.css">
   <link rel="stylesheet" href="signup.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="jQuery.js"></script>
+
 
 
 </head>
 <body>
   <!-- BEGIN: logo -->
   <div  class = "logo">
-    <a href="#Trangchu">
+    <a href="home.html">
       <img class="logo" src="bao_files/logo.png" alt="logo">
     </a>
   </div>
@@ -141,27 +143,28 @@
               </ul>
             </li>
             <!-- icon login  -->
-            <li class="search_ hidden-xs hidden-sm">
+            <li class="login_icon">
               <a href="#"  data-toggle="modal" data-target="#loginModal">
                 <i class="fa fa-user-circle" aria-hidden="true"></i>
               </a>
             </li>
 
             <!-- icon search  -->
-            <li class="search_ hidden-xs hidden-sm">
+           <li class="search_ hidden-xs hidden-sm">
               <a href="#" class="color_fff " id="toggle-search">
                 <i class="fa fa-search" aria-hidden="true"></i>
-              </a>  
+              </a>
+              
             </li>
 
-           <!--  <div class="div_search sr_none">
-               <form method="get" action="http://kinhtenongthon.vn/tim-kiem" class="formsearch hidden-xs hidden-sm" id="search-form">
-                 <div class="search_fm">
-                   <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
-                   <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
-                 </div>
-               </form>
-           </div> -->
+         <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
+                <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
+                  <div class="search_fm">
+                    <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+              </div>
           </ul>
         </div>
       </div>
@@ -186,10 +189,10 @@
                 <input type="password" name="password" placeholder="Mật khẩu" required>
                 <div class="forgotpassword"><a href="#"><i>Quên mật khẩu?</i></a></div>
                 <div class="displayrow">
-                  <a href="#" class="fb btn socialmedia">
+                  <a href="#" class="fb btnLogin socialmedia">
                     <i class="fa fa-facebook fa-fw"></i>Facebook
                   </a>
-                  <a href="#" class="google btn socialmedia">
+                  <a href="#" class="google btnLogin socialmedia">
                     <i class="fa fa-google fa-fw"></i>Google+
                   </a>
                   <input type="submit" value="Đăng nhập">

@@ -10,11 +10,6 @@ img.logo{
     margin-left: 105px;
 }
 
-.blur>.menu~*{
-	-webkit-filter:brightness(120%) contrast(120%) blur(10px);
-	filter:brightness(120%) contrast(120%) blur(10px)
-}
-
 .grid-feature-item .title_top_header a{
 	color:#fff;
 	font-size:20px !important
@@ -293,9 +288,6 @@ img:hover,.bg_cover:hover{
 	text-decoration:none
 }
 
-#toggle-search, .dropdown-toggle{
-	text-align: center;
-}
 
 .title_top10_category{
 	background-color: #D9534F;
@@ -414,4 +406,20 @@ img:hover,.bg_cover:hover{
     font-style: italic!important;
     font-weight: normal!important;
     font-size: 15px!important;
+}
+
+.blur>.menu~*{
+	-webkit-filter:brightness(120%) contrast(120%) blur(10px);
+	filter:brightness(120%) contrast(120%) blur(10px)
+}
+
+body.blur:after{
+	content:'';
+	position:fixed;
+	background:#000;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	opacity:.2
 }
