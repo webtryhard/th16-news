@@ -10,19 +10,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   <!-- Site Title- -->
-  <title>Bai viet chi tiet</title>
+  <title>TH16-News Online</title>
 
   <link rel="stylesheet" href="css1.css">
   <link rel="stylesheet" href="css4.css">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="jQuery.js"></script>
+
 
 
 </head>
 <body>
+  <!-- BEGIN: logo -->
   <div  class = "logo">
     <a href="home.html">
       <img class="logo" src="bao_files/logo.png" alt="logo">
     </a>
   </div>
+  <!-- END: logo -->
+
+  <!-- BEGIN:navbar menu -->
   <div >
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
       <div class="container"> 
@@ -34,84 +43,202 @@
           </button>
         </div>
 
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+       <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-justified">
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Thời sự</a>
+            <!--  menu Thoi su  -->
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="ThoiSuPage1.html">
+                Thời sự
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">Tin tức</a></li>
-                <li><a href="#Trangquochoi">Quốc hội</a></li>
+                <li class="">
+                  <a href="TinTuc.html" data-color="#d9534f" class="cat_c">Tin tức</a>
+                </li>
+                <li class="">
+                  <a href="QuocHoi.html" data-color="#d9534f" class="cat_c">Quốc hội</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kinh tế</a>
+            <!--  menu Kinh tế  -->
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="KinhTe.html">
+                Kinh tế
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">Khuyến nông</a></li>
-                <li><a href="#Trangquochoi">Doanh nghiệp</a></li>
+                <li class="">
+                  <a href="KhuyenNong.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
+                </li>
+                <li class="">
+                  <a href="DoanhNghiep.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nhịp sống</a>
+            <!--  menu Nhịp sống  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="NhipSong.html">
+                Nhịp sống
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">An ninh trật tự</a></li>
-                <li><a href="#Trangquochoi">Đời sống</a></li>
+                <li class="">
+                  <a href="AnNinhTratTu.html" data-color="#d9534f" class="cat_c">An ninh trật tự</a>
+                </li>
+                <li class="">
+                  <a href="DoiSong.html" data-color="#d9534f" class="cat_c">Đời sống</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bất động sản</a>
+            <!--  menu Bất động sản  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="BatDongSan.html">
+                Bất động sản
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">Thị trường</a></li>
-                <li><a href="#Trangquochoi">Phân tích - Nhận định</a></li>
+                <li class="">
+                  <a href="ThiTruong.html" data-color="#d9534f" class="cat_c">Thị trường</a>
+                </li>
+                <li class="">
+                  <a href="PhanTichNhanDinh.html" data-color="#d9534f" class="cat_c">Phân tích - Nhận định</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Xã hội</a>
+            <!--  menu Xã hội  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="XaHoi.html">
+                Xã hội
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">Phóng sự - kí sự</a></li>
-                <li><a href="#Trangquochoi">Xã hội từ thiện</a></li>
+                <li class="">
+                  <a href="PhongSuKiSu.html" data-color="#d9534f" class="cat_c">Phóng sự - kí sự</a>
+                </li>
+                <li class="">
+                  <a href="XaHoiTuThien.html" data-color="#d9534f" class="cat_c">Xã hội từ thiện</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pháp luật</a>
+            <!--  menu Pháp luật  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="PhapLuat.html">
+                Pháp luật
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">Tư vấn</a></li>
-                <li><a href="#Trangquochoi">Văn bản mới</a></li>
+                <li class="">
+                  <a href="TuVan.html" data-color="#d9534f" class="cat_c">Tư vấn</a>
+                </li>
+                <li class="">
+                  <a href="VanBanMoi.html" data-color="#d9534f" class="cat_c">Văn bản mới</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sức khỏe</a>
+            <!--  menu Sức khỏe  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="SucKhoe.html">
+                Sức khỏe
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">An toàn vệ sinh thực phẩm</a></li>
-                <li><a href="#Trangquochoi">Sống khỏe</a></li>
+                <li class="">
+                  <a href="AnToanVeSinhThucPham.html" data-color="#d9534f" class="cat_c">An toàn vệ sinh thực phẩm</a>
+                </li>
+                <li class="">
+                  <a href="SongKhoe.html" data-color="#d9534f" class="cat_c">Sống khỏe</a>
+                </li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Văn hóa</a>
-              <ul class="dropdown-menu">
-                <li><a href="#Trangtintuc">Giải trí</a></li>
-                <li><a href="#Trangquochoi">Dọc dài đất nước</a></li>
-              </ul>
+           <!-- icon login  -->
+            <li class="login_icon">
+              <a href="#"  data-toggle="modal" data-target="#loginModal">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+              </a>
             </li>
 
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#Trangthegioi">Thế giới</a>
+            <!-- icon search  -->
+           <li class="search_ hidden-xs hidden-sm">
+              <a href="#" class="color_fff " id="toggle-search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+              
             </li>
 
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#Trangthethao">Thể thao</a>
-            </li>
+         <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
+                <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
+                  <div class="search_fm">
+                    <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+              </div>
           </ul>
         </div>
       </div>
     </nav>
+  </div>
+  <!-- END:navbar menu -->
+  <!-- Modal login-->
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng nhập</h2>
+
+        <div class="container loginbody">
+          <form>
+            <div class="loginrow">
+
+              <div class="logincol logininput">         
+                <input type="text" name="username" placeholder="Tên đăng nhập" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <div class="forgotpassword"><a href="#"><i>Quên mật khẩu?</i></a></div>
+                <div class="displayrow">
+                  <a href="#" class="fb btnLogin socialmedia">
+                    <i class="fa fa-facebook fa-fw"></i>Facebook
+                  </a>
+                  <a href="#" class="google btnLogin socialmedia">
+                    <i class="fa fa-google fa-fw"></i>Google+
+                  </a>
+                  <input type="submit" value="Đăng nhập">
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <p class="centertext">Bạn chưa có tài khoản?
+          <a href="#" data-toggle="modal" data-target="#signupModal"><strong>Đăng kí</strong></a> ngay.
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <!-- Modal signup-->
+  <div class="modal fade" id="signupModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng kí tài khoản</h2>
+
+        <div class="container signupbody">
+          <form>
+            <div class="signuprow">              
+              <div class="signupcol"> 
+                <label for="username">Tên đăng nhập</label>     
+                <input type="text" name="username"required>
+                <label for="name">Họ và tên</label>
+                <input type="text" name="name" required>
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password"  required>
+                <label for="repassword">Nhập lại mật khẩu</label>
+                <input type="password" name="repassword" required>
+                <input type="checkbox" name="agree">Tôi đồng ý với quy định của toàn soạn.<br>
+                <input type="submit" value="Đăng kí">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="container">
     <!-- BEGIN-MAIN -->
@@ -119,7 +246,7 @@
       <selection>
         <div>
           <header class="jumbotron pall30 mb15">
-            <h1 class="fs-21">Thủ tướng Việt Nam, Romania hội đàm</h1>
+            <h1 class="fs-21">Phát triển NN: Doanh nghiệp đầu tàu phải dẫn dắt chuỗi liên kết</h1>
             <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-15 18:50:00"><i class="fa fa-clock-o" aria-hidden="true"></i>18:50 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019</time></span></small>
             <p class="mb0"><span class="label label-success">KTNT</span> Sáng 15/4, giờ địa phương (chiều 15/4, giờ Việt Nam), tại cuộc hội đàm giữa Thủ tướng Nguyễn Xuân Phúc và Thủ tướng Romania Viorica Dancila, hai bên đã thống nhất tổ chức kỳ họp lần thứ 16 của Ủy ban hỗn hợp về hợp tác kinh tế vào giữa năm 2019.</p>
           </header>

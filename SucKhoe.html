@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs =====================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Site Title- -->
+  <title>TH16-News Online</title>
+
+  <link rel="stylesheet" href="css1.css">
+  <link rel="stylesheet" href="css4.css">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="jQuery.js"></script>
+
+
+
+</head>
+<body>
+  <div  class = "logo">
+    <a href="home.html">
+      <img class="logo" src="bao_files/logo.png" alt="logo">
+    </a>
+  </div>
+  <!-- BEGIN: Menu -->
+ <div>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
+      <div class="container"> 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-justified">
+            <!--  menu Thoi su  -->
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="ThoiSuPage1.html">
+                Thời sự
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="TinTuc.html" data-color="#d9534f" class="cat_c">Tin tức</a>
+                </li>
+                <li class="">
+                  <a href="QuocHoi.html" data-color="#d9534f" class="cat_c">Quốc hội</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Kinh tế  -->
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="KinhTe.html">
+                Kinh tế
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="KhuyenNong.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
+                </li>
+                <li class="">
+                  <a href="DoanhNghiep.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Nhịp sống  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="NhipSong.html">
+                Nhịp sống
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="AnNinhTratTu.html" data-color="#d9534f" class="cat_c">An ninh trật tự</a>
+                </li>
+                <li class="">
+                  <a href="DoiSong.html" data-color="#d9534f" class="cat_c">Đời sống</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Bất động sản  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="BatDongSan.html">
+                Bất động sản
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="ThiTruong.html" data-color="#d9534f" class="cat_c">Thị trường</a>
+                </li>
+                <li class="">
+                  <a href="PhanTichNhanDinh.html" data-color="#d9534f" class="cat_c">Phân tích - Nhận định</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Xã hội  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="XaHoi.html">
+                Xã hội
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="PhongSuKiSu.html" data-color="#d9534f" class="cat_c">Phóng sự - kí sự</a>
+                </li>
+                <li class="">
+                  <a href="XaHoiTuThien.html" data-color="#d9534f" class="cat_c">Xã hội từ thiện</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Pháp luật  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="PhapLuat.html">
+                Pháp luật
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="TuVan.html" data-color="#d9534f" class="cat_c">Tư vấn</a>
+                </li>
+                <li class="">
+                  <a href="VanBanMoi.html" data-color="#d9534f" class="cat_c">Văn bản mới</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Sức khỏe  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="SucKhoe.html">
+                Sức khỏe
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="AnToanVeSinhThucPham.html" data-color="#d9534f" class="cat_c">An toàn vệ sinh thực phẩm</a>
+                </li>
+                <li class="">
+                  <a href="SongKhoe.html" data-color="#d9534f" class="cat_c">Sống khỏe</a>
+                </li>
+              </ul>
+            </li>
+           <!-- icon login  -->
+            <li class="login_icon">
+              <a href="#"  data-toggle="modal" data-target="#loginModal">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+              </a>
+            </li>
+
+            <!-- icon search  -->
+           <li class="search_ hidden-xs hidden-sm">
+              <a href="#" class="color_fff " id="toggle-search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+              
+            </li>
+
+         <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
+                <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
+                  <div class="search_fm">
+                    <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+              </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- END: Menu -->
+
+   <!-- Modal login-->
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng nhập</h2>
+
+        <div class="container loginbody">
+          <form>
+            <div class="loginrow">
+
+              <div class="logincol logininput">         
+                <input type="text" name="username" placeholder="Tên đăng nhập" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <div class="forgotpassword"><a href="#"><i>Quên mật khẩu?</i></a></div>
+                <div class="displayrow">
+                  <a href="#" class="fb btnLogin socialmedia">
+                    <i class="fa fa-facebook fa-fw"></i>Facebook
+                  </a>
+                  <a href="#" class="google btnLogin socialmedia">
+                    <i class="fa fa-google fa-fw"></i>Google+
+                  </a>
+                  <input type="submit" value="Đăng nhập">
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <p class="centertext">Bạn chưa có tài khoản?
+          <a href="#" data-toggle="modal" data-target="#signupModal"><strong>Đăng kí</strong></a> ngay.
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <!-- Modal signup-->
+  <div class="modal fade" id="signupModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng kí tài khoản</h2>
+
+        <div class="container signupbody">
+          <form>
+            <div class="signuprow">              
+              <div class="signupcol"> 
+                <label for="username">Tên đăng nhập</label>     
+                <input type="text" name="username"required>
+                <label for="name">Họ và tên</label>
+                <input type="text" name="name" required>
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password"  required>
+                <label for="repassword">Nhập lại mật khẩu</label>
+                <input type="password" name="repassword" required>
+                <input type="checkbox" name="agree">Tôi đồng ý với quy định của toàn soạn.<br>
+                <input type="submit" value="Đăng kí">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- BEGIN-MAIN -->
+    <main >
+      
+      <section class="row">
+        <!-- BEGIN: Main left -->
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+          <!-- BEGIN:Title -->
+          <div class="tab_item">
+            <div class="panel">
+              <hgroup class="panel-heading">
+                <ul class="list-inline">
+                  <li class="active">
+                    <a href="SucKhoe.html" title="Sức khỏe"><h2 class="font-bold">Sức khỏe</h2>
+                    </a>
+                  </li>
+                  <li class="hidden-xs ">
+                    <a href="AnToanVeSinhThucPham.html" title="An toàn vệ sinh thực phẩm">An toàn vệ sinh thực phẩm</a>
+                  </li>
+                  <li class="hidden-xs ">
+                    <a href="SongKhoe.html" title="Sống khỏe">Sống khỏe</a>
+                  </li>
+                </ul>
+              </hgroup>
+              <!-- END: Title -->
+              <!-- BEGIN:Tin nổi bật -->
+              <div class="panel-body">
+            <div class="ovlhidd col-md-7 large">
+              <div class="row">
+                <div class="grid-feature-item ">
+                  <a href="#thu-tuong-viet-nam-romania-hoi-dam" class="fixhieght hieght_col">
+                    <img class="media-object" src="http://kinhtenongthon.vn/media/news/3eb931199407fd6fd76b8b96bb49a2f5/thumb/thu-tuong-viet-nam-romania-hoi-dam-ttcp-thumb43.jpg" alt="Thủ tướng Việt Nam, Romania hội đàm" title="Thủ tướng Việt Nam, Romania hội đàm" width="100%" height="100%">
+                  </a>
+                  <div class="title_top_header">
+                    <a href="#thu-tuong-viet-nam-romania-hoi-dam">
+                      <h4> Thủ tướng Việt Nam, Romania hội đàm</h4>
+                    </a>
+                    <p class="meta text-muted fs-08 font-normal">
+                      <span>
+                        <time class="friendly" datetime="2019-04-15 18:50:00">
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>18:50 - 
+                          <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                        </time>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ovlhidd col-sm-7 col-md-5 small">
+              <div class="row">
+                <div class="grid-feature-item ">
+                  <a href="#khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach" class="fixhieght hieght_col">
+                    <img class="media-object" src="http://kinhtenongthon.vn/media/news/440bcbe45a6a4e361b606228f0c86365/thumb/khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach-ss1-thumb43.jpg" alt="Khu du lịch Thác Bạc Suối Sao: Ngang nhiên phá vỡ quy hoạch?" title="Khu du lịch Thác Bạc Suối Sao: Ngang nhiên phá vỡ quy hoạch?" width="100%" height="100%">
+                  </a>
+                  <div class="title_top_header">
+                    <a href="#khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach">
+                      <h4> Khu du lịch Thác Bạc Suối Sao: Ngang nhiên phá vỡ quy hoạch?</h4>
+                    </a>
+                    <p class="meta text-muted fs-08 font-normal">
+                      <span>
+                        <time class="friendly" datetime="2019-04-15 08:00:00">
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>08:00 - 
+                          <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                        </time>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ovlhidd col-sm-7 col-md-5 small">
+              <div class="row">
+                <div class="grid-feature-item ">
+                  <a href="#trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra" class="fixhieght hieght_col">
+                    <img class="media-object" src="http://kinhtenongthon.vn/media/news/679a55e13acf1a9769c193fa010d5934/thumb/trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra-xk-vao-tq-thumb43.jpg" alt="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" title="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" width="100%" height="100%">
+                  </a>
+                  <div class="title_top_header">
+                    <a href="#trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra">
+                      <h4> Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra</h4>
+                    </a>
+                    <p class="meta text-muted fs-08 font-normal">
+                      <span>
+                        <time class="friendly" datetime="2019-04-15 10:41:17">
+                          <i class="fa fa-clock-o" aria-hidden="true"></i>10:41 - 
+                          <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019
+                        </time>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+           <!-- END: Tin nổi bật-->
+           <!-- BEGIN:Danh sách bài viết-->
+              <article class="panel-body list">
+                <div class="row ">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="media media_item_home">
+                      <a class="align_items_center" href="page1.html" style="height: 240px">
+                        <img class="media-object" src="bao_files/dien-mao-nong-thon-moi-o-tan-son-b-thumb43.jpg" alt="Diện mạo nông thôn mới ở Tân Sơn" width="100%" height="200px">
+                      </a>
+                      <div class="media-body">
+                        <h3 class="fs-12 pt5">
+                          <a href="page1.html" title="Diện mạo nông thôn mới ở Tân Sơn">Diện mạo nông thôn mới ở Tân Sơn
+                          </a>
+                        </h3>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 09:47:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>09:47 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                        <p class="summary">Bước vào xây dựng NTM, xã Tân Sơn (Đô Lương, Nghệ An) mới chỉ đạt 9/19 tiêu chí, hệ thống hạ tầng chưa đáp ứng, đời sống nhân dân còn chưa đồng ...
+                        </p>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="media media_item_home">
+                      <a class="align_items_center" href="page1.html" style="height: 240px">
+                        <img class="media-object" src="bao_files/NQH05216_copy.jpg" alt="Diện mạo nông thôn mới ở Tân Sơn" width="100%" height="200px">
+                      </a>
+                      <div class="media-body">
+                        <h3 class="fs-12 pt5">
+                          <a href="page1.html" title="Diện mạo nông thôn mới ở Tân Sơn">Diện mạo nông thôn mới ở Tân Sơn
+                          </a>
+                        </h3>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 09:47:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>09:47 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                        <p class="summary">Bước vào xây dựng NTM, xã Tân Sơn (Đô Lương, Nghệ An) mới chỉ đạt 9/19 tiêu chí, hệ thống hạ tầng chưa đáp ứng, đời sống nhân dân còn chưa đồng ...
+                        </p>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="media media_item_home">
+                      <a class="align_items_center" href="page1.html" style="height: 240px">
+                        <img class="media-object" src="bao_files/quang-nam-lien-ket-san-xuat-giong-lua-hieu-qua-cao-2-thumb169.jpg" alt="Diện mạo nông thôn mới ở Tân Sơn" width="100%" height="200px">
+                      </a>
+                      <div class="media-body">
+                        <h3 class="fs-12 pt5">
+                          <a href="page1.html" title="Diện mạo nông thôn mới ở Tân Sơn">Diện mạo nông thôn mới ở Tân Sơn
+                          </a>
+                        </h3>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 09:47:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>09:47 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                        <p class="summary">Bước vào xây dựng NTM, xã Tân Sơn (Đô Lương, Nghệ An) mới chỉ đạt 9/19 tiêu chí, hệ thống hạ tầng chưa đáp ứng, đời sống nhân dân còn chưa đồng ...
+                        </p>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>  
+                </div>
+              </article>
+
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/quan-doan-4hoat-dong-ket-nghia-gop-phan-xay-dung-quoc-phong-toan-dan-58378292_333424447370901_3305670430324424704_n-thumb11.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/NQH0123.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/NQH05216_copy.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/dien-mao-nong-thon-moi-o-tan-son-b-thumb43.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/thu-tuong-du-hop-mat-mung-tet-chol-chnam-thmay-1-thumb11.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach-ss1-thumb43.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+              <article class="row mb15 list">
+                <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class="media">
+                    <a class="pull-left" href="page1.html">
+                      <img class="media-object" src="bao_files/su-kien-247-evn-ly-giai-vi-sao-tien-dien-thang-4-tang-vot-dien-thumb169.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                    </a>
+                    <div class="">
+                      <header>
+                        <p class="title mb0">
+                          <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                          </a>
+                        </p>
+                        <small class="meta text-muted">
+                          <span>
+                            <time class="friendly" datetime="2019-04-25 22:07:00">
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                              <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 25/04/2019
+                            </time>
+                          </span>
+                        </small>
+                      </header>
+                      <p class="summary mb0">Chiều 25-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                    </div>
+                  </div>
+                </aside>
+                <p class="tag_in_item">
+                  <font class="fwb">Tags: </font>
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                  <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                </p>
+                <!--  -->
+              </article>
+            </div>
+          </div> 
+
+
+          <div class="col_fix visible-xs">
+            <!-- BEGIN:tin hot nhất -->
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+              <div class="row">
+                <!-- BEGIN:Host-top1 -->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                  <div class="row">
+                   <!-- BEGIN:tin top1 -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <section class="slide_topnews">
+                        <div id="carouselhot" class="carousel slide" data-ride="carousel"> 
+                          <!--  Control -->
+                          <a class="left carousel-control" href="http://kinhtenongthon.vn/?fbclid=IwAR33O7s7-RJnsbm9YVtpua9su4zT2Mk2qSwRIgdVEu-VFDMZyyuCtWCKNsE#carouselhot" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                          </a>
+                          <a class="right carousel-control" href="http://kinhtenongthon.vn/?fbclid=IwAR33O7s7-RJnsbm9YVtpua9su4zT2Mk2qSwRIgdVEu-VFDMZyyuCtWCKNsE#carouselhot" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </section>
+                    </div>
+                  <!-- END -->
+                  </div>
+                </div>
+              <!-- END -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: Main left-->
+        <!-- BEGIN: Main right -->
+        <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3-right ">
+          <div class="model_right">
+            <!-- BEGIN: Tin nhiều người đọc -->
+            <div class="banner hidden righthome1" fix=""></div>  
+              <div class="panel panel-info">
+              <div class="panel-heading panel-item text-center font-bold">
+                <span>Tin nhiều người đọc</span>
+              </div>
+              <div class="panel-body">
+
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="http://kinhtenongthon.vn/media/news/08bf786cb3b22d313ee37f93586a24f4/thumb/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/phuong-my-dinh-1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-vi-pham-post27155.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/le-duc-anh-mot-nguoi-sau-sac-va-binh-di-post27157.html" title="Lê Đức Anh – một người sâu sắc và bình dị">
+                    <img src="http://kinhtenongthon.vn/media/news/cf4298addd63275b043eb83dc27f0ed3/thumb/le-duc-anh-mot-nguoi-sau-sac-va-binh-di-lda-thumb11.jpg" alt="Lê Đức Anh – một người sâu sắc và bình dị">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/le-duc-anh-mot-nguoi-sau-sac-va-binh-di-post27157.html" title="Lê Đức Anh – một người sâu sắc và bình dị"><h4 class="fs-1 mall0">Lê Đức Anh – một người sâu sắc và bình dị </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:12:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:12 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-post27158.html" title="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế">
+                    <img src="http://kinhtenongthon.vn/media/news/d2b36aae8e6dba855dd0ab395058a493/thumb/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-nqh08120-thumb11.jpg" alt="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-post27158.html" title="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế"><h4 class="fs-1 mall0">Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:39:57"><i class="fa fa-clock-o" aria-hidden="true"></i>09:39 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="http://kinhtenongthon.vn/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-post27153.html" title="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững">
+                    <img src="http://kinhtenongthon.vn/cache/news/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-img_56671-thumb11.jpg" alt="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="http://kinhtenongthon.vn/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-post27153.html" title="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững"><h4 class="fs-1 mall0">Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:50:20"><i class="fa fa-clock-o" aria-hidden="true"></i>09:50 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>    
+              </div>
+          </div>
+          <!-- END: Tin nhiều người đọc -->
+          </div> 
+        </div>
+        <!-- END: Main right-->
+        <div class="clearfix"></div>
+        <div class="panel-footer text-center">
+            <nav aria-label="Page navigation">
+              <ul class="pagination mall0"> 
+                <li class="pstate active"><a>1</a></li> 
+              </ul>
+            </nav>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+<!--  BEGIN: THÔNG TIN LIÊN HỆ -->
+ <footer style="position: relative; margin-top: 20px;">
+  <div class="bg-white bb-solid pt15 pb15" style="background: #d9534f;color: white">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <h1><strong>Báo điện tử TH16_NEWS</strong></h1>
+          Tổng biên tập: <strong>NGUYỄN ANH TUẤN</strong><br>
+          Phó tổng biên tập phụ trách nội dung: <strong>TRẦN THỊ HỒNG THẮM</strong><br>
+          Cơ quan chủ quản: Hội Làm vườn Việt Nam (VACVINA)<br>
+          Giấy phép hoạt động báo điện tử số <b>294/GP-BTTTT</b> do Bộ trưởng Bộ Thông tin và Truyền thông cấp ngày 23/6/2017 - ISSN 1859-2456.         
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <address class="text-right mb0">
+            <div class="hidden-xs"><a href="#"><img src="bao_files/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a></div>
+            <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> -  <a href="#">toasoanTh16News@gmail.vn</a><br>
+            <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
+            <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM 
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- END: THÔNG TIN LIÊN HỆ -->
+  <div id="my_popup">
+    <div class="my_popup_content"></div>
+  </div>
+  <div style="position: absolute; top: 0px;">
+  </div>
+
+<div id="backtotop" title="Lên đầu trang"><i class="fa fa-angle-double-up"></i></div>
+<script type="text/javascript" src="js1.js"></script>
+</body>
+
+</html>
