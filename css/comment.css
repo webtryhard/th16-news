@@ -6,23 +6,22 @@
 }
 .commentList li {
     margin:0;
-    margin-top:10px;
 }
 .commentList li > div {
     display:table-cell;
 }
 .commenterImage {
-    width:50px;
+    width:53px;
     margin-left:6px;
     height:50px;
     float:left;
 }
 .commenterImage img {
     width:100%;
-    border-radius: 10%;
+    padding-top: 11px;
 }
-.commentText p {
-    margin-left: 6px;
+.commentText {
+    padding-left: 15px;
 }
 .sub-text {
     color:#aaa;
@@ -31,5 +30,6 @@
 
 .commentName{
     display: flex;
-    justify-content:space-around
+    justify-content:space-between;
+    width: 220px;
 }
