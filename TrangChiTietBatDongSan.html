@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!-- Basic Page Needs =====================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Site Title- -->
+  <title>TH16-News Online</title>
+
+ <link rel="stylesheet" href="css/style1.css">
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/signup.css">
+  <link rel="stylesheet" type="text/css" href="css/comment.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="js/jQuery.js"></script>
+
+
+
+</head>
+
+
+
+</head>
+<body>
+  <div  class = "logo">
+    <a href="home.html">
+      <img class="logo" src="bao_files/logo.png" alt="logo">
+    </a>
+  </div>
+  <!-- BEGIN: Menu -->
+  <div >
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
+      <div class="container"> 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-justified">
+            <!--  menu Thoi su  -->
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="ThoiSuPage1.html">
+                Thời sự
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="TinTuc.html" data-color="#d9534f" class="cat_c">Tin tức</a>
+                </li>
+                <li class="">
+                  <a href="QuocHoi.html" data-color="#d9534f" class="cat_c">Quốc hội</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Kinh tế  -->
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="KinhTe.html">
+                Kinh tế
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="KhuyenNong.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
+                </li>
+                <li class="">
+                  <a href="DoanhNghiep.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Nhịp sống  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="NhipSong.html">
+                Nhịp sống
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="AnNinhTratTu.html" data-color="#d9534f" class="cat_c">An ninh trật tự</a>
+                </li>
+                <li class="">
+                  <a href="DoiSong.html" data-color="#d9534f" class="cat_c">Đời sống</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Bất động sản  -->
+            <li class="  font-bold>
+              <a class="dropdown-toggle" href="BatDongSan.html">
+                Bất động sản
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="ThiTruong.html" data-color="#d9534f" class="cat_c">Thị trường</a>
+                </li>
+                <li class="">
+                  <a href="PhanTichNhanDinh.html" data-color="#d9534f" class="cat_c">Phân tích - Nhận định</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Xã hội  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="XaHoi.html">
+                Xã hội
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="PhongSuKiSu.html" data-color="#d9534f" class="cat_c">Phóng sự - kí sự</a>
+                </li>
+                <li class="">
+                  <a href="XaHoiTuThien.html" data-color="#d9534f" class="cat_c">Xã hội từ thiện</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Pháp luật  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="PhapLuat.html">
+                Pháp luật
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="TuVan.html" data-color="#d9534f" class="cat_c">Tư vấn</a>
+                </li>
+                <li class="">
+                  <a href="VanBanMoi.html" data-color="#d9534f" class="cat_c">Văn bản mới</a>
+                </li>
+              </ul>
+            </li>
+            <!--  menu Sức khỏe  -->
+            <li class="  font-bold">
+              <a class="dropdown-toggle" href="SucKhoe.html">
+                Sức khỏe
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="AnToanVeSinhThucPham.html" data-color="#d9534f" class="cat_c">An toàn vệ sinh thực phẩm</a>
+                </li>
+                <li class="">
+                  <a href="SongKhoe.html" data-color="#d9534f" class="cat_c">Sống khỏe</a>
+                </li>
+              </ul>
+            </li>
+           <!-- icon login  -->
+            <li class="login_icon">
+              <a href="#"  data-toggle="modal" data-target="#loginModal">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+              </a>
+            </li>
+
+            <!-- icon search  -->
+           <li class="search_ hidden-xs hidden-sm">
+              <a href="#" class="color_fff " id="toggle-search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+              
+            </li>
+
+         <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
+                <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
+                  <div class="search_fm">
+                    <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </div>
+                </form>
+              </div>
+          </ul>
+        </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- END: Menu -->
+
+   <!-- Modal login-->
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng nhập</h2>
+
+        <div class="container loginbody">
+          <form>
+            <div class="loginrow">
+
+              <div class="logincol logininput">         
+                <input type="text" name="username" placeholder="Tên đăng nhập" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <div class="forgotpassword"><a href="#"><i>Quên mật khẩu?</i></a></div>
+                <div class="displayrow">
+                  <a href="#" class="fb btnLogin socialmedia">
+                    <i class="fa fa-facebook fa-fw"></i>Facebook
+                  </a>
+                  <a href="#" class="google btnLogin socialmedia">
+                    <i class="fa fa-google fa-fw"></i>Google+
+                  </a>
+                  <input type="submit" value="Đăng nhập">
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <p class="centertext">Bạn chưa có tài khoản?
+          <a href="#" data-toggle="modal" data-target="#signupModal"><strong>Đăng kí</strong></a> ngay.
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <!-- Modal signup-->
+  <div class="modal fade" id="signupModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng kí tài khoản</h2>
+
+        <div class="container signupbody">
+          <form>
+            <div class="signuprow">              
+              <div class="signupcol"> 
+                <label for="username">Tên đăng nhập</label>     
+                <input type="text" name="username"required>
+                <label for="name">Họ và tên</label>
+                <input type="text" name="name" required>
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password"  required>
+                <label for="repassword">Nhập lại mật khẩu</label>
+                <input type="password" name="repassword" required>
+                <input type="checkbox" name="agree">Tôi đồng ý với quy định của toàn soạn.<br>
+                <input type="submit" value="Đăng kí">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div class="container">
+<!-- BEGIN-MAIN -->
+<main>
+    <!-- BEGIN:ROW1 -->
+    <section class="row">
+        <!-- BEGIN:tin hot nhất -->
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+            <header class="jumbotron pall30 mb15">
+    <h1 class="fs-21">Phát triển NN: Doanh nghiệp đầu tàu phải dẫn dắt chuỗi liên kết</h1>
+    <small class="meta text-muted"><span><time class="friendly" datetime="2019-05-02 16:26:50"><i class="fa fa-clock-o" aria-hidden="true"></i>16:26 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 02/05/2019</time></span></small>
+    <p class="mb0"><span class="label label-success">Bất Động Sản</span> Tại Diễn đàn Kinh tế tư nhân Việt Nam 2019 (2-3/5), phiên hiến kế về nông nghiệp ghi nhận nhiều giải pháp thúc đẩy sản xuất nông nghiệp hàng hóa, an toàn và bền vững.</p>
+</header>
+<style>
+</style>
+<div class="row ">
+    
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 detail_ct" style="width: 100%">
+        <!-- BEGIN: Tin liên quan - 01 -->
+                <!-- END: Tin liên quan - 01 -->
+
+        <!-- BEGIN: Nội dung -->
+        <article class="article-detail">
+            <!-- Nếu type là hình ảnh -->
+                        <!-- Nếu type là video -->
+                        <!-- Bài viết bình thường -->
+            
+<p><strong>Trong đó, tạo chuỗi liên kết sản xuất, tiêu thụ… với doanh nghiệp đầu tàu dẫn dắt được cho là khả thi.</strong></p><div class="banner hidden middle_post" fix=""></div>
+<p><strong>Liên kết các chủ thể trong chuỗi sản xuất</strong></p>
+<p>Ông Lê Đức Thịnh, Cục trưởng Cục Kinh tế hợp tác và PTNT (Bộ Nông nghiệp và PTNT)&nbsp;cho rằng, để phát triển nông nghiệp bền vững, việc đầu tiên cần khắc phục là phát triển tính liên kết của các chủ thể trong chuỗi sản xuất, đáp ứng yêu cầu về phát triển nền nông nghiệp hiện đại trong cơ chế thị trường cạnh tranh. Hiện, 11-14% sản lượng nông nghiệp thông qua chuỗi liên kết là quá nhỏ, điều này hàm ý tiềm năng còn rất lớn với hàng chục triệu hecta đất nông nghiệp, và trong thời gian tới Việt Nam cần tiếp tục đẩy mạnh hơn nữa quá trình liên kết trong lĩnh vực này.</p>
+
+<figure style="text-align: center;"><img style="width: 600px; max-width: 98%;" title="cuc-truong.jpg" src="bao_files/cuc-truong.jpg" alt="cuc-truong.jpg" data-fb-disable-360="">
+<figcaption class="op-vertical-below"><cite></cite></figcaption>
+</figure>
+<p style="text-align: center;"><em>Ông Lê Đức Thịnh - Cục trưởng Cục kinh tế hợp tác và phát triển nông thôn.</em></p>
+
+<p>Phó chủ tịch Liên minh HTX Việt Nam&nbsp;Nguyễn Văn Thịnh kiến nghị, để làm tốt vai trò liên kết của HTX, việc đầu tiên là phải đẩy mạnh tuyên truyền, vì hiện người dân chưa nhận thức được vai trò của HTX kiểu mới, tâm lý HTX kiểu cũ để lại vẫn nặng nề.</p>
+<p>“Nhà nước cần sớm sửa đổi Luật HTX 2012 vì sau 7 năm thực hiện đã bộc lộ nhiều điểm không phù hợp, cản trở phát triển; đồng thời, sửa Luật Đất đai để tháo gỡ nút thắt về tích tụ ruộng đất; sớm ban hành nghị định riêng về HTX nông nghiệp”, ông Thịnh nói.</p>
+<p><strong>Điểm nghẽn ngành tôm: Sản xuất nhỏ lẻ</strong></p>
+<p>Ông Trần Đình Luân, Phó tổng cục trưởng Tổng Cục Thuỷ sản cho biết, Quyết định 79 của Thủ tướng về việc ban hành kế hoạch hành động quốc gia phát triển ngành tôm nêu kỳ vọng đến năm 2025, giá trị xuất khẩu đạt 10 tỷ USD, trong đó 8,4 tỷ USD là tôm thẻ và tôm sú.</p>
+<p>Năm 2018, ngành tôm đạt sản lượng 760.000 tấn, trong đó có gần 300.000 tấn tôm sú, giá trị kim ngạch xuất khẩu đạt 3,6 tỷ USD, đây là sản lượng mà không nước nào đạt được.</p>
+<p>Theo ông Luân, ngành tôm Việt Nam có nhiều lợi thế nhưng đang gặp thách thức lớn về biến đổi khí hậu, muốn tăng diện tích nuôi tôm đòi hỏi đầu tư về khoa học kỹ thuật, trang thiết bị để đáp ứng yêu cầu. Ngoài ra, sản xuất nhỏ lẻ còn chiếm 70-80% diện tích ngành sản xuất tôm, thực trạng này dẫn đến khó khăn trong hội nhập và đáp ứng yêu cầu truy xuất nguồn gốc. Với bối cảnh sản xuất nhỏ lẻ, liên kết kém, khó khăn về nguồn tôm bố mẹ và cơ sở hạ tầng nên giá thành sản xuất cao, sức cạnh tranh hạn chế.</p>
+<p><strong>“Cần DN đầu tàu dẫn dắt chuỗi liên kết”</strong></p>
+<p>Ông Ngô Minh Hải, Chủ tịch Hội đồng quản trị Tập đoàn TH, cho biết, hơn 10 năm qua, Tập đoàn đã thành công trong việc đầu tư vào nông nghiệp, đặc biệt là chăn nuôi bò sữa. Theo ông, chìa khoá vàng của thành công là ứng dụng công nghệ cao vào chăn nuôi bò sữa, từ đó, tạo thương hiệu có tầm ảnh hưởng, sản phẩm đem lại niềm tin cho người tiêu dùng.</p>
+
+<p><img title="7.JPG" src="bao_files/7.JPG" alt="7.JPG" data-fb-disable-360="" style="max-width: 98%;"></p>
+<p><em>Một góc khu chăn nuôi bò sữa tập trung quy mô công nghiệp của Tập đoàn TH tại Nghệ An.</em></p>
+<p>“Chúng tôi đang chuyển sang giai đoạn tiếp theo, đưa ngành chăn nuôi lên quy mô rộng hơn, cấp nông hộ để phát triển mạnh trong tương lai. Chúng tôi đã tổ chức liên kết Công ty Đà Lạt milk với HTX bò sữa ở Lâm Đồng”, ông Hải nói và cho biết, đây chính là mô hình liên kết chuỗi giá trị để phát triển bền vững.</p>
+<p>Chủ tịch Tập đoàn TH cho hay, muốn phát triển chuỗi liên kết cần phải tổ chức đào tạo nâng cao nguồn nhân lực cho người nông dân; kết nối nguồn hỗ trợ về tài chính. “Chúng tôi có HTX cung cấp dịch vụ thú y, phối giống, thức ăn cho người dân, nhưng bà con đang cần nguồn vốn hỗ trợ. Chúng tôi kết nối với ngân hàng để bà con vay được vốn để phát triển”, ông Hải nói.</p>
+<p>Ông Josh Madeira, phụ trách chính sách bảo tồn biển, Chương trình Seafood Watch (SW, Mỹ)&nbsp;cho rằng, sự bền vững môi trường trong hoạt động kinh doanh là điều mà thế giới đang quan tâm.&nbsp;Đây cũng là cơ hội để Việt Nam nâng cao chất lượng sản xuất, qua đó xây dựng khả năng cạnh tranh cao hơn; xây dựng chuỗi giá trị minh bạch để truy xuất nguồn gốc sản phẩm, nâng cao hơn nữa trách nhiệm của DN, từ đó tạo niềm tin tốt hơn với cộng đồng quốc tế.</p>
+<p><strong>Lập ngân hàng lưu động</strong></p>
+<p>Để giải quyết vấn đề về cho vay nông nghiệp, nông thôn, ông Lê Xuân Trung, Phó tổng giám đốc Ngân hàng Nông nghiệp và PTNT (Agribank), cho rằng, vừa qua, ngân hàng đã sử dụng 70% vốn với trên 700.000 tỷ đồng vào lĩnh vực này.&nbsp;Ngân hàng cũng tham gia chuỗi từ đầu, như thí điểm cho vay với Nhà máy mía đường Lam Sơn, cánh đồng mẫu lớn ở Cần Thơ, chăn nuôi ở Bắc Ninh...</p>
+<p>Tuy nhiên, ông Trung đánh giá, chuỗi liên kết vẫn còn “lỏng lẻo”; năng lực tài chính của khách hàng yếu, hiện tượng vi phạm hợp đồng của người dân còn nhiều, thị trường thiếu ổn định, mất cân đối cung cầu... gây khó khăn cho ngân hàng.</p>
+<p>“Từ năm 2017, chúng tôi xây dựng ngân hàng lưu động, nhập xe có internet, cử một tổ xuống tận nông trường, thôn, xã để người dân không cần đi lên huyện vay vốn”, ông Trung cho hay.</p>
+<p><strong>Đào tạo công nhân nông nghiệp</strong></p>
+<p>Chủ tịch Công ty TNHH Nông nghiệp United Nguyễn Ngọc Dân nêu thực trạng, có nơi nông dân trồng nông sản để bán và để ăn trên các diện tích hoàn toàn khác nhau; hậu quả là, theo thời gian, nông dân không có thị trường tiêu thụ. Hiện cuộc sống cao hơn, một bộ phận người dân chấp nhận mua trái cây nhập khẩu, trong khi đó ở nhiều nơi người nông dân vẫn trồng bằng phân hoá học,&nbsp;sản phẩm xuất khẩu bị trả lại.&nbsp;Như vậy là không ổn.&nbsp;</p>
+<p>Thực tế, một số DN nâng giá cao nông sản để khuyến khích người dân trồng trọt, nhưng lại hạ giá khi nông dân được mùa. Đồng thời, cũng có chuyện nơi nào mua giá cao thì người dân sẵn sàng bán, gây khó cho DN đã đặt hàng trước.</p>
+<p>Do đó, ông Dân đề xuất: Cần đào tạo công nhân nông nghiệp vì thực tế có những kỹ sư nông nghiệp thiếu lăn lộn. Chúng ta có thể mở các lớp trung cấp nông nghiệp, chính quyền hỗ trợ người dân đi học chuyên về một loại cây, trực tiếp xuống đồng ruộng để thực hành, nếu đạt thì cấp bằng.&nbsp;</p>
+
+<figure><table class="table table-bordered" border="1" width="false" style="background-color: #e88787;">
+<tbody>
+<tr>
+<td>
+<p>Theo Thứ trưởng Bộ Nông nghiệp và PTNT Lê Quốc Doanh, trong 10 năm (2008 - 2017), tốc độ tăng trưởng GDP ngành nông nghiệp đạt bình quân 2,66%/năm, thị trường nông sản không ngừng mở rộng, xuất khẩu chuyển mạnh sang chính ngạch và hiện nông sản Việt Nam đã có mặt trên 185 quốc gia và vùng lãnh thổ.</p>
+<p>Tổng kim ngạch xuất khẩu 10 năm (2008 - 2017) đạt hơn 261 tỷ USD, tăng bình quân 9,24%/năm; năm 2018 đạt kim ngạch xuất khẩu cao kỷ lục - hơn 40 tỷ USD, tăng trên 23 tỷ USD so với năm 2008, đứng thứ 2 Đông Nam Á và thứ 15 thế giới.</p>
+<p>Tuy nhiên, sản lượng xuất khẩu của Việt Nam trên thị trường quốc tế còn hạn chế vì với tổng thương mại nông, lâm, thuỷ sản toàn cầu mỗi năm trên 2.000 tỷ USD thì Việt Nam mới có một phần nhỏ là 40 tỷ USD. Vì vậy, bài toán đặt ra là phải làm sao nâng cao năng suất, chất lượng trong sản xuất nông nghiệp?</p>
+</td>
+</tr>
+</tbody>
+</table></figure>
+
+<br>
+        </article>
+        <!-- END: Nội dung -->
+        <div class="article-bottom">
+            <div class="authors text-right font-bold">
+                                    <i class="fa fa-pencil"></i> Vân Nhi                
+                            </div>
+            <hr>
+            
+        </div>   
+             
+    </div>
+</div>
+
+<!-- BEGIN: Tags -->
+<ul class="list-inline border0 tags-list mt7 mb7 font-2">
+  <li class="font-bold">
+    <i class="fa fa-tags"></i> Từ khóa:
+  </li>
+  <li>
+    <a href="KinhTe.html">
+      <h5 class="mb5 mt0">
+        <span class="label label-default">Nhà Đất</span>
+      </h5>
+    </a>
+  </li>
+  <li>
+    <a href="KhuyenNong.html">
+      <h5 class="mb5 mt0">
+        <span class="label label-default">Bất Động Sản</span>
+      </h5>
+    </a>
+  </li>
+  <li>
+    <a href="DoanhNghiep.html">
+      <h5 class="mb5 mt0">
+        <span class="label label-default">Thị Trường</span>
+      </h5>
+    </a>
+  </li>
+ </ul><!-- END: Tags -->
+    
+<!-- BEGIN: Bình luận --><div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active cmm"><a href="#comment_facebook" aria-controls="comment_facebook" role="tab" data-toggle="tab">Danh sách bình luận</a></li>
+        <li role="presentation" class=" cmm"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">Bình luận</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content bg-white pt10">
+        <div role="tabpanel" class="tab-pane fade in active" id="comment_facebook">
+         <div class="panel panel-success">
+        <ul class="commentList">
+            <li>
+                <div class="commenterImage">
+                  <img src="bao_files/ava1.jpg" />
+                </div>
+                <div class="commentText">
+                  <div class="commentName">
+                    <h5>Trạng Nguyên</h5>
+                    <h6>29/04/2019</h6>
+                  </div>
+                    <p class="">Bài viết chi tiết.</p> 
+                </div>
+            </li>
+            <li>
+                <div class="commenterImage">
+                  <img src="bao_files/ava2.jpg" />
+                </div>
+                <div class="commentText">
+                  <div class="commentName">
+                    <h5>Vân Anh</h5>
+                    <h6>30/04/2019</h6>
+                  </div>
+                    <p class="">Bài viết rất hay.</p>
+                </div>
+            </li>
+            <li>
+                <div class="commenterImage">
+                  <img src="bao_files/ava3.jpg" />
+                </div>
+                <div class="commentText">
+                     <div class="commentName">
+                    <h5>Tuấn Ngọc</h5>
+                    <h6>02/05/2019</h6>
+                  </div>
+                    <p class="">Thông tin hữu ích.</p> 
+                </div>
+            </li>
+      </ul>
+</div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="comment">
+            <!-- BEGIN:COMMENTS -->                                            
+            <script src="#"></script>
+            <section class="comments-box">
+                <form class="frm-comment">
+                    <div class="panel panel-success">
+                        <header class="panel-heading">
+                            <h3 class="panel-title font-2">Ý kiến của bạn <sup><i class="fa fa-comment-o"></i></sup></h3>
+                        </header>
+                        <div class="panel-body">
+                            <textarea class="txtComment form-control required_c" id="c_content_27494" name="c_content" rows="5" placeholder="Nội dung"></textarea>
+                                                        <br><input type="text" class="form-control required_c" placeholder="Họ tên" name="c_name" id="c_name_27494" style="display: none;"><br>
+                            <input type="email" class="form-control required_c" placeholder="Email" name="c_email" id="c_email_27494" style="display: none;">
+                            <script>
+                            $(document).ready(function() {
+                                $("#c_name_27494,#c_email_27494").slideUp();
+                                var c_content = document.getElementById('c_content_27494');
+                                c_content.onkeyup = c_content.onkeypress = function(){
+                                    var _val = this.value;
+                                    if(_val!=''){
+                                        $("#c_name_27494,#c_email_27494").slideDown();
+                                    }else{
+                                        $("#c_name_27494,#c_email_27494").slideUp();
+                                    }
+                                }
+                            });
+                            </script>
+                                                    </div>
+                        <div class="panel-footer">
+                            <a class="btn btn-ico btn-sm btn-success ajSendComment" c_news="27494"><i class="fa fa-send-o"></i> Gửi bình luận</a>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="view_comment"></div> 
+            </section>
+            <!-- END:COMMENTS -->
+            <div id="view_comment"></div>
+        </div>
+    </div>
+</div>
+<!-- END: Bình luận -->
+
+<!-- BEGIN: Tin cùng chuyên mục -->
+<div class="tab_item">
+    <div class="panel panel-success">
+        <hgroup class="panel-heading">
+            <ul class="list-inline mb0 ">
+            <style>
+            </style>
+                <li class="active">
+                    <a href="#" title="Tin cùng chuyên mục">
+                        <h2 class="font-bold">Tin cùng chuyên mục</h2>
+                    </a>
+                </li>
+
+            </ul>
+        </hgroup>
+        <article class="panel-body">
+            <div class="row-7 flex-wrap">
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Phát triển HTX kiểu mới: Chính sách đã đầy đủ, cần làm ngay" class="fixhieght height150"><img src="bao_files/phat-trien-htx-kieu-moi-chinh-sach-da-day-du-can-lam-ngay-c12a1632-thumb43.JPG" alt="Phát triển HTX kiểu mới: Chính sách đã đầy đủ, cần làm ngay" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Phát triển HTX kiểu mới: Chính sách đã đầy đủ, cần làm ngay"><h4 class="fs-1 mb0">Phát triển HTX kiểu mới: Chính sách đã đầy ...</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-16 21:21:01"><i class="fa fa-clock-o" aria-hidden="true"></i>21:21 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 16/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" class="fixhieght height150"><img src="bao_files/trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra-xk-vao-tq-thumb43.jpg" alt="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra"><h4 class="fs-1 mb0">Trung Quốc siết đường tiểu ngạch, lo rau quả ...</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-15 10:41:17"><i class="fa fa-clock-o" aria-hidden="true"></i>10:41 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Hội quán: Ngôi nhà chung của nông dân Đồng Tháp" class="fixhieght height150"><img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Hội quán: Ngôi nhà chung của nông dân Đồng Tháp" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Hội quán: Ngôi nhà chung của nông dân Đồng Tháp"><h4 class="fs-1 mb0">Hội quán: Ngôi nhà chung của nông dân Đồng Tháp</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-13 22:04:00"><i class="fa fa-clock-o" aria-hidden="true"></i>22:04 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ bảy, 13/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Sự kiện 24/7: Tuần quá nhiều những vụ tai nạn thương tâm" class="fixhieght height150"><img src="bao_files/su-kien-247-tuan-qua-nhieu-nhung-vu-tai-nan-thuong-tam-tai-nan-thumb43.jpg" alt="Sự kiện 24/7: Tuần quá nhiều những vụ tai nạn thương tâm" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Sự kiện 24/7: Tuần quá nhiều những vụ tai nạn thương tâm"><h4 class="fs-1 mb0">Sự kiện 24/7: Tuần quá nhiều những vụ tai ...</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-13 12:05:28"><i class="fa fa-clock-o" aria-hidden="true"></i>12:05 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ bảy, 13/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Phát triển HTX kiểu mới: Chính sách đã đầy đủ, cần làm ngay" class="fixhieght height150"><img src="bao_files/phat-trien-htx-kieu-moi-chinh-sach-da-day-du-can-lam-ngay-c12a1632-thumb43.JPG" alt="Phát triển HTX kiểu mới: Chính sách đã đầy đủ, cần làm ngay" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Phát triển HTX kiểu mới: Chính sách đã đầy đủ, cần làm ngay"><h4 class="fs-1 mb0">Phát triển HTX kiểu mới: Chính sách đã đầy ...</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-16 21:21:01"><i class="fa fa-clock-o" aria-hidden="true"></i>21:21 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 16/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" class="fixhieght height150"><img src="bao_files/trung-quoc-siet-duong-tieu-ngach-lo-rau-qua-bi-dau-ra-xk-vao-tq-thumb43.jpg" alt="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Trung Quốc siết đường tiểu ngạch, lo rau quả bí đầu ra"><h4 class="fs-1 mb0">Trung Quốc siết đường tiểu ngạch, lo rau quả ...</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-15 10:41:17"><i class="fa fa-clock-o" aria-hidden="true"></i>10:41 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ hai, 15/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Hội quán: Ngôi nhà chung của nông dân Đồng Tháp" class="fixhieght height150"><img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Hội quán: Ngôi nhà chung của nông dân Đồng Tháp" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Hội quán: Ngôi nhà chung của nông dân Đồng Tháp"><h4 class="fs-1 mb0">Hội quán: Ngôi nhà chung của nông dân Đồng Tháp</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-13 22:04:00"><i class="fa fa-clock-o" aria-hidden="true"></i>22:04 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ bảy, 13/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+                                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                        <article class="media mb7 bb-dashed">
+                            <figure class="article-thumb-img">
+                                <a href="#" title="Sự kiện 24/7: Tuần quá nhiều những vụ tai nạn thương tâm" class="fixhieght height150"><img src="bao_files/su-kien-247-tuan-qua-nhieu-nhung-vu-tai-nan-thuong-tam-tai-nan-thumb43.jpg" alt="Sự kiện 24/7: Tuần quá nhiều những vụ tai nạn thương tâm" width="100%"></a>
+
+                            </figure>
+                            <header class="article-thumb-header mt5 mb5">
+                                <a href="#" title="Sự kiện 24/7: Tuần quá nhiều những vụ tai nạn thương tâm"><h4 class="fs-1 mb0">Sự kiện 24/7: Tuần quá nhiều những vụ tai ...</h4></a>
+                                 <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-13 12:05:28"><i class="fa fa-clock-o" aria-hidden="true"></i>12:05 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ bảy, 13/04/2019</time></span></small>
+                            </header>
+                        </article>
+                    </div>
+            </div>
+        </article>
+    </div>
+</div>
+<!-- END: Tin cùng chuyên mục -->
+<style>
+li.links-ads:before {
+    content:'Tài trợ';
+    background:#5cb85c;
+    color: #fff;
+    padding:2px;
+    border-radius:5px;
+    margin-right:5px;
+    font-size:12px;
+}
+</style>        </div>
+        <!-- END -->
+        <div class="hidden-xs col-sm-4 col-md-3 col-lg-3 ">
+            <div class="mb15 visible-sm">
+                <div class="text-center">
+                    <img src="./TH16-News Online_files/saved_resource" alt="QR Code"><br>
+                    <small>Quét mã QR để xem trên mobile</small>
+                </div>
+            </div>
+            <div class="banner">
+                <div class="banner hidden right1" fix=""></div>                <div class="banner hidden right2" fix=""></div>                <div class="banner hidden right3" fix=""></div>            </div>
+            <div class="model_right">
+  <div class="banner hidden righthome1" fix=""></div> 
+  <!-- BEGIN: Tin nhiều người đọc -->
+ <div class="model_right">
+            <div class="banner hidden righthome1" fix=""></div>  
+
+            <div class="panel panel-info">
+              <div class="panel-heading panel-item text-center font-bold">
+                <a href="listarticles.html" title="Tin nhiều người đọc">Tin nhiều người đọc</a>
+              </div>
+              <div class="panel-body">
+
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Lê Đức Anh – một người sâu sắc và bình dị">
+                    <img src="bao_files/my-dinh1-can-bo-quan-ly-dia-ban-xin-cho-cong-trinh-xay-dung-vi-pham-mỹ-thumb11.jpg" alt="Lê Đức Anh – một người sâu sắc và bình dị">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Lê Đức Anh – một người sâu sắc và bình dị"><h4 class="fs-1 mall0">Lê Đức Anh – một người sâu sắc và bình dị </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:12:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:12 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế">
+                    <img src="http://kinhtenongthon.vn/media/news/d2b36aae8e6dba855dd0ab395058a493/thumb/thu-tuong-chung-ta-tu-tin-tien-len-hoi-nhap-quoc-te-nqh08120-thumb11.jpg" alt="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế"><h4 class="fs-1 mall0">Thủ tướng: Chúng ta tự tin tiến lên hội nhập quốc tế </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:39:57"><i class="fa fa-clock-o" aria-hidden="true"></i>09:39 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="#" title="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững">
+                    <img src="http://kinhtenongthon.vn/cache/news/ha-noi-ban-tron-lien-ket-phat-trien-nong-nghiep-ben-vung-img_56671-thumb11.jpg" alt="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="#" title="Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững"><h4 class="fs-1 mall0">Hà Nội: “Bàn tròn” liên kết phát triển nông nghiệp bền vững </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:50:20"><i class="fa fa-clock-o" aria-hidden="true"></i>09:50 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+              </div>
+              <!-- END: Tin nhiều người đọc -->
+            </div>
+          </div>
+    <!-- END: Tin nhiều người đọc -->
+    </section>
+    <!-- END -->
+</main>
+<!-- END-MAIN -->
+
+
+</div>
+
+ <!--  BEGIN: THÔNG TIN LIÊN HỆ -->
+ <footer style="position: relative;">
+  <div class="bg-white bb-solid pt15 pb15" style="background: #d9534f;color: white">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <h1><strong>Báo điện tử TH16_NEWS</strong></h1>
+          Tổng biên tập: <strong>NGUYỄN ANH TUẤN</strong><br>
+          Phó tổng biên tập phụ trách nội dung: <strong>TRẦN THỊ HỒNG THẮM</strong><br>
+          Cơ quan chủ quản: Hội Làm vườn Việt Nam (VACVINA)<br>
+          Giấy phép hoạt động báo điện tử số <b>294/GP-BTTTT</b> do Bộ trưởng Bộ Thông tin và Truyền thông cấp ngày 23/6/2017 - ISSN 1859-2456.         
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <address class="text-right mb0">
+            <div class="hidden-xs"><a href="#"><img src="bao_files/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a></div>
+            <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> -  <a href="#">toasoanTh16News@gmail.vn</a><br>
+            <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
+            <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM 
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- END: THÔNG TIN LIÊN HỆ -->
+  <div id="my_popup">
+    <div class="my_popup_content"></div>
+  </div>
+  <div style="position: absolute; top: 0px;">
+  </div>
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./TH16-News Online_files/d_vbiawPdxB.html" style="border: none;"></iframe></div><div></div></div></div>
+
+
+<div id="backtotop" title="Lên đầu trang" style="display: block;"><i class="fa fa-angle-double-up"></i></div>
+<script type="text/javascript" src="js/js.js"></script>
+
+
+
+</body></html>
