@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs =====================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Site Title- -->
+  <title>Biên tập viên - Bài viết đã từ chối</title>
+
+  <link rel="stylesheet" href="css/style1.css">
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="jQuery.js"></script>
+
+</head>
+<body>
+  <!-- BEGIN: logo -->
+  <div  class = "logo">
+    <a href="home.html">
+      <img class="logo" src="bao_files/logo.png" alt="logo">
+    </a>
+  </div>
+  <!-- END: logo -->
+
+  <!-- BEGIN:navbar menu -->
+  <div >
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
+      <div class="container"> 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-justified">
+            <li class="font-bold">
+              <a href="home.html">
+                Trang chủ
+              </a>
+            </li>
+            <li class="font-bold">
+              <a href="editor.html">
+                Trang của bạn
+              </a>
+            </li>
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="#">
+                Chủ đề quản lý
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="editor_ThoiSu.html" data-color="#d9534f" class="cat_c">Thời sự</a>
+                </li>
+                <li class="">
+                  <a href="editor_KhuyenNong.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
+                </li>
+                <li class="">
+                  <a href="editor_DoanhNghiep.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
+                </li>
+              </ul>
+            </li>
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="">
+                Trạng thái
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="editor_BVCD.html" data-color="#d9534f" class="cat_c">Bài chưa duyệt</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVDD.html" data-color="#d9534f" class="cat_c">Bài đã duyệt</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVDTC.html" data-color="#d9534f" class="cat_c">Bài đã từ chối</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVDXB.html" data-color="#d9534f" class="cat_c">Bài đã xuất bản</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- icon search  -->
+            <li class="search_ hidden-xs hidden-sm">
+              <a href="#" class="color_fff " id="toggle-search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </a>
+              
+            </li>
+
+            <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
+              <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
+                <div class="search_fm">
+                  <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+              </form>
+            </div>
+
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="#">
+                <img src="bao_files/avatar-editor.jpg" style="width: 33px; height: 33px;">
+              </a>
+              <ul class="dropdown-menu">
+                <li class="">
+                  <a href="#" data-color="#d9534f" class="cat_c" style="border-bottom: 1px solid #ddd;">Cập nhật thông tin</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVCD.html" data-color="#d9534f" class="cat_c">Bài chưa duyệt</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVDD.html" data-color="#d9534f" class="cat_c">Bài đã duyệt</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVDTC.html" data-color="#d9534f" class="cat_c">Bài đã từ chối</a>
+                </li>
+                <li class="">
+                  <a href="editor_BVDXB.html" data-color="#d9534f" class="cat_c" style="border-bottom: 1px solid #ddd;">Bài đã xuất bản</a>
+                </li>
+                <li class="">
+                  <a href="#" data-color="#d9534f" class="cat_c">Đổi mật khẩu</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- END:navbar menu -->
+  <div class="container">
+    <!-- BEGIN-MAIN -->
+    <main >
+      <section class="row">
+                <!-- BEGIN: Main left -->
+        <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3-right ">
+          <div class="model_right">
+            <img class="avatar-editor" src="bao_files/avatar-editor.jpg">
+            <div class="name-editor">ngobaohuy1901
+            </div>
+            <div class="list" style="font-size: 18px;">
+              <div class="text-center"><strong>Thông tin cá nhân</strong></div>
+              <p>Tên: Ngô Bảo Huy<br>
+                Ngày sinh: 19/01/1985<br>
+                Vị trí: Biên tập viên<br>
+                Chủ đề quản lý: Thời sự, Khuyến nông, Doanh nghiệp<br>
+                Sở thích: nghe nhạc, xem phim, du lịch<br>
+                Email: ngobaohuy1901@gmail.com<br>
+              </p>
+            </div>
+               <!-- BEGIN: Danh sách bài viết theo trạng thái -->
+            <div class="list" style="font-size: 18px;">
+              <div class="text-center font-bold">
+                <strong>Bài viết quản lý</strong>
+              </div>
+              <div class="panel-body">
+
+                <div class="media bb-dashed pb7 ">
+                  <a href="editor_BVCD.html" title="Bài viết chưa duyệt">
+                    Bài viết chưa duyệt
+                  </a>
+                  <div class="number-news">
+                  10
+                  </div>                
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a href="editor_BVDD.html" title="Bài viết đã duyệt">
+                    Bài viết đã duyệt
+                  </a>
+                  <div class="number-news">
+                  15
+                  </div>                
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a href="editor_BVDTC.html" title="Bài viết đã từ chối">
+                    Bài viết đã từ chối
+                  </a>
+                  <div class="number-news">
+                  6
+                  </div>                
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a href="editor_BVDXB.html" title="Bài viết đã xuất bản">
+                    Bài viết đã xuất bản
+                  </a>
+                  <div class="number-news">
+                  42
+                  </div>                
+                </div>
+              </div>
+            </div>
+            <!-- END: Danh sách bài viết theo trạng thái -->
+            <!-- BEGIN: Danh sách phóng viên quản lý -->
+            <div class="list" style="font-size: 18px;">
+              <div class="text-center font-bold">
+                <strong>Danh sách phóng viên</strong>
+              </div>
+              <div class="panel-body">
+                <div class="media bb-dashed pb7 ">
+                  <a class="fix-image-11" href="editor_writer1.html" title="Phạm Hồng Thái">
+                    <img src="bao_files/avatar-writer1.JPG" alt="Phạm Hồng Thái" width="100px" height="90px">
+                  </a>
+                  <div class="position-name-writer">
+                    <a href="editor_writer1.html"  title="Phạm Hồng Thái"><h4 class="name-writer">Phạm Hồng Thái</h4></a>
+                  </div>
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a class="fix-image-11" href="editor_writer2.html" title="Trần Thị Hồng Thắm">
+                    <img src="bao_files/avatar-writer2.JPG" alt="Trần Thị Hồng Thắm" width="100px" height="90px">
+                  </a>
+
+                  <div class="position-name-writer">
+                    <a href="editor_writer2.html"  title="Trần Thị Hồng Thắm"><h4 class="name-writer">Trần Thị Hồng Thắm</h4></a>
+                  </div>
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a class="fix-image-11" href="editor_writer3.html" title="Huỳnh Viết Thám">
+                    <img src="bao_files/avatar-writer3.JPG" alt="Huỳnh Viết Thám" width="100px" height="90px">
+                  </a>
+
+                  <div class="position-name-writer">
+                    <a href="editor_writer3.html"  title="Huỳnh Viết Thám"><h4 class="name-writer">Huỳnh Viết Thám</h4></a>
+                  </div>
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a class="fix-image-11" href="editor_writer4.html" title="Phạm Duy Thanh">
+                    <img src="bao_files/avatar-writer4.JPG" alt="Phạm Duy Thanh" width="100px" height="90px">
+                  </a>
+
+                  <div class="position-name-writer">
+                    <a href="editor_writer4.html"  title="Phạm Duy Thanh"><h4 class="name-writer">Phạm Duy Thanh</h4></a>
+                  </div>
+                </div>
+                <div class="media bb-dashed pb7 ">
+                  <a class="fix-image-11" href="editor_writer5.html" title="Cao Minh Tân">
+                    <img src="bao_files/avatar-writer5.JPG" alt="Cao Minh Tân" width="100px" height="90px">
+                  </a>
+
+                  <div class="position-name-writer">
+                    <a href="editor_writer5.html"  title="Cao Minh Tân"><h4 class="name-writer">Cao Minh Tân</h4></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- END: Danh sách phóng viên quản lý -->
+          </div> 
+        </div>
+        <!-- END: Main left-->
+        <!-- BEGIN: Main right -->
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+          <!-- BEGIN:Title -->
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="tab_item">
+              <!-- BEGIN:Danh sách bài viết chưa duyệt-->
+              <div class="panel">
+                <div class="editor_category text-center"><strong>Bài viết đã từ chối</strong></div>
+                <article class="row mb15 list">
+                  <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="media">
+                      <a class="pull-left" href="page1.html">
+                        <img class="media-object" src="bao_files/quan-doan-4hoat-dong-ket-nghia-gop-phan-xay-dung-quoc-phong-toan-dan-58378292_333424447370901_3305670430324424704_n-thumb11.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                      </a>
+                      <div class="">
+                        <header>
+                          <p class="title mb0">
+                            <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                            </a>
+                          </p>
+                          <div>Chủ đề: 
+                            <a class="name-writer" href="editor_ThoiSu.html" title="Thời sự">Thời sự</a>
+                          </div>
+                          <div>Phóng viên: 
+                            <a class="name-writer" href="editor_writer3.html" title="Huỳnh Viết Thám">Huỳnh Viết Thám</a>
+                          </div>
+                          <small class="meta text-muted">
+                            <span>
+                              <time class="friendly" datetime="2019-04-25 22:07:00">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                                <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 28/04/2019
+                              </time>
+                            </span>
+                          </small>
+                        </header>
+                        <p class="summary mb0">Chiều 28-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                      </div>
+                    </div>
+                  </aside>
+                  <p class="tag_in_item">
+                    <font class="fwb">Tags: </font>
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                  </p>
+                  <p>
+                    <h2 class="editor_reason_refuse">Lý do: Bài viết thiếu tư liệu hình ảnh, nội dung sơ sài, chưa thuyết phục</h2>
+                  </p>
+
+                  <!--  -->
+                </article>
+                <article class="row mb15 list">
+                  <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="media">
+                      <a class="pull-left" href="page1.html">
+                        <img class="media-object" src="bao_files/NQH0123.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                      </a>
+                      <div class="">
+                        <header>
+                          <p class="title mb0">
+                            <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                            </a>
+                          </p>
+                          <div>Chủ đề: 
+                            <a class="name-writer" href="editor_KhuyenNong.html" title="Khuyến nông">Khuyến nông</a>
+                          </div>
+                          <div>Phóng viên: 
+                            <a class="name-writer" href="editor_writer2.html" title="Trần Thị Hồng Thắm">Trần Thị Hồng Thắm</a>
+                          </div>
+                          <small class="meta text-muted">
+                            <span>
+                              <time class="friendly" datetime="2019-04-25 22:07:00">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                                <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 28/04/2019
+                              </time>
+                            </span>
+                          </small>
+                        </header>
+                        <p class="summary mb0">Chiều 28-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                      </div>
+                    </div>
+                  </aside>
+                  <p class="tag_in_item">
+                    <font class="fwb">Tags: </font>
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                  </p>
+                   <p>
+                    <h2 class="editor_reason_refuse">Lý do: Bài viết thiếu tư liệu hình ảnh, nội dung sơ sài, chưa thuyết phục</h2>
+                  </p>
+                  <!--  -->
+                </article>      
+                <article class="row mb15 list">
+                  <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="media">
+                      <a class="pull-left" href="page1.html">
+                        <img class="media-object" src="bao_files/khu-du-lich-thac-bac-suoi-sao-ngang-nhien-pha-vo-quy-hoach-ss1-thumb43.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                      </a>
+                      <div class="">
+                        <header>
+                          <p class="title mb0">
+                            <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                            </a>
+                          </p>
+                          <div>Chủ đề: 
+                            <a class="name-writer" href="editor_KhuyenNong.html" title="Khuyến nông">Khuyến nông</a>
+                          </div>
+                          <div>Phóng viên: 
+                            <a class="name-writer" href="editor_writer1.html" title="Phạm Hồng Thái">Phạm Hồng Thái</a>
+                          </div>
+                          <small class="meta text-muted">
+                            <span>
+                              <time class="friendly" datetime="2019-04-25 22:07:00">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                                <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 28/04/2019
+                              </time>
+                            </span>
+                          </small>
+                        </header>
+                        <p class="summary mb0">Chiều 28-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                      </div>
+                    </div>
+                  </aside>
+                  <p class="tag_in_item">
+                    <font class="fwb">Tags: </font>
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                  </p>
+                   <p>
+                    <h2 class="editor_reason_refuse">Lý do: Bài viết thiếu tư liệu hình ảnh, nội dung sơ sài, chưa thuyết phục</h2>
+                  </p>
+                  <!--  -->
+                </article>
+                <article class="row mb15 list">
+                  <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="media">
+                      <a class="pull-left" href="page1.html">
+                        <img class="media-object" src="bao_files/su-kien-247-evn-ly-giai-vi-sao-tien-dien-thang-4-tang-vot-dien-thumb169.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                      </a>
+                      <div class="">
+                        <header>
+                          <p class="title mb0">
+                            <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                            </a>
+                          </p>
+                          <div>Chủ đề: 
+                            <a class="name-writer" href="editor_DoanhNghiep.html" title="Doanh nghiệp">Doanh nghiệp</a>
+                          </div>
+                          <div>Phóng viên: 
+                            <a class="name-writer" href="editor_writer3.html" title="Huỳnh Viết Thám">Huỳnh Viết Thám</a>
+                          </div>
+                          <small class="meta text-muted">
+                            <span>
+                              <time class="friendly" datetime="2019-04-25 22:07:00">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                                <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 28/04/2019
+                              </time>
+                            </span>
+                          </small>
+                        </header>
+                        <p class="summary mb0">Chiều 28-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>
+                      </div>
+                    </div>
+                  </aside>
+                  <p class="tag_in_item">
+                    <font class="fwb">Tags: </font>
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                  </p>
+                   <p>
+                    <h2 class="editor_reason_refuse">Lý do: Bài viết thiếu tư liệu hình ảnh, nội dung sơ sài, chưa thuyết phục</h2>
+                  </p>
+                  <!--  -->
+                </article>
+                <article class="row mb15 list">
+                  <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="media">
+                      <a class="pull-left" href="page1.html">
+                        <img class="media-object" src="bao_files/NQH05216_copy.jpg" alt="Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân" width="180px" height="150px">
+                      </a>
+                      <div class="">
+                        <header>
+                          <p class="title mb0">
+                            <a href="page1.html"><b>Quân đoàn 4:Hoạt động kết nghĩa góp phần xây dựng quốc phòng toàn dân</b>
+                            </a>
+                          </p>
+                          <div>Chủ đề: 
+                            <a class="name-writer" href="editor_ThoiSu.html" title="Thời sự">Thời sự</a>
+                          </div>
+                          <div>Phóng viên: 
+                            <a class="name-writer" href="editor_writer3.html" title="Huỳnh Viết Thám">Huỳnh Viết Thám</a>
+                          </div>
+                          <small class="meta text-muted">
+                            <span>
+                              <time class="friendly" datetime="2019-04-25 22:07:00">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>22:07 - 
+                                <i class="fa fa-calendar" aria-hidden="true"></i>Thứ năm, 28/04/2019
+                              </time>
+                            </span>
+                          </small>
+                        </header>
+                        <p class="summary mb0">Chiều 28-4, tại tỉnh Bình Dương, Bộ Tư lệnh Quân đoàn 4 tổ chức hội nghị Sơ kết hoạt động giai đoạn 2017-2019 giữa Quân đoàn 4 với 8 đơn vị kết nghĩa.</p>                        
+                      </div>
+                    </div>
+                  </aside>
+                  <p class="tag_in_item">
+                    <font class="fwb">Tags: </font>
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">Bộ Tư lệnh Quân đoàn 4</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">hoạt động kết nghĩa</a></span>,
+                    <span><a href="page1.html" title="xuất khẩu gạo">quốc phòng toàn dân</a></span>.
+                  </p>
+                   <p>
+                    <h2 class="editor_reason_refuse">Lý do: Bài viết thiếu tư liệu hình ảnh, nội dung sơ sài, chưa thuyết phục</h2>
+                  </p>
+                  <!--  -->
+                </article>                     
+              </div>
+              <!-- END:Danh sách bài viết đã từ chối-->
+            </div> 
+          </div>
+
+          <div class="col_fix visible-xs">
+            <!-- BEGIN:tin hot nhất -->
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+              <div class="row">
+                <!-- BEGIN:Host-top1 -->
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                  <div class="row">
+                   <!-- BEGIN:tin top1 -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <section class="slide_topnews">
+                        <div id="carouselhot" class="carousel slide" data-ride="carousel"> 
+                          <!--  Control -->
+                          <a class="left carousel-control" href="http://kinhtenongthon.vn/?fbclid=IwAR33O7s7-RJnsbm9YVtpua9su4zT2Mk2qSwRIgdVEu-VFDMZyyuCtWCKNsE#carouselhot" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                          </a>
+                          <a class="right carousel-control" href="http://kinhtenongthon.vn/?fbclid=IwAR33O7s7-RJnsbm9YVtpua9su4zT2Mk2qSwRIgdVEu-VFDMZyyuCtWCKNsE#carouselhot" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </section>
+                    </div>
+                  <!-- END -->
+                  </div>
+                </div>
+              <!-- END -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: Main right-->
+
+        <div class="clearfix"></div>
+      </section>
+    </main>
+  </div>
+  <!--END: Main-->
+  <!--  BEGIN: THÔNG TIN LIÊN HỆ -->
+  <footer style="position: relative;">
+    <div class="bg-white bb-solid pt15 pb15" style="background: #d9534f;color: white">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h1><strong>Báo điện tử TH16_NEWS</strong></h1>
+            Tổng biên tập: <strong>NGUYỄN ANH TUẤN</strong><br>
+            Phó tổng biên tập phụ trách nội dung: <strong>TRẦN THỊ HỒNG THẮM</strong><br>
+            Cơ quan chủ quản: Hội Làm vườn Việt Nam (VACVINA)<br>
+            Giấy phép hoạt động báo điện tử số <b>294/GP-BTTTT</b> do Bộ trưởng Bộ Thông tin và Truyền thông cấp ngày 23/6/2017 - ISSN 1859-2456.         
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <address class="text-right mb0">
+              <div class="hidden-xs"><a href="#"><img src="bao_files/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a></div>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> -  <a href="#">toasoanTh16News@gmail.vn</a><br>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM 
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END: THÔNG TIN LIÊN HỆ -->
+  <div id="backtotop" title="Lên đầu trang"><i class="fa fa-angle-double-up"></i></div>
+  <script type="text/javascript" src="js/js.js"></script>
+</body>
+</html>  
