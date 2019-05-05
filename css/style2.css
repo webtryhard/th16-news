@@ -431,7 +431,7 @@ body.blur:after{
 	text-align: center;
 }
 .dropdown-toggle{
-	text-align: center;
+	text-align: left;
 }
 
 .badge{
@@ -439,7 +439,7 @@ body.blur:after{
     top: 0;
     height: 25px !important;
     width: 80px !important;
-    z-index: 1;
+    z-index: 0;
     background-color: #f36600bf;
     color: black;
     cursor: pointer;
@@ -452,6 +452,7 @@ body.blur:after{
 
 .jumbotron{
 	position: relative;
+	z-index: -1;
 }
 
 .download{
@@ -461,7 +462,40 @@ body.blur:after{
 .download .badge{
     width: 87px !important;
     background-color: #55dc11ed;
+    z-index: 0;
 }
 .download .badge:hover{
 	background-color: #00ff38;
+}
+
+.dropdown .dropdown-toggle{
+	text-align: center;
+}
+.userSub{
+	text-align: center;
+}
+
+
+/* Modal */
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.dropdown-menu{
+	z-index: 1;
 }
