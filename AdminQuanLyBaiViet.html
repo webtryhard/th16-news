@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs =====================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Site Title- -->
+  <title>Quản trị viên</title>
+
+  <link rel="stylesheet" href="css/style1.css">
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/editor.css">
+  <link rel="stylesheet" type="text/css" href="css/table.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="js/jQuery.js"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+  <!-- BEGIN: logo -->
+  <div  class = "logo">
+    <a href="home.html">
+      <img class="logo" src="bao_files/logo.png" alt="logo">
+    </a>
+  </div>
+  <!-- END: logo -->
+
+  <!-- BEGIN:navbar menu -->
+  <div >
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
+      <div class="container"> 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-justified">
+             <li class="font-bold">
+              <a href="administrator.html">
+                Danh sách Admin
+              </a>
+            </li>
+            <li class="font-bold" >
+              <a href="AdminQuanLyChuyenMuc.html">
+                Quản lý chuyên mục
+              </a>
+            </li>
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="AdminQuanLyNhan.html">
+                Quản lý nhãn
+              </a>
+            </li>
+            <li class="font-bold" style="border-bottom: 2px solid #BD2C3E">
+              <a class="dropdown-toggle" href="#">
+                Quản lý bài viết
+              </a>
+            </li>
+            <li class="font-bold">
+              <a class="dropdown-toggle" href="AdminQuanLyNguoiDung.html">
+                Quản lý người dùng
+              </a>
+            </li>
+
+          
+           <!-- icon login  -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="bao_files/avatar-editor.jpg" style="width: 33px; height: 33px;">
+                <i class="fa fa-angle-down"></i>
+                </a><ul class="dropdown-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <li class="userSub">
+                    <h5>Nguyễn Văn A</h5>
+                  </li>
+
+                  <li role="separator" class="divider"></li>
+
+                  </a>
+                  
+                  <li>
+                    <span style="padding-left: 20px;font-weight: bold;">Admin
+                    </span>
+                  </li>
+                  
+                   <li role="separator" class="divider"></li>
+
+                 
+                  <li>
+                    <a href="home.html">
+                      <span class="dropdown-link-text">Đăng xuất</span>
+                    </a>
+                  </li>
+                </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- END:navbar menu -->
+
+  
+  
+ <!--  BEGIN: container -->
+   <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Quản lý <b>bài viết</b></h2></div>
+                    <div class="col-sm-4">
+                      <button type="button" class="btn btn-info add-new" style="float: right;
+                      margin-bottom: 12px;"><i class="fa fa-plus"></i>Thêm mới</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Tên bài viết</th>
+                        <th>Loại bài viết</th>
+                        <th>Ngày tạo</th>
+                        <th>Tác giả</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nông thôn ngày nay</td>
+                        <td>Premium</td>
+                        <td>04/01/2019</td>
+                        <td>Vân Anh</td>
+                        <td>
+                            <a class="add" data-toggle="tooltip"><i class="material-icons">zoom_in</i></a>
+                            <a class="edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>     
+<!--  END: container -->
+
+  <!--  BEGIN: THÔNG TIN LIÊN HỆ -->
+  <footer style="position: relative;">
+    <div class="bg-white bb-solid pt15 pb15" style="background: #d9534f;color: white">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h1><strong>Báo điện tử TH16_NEWS</strong></h1>
+            Tổng biên tập: <strong>NGUYỄN ANH TUẤN</strong><br>
+            Phó tổng biên tập phụ trách nội dung: <strong>TRẦN THỊ HỒNG THẮM</strong><br>
+            Cơ quan chủ quản: Hội Làm vườn Việt Nam (VACVINA)<br>
+            Giấy phép hoạt động báo điện tử số <b>294/GP-BTTTT</b> do Bộ trưởng Bộ Thông tin và Truyền thông cấp ngày 23/6/2017 - ISSN 1859-2456.         
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <address class="text-right mb0">
+              <div class="hidden-xs"><a href="#"><img src="bao_files/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a></div>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> -  <a href="#">toasoanTh16News@gmail.vn</a><br>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM 
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END: THÔNG TIN LIÊN HỆ -->
+  <div id="my_popup">
+    <div class="my_popup_content"></div>
+  </div>
+  <div style="position: absolute; top: 0px;">
+  </div>
+
+  <div id="backtotop" title="Lên đầu trang"><i class="fa fa-angle-double-up"></i></div>
+  <script type="text/javascript" src="js/js.js"></script>
+</body>
+</html>
