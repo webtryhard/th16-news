@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Basic Page Needs =====================================-->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <!-- Basic Page Needs =====================================-->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-  <!-- Site Title- -->
-  <title>TH16-News Online</title>
+ <!-- Main Quill library -->
+ <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+ <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
- <link rel="stylesheet" href="css/style1.css">
-  <link rel="stylesheet" href="css/style2.css">
-  <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="css/signup.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script type="text/javascript" src="js/jQuery.js"></script>
+ <!-- Theme included stylesheets -->
+ <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+ <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+ <!-- Core build with no theme, formatting, non-essential modules -->
+ <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+ <script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
+
+ <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+
+ <link rel="stylesheet" href="{{site.katex}}/katex.min.css">
+ <link rel="stylesheet" href="{{site.highlightjs}}/styles/monokai-sublime.min.css">
+ <link rel="stylesheet" href="{{site.cdn}}{{site.version}}/quill.snow.css">
+
+ <style>
+  .center{
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-left: 107px;
+    margin-right: 370px;
+    border: 2px solid red;
+  }
+  .q1-toolbar .q1-snow{
+    display: flex;
+    justify-content: center;
+    border-color: blue;
+    margin-right: 50px;
+  }
+  
+</style>
+
+
+<!-- Site Title- -->
+<title>TH16-News Online</title>
+
+<link rel="stylesheet" href="css/style1.css">
+<link rel="stylesheet" href="css/style2.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/signup.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="js/jQuery.js"></script>
 
 
 
@@ -25,139 +61,140 @@
 
 </head>
 <body>
-  <div  class = "logo">
-    <a href="home.html">
-      <img class="logo" src="bao_files/logo.png" alt="logo">
-    </a>
-  </div>
-  <!-- BEGIN: Menu -->
-  <div >
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
-      <div class="container"> 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+  <div class="header">
+    <div  class = "logo">
+      <a href="home.html">
+        <img class="logo" src="bao_files/logo.png" alt="logo">
+      </a>
+    </div>
+    <!-- BEGIN: Menu -->
+    <div >
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="top: 0px;">
+        <div class="container"> 
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
 
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav navbar-justified">
-            <!--  menu Thoi su  -->
-            <li class="font-bold">
-              <a class="dropdown-toggle" href="ThoiSuPage1.html">
-                Thời sự
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="TinTuc.html" data-color="#d9534f" class="cat_c">Tin tức</a>
-                </li>
-                <li class="">
-                  <a href="QuocHoi.html" data-color="#d9534f" class="cat_c">Quốc hội</a>
-                </li>
-              </ul>
-            </li>
-            <!--  menu Kinh tế  -->
-            <li class="font-bold">
-              <a class="dropdown-toggle" href="KinhTe.html">
-                Kinh tế
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="KhuyenNong.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
-                </li>
-                <li class="">
-                  <a href="DoanhNghiep.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
-                </li>
-              </ul>
-            </li>
-            <!--  menu Nhịp sống  -->
-            <li class="  font-bold">
-              <a class="dropdown-toggle" href="NhipSong.html">
-                Nhịp sống
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="AnNinhTratTu.html" data-color="#d9534f" class="cat_c">An ninh trật tự</a>
-                </li>
-                <li class="">
-                  <a href="DoiSong.html" data-color="#d9534f" class="cat_c">Đời sống</a>
-                </li>
-              </ul>
-            </li>
-            <!--  menu Bất động sản  -->
-            <li class="  font-bold>
-              <a class="dropdown-toggle" href="BatDongSan.html">
-                Bất động sản
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="ThiTruong.html" data-color="#d9534f" class="cat_c">Thị trường</a>
-                </li>
-                <li class="">
-                  <a href="PhanTichNhanDinh.html" data-color="#d9534f" class="cat_c">Phân tích - Nhận định</a>
-                </li>
-              </ul>
-            </li>
-            <!--  menu Xã hội  -->
-            <li class="  font-bold">
-              <a class="dropdown-toggle" href="XaHoi.html">
-                Xã hội
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="PhongSuKiSu.html" data-color="#d9534f" class="cat_c">Phóng sự - kí sự</a>
-                </li>
-                <li class="">
-                  <a href="XaHoiTuThien.html" data-color="#d9534f" class="cat_c">Xã hội từ thiện</a>
-                </li>
-              </ul>
-            </li>
-            <!--  menu Pháp luật  -->
-            <li class="  font-bold">
-              <a class="dropdown-toggle" href="PhapLuat.html">
-                Pháp luật
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="TuVan.html" data-color="#d9534f" class="cat_c">Tư vấn</a>
-                </li>
-                <li class="">
-                  <a href="VanBanMoi.html" data-color="#d9534f" class="cat_c">Văn bản mới</a>
-                </li>
-              </ul>
-            </li>
-            <!--  menu Sức khỏe  -->
-            <li class="  font-bold">
-              <a class="dropdown-toggle" href="SucKhoe.html">
-                Sức khỏe
-              </a>
-              <ul class="dropdown-menu">
-                <li class="">
-                  <a href="AnToanVeSinhThucPham.html" data-color="#d9534f" class="cat_c">An toàn vệ sinh thực phẩm</a>
-                </li>
-                <li class="">
-                  <a href="SongKhoe.html" data-color="#d9534f" class="cat_c">Sống khỏe</a>
-                </li>
-              </ul>
-            </li>
-           <!-- icon login  -->
-            <li class="login_icon">
-              <a href="#"  data-toggle="modal" data-target="#loginModal">
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
-              </a>
-            </li>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-justified">
+              <!--  menu Thoi su  -->
+              <li class="font-bold">
+                <a class="dropdown-toggle" href="ThoiSuPage1.html">
+                  Thời sự
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="TinTuc.html" data-color="#d9534f" class="cat_c">Tin tức</a>
+                  </li>
+                  <li class="">
+                    <a href="QuocHoi.html" data-color="#d9534f" class="cat_c">Quốc hội</a>
+                  </li>
+                </ul>
+              </li>
+              <!--  menu Kinh tế  -->
+              <li class="font-bold">
+                <a class="dropdown-toggle" href="KinhTe.html">
+                  Kinh tế
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="KhuyenNong.html" data-color="#d9534f" class="cat_c">Khuyến nông</a>
+                  </li>
+                  <li class="">
+                    <a href="DoanhNghiep.html" data-color="#d9534f" class="cat_c">Doanh nghiệp</a>
+                  </li>
+                </ul>
+              </li>
+              <!--  menu Nhịp sống  -->
+              <li class="  font-bold">
+                <a class="dropdown-toggle" href="NhipSong.html">
+                  Nhịp sống
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="AnNinhTratTu.html" data-color="#d9534f" class="cat_c">An ninh trật tự</a>
+                  </li>
+                  <li class="">
+                    <a href="DoiSong.html" data-color="#d9534f" class="cat_c">Đời sống</a>
+                  </li>
+                </ul>
+              </li>
+              <!--  menu Bất động sản  -->
+              <li class="  font-bold">
+                <a class="dropdown-toggle" href="BatDongSan.html">
+                  Bất động sản
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="ThiTruong.html" data-color="#d9534f" class="cat_c">Thị trường</a>
+                  </li>
+                  <li class="">
+                    <a href="PhanTichNhanDinh.html" data-color="#d9534f" class="cat_c">Phân tích - Nhận định</a>
+                  </li>
+                </ul>
+              </li>
+              <!--  menu Xã hội  -->
+              <li class="  font-bold">
+                <a class="dropdown-toggle" href="XaHoi.html">
+                  Xã hội
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="PhongSuKiSu.html" data-color="#d9534f" class="cat_c">Phóng sự - kí sự</a>
+                  </li>
+                  <li class="">
+                    <a href="XaHoiTuThien.html" data-color="#d9534f" class="cat_c">Xã hội từ thiện</a>
+                  </li>
+                </ul>
+              </li>
+              <!--  menu Pháp luật  -->
+              <li class="  font-bold">
+                <a class="dropdown-toggle" href="PhapLuat.html">
+                  Pháp luật
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="TuVan.html" data-color="#d9534f" class="cat_c">Tư vấn</a>
+                  </li>
+                  <li class="">
+                    <a href="VanBanMoi.html" data-color="#d9534f" class="cat_c">Văn bản mới</a>
+                  </li>
+                </ul>
+              </li>
+              <!--  menu Sức khỏe  -->
+              <li class="  font-bold">
+                <a class="dropdown-toggle" href="SucKhoe.html">
+                  Sức khỏe
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="">
+                    <a href="AnToanVeSinhThucPham.html" data-color="#d9534f" class="cat_c">An toàn vệ sinh thực phẩm</a>
+                  </li>
+                  <li class="">
+                    <a href="SongKhoe.html" data-color="#d9534f" class="cat_c">Sống khỏe</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- icon login  -->
+              <li class="login_icon">
+                <a href="#"  data-toggle="modal" data-target="#loginModal">
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>
+                </a>
+              </li>
 
-            <!-- icon search  -->
-           <li class="search_ hidden-xs hidden-sm">
-              <a href="#" class="color_fff " id="toggle-search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </a>
-              
-            </li>
+              <!-- icon search  -->
+              <li class="search_ hidden-xs hidden-sm">
+                <a href="#" class="color_fff " id="toggle-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+                
+              </li>
 
-         <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
+              <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
                 <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
                   <div class="search_fm">
                     <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
@@ -165,20 +202,129 @@
                   </div>
                 </form>
               </div>
-          </ul>
-        </div>
-          </ul>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- END: Menu -->
+</div>
+
+<div class="content">
+
+  <div class="center" >
+    <!-- Include stylesheet -->
+    <link   href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- Create the editor container -->
+
+    <div class="container" style="padding-left: 5%;padding-right: 8%;">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+          <div class="col-md-9" style="width: 100%;">
+            <div>
+              <p style="margin-top: 10px">Ảnh đại diện bài viết</p>
+              <div id="danganh"></div>
+            <!-- <input style="margin:2px; width: 150px; height: 50px;" type="text" placeholder="Chọn ảnh đại diện bài viết"></input>
+            </div> -->
+          </div>
+          <div>
+            <p>Tiêu đề bài viết</p>
+            <input style="margin:2px; width: 100%" type="text" placeholder="Nhập tiêu đề bài viết"></input>
+          </div>
+          <div>
+            <p>Tóm tắt bài viết</p>
+            <input style="margin:2px; width: 100%; height: 70px;"type="text" placeholder="Tóm tắt nội dung bài viết"></input>
+          </div>
+          <p>Nội dung bài viết</p>
+          <div id="editor">
+            <p>Hello Writer!</p>
+            <p><br></p>
+          </div>
+          <div>
+            <p>Chuyên mục bài viết</p>
+            <input style="margin:2px; width: 100%"></input>
+          </div>
         </div>
       </div>
-    </nav>
-  </div>
-  <!-- END: Menu -->
+      <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3-right" style="left: 50px;">
+        <div class="model_right">
+          <div class="model_right">
+            <div class="banner hidden righthome1" fix=""></div>  
+            
+            <div class="panel panel-info">
+              <div class="panel-heading panel-item text-center font-bold">
+                <a href="TrangChiTietDoanhNghiep.html" title="Tin nhiều người đọc">BÀI VIẾT CỦA TÔI</a>
+              </div>
+              <div class="panel-body">
+                
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="TrangChiTietDoanhNghiep.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+
+                  <div class="media-body">
+                    <a href="TrangChiTietDoanhNghiep.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+                <div class="media bb-dashed mt0 pb7 mb7">
+                  <a class="pull-left fix-image-11" href="TrangChiTietDoanhNghiep.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                    <img src="bao_files/hoi-quan-ngoi-nha-chung-cua-nong-dan-dong-thap-hq2-thumb43.JPG" alt="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!">
+                  </a>
+                  
+                  <div class="media-body">
+                    <a href="TrangChiTietDoanhNghiep.html" title="Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm!"><h4 class="fs-1 mall0">Phường Mỹ Đình 1: Cán bộ quản lý địa bàn xin cho công trình vi phạm! </h4></a>
+                    <small class="meta text-muted"><span><time class="friendly" datetime="2019-04-23 09:07:00"><i class="fa fa-clock-o" aria-hidden="true"></i>09:07 - <i class="fa fa-calendar" aria-hidden="true"></i>Thứ ba, 23/04/2019</time></span></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-<div>
-        <div class="_1TiVQh7-zQUGJI7AzKaEgf KhIjNtaCGuf3Rcm1G0R2i"><div contenteditable="true" dir="ltr" class="_2BCZP_W9VLRv-NN3SC1nnS fxwJwkd4_ngPI8kgzfk88 _2ILxXltaTo7bBoiok8YXrG _2wpzYRO3pnmdXlwHZmtQtN" role="textbox" aria-multiline="true" aria-label="Nội dung thư"><div style="font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);"><br></div></div></div>
     </div>
+    <button style ="margin-top: 10px; margin-bottom: 10px; border-radius: 8px;">Đăng bài</button>
+  </div>
 
+  <!-- Include the Quill library -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+  <!-- Initialize Quill editor -->
+  <script>
+    var quill = new Quill('#editor', {
+      modules: {
+        toolbar: [
+        [{ header: [1, 2, 3, 4, false] }],
+        [{font: [1,'serif','monospace']}],
+        ['bold', 'italic', 'underline','strike'],
+        ['image', 'code-block','formula','direction','align'],
+        [{color: ['red','yellow','blue','orange','violet','while','pink','green','gray','beige']}],
+        [{background: ['red','yellow','blue','orange','violet','while','pink','green','gray','beige']}]
+        ]
+      },
+      placeholder: 'Gõ nội dung bài viết...',
+  theme: 'snow'  // or 'bubble'
+});
+
+    var anh = new Quill('#danganh', {
+      modules: {
+        toolbar:['image']
+      },
+      placeholder: 'Ghi chú ảnh',
+  theme: 'snow'  // or 'bubble'
+});
+</script>
+</div>
+
+
+
+</div>
+<div class="footer">
  <!--  BEGIN: THÔNG TIN LIÊN HỆ -->
  <footer style="position: relative;">
   <div class="bg-white bb-solid pt15 pb15" style="background: #d9534f;color: white">
@@ -204,36 +350,36 @@
   </div>
 </footer>
 <!-- END: THÔNG TIN LIÊN HỆ -->
-  <div id="my_popup">
-    <div class="my_popup_content"></div>
-  </div>
-  <div style="position: absolute; top: 0px;">
-  </div>
+<div id="my_popup">
+  <div class="my_popup_content"></div>
+</div>
+<div style="position: absolute; top: 0px;">
+</div>
 
 <!-- Facebook Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '2411707615733615');
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=2411707615733615&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Facebook Pixel Code -->
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2411707615733615');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2411707615733615&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
 
-<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./TH16-News Online_files/d_vbiawPdxB.html" style="border: none;"></iframe></div><div></div></div></div>
-
-
-<div id="backtotop" title="Lên đầu trang" style="display: block;"><i class="fa fa-angle-double-up"></i></div>
-<script type="text/javascript" src="js/js.js"></script>
+    <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./TH16-News Online_files/d_vbiawPdxB.html" style="border: none;"></iframe></div><div></div></div></div>
 
 
+    <div id="backtotop" title="Lên đầu trang" style="display: block;"><i class="fa fa-angle-double-up"></i></div>
+    <script type="text/javascript" src="js/js.js"></script>
 
+
+  </div>
 </body></html>
