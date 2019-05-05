@@ -465,3 +465,45 @@ body.blur:after{
 	font-size: 16px;
 	padding: 0px 10px;
 }
+
+.search_{
+	text-align: center;
+}
+.login_icon{
+	text-align: center;
+}
+.dropdown-toggle{
+	text-align: center;
+}
+
+.badge{
+    position: absolute;
+    top: 0;
+    height: 25px !important;
+    width: 80px !important;
+    z-index: 1;
+    background-color: #f36600bf;
+    color: black;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+.badge:hover{
+	background-color: #ff6d03;
+}
+
+.jumbotron{
+	position: relative;
+}
+
+.download{
+	float: right;
+    margin-right: 87px;
+}
+.download .badge{
+    width: 87px !important;
+    background-color: #55dc11ed;
+}
+.download .badge:hover{
+	background-color: #00ff38;
+}
