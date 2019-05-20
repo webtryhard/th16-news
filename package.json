@@ -14,7 +14,8 @@
     "dateformat": "latest",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
-    "express": "^4.13.4",
+    "express": "^4.17.0",
+    "express-handlebars": "^3.1.0",
     "express-mailer": "^0.3.0",
     "express-session": "latest",
     "fs-extra": "latest",
@@ -22,9 +23,9 @@
     "md5": "^2.2.1",
     "mime": "latest",
     "mongoose": "latest",
-    "morgan": "~1.6.1",
+    "morgan": "^1.6.1",
     "multer": "latest",
-    "mysql": "latest",
+    "mysql": "^2.17.1",
     "node-constants": "latest",
     "nodemailer": "^2.4.1",
     "nodemailer-smtp-transport": "^2.5.0",
@@ -43,7 +44,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app/views/home.js"
   },
   "author": "",
   "license": "ISC",
