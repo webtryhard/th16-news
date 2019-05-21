@@ -1,7 +1,7 @@
 var db = require('../../utils/db');
 
 module.exports = {
-all: () => {
-    return db.load('select * from categories');
+getNews: News_ID => {
+    return db.load(`select * from news where News_ID = ${News_ID}`);
 }
 };
