@@ -113,3 +113,10 @@
 .login_icon:hover{
 	background-color: #ff0000
 }
+.navbar-default .navbar-nav>.login_icon>a{
+	padding-left: 20px;
+}
+
+#toggle-search{
+	padding-left: 20px;
+}
