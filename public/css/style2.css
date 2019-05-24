@@ -526,13 +526,6 @@ body.blur:after{
     top: 0px;
 }
 
-.bg-white{
-	background: #a71f1ff0;
-	padding: 4px 0;
-	color: white;
-}
-
-
 .navbar-default .navbar-nav>li>a {
 	padding-top: 16px;
 	padding-left: 0px;
