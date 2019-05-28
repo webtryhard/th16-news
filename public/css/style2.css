@@ -538,3 +538,7 @@ body.blur:after{
 .left-menu{
 	float: left;
 }
+
+body .modal-open{
+	padding-right: 0px;
+}
