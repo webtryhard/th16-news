@@ -5,6 +5,7 @@
   "dependencies": {
     "async": "latest",
     "basic-auth-connect": "latest",
+    "bcrypt": "^3.0.6",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.13.2",
     "client-sessions": "latest",
@@ -22,6 +23,7 @@
     "http-proxy": "latest",
     "md5": "^2.2.1",
     "mime": "latest",
+    "moment": "^2.24.0",
     "mongoose": "latest",
     "morgan": "^1.9.1",
     "multer": "latest",

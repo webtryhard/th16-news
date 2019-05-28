@@ -6,20 +6,32 @@ module.exports = {
         return db.load('select * from news');
     },
 
-    getNews: News_ID => {
+    getSingleNews: News_ID => {
         return db.load(`select * from news where News_ID = ${News_ID}`);
         db.end
     },
 
-    getCategoryByNews: CatID => {
+    getCategoryOfNews: CatID => {
         return db.load(`select * from categories where CatID = ${CatID}`);
     },
 
-    getWriterByNews: Writer_ID => {
+    getWriterOfNews: Writer_ID => {
         return db.load(`select * from writer where Writer_ID = ${Writer_ID}`);
     },
 
-    getAllTagsByNews: News_ID => {
+    getAllTagsOfNews: News_ID => {
         return db.load(`SELECT TN.TagID, T.Tag_Name FROM tags_news as TN, tags AS T WHERE TN.News_ID = ${News_ID} and TN.TagID = T.TagID`);
-    }
+    },
+
+    getNewsSameCategory: (CatID, News_ID) => {
+        return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} ORDER BY Time DESC LIMIT 0,8`);
+    },
+
+    getNewsHot: () => {
+        return db.load(`SELECT * FROM news ORDER BY Views DESC LIMIT 0,10`);
+    },
+
+    // getCatAndChillByCatName: CatName => {
+    //     return db.load(`select * from categories where CatName = '${CatName}'`);
+    // },
 };

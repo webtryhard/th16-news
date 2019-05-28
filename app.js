@@ -47,7 +47,7 @@ app.get('/', function (req, res) {
 });
 
 var ThoiSu=require('./controllers/ThoiSu.controller');
-app.use('/ThoiSu', ThoiSu);
+app.use('/:CatID', ThoiSu);
 
 app.listen(port);
 console.log('http://localhost:' + port);
