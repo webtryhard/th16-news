@@ -11,12 +11,8 @@ routers.get('/', (req, res) => {
             singlenews : rows[0],
             layout:'Admin.hbs',
             title:'Thời sự',
-            style1:'style1.css',
-            style2: 'style2.css',
-            style3:'login.css',
-            style4:'signup.css',
-            js1: 'jQuery.js',
-            js2:'js.js',
+            style:['style1.css','style2.css','login.css','signup.css'],
+            js:['jQuery.js','js.js'],
             logo:'logo.png'
         });
     }
@@ -32,12 +28,8 @@ routers.get('/ThoiSuChiTiet', (req, res) => {
             singlenews : rows[0],
             layout:'Admin.hbs',
             title:'Bài viết',
-            style1:'style1.css',
-            style2: 'style2.css',
-            style3:'login.css',
-            style4:'signup.css',
-            js1: 'jQuery.js',
-            js2:'js.js',
+            style:['style1.css','style2.css','login.css','signup.css'],
+            js:['jQuery.js','js.js'],
             logo:'logo.png'
         });
     }

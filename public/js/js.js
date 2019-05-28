@@ -73,3 +73,6 @@ $(document).ready(function(){
 		$(".add-new").removeAttr("disabled");
     });
 });
+
+
+
