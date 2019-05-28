@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var hbs_sections = require('express-handlebars-sections');
 var dateFormat = require('dateformat');
 var path=require('path');
 var port=3000;
@@ -27,7 +28,8 @@ app.engine('.hbs', exphbs({
         },
         DateFormat: val =>{
             return dateFormat(val,'dddd, dd/mm/yyyy');
-        }
+        },
+        section: hbs_sections()
     }
 }));
 app.set('view engine', '.hbs');
@@ -47,6 +49,7 @@ app.get('/', function (req, res) {
 });
 
 var ThoiSu=require('./controllers/ThoiSu.controller');
+app.use('/account', require('./controllers/admin/account.controller'))
 app.use('/ThoiSu', ThoiSu);
 
 app.listen(port);

@@ -1,0 +1,71 @@
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+{{/section}}
+
+
+<div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng nhập</h2>
+
+        <div class="container loginbody">
+          <form>
+            <div class="loginrow">
+
+              <div class="logincol logininput">         
+                <input type="text" name="username" placeholder="Tên đăng nhập" required>
+                <input type="password" name="password" placeholder="Mật khẩu" required>
+                <div class="forgotpassword"><a href="#"><i>Quên mật khẩu?</i></a></div>
+                <div class="displayrow">
+                  <a href="#" class="fb btnLogin socialmedia">
+                    <i class="fa fa-facebook fa-fw"></i>Facebook
+                  </a>
+                  <a href="#" class="google btnLogin socialmedia">
+                    <i class="fa fa-google fa-fw"></i>Google+
+                  </a>
+                  <input type="submit" value="Đăng nhập">
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <p class="centertext">Bạn chưa có tài khoản?
+          <a href="#" data-toggle="modal" data-target="#signupModal"><strong>Đăng kí</strong></a> ngay.
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <!-- Modal signup-->
+  <div class="modal fade" id="signupModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <h2 style="font-size: 30px;">Đăng kí tài khoản</h2>
+
+        <div class="container signupbody">
+          <form>
+            <div class="signuprow">              
+              <div class="signupcol"> 
+                <label for="username">Tên đăng nhập</label>     
+                <input type="text" name="username"required>
+                <label for="name">Họ và tên</label>
+                <input type="text" name="name" required>
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password"  required>
+                <label for="repassword">Nhập lại mật khẩu</label>
+                <input type="password" name="repassword" required>
+                <input type="checkbox" name="agree">Tôi đồng ý với quy định của toàn soạn.<br>
+                <input type="submit" value="Đăng kí">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
