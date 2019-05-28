@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var hbs_sections = require('express-handlebars-sections');
 var dateFormat = require('dateformat');
 var path=require('path');
 var port=3000;
@@ -27,7 +28,8 @@ app.engine('.hbs', exphbs({
         },
         DateFormat: val =>{
             return dateFormat(val,'dddd, dd/mm/yyyy');
-        }
+        },
+        section: hbs_sections()
     }
 }));
 app.set('view engine', '.hbs');
@@ -36,18 +38,17 @@ app.get('/', function (req, res) {
     res.render('home',{
         layout:'TrangChu.hbs',
         title:'Trang chủ',
-        style1:'style1.css',
-        style2: 'style2.css',
-        style3:'login.css',
-        style4:'signup.css',
-        js1: 'jQuery.js',
-        js2:'js.js',
+        style:['style1.css','style2.css','login.css','signup.css','login-register.css'],
+        js:['jQuery.js','js.js','login-register.js'],
         logo:'logo.png'
     });
 });
 
 var ThoiSu=require('./controllers/ThoiSu.controller');
 app.use('/:CatID', ThoiSu);
+
+var Admin=require('./controllers/Admin.controller');
+app.use('/Admin', Admin);
 
 app.listen(port);
 console.log('http://localhost:' + port);
