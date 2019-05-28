@@ -38,12 +38,8 @@ app.get('/', function (req, res) {
     res.render('home',{
         layout:'TrangChu.hbs',
         title:'Trang chủ',
-        style1:'style1.css',
-        style2: 'style2.css',
-        style3:'login.css',
-        style4:'signup.css',
-        js1: 'jQuery.js',
-        js2:'js.js',
+        style:['style1.css','style2.css','login.css','signup.css','login-register.css'],
+        js:['jQuery.js','js.js','login-register.js'],
         logo:'logo.png'
     });
 });
@@ -51,6 +47,9 @@ app.get('/', function (req, res) {
 var ThoiSu=require('./controllers/ThoiSu.controller');
 app.use('/account', require('./controllers/admin/account.controller'))
 app.use('/ThoiSu', ThoiSu);
+
+var Admin=require('./controllers/Admin.controller');
+app.use('/Admin', Admin);
 
 app.listen(port);
 console.log('http://localhost:' + port);
