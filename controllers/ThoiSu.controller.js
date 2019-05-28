@@ -21,8 +21,9 @@ routers.get('/', (req, res) => {
     });  
 })
 
-routers.get('/ThoiSuChiTiet', (req, res) => {
-    var p = thoisuModel.getNews(1);
+routers.get('/ThoiSuChiTiet/:id', (req, res) => {
+    var id = req.params.id;
+    var p = thoisuModel.getNews(id);
     p.then(rows => {
         res.render('vwThoiSu/ThoiSuChiTiet.hbs',{
             singlenews : rows[0],

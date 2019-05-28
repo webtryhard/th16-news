@@ -26,6 +26,7 @@ module.exports = {
                 }
                 connection.end;
             }); 
+            connection.end;
         });
     }
 };

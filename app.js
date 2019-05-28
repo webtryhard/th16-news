@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var dateFormat = require('dateformat');
 var path=require('path');
 var port=3000;
  
@@ -7,10 +8,27 @@ var app = express();
 
 app.use(express.static(path.join(__dirname, '/public')));
 
+dateFormat.i18n = {
+    dayNames: [
+        'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat',
+        'Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'
+    ],
+    monthNames: [],
+    timeNames: []
+};
+
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
-    layoutsDir: 'views/layouts'
+    layoutsDir: 'views/layouts',
+    helpers:{
+        TimeFormat: val =>{
+            return dateFormat(val,'HH:MM');
+        },
+        DateFormat: val =>{
+            return dateFormat(val,'dddd, dd/mm/yyyy');
+        }
+    }
 }));
 app.set('view engine', '.hbs');
  
