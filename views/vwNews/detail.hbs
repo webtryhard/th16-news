@@ -43,13 +43,13 @@
     <!-- BEGIN: Tags -->
     <ul class="list-inline border0 tags-list mt7 mb7 font-2">
         <li class="font-bold">
-        <i class="fa fa-tags"></i> Từ khóa:
+        <i class="fa fa-tags"></i> Tags:
         </li>
         {{#each this.tags}}
         <li>
-        <a href="KinhTe.html">
+        <a href="/tags/{{TagID}}">
             <h5 class="mb5 mt0">
-            <span class="label label-default">{{Tag_Name}}</span>
+            <span class="label tag_in_item">{{Tag_Name}}</span>
             </h5>
         </a>
         </li>
@@ -179,7 +179,7 @@
             <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
                 <article class="media mb7 bb-dashed">
                 <figure class="article-thumb-img">
-                    <a href="/ThoiSu/ThoiSuChiTiet/{{News_ID}}" title="{{News_Name}}"
+                    <a href="/list/detail/{{News_ID}}" title="{{News_Name}}"
                     class="fixhieght height150"><img
                         src="{{Image_Avatar}}"
                         alt="{{News_Name}}" width="100%"
@@ -187,7 +187,7 @@
 
                 </figure>
                 <header class="article-thumb-header mt5 mb5">
-                    <a href="/ThoiSu/ThoiSuChiTiet/{{News_ID}}" title="{{News_Name}}">
+                    <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
                     <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
                     </a>
                     <small class="meta text-muted">
@@ -231,12 +231,12 @@
             <div class="panel-body">
               {{#each this.newsHot}}
               <div class="media bb-dashed mt0 pb7 mb7">
-                <a class="pull-left fix-image-11" href="/ThoiSu/ThoiSuChiTiet/{{News_ID}}" title="{{News_Name}}">
+                <a class="pull-left fix-image-11" href="/list/detail/{{News_ID}}" title="{{News_Name}}">
                   <img src="{{Image_Avatar}}" alt="{{News_Name}}">
                 </a>
     
                 <div class="media-body">
-                  <a href="/ThoiSu/ThoiSuChiTiet/{{News_ID}}" title="{{News_Name}}">
+                  <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
                     <h4 class="fs-1 mall0" style="height: 50px">{{News_Name}}</h4>
                   </a>
                   <small class="meta text-muted">

@@ -11,7 +11,7 @@ module.exports = {
         db.end
     },
 
-    getCategoryOfNews: CatID => {
+    getCatOfNews: CatID => {
         return db.load(`select * from categories where CatID = ${CatID}`);
     },
 
@@ -24,7 +24,7 @@ module.exports = {
     },
 
     getAllTagsManyNews: (offset, limit) => {
-        return db.load(`SELECT N.News_ID, T.Tag_Name FROM tags T,tags_news TN, (SELECT News_ID FROM news ORDER BY Time DESC LIMIT ${offset},${limit}) as N WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID`);
+        return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name FROM tags T,tags_news TN, (SELECT News_ID FROM news ORDER BY Time DESC LIMIT ${offset},${limit}) as N WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID`);
     },
 
     getNewsHot: () => {
@@ -35,7 +35,15 @@ module.exports = {
         return db.load(`select * from categories where CatID = ${CatID} or Parent_ID = ${CatID}`);
     },
 
-    getNewsByCategory: (CatID) => {
+    getNewsByCat: (CatID) => {
         return db.load(`SELECT * FROM news where CatID = ${CatID} ORDER BY Time DESC`);
+    },
+
+    countNewsByCat: (CatID) => {
+        return db.load(`SELECT count(*) as total FROM news where CatID = ${CatID} `);
+    },
+
+    getNewsSameCat: (CatID, News_ID) => {
+        return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} ORDER BY Time DESC LIMIT 0,8`);
     },
 };

@@ -1,6 +1,6 @@
 .container{
 	max-width: 1280px !important;
-    width: 100% !important;
+    width: 85% !important;
 }
 div.logo{
     width: 100%;
@@ -393,23 +393,19 @@ img:hover,.bg_cover:hover{
 }
 
 .list{
-	margin-top: 10px;
-	border-bottom:2px solid #ddd;
+	padding-bottom: 10px;
+	margin-top: 3px;
+	border-top:1px solid #ddd;
 }
 
-.tag_in_item {
-    display: block;
-    clear: both;
-    background-color: white;
-    padding: 8px 5px 0px 10px;
-}
 
-.tag_in_item a {
-    color: #069!important;
+
+/* .tag_in_item a {
+    color: #ffffff!important;
     font-style: italic!important;
     font-weight: normal!important;
     font-size: 15px!important;
-}
+} */
 
 .blur>.menu~*{
 	-webkit-filter:brightness(120%) contrast(120%) blur(10px);
@@ -541,4 +537,9 @@ body.blur:after{
 
 body .modal-open{
 	padding-right: 0px;
+}
+
+.tag_in_item {
+	display: inline-block;
+	background: #D9534F;
 }

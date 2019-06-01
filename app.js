@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
     });
 });
 
-var ThoiSu=require('./controllers/ThoiSu.controller');
+var ThoiSu=require('./controllers/list.controller');
 app.use('/list', ThoiSu);
 
 var Admin=require('./controllers/Admin.controller');
