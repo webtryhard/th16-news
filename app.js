@@ -30,8 +30,17 @@ app.engine('.hbs', exphbs({
             return dateFormat(val,'dddd, dd/mm/yyyy');
         },
         section: hbs_sections()
-    }
+    },
+    registerHelper: {
+        if_eq: function(a, b, opts) {
+        if (a == b) {
+            return opts.fn(this);
+        } else {
+            return opts.inverse(this);
+        }
+    }},
 }));
+
 app.set('view engine', '.hbs');
  
 app.get('/', function (req, res) {
@@ -45,7 +54,7 @@ app.get('/', function (req, res) {
 });
 
 var ThoiSu=require('./controllers/ThoiSu.controller');
-app.use('/:CatID', ThoiSu);
+app.use('/list', ThoiSu);
 
 var Admin=require('./controllers/Admin.controller');
 app.use('/Admin', Admin);
