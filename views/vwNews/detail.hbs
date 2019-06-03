@@ -1,0 +1,263 @@
+
+<div class="container">
+<!-- BEGIN-MAIN -->
+<main>
+<!-- BEGIN:ROW1 -->
+<section class="row">
+    <!-- BEGIN:tin hot nhất -->
+    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+    <header class="jumbotron pall30 mb15">
+        <h1 class="fs-21">
+            {{this.singlenews.News_Name}}
+            
+        </h1>
+        <small class="meta text-muted">
+        <span>
+            <time class="friendly" datetime={{this.singlenews.Time}}>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat this.singlenews.Time}} -
+            <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat this.singlenews.Time}}
+            </time>
+        </span>
+        </small>
+        <p class="mb0">
+          <span class="label label-success">{{this.singlecategory.CatName}}</span>{{this.singlenews.Summary}}</p>
+    </header>
+    <style>
+    </style>
+    <div class="row ">
+
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 detail_ct" style="width: 100%">
+        <!-- BEGIN: Nội dung -->
+            {{{this.singlenews.Content}}}
+        <!-- END: Nội dung -->
+        <div class="article-bottom">
+            <div class="authors text-right font-bold">
+            <i class="fa fa-pencil"></i>{{this.singlewriter.Writer_Name}}
+            </div>
+            <hr>
+        </div>
+
+        </div>
+    </div>
+
+    <!-- BEGIN: Tags -->
+    <ul class="list-inline border0 tags-list mt7 mb7 font-2">
+        <li class="font-bold">
+        <i class="fa fa-tags"></i> Tags:
+        </li>
+        {{#each this.tags}}
+        <li>
+        <a href="/tags/{{TagID}}">
+            <h5 class="mb5 mt0">
+            <span class="label tag_in_item">{{Tag_Name}}</span>
+            </h5>
+        </a>
+        </li>
+        {{/each}}
+        
+    </ul><!-- END: Tags -->
+
+    <!-- BEGIN: Bình luận -->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active cmm"><a href="#comment_facebook" aria-controls="comment_facebook"
+            role="tab" data-toggle="tab">Danh sách bình luận</a></li>
+        <li role="presentation" class=" cmm"><a href="#comment" aria-controls="comment" role="tab"
+            data-toggle="tab">Bình luận</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content bg-white pt10">
+        <div role="tabpanel" class="tab-pane fade in active" id="comment_facebook">
+            <div class="panel panel-success">
+            <ul class="commentList">
+                <li>
+                <div class="commenterImage">
+                    <img src="https://i.pinimg.com/736x/84/2d/8b/842d8b89b19eb5bb043fff71861a1282.jpg" height="65px;" />
+                </div>
+                <div class="commentText">
+                    <div class="commentName">
+                    <h5>Trạng Nguyên</h5>
+                    <h6>29/04/2019</h6>
+                    </div>
+                    <p class="">Bài viết chi tiết.</p>
+                </div>
+                </li>
+                <li>
+                <div class="commenterImage">
+                    <img src="https://i.pinimg.com/236x/07/2c/a4/072ca41076bacd4b2fd76d36a77cd821.jpg" height="65px;" />
+                </div>
+                <div class="commentText">
+                    <div class="commentName">
+                    <h5>Vân Anh</h5>
+                    <h6>30/04/2019</h6>
+                    </div>
+                    <p class="">Bài viết rất hay.</p>
+                </div>
+                </li>
+                <li>
+                <div class="commenterImage">
+                    <img
+                    src="http://sohanews.sohacdn.com/thumb_w/660/2017/photo-1-1508055238841-117-0-514-640-crop-1508055269606.jpg"
+                    height="65px;" />
+                </div>
+                <div class="commentText">
+                    <div class="commentName">
+                    <h5>Tuấn Ngọc</h5>
+                    <h6>02/05/2019</h6>
+                    </div>
+                    <p class="">Thông tin hữu ích.</p>
+                </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="comment">
+            <!-- BEGIN:COMMENTS -->
+            <script src="#"></script>
+            <section class="comments-box">
+            <form class="frm-comment">
+                <div class="panel panel-success">
+                <header class="panel-heading">
+                    <h3 class="panel-title font-2">Ý kiến của bạn <sup><i class="fa fa-comment-o"></i></sup></h3>
+                </header>
+                <div class="panel-body">
+                    <textarea class="txtComment form-control required_c" id="c_content_27494" name="c_content" rows="5"
+                    placeholder="Nội dung"></textarea>
+                    <br><input type="text" class="form-control required_c" placeholder="Họ tên" name="c_name"
+                    id="c_name_27494" style="display: none;"><br>
+                    <input type="email" class="form-control required_c" placeholder="Email" name="c_email"
+                    id="c_email_27494" style="display: none;">
+                    <script>
+                    $(document).ready(function () {
+                        $("#c_name_27494,#c_email_27494").slideUp();
+                        var c_content = document.getElementById('c_content_27494');
+                        c_content.onkeyup = c_content.onkeypress = function () {
+                        var _val = this.value;
+                        if (_val != '') {
+                            $("#c_name_27494,#c_email_27494").slideDown();
+                        } else {
+                            $("#c_name_27494,#c_email_27494").slideUp();
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-ico btn-sm btn-success ajSendComment" c_news="27494"><i class="fa fa-send-o"></i>
+                    Gửi bình luận</a>
+                </div>
+                </div>
+            </form>
+
+            <div id="view_comment"></div>
+            </section>
+            <!-- END:COMMENTS -->
+            <div id="view_comment"></div>
+        </div>
+        </div>
+    </div>
+    <!-- END: Bình luận -->
+
+    <!-- BEGIN: Tin cùng chuyên mục -->
+    <div class="tab_item">
+        <div class="panel panel-success">
+        <hgroup class="panel-heading">
+            <ul class="list-inline mb0 ">
+            <style>
+            </style>
+            <li class="active">
+                <a href="#" title="Tin cùng chuyên mục">
+                <h2 class="font-bold">Tin cùng chuyên mục</h2>
+                </a>
+            </li>
+            </ul>
+        </hgroup>
+        <article class="panel-body">
+            <div class="row-7 flex-wrap">
+            {{#each this.newsSameCat}}
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                <article class="media mb7 bb-dashed">
+                <figure class="article-thumb-img">
+                    <a href="/list/detail/{{News_ID}}" title="{{News_Name}}"
+                    class="fixhieght height150"><img
+                        src="{{Image_Avatar}}"
+                        alt="{{News_Name}}" width="100%"
+                        height="150px;"></a>
+
+                </figure>
+                <header class="article-thumb-header mt5 mb5">
+                    <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                    <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
+                    </a>
+                    <small class="meta text-muted">
+                      <span>
+                        <time class="friendly" datetime={{Time}}>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                        <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                        </time>
+                      </span></small>
+                </header>
+                </article>
+            </div>
+            {{/each}}
+            </div>
+        </article>
+        </div>
+    </div>
+    <!-- END: Tin cùng chuyên mục -->
+    <style>
+        li.links-ads:before {
+        content: 'Tài trợ';
+        background: #5cb85c;
+        color: #fff;
+        padding: 2px;
+        border-radius: 5px;
+        margin-right: 5px;
+        font-size: 12px;
+        }
+    </style>
+    </div>
+    <!-- END -->
+    <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3-right ">
+      <div class="model_right">
+        <!-- BEGIN: Tin nhiều người đọc -->
+        <div class="model_right">
+          <div class="banner hidden righthome1" fix=""></div>
+          <div class="panel panel-info">
+            <div class="panel-heading panel-item text-center font-bold">
+              <a title="Tin nhiều người đọc">Tin nhiều người đọc</a>
+            </div>
+            <div class="panel-body">
+              {{#each this.newsHot}}
+              <div class="media bb-dashed mt0 pb7 mb7">
+                <a class="pull-left fix-image-11" href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                  <img src="{{Image_Avatar}}" alt="{{News_Name}}">
+                </a>
+    
+                <div class="media-body">
+                  <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                    <h4 class="fs-1 mall0" style="height: 50px">{{News_Name}}</h4>
+                  </a>
+                  <small class="meta text-muted">
+                    <span>
+                      <time class="friendly" datetime={{Time}}>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                        <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                      </time>
+                    </span></small>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END: Tin nhiều người đọc -->
+</section>
+<!-- END -->
+</main>
+<!-- END-MAIN -->
+</div>
+</div>
