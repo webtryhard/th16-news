@@ -18,7 +18,7 @@ router.get("/is-available", (req, res, next) => {
 });
 
 router.get("/register", (req, res, next) => {
-  res.render("vwAccount/register", {
+  res.render("pieces/register", {
     layout: "TrangChu.hbs",
     style: [
       "style1.css",
@@ -54,7 +54,7 @@ router.post("/register", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("vwAccount/login", { layout: false });
+  res.render('pieces/login',{layout: false});
 });
 
 router.post("/login", (req, res, next) => {
@@ -62,7 +62,7 @@ router.post("/login", (req, res, next) => {
     if (err) return next(err);
 
     if (!user) {
-      return res.render("vwAccount/login", {
+      return res.render("pieces/login", {
         layout: false,
         err_message: info.message
       });
@@ -70,7 +70,6 @@ router.post("/login", (req, res, next) => {
 
     req.logIn(user, err => {
       if (err) return next(err);
-
       return res.redirect("/");
     });
   })(req, res, next);
