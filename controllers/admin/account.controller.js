@@ -2,7 +2,7 @@ var express = require("express");
 var bcrypt = require("bcrypt");
 var moment = require("moment");
 var passport = require("passport");
-var userModel = require("../models/user.model");
+var userModel = require("../../models/user.model");
 
 var router = express.Router();
 
