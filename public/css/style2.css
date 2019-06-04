@@ -1,10 +1,10 @@
 .container{
 	max-width: 1280px !important;
-    width: 85% !important;
+    width: 100% !important;
 }
 div.logo{
     width: 100%;
-	background: #a71f1ff0;
+	background: #272c33;
     padding: 4px 0;
 }
 
@@ -187,14 +187,14 @@ img:hover,.bg_cover:hover{
 	border-bottom:0;
 	padding-left:10px;
 	padding-right:13px;
-	background:#a71f1ff0;
-	border-color:#a71f1ff0;
+	background:#272c33;
+	border-color:#272c33;
 }
 
 .list-inline>li.active:before{
 	width:100%;
 	height:2px;
-	background:#a71f1ff0;
+	background:#272c33;
 	bottom:-2px !important;
 	top:auto;
 	left:0;
@@ -293,7 +293,7 @@ img:hover,.bg_cover:hover{
 
 
 .title_top10_category{
-	background-color: #a71f1ff0;
+	background-color: #272c33;
 	text-align: center;
 	height: 25px;
 }
@@ -388,24 +388,28 @@ img:hover,.bg_cover:hover{
 
 .panel-info>.panel-heading a{
 	color:#ffffff;
-	background-color:#a71f1ff0;
-	border-color:#a71f1ff0;
+	background-color:#272c33;
+	border-color:#272c33;
 }
 
 .list{
-	padding-bottom: 10px;
-	margin-top: 3px;
-	border-top:1px solid #ddd;
+	margin-top: 10px;
+	border-bottom:2px solid #ddd;
 }
 
+.tag_in_item {
+    display: block;
+    clear: both;
+    background-color: white;
+    padding: 8px 5px 0px 10px;
+}
 
-
-/* .tag_in_item a {
-    color: #ffffff!important;
+.tag_in_item a {
+    color: #069!important;
     font-style: italic!important;
     font-weight: normal!important;
     font-size: 15px!important;
-} */
+}
 
 .blur>.menu~*{
 	-webkit-filter:brightness(120%) contrast(120%) blur(10px);
@@ -515,16 +519,15 @@ body.blur:after{
 }
 
 .navbar{
-	margin-top: 3px;
     background: #fff;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #4e4e52;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.08);
     top: 0px;
 }
 
 .navbar-default .navbar-nav>li>a {
 	padding-top: 16px;
-	padding-left: 0px;
+	padding-left: 10px;
 	padding-right: 30px;
 }
 
@@ -539,7 +542,9 @@ body .modal-open{
 	padding-right: 0px;
 }
 
-.tag_in_item {
-	display: inline-block;
-	background: #D9534F;
+.text-right>a{
+	color: white;
+}
+.search_fm{
+	margin-top: 8px;
 }
