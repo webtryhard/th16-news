@@ -13,6 +13,12 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 
+require('./middlewares/view-engine')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
+
+// app.use(require('./middlewares/locals.mdw'));
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 dateFormat.i18n = {
@@ -28,7 +34,7 @@ dateFormat.i18n = {
 app.engine('.hbs', exphbs({
     extname: '.hbs',
     layoutsDir: 'views/layouts',
-    partialsDir: 'views/vwAccount',
+    partialsDir: 'views/pieces',
     helpers:{
         TimeFormat: val =>{
             return dateFormat(val,'HH:MM');
