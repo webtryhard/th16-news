@@ -59,6 +59,9 @@ app.use('/list', ThoiSu);
 var Admin=require('./controllers/Admin.controller');
 app.use('/Admin', Admin);
 
+var account=require('./controllers/admin/account.controller');
+app.use('/account', account);
+
 app.listen(port);
 console.log('http://localhost:' + port);
 
