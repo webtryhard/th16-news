@@ -3,9 +3,16 @@ var exphbs  = require('express-handlebars');
 var hbs_sections = require('express-handlebars-sections');
 var dateFormat = require('dateformat');
 var path=require('path');
-var port=3000;
  
+var morgan = require('morgan');
+
+var port = 3000;
+
 var app = express();
+
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -56,7 +63,7 @@ app.get('/', function (req, res) {
 var ThoiSu=require('./controllers/list.controller');
 app.use('/list', ThoiSu);
 
-var Admin=require('./controllers/Admin.controller');
+var Admin=require('./controllers/admin.controller');
 app.use('/Admin', Admin);
 
 var account=require('./controllers/admin/account.controller');
