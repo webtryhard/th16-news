@@ -28,7 +28,7 @@ module.exports = {
         WHERE M.CatID = N.CatID`);
     }, 
 
-
-
-
+    getNewsInWeek: ()=>{
+        return db.load(`SELECT * FROM news n WHERE TIMESTAMPDIFF(minute,n.Time,Now()) <= 10080 ORDER BY n.Views DESC LIMIT 5`);
+    }
 };

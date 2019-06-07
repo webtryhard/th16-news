@@ -57,8 +57,9 @@ app.get('/', function (req, res) {
     var p2 = homeModel.getLatestNews();
     var p3 = homeModel.getTop10Cat();
     var p4 = homeModel.getNewsTop10Cat();
+    var p5 = homeModel.getNewsInWeek();
 
-    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
 
         var latestNews1 = [rows2[0], rows2[1]];
         var latestNews2 = [];
@@ -96,12 +97,19 @@ app.get('/', function (req, res) {
             obj.push(new2);
             topCat.push(obj);
         }
+
+        var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
+        for(i = 1; i < 5; i++)
+        {
+            if(rows5[i])
+            newsHotWeek2.push(rows5[i]);
+        }
         
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
             newsHot : rows1,
-            latestNews1, latestNews2, topCat,
+            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, 
             style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
             js: ['jQuery.js', 'js.js', 'login-register.js'],
             logo: 'logo.png'
