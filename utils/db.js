@@ -45,7 +45,8 @@ module.exports = {
       update: (tableName, idField, entity) => {
         return new Promise((resolve, reject) => {
           var id = entity[idField];
-          delete entity[idField];
+          console.log("Ngu:"+id);
+          // delete entity[idField];
     
           var sql = `update ${tableName} set ? where ${idField} = ?`;
           var connection = createConnection();

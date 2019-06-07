@@ -1,0 +1,55 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/admin/quanlychuyenmuc/update">
+                    <div class="form-group">
+                        <label for="txtCatID">Mã số</label>
+                        <input readonly type="text" class="form-control" id="txtCatID" name="CatID"
+                            value="{{this.cat.CatID}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCatName">Chuyên mục</label>
+                        <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus
+                            placeholder="{{this.cat.CatName}}">
+                    </div>
+
+                    {{#if isNull}}
+                    <div class="form-group">
+                        <label for="txtCatParentName">Chuyên mục cha hiện tại</label>
+                        <input readonly type="text" class="form-control" id="txtCatParentName" placeholder="NULL">
+                    </div>
+                    {{else}}
+                    <div class="form-group">
+                        <label for="txtCatParentName">Chuyên mục cha hiện tại</label>
+                        <input readonly type="text" class="form-control" id="txtCatParentName"
+                            placeholder="{{this.cat.TenCM}}">
+                    </div>
+                    {{/if}}
+
+
+
+                    <div class="form-group">
+                        <label for="txtCatParentName">Chọn chuyên mục cha mới (nếu có)</label>
+                        <select class="form-control" name="Parent_ID">
+
+                            {{#each this.parentCat}}
+                            <option value="{{ID}}">{{TenCM}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <a class="btn btn-primary" href="/admin/quanlychuyenmuc" role="button">
+                        <i class="fa fa-backward" aria-hidden="true"></i>
+                        Quay lại danh sách
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Lưu lại
+                    </button>
+                </form>
+            </div>
+
+
+        </div>
+    </div><!-- .animated -->
+</div>

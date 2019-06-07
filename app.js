@@ -10,9 +10,16 @@ var port = 3000;
 
 var app = express();
 
-// app.use(morgan('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded());
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+
+require('./middlewares/view-engine')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
+
+// app.use(require('./middlewares/locals.mdw'));
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 dateFormat.i18n = {
@@ -28,6 +35,7 @@ dateFormat.i18n = {
 app.engine('.hbs', exphbs({
     extname: '.hbs',
     layoutsDir: 'views/layouts',
+    partialsDir: 'views/pieces',
     helpers:{
         TimeFormat: val =>{
             return dateFormat(val,'HH:MM');
@@ -39,6 +47,7 @@ app.engine('.hbs', exphbs({
     },
     
 }));
+
 
 app.set('view engine', '.hbs');
  
@@ -103,7 +112,7 @@ app.get('/', function (req, res) {
 var list=require('./controllers/list.controller');
 app.use('/list', list);
 
-var Admin=require('./controllers/Admin.controller');
+var Admin=require('./controllers/admin.controller');
 app.use('/Admin', Admin);
 
 var account=require('./controllers/admin/account.controller');
