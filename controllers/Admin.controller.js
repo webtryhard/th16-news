@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 }
 )
 
+//QUẢN LÝ CHUYÊN MỤC
 router.get('/quanlychuyenmuc', (req, res) => {
     var p = AdminModel.getAllCat();
     p.then(rows => {
@@ -25,7 +26,6 @@ router.get('/quanlychuyenmuc', (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-
 })
 
 router.get('/quanlychuyenmuc/deleted', (req, res) => {
@@ -57,16 +57,15 @@ router.get('/quanlychuyenmuc/delete/:id', (req, res) => {
     })
 })
 
-router.post('/quanlychuyenmuc/restore',(req,res)=>{
-    var entity={
-        CatID:req.body.CatID,
-        CatName:req.body.CatName,
-        Parent_ID:req.body.Parent_ID,
-        Deleted:req.body.Deleted
+router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        CatID: id,
+        Deleted: 0
     }
-    AdminModel.update(entity).then(n=>{
+    AdminModel.update(entity).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
-    }).catch(err=>{
+    }).catch(err => {
         console.log(err);
         res.end('error');
     })
@@ -101,7 +100,7 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
                     isNull: false
                 });
             }
-           
+
         }
         else {
             res.render('vwAdmin/QuanLyChuyenMuc/edit', {
@@ -119,10 +118,10 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
 
 })
 
-router.post('/quanlychuyenmuc/update',(req,res)=>{
-    AdminModel.update(req.body).then(n=>{
+router.post('/quanlychuyenmuc/update', (req, res) => {
+    AdminModel.update(req.body).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
-    }).catch(err=>{
+    }).catch(err => {
         console.log(err);
         res.end('error');
     })
@@ -145,7 +144,6 @@ router.get('/quanlychuyenmuc/add', (req, res) => {
 router.post('/quanlychuyenmuc/add', (req, res) => {
     AdminModel.add(req.body)
         .then(id => {
-            console.log(id);
             res.render('vwAdmin/QuanLyChuyenMuc/add', {
                 layout: 'adminQuanLyChuyenMuc.hbs',
                 title: 'Thêm chuyên mục',
@@ -185,7 +183,7 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
                     isNull: false
                 });
             }
-           
+
         }
         else {
             res.render('vwAdmin/QuanLyChuyenMuc/restore', {
@@ -203,16 +201,126 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
 
 })
 
+
+//QUẢN LÝ NHÃN
 router.get('/quanlynhan', (req, res) => {
 
-    //console.log(rows);
-    res.render('vwAdmin/AdminQuanLyNhan.hbs', {
-        layout: 'Admin.hbs',
-        title: 'Quản lý nhãn',
-        logo: 'logo.png'
+    var p = AdminModel.getAllTag();
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyNhan/adminQuanLyNhan.hbs', {
+            tag: rows,
+            layout: 'adminQuanLyNhan.hbs',
+            title: 'Quản lý nhãn',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }
 )
+router.get('/quanlynhan/add', (req, res) => {
+
+    res.render('vwAdmin/QuanLyNhan/add', {
+        layout: 'adminQuanLyNhan.hbs',
+        title: 'Thêm nhãn',
+    });
+
+})
+
+router.post('/quanlynhan/add', (req, res) => {
+    AdminModel.add(req.body)
+        .then(id => {
+            console.log(id);
+            res.render('vwAdmin/QuanLyNhan/add', {
+                layout: 'adminQuanLyNhan.hbs',
+                title: 'Thêm nhãn',
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+router.get('/quanlynhan/edit/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.singleTag(id);
+
+    Promise.all([p]).then(([rows]) => {
+        if (rows.length > 0) {
+            res.render('vwAdmin/QuanLyNhan/edit', {
+                tag: rows[0],
+                error: false,
+                layout: 'adminQuanLyNhan.hbs',
+                title: 'Quản lý nhãn',
+                logo: 'logo.png',
+            });
+        }
+        else {
+            res.render('vwAdmin/QuanLyChuyenMuc/edit', {
+                tag: rows[0],
+                error: true,
+                layout: 'adminQuanLyNhan.hbs',
+                title: 'Quản lý nhãn',
+                logo: 'logo.png'
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlynhan/update', (req, res) => {
+    AdminModel.update(req.body).then(n => {
+        res.redirect('/admin/quanlynhan');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynhan/deleted', (req, res) => {
+    var p = AdminModel.getAllTagDeleted();
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyNhan/deleted.hbs', {
+            tag: rows,
+            layout: 'adminQuanLyNhan.hbs',
+            title: 'Các nhãn đã xóa',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.get('/quanlynhan/delete/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        TagID: id,
+        Deleted: 1
+    }
+    AdminModel.updateTag(entity).then(n => {
+        res.redirect('/admin/quanlynhan');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynhan/restore/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        TagID: id,
+        Deleted: 0
+    }
+    AdminModel.updateTag(entity).then(n => {
+        res.redirect('/admin/quanlynhan');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
 
 router.get('/quanlybaiviet', (req, res) => {
 
@@ -225,13 +333,20 @@ router.get('/quanlybaiviet', (req, res) => {
 }
 )
 
+
+//QUẢN LÝ NGƯỜI DÙNG
 router.get('/quanlynguoidung', (req, res) => {
 
-    //console.log(rows);
-    res.render('vwAdmin/AdminQuanLyNguoiDung.hbs', {
-        layout: 'Admin.hbs',
-        title: 'Admin',
-        logo: 'logo.png'
+    var p = AdminModel.getAllUser();
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
+            user: rows,
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Quản lý người dùng',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }
 )
