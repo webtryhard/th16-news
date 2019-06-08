@@ -32,47 +32,53 @@ router.get("/register", (req, res, next) => {
   });
 });
 
-router.post("/register", (req, res, next) => {
-  var saltRounds = 10;
-  var hash = bcrypt.hashSync(req.body.password, saltRounds);
-  var dob = moment(req.body.dob, "DD/MM/YYYY").format("YYYY-MM--DD");
+// router.post("/register", (req, res, next) => {
+//   var saltRounds = 10;
+//   var hash = bcrypt.hashSync(req.body.password, saltRounds);
+//   var dob = moment(req.body.dob, "DD/MM/YYYY").format("YYYY-MM--DD");
 
-  var entityAcc={
-    Username: req.body.username,
-    Password: hash,
-  };
-  var entitySub = {
-    Sub_Name: req.body.name,
-    Sub_Email: req.body.email,
-    Sub_BirthDay: dob,
-    f_Permission: 0
-  };
+//   var entityAcc={
+//     Username: req.body.username,
+//     Password: hash,
+//   };
+//   var entitySub = {
+//     Sub_Name: req.body.name,
+//     Sub_Email: req.body.email,
+//     Sub_BirthDay: dob,
+//     f_Permission: 0
+//   };
 
-  userModel.addAcc(entityAcc).then(id => {
-    res.redirect("/account/login");
-  });
-});
+//   userModel.addAcc(entityAcc).then(id => {
+//     res.redirect("/account/login");
+//   });
+// });
 
 router.get("/login", (req, res, next) => {
   res.render('pieces/login',{layout: false});
 });
 
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) return next(err);
+router.post("/register", async (req, res, next) => {
+  var name = req.body.dnusername
+  var password = req.body.dnpassword
+  var namedb, passworddb
 
-    if (!user) {
-      return res.render("pieces/login", {
-        layout: false,
-        err_message: info.message
-      });
-    }
-
-    req.logIn(user, err => {
-      if (err) return next(err);
-      return res.redirect("/");
-    });
-  })(req, res, next);
+  var dbUsername = await userModel.singleByUserName(name)
+  if (dbUsername === undefined || dbUsername === null || Object.keys(dbUsername).length === 0 ){
+    res.end("Ten dang nhap hoac mat khau khong dung (ca 2)")
+    return
+  }
+  namedb = dbUsername[0].Username
+  passworddb = dbUsername[0].Password
+  console.log(name, namedb)
+  if (name!== namedb) {
+    res.end('Ten dang nhap hoac mat khau khong dung (ten dang nhap)')
+    return
+  } 
+  if (password !== passworddb) {
+    res.end('Ten dang nhap hoac mat khau khong dung (mat khau)')
+    return
+  }
+  res.end('thanh cong')
 });
 
 module.exports = router;

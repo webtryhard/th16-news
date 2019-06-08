@@ -6,7 +6,7 @@ var createConnection = () => {
         port: 3306,
         user: 'root',
         password: 'thamtran',
-        database: 'news'
+        database: 'th_16news'
     });
 }
 

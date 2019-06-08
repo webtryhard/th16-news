@@ -5,6 +5,7 @@ var dateFormat = require('dateformat');
 var homeModel = require('./models/home.model');
 var path=require('path');
 var morgan = require('morgan');
+var bodyParser = require('body-parser');
 
 var port = 3000;
 
@@ -50,6 +51,8 @@ app.engine('.hbs', exphbs({
 
 
 app.set('view engine', '.hbs');
+
+app.use(bodyParser.urlencoded({ extended: true }));
  
 app.get('/', function (req, res) {
 
