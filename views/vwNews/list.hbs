@@ -110,31 +110,31 @@
               <article class="row">
                 <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb5">
                   <div class="media">
-                    <a class="pull-left" href="/list/detail/{{News_ID}}">
-                      <img class="media-object" src="{{Image_Avatar}}" alt="{{News_Name}}" title="{{News_Name}}" width="230px" height="140px">
+                    <a class="pull-left" href="/list/detail/{{new.News_ID}}">
+                      <img class="media-object" src="{{new.Image_Avatar}}" alt="{{new.News_Name}}" title="{{new.News_Name}}" width="230px" height="140px">
                     </a>
                     <div class="">
                       <header>
                         <p class="title mb0">
-                          <a href="/list/detail/{{News_ID}}" title="{{News_Name}}"><b style="font-size: 22px;">{{News_Name}}</b>
+                          <a href="/list/detail/{{new.News_ID}}" title="{{new.News_Name}}"><b style="font-size: 22px;">{{new.News_Name}}</b>
                           </a>
                         </p>
                         <small class="meta text-muted">
                           <span>
-                            <time class="friendly" datetime={{Time}}>
-                              <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
-                              <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                            <time class="friendly" datetime={{new.Time}}>
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat new.Time}} -
+                              <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat new.Time}}
                             </time>
                           </span>
                         </small>
                       </header>
-                      <p class="summary mb0">{{Summary}}</p>
+                      <p class="summary mb0">{{new.Summary}}</p>
                     </div>
                   </div>
                 </aside>
                 <p>
                     <font class="fwb"><i class="fa fa-tags"></i><b>Tags: </b></font>
-                     {{#each ../this.tags}}
+                     {{#each tag}}
                      <a href="/tags/{{TagID}}" title="{{Tag_Name}}">
                         <span class="tag_in_item label label-default">{{Tag_Name}}</span>
                     </a>
