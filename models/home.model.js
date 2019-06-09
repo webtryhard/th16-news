@@ -17,7 +17,7 @@ module.exports = {
     getNewsTop10Cat: () =>{
         return db.load(`SELECT *
         FROM (SELECT t1.* 
-        FROM (SELECT * FROM news WHERE Deleted = 0 and State_ID = 4 and News_Category = 0) t1 JOIN (SELECT * FROM news WHERE Deleted = 0 and State_ID = 4 News_Category = 0) t2 ON t1.CatID = t2.CatID and t1.Time <= t2.Time
+        FROM (SELECT * FROM news WHERE Deleted = 0 and State_ID = 4 and News_Category = 0) t1 JOIN (SELECT * FROM news WHERE Deleted = 0 and State_ID = 4 and News_Category = 0) t2 ON t1.CatID = t2.CatID and t1.Time <= t2.Time
         GROUP BY t1.CatID, t1.News_ID 
         HAVING COUNT(*) <= 3) as M, (SELECT CatID 
                                         FROM (SELECT C.CatID, C.CatName, SUM(N.Views) ttViews 

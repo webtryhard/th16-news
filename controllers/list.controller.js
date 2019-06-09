@@ -123,8 +123,6 @@ routers.get('/detail/:id', (req, res) => {
                             child.push(rows7[j]);
                         }
                     }
-                    console.log(child);
-
                     menu.push({ parent: rows7[i], childs: child })
                 }
             }

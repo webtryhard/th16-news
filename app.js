@@ -96,7 +96,6 @@ app.get('/', function (req, res) {
                     new2.push(rows4[j]);
                 }
             }
-            console.log(new1[0]);
             
             obj.push(new1);
             obj.push(new2);

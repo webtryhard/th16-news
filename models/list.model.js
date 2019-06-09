@@ -16,7 +16,7 @@ module.exports = {
     },
 
     getWriterOfNews: Writer_ID => {
-        return db.load(`select * from writer where Writer_ID = ${Writer_ID}`);
+        return db.load(`select * from user where User_ID = ${Writer_ID}`);
     },
 
     getAllTagsOfNews: News_ID => {
@@ -49,6 +49,6 @@ module.exports = {
 
     getAllCat: ()=>{
         return db.load(`SELECT * FROM categories where Deleted = 0`);
-    }
+    },
 
 };
