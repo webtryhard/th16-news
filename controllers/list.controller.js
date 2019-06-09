@@ -11,14 +11,15 @@ routers.get('/:id', (req, res) => {
     var offset = 3 + (page - 1) * limit;
     var newsList1 = new Array();
     var newsList2 = new Array();
-    var tags = new Array();
+    var menu = new Array();
 
     var p1 = thoisuModel.getCatAndChillByCatID(id);
     var p2 = thoisuModel.getNewsByCat(id);
     var p3 = thoisuModel.getNewsHot();
-    var p4 = thoisuModel.getAllTagsManyNews(offset, limit - 3);
+    var p4 = thoisuModel.getAllTagsManyNews(id, offset + 3, limit - 3);
     var p5 = thoisuModel.countNewsByCat(id);
-    Promise.all([p1, p2, p3, p4, p5]).then(([rows, rows2, rows3, rows4, count_rows]) => {
+    var p6 = thoisuModel.getAllCat();
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows, rows2, rows3, rows4, count_rows, rows6]) => {
 
         var total = count_rows[0].total;
         var npage = Math.floor((total - 3) / limit);
@@ -53,11 +54,33 @@ routers.get('/:id', (req, res) => {
             newsList1.push(rows2[offset + i]);
             }
         }
-
+        
         for (i = offset + 3; i < offset + limit; i++) {
-            if(rows2[i])
+            if (rows2[i]) {
+                var tags = new Array();
+                for (j = 0; j < rows4.length; j++) {
+                    if (rows4[j].News_ID === rows2[i].News_ID) {
+                        tags.push(rows4[j]);
+                    }
+                }
+                newsList2.push({new: rows2[i], tag : tags});
+            }
+        }
+
+        for(i = 0; i < rows6.length; i++)
+        {
+            if(rows6[i].Parent_ID === null)
             {
-            newsList2.push(rows2[i]);
+                var child = [];
+                for(j = 0; j < rows6.length; j++)
+                {
+                    if(rows6[j].Parent_ID === rows6[i].CatID)
+                    {
+                    child.push(rows6[j]);
+                    }
+                }
+
+                menu.push({parent: rows6[i], childs : child})
             }
         }
 
@@ -66,8 +89,7 @@ routers.get('/:id', (req, res) => {
             newsHot: rows3,
             newsHead1: [rows2[0]],
             newsHead2: [rows2[1], rows2[2]],
-            newsList1, newsList2, pages, first, last, prev, next, 
-            tags: rows4,
+            newsList1, newsList2, pages, first, last, prev, next, menu,
             layout: 'TrangChu.hbs',
             title: 'Trang danh sách',
             style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
@@ -82,13 +104,31 @@ routers.get('/:id', (req, res) => {
 routers.get('/detail/:id', (req, res) => {
     var id = req.params.id;
     var p1 = thoisuModel.getSingleNews(id);
+    var menu = [];
     p1.then(rows1 => {
         var p2 = thoisuModel.getCatOfNews(rows1[0].CatID);
         var p3 = thoisuModel.getWriterOfNews(rows1[0].Writer_ID);
         var p4 = thoisuModel.getAllTagsOfNews(rows1[0].News_ID);
         var p5 = thoisuModel.getNewsSameCat(rows1[0].CatID, rows1[0].News_ID);
         var p6 = thoisuModel.getNewsHot();
-        Promise.all([p2, p3, p4, p5, p6]).then(([rows2, rows3, rows4, rows5, rows6]) => {
+        var p7 = thoisuModel.getAllCat();
+
+        Promise.all([p2, p3, p4, p5, p6, p7]).then(([rows2, rows3, rows4, rows5, rows6, rows7]) => {
+
+            for (i = 0; i < rows7.length; i++) {
+                if (rows7[i].Parent_ID === null) {
+                    var child = [];
+                    for (j = 0; j < rows7.length; j++) {
+                        if (rows7[j].Parent_ID === rows7[i].CatID) {
+                            child.push(rows7[j]);
+                        }
+                    }
+                    console.log(child);
+
+                    menu.push({ parent: rows7[i], childs: child })
+                }
+            }
+
             res.render('vwNews/detail.hbs', {
                 singlenews: rows1[0],
                 singlecategory: rows2[0],
@@ -96,6 +136,7 @@ routers.get('/detail/:id', (req, res) => {
                 tags: rows4,
                 newsSameCat: rows5,
                 newsHot: rows6,
+                menu,
                 layout: 'TrangChu.hbs',
                 title: 'Bài viết chi tiết',
                 style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
