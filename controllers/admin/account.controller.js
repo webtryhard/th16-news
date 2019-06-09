@@ -60,25 +60,44 @@ router.get("/login", (req, res, next) => {
 router.post("/register", async (req, res, next) => {
   var name = req.body.dnusername
   var password = req.body.dnpassword
-  var namedb, passworddb
+  var namedb, passworddb, id
 
   var dbUsername = await userModel.singleByUserName(name)
   if (dbUsername === undefined || dbUsername === null || Object.keys(dbUsername).length === 0 ){
-    res.end("Ten dang nhap hoac mat khau khong dung (ca 2)")
+    console.log('Khong co ten dang nhap trong db')
+    res.end("Ten dang nhap hoac mat khau khong dung")
     return
   }
   namedb = dbUsername[0].Username
   passworddb = dbUsername[0].Password
-  console.log(name, namedb)
-  if (name!== namedb) {
-    res.end('Ten dang nhap hoac mat khau khong dung (ten dang nhap)')
-    return
-  } 
+  id = dbUsername[0].User_Cat_ID
+  // if (name!== namedb) {
+  //   console.log('Ten dang nhap khong dung')
+  //   res.end('Ten dang nhap hoac mat khau khong dung')
+  //   return
+  // } 
   if (password !== passworddb) {
-    res.end('Ten dang nhap hoac mat khau khong dung (mat khau)')
+    console.log('Mat khau khong dung')
+    res.end('Ten dang nhap hoac mat khau khong dung')
     return
   }
-  res.end('thanh cong')
+
+  // req.cookies(namedb, passworddb);
+  // console.log(cookie);
+  //res.end('thanh cong')
+  if(id===1){
+    res.end('thanh cong 1')
+    return
+  }
+  else if(id === 2){
+    res.end('thanh cong 2')
+    return
+  }
+  else{
+    res.end('thanh cong 3')
+    return
+  }
+  //res.redirect('/admin/quanlychuyenmuc')
 });
 
 module.exports = router;

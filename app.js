@@ -6,14 +6,15 @@ var homeModel = require('./models/home.model');
 var path=require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-
+var cookieParser = require('cookie-parser');
 var port = 3000;
-
 var app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cookieParser());
+
 
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
