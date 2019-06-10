@@ -48,5 +48,14 @@ module.exports = {
         return db.load(`SELECT SELECT *
         FROM user us
         WHERE us.Deleted=1`)
-    }
+    },
+    singleTag: id => {
+        return db.load(`SELECT * FROM tags WHERE user.TagID= ${id}`);
+    },
+    add: entity => {
+        return db.add('user', entity);
+    },
+    updateTag: entity => {
+        return db.update('user', 'User_ID', entity);
+    },
 };
