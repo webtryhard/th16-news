@@ -6,9 +6,6 @@
                 <div class="card">
                     <div class="card-header" style="display: flex;justify-content: space-between;">
                         <strong class="card-title">Danh sách người dùng</strong>
-                         <a class="btn btn-outline-success" href="quanlynguoidung/add" role="button">
-                            Phân công chuyên mục
-                        </a>
                         <a class="btn btn-outline-danger" href="/admin/quanlynguoidung/deleted" role="button">
                             <i class="fa fa-minus-square"> Những mục đã xóa</i>
                         </a>
@@ -27,7 +24,7 @@
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
-                                                    style="width: 100px;">Mã số</th>
+                                                   style="width: 100px;">Mã số</th>
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
@@ -47,12 +44,11 @@
                                                 <th data-orderable="false" style="width: 183px;">
                                                     Avatar
                                                 </th>
-                                                <th data-orderable="false">
-                                                    <a class="btn btn-outline-success" href="quanlynguoidung/add"
+                                               <th data-orderable="false">
+                                                    <a class="btn btn-primary" href="/admin/quanlynguoidung"
                                                         role="button">
-                                                        <i class="fa fa-plus" aria-hidden="true">
-                                                            Thêm mới
-                                                        </i>
+                                                        <i class="fa fa-backward" aria-hidden="true"></i>
+                                                        Quay lại
                                                     </a>
                                                 </th>
                                             </tr>
@@ -70,15 +66,9 @@
                                                         class="avatar img-circle" />
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{ID}}"
-                                                        role="button">
-                                                        <i class="fa fa-pencil" aria-hidden="true">
-                                                        </i>
-                                                    </a>
-
-                                                    <a class="btn btn-danger btn-sm"
-                                                        href="quanlynguoidung/delete/{{ID}}" role="button">
-                                                        <i class="fa fa-trash" aria-hidden="true">
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="/admin/quanlynguoidung/restore/{{ID}}" role="button">
+                                                        <i class="fa fa-plus-circle" aria-hidden="true">
                                                         </i>
                                                     </a>
                                                 </td>

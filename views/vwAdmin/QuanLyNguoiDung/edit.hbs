@@ -1,0 +1,28 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/admin/quanlynguoidung/update">
+                    <div class="form-group">
+                        <label for="txtTagID">Mã số</label>
+                        <input readonly type="text" class="form-control" id="txtTagID" name="TagID"
+                            value="{{this.tag.TagID}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTagName"> Tên nhãn (Tag)</label>
+                        <input type="text" class="form-control" id="txtCatName" name="Tag_Name" autofocus
+                            placeholder="{{this.tag.Tag_Name}}">
+                    </div>
+                    <a class="btn btn-primary" href="/admin/quanlynhan" role="button">
+                        <i class="fa fa-backward" aria-hidden="true"></i>
+                        Quay lại danh sách
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Lưu lại
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div>

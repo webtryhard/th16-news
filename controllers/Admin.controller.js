@@ -350,5 +350,107 @@ router.get('/quanlynguoidung', (req, res) => {
     });
 }
 )
+router.get('/quanlynguoidung/add', (req, res) => {
 
+    res.render('vwAdmin/QuanLyNguoiDung/add', {
+        layout: 'adminQuanLyNguoiDung.hbs',
+        title: 'Thêm người dùng',
+    });
+
+})
+
+router.post('/quanlynguoidung/add', (req, res) => {
+    AdminModel.add(req.body)
+        .then(id => {
+            console.log(id);
+            res.render('vwAdmin/QuanLyNguoiDung/add', {
+                layout: 'adminQuanLyNguoiDung.hbs',
+                title: 'Thêm người dùng',
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+router.get('/quanlynguoidung/edit/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.singleTag(id);
+
+    Promise.all([p]).then(([rows]) => {
+        if (rows.length > 0) {
+            res.render('vwAdmin/QuanLyNguoiDung/edit', {
+                tag: rows[0],
+                error: false,
+                layout: 'adminQuanLyNguoiDung.hbs',
+                title: 'Quản lý người dùng',
+                logo: 'logo.png',
+            });
+        }
+        else {
+            res.render('vwAdmin/QuanLyNguoiDung/edit', {
+                tag: rows[0],
+                error: true,
+                layout: 'adminQuanLyNguoiDung.hbs',
+                title: 'Quản lý người dùng',
+                logo: 'logo.png'
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlynguoidung/update', (req, res) => {
+    AdminModel.update(req.body).then(n => {
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynguoidung/deleted', (req, res) => {
+    var p = AdminModel.getAllTagDeleted();
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyNguoiDung/deleted.hbs', {
+            tag: rows,
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Danh sách người dùng đã xóa',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.get('/quanlynguoidung/delete/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        TagID: id,
+        Deleted: 1
+    }
+    AdminModel.updateTag(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynguoidung/restore/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        TagID: id,
+        Deleted: 0
+    }
+    AdminModel.updateTag(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
 module.exports = router;
