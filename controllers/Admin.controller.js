@@ -77,7 +77,6 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
     var p2 = AdminModel.getAllParentCat();
 
     Promise.all([p, p2]).then(([rows, rows2]) => {
-        console.log(rows[0]);
         if (rows.length > 0) {
             if (rows[0].Parent_ID == null) {
                 res.render('vwAdmin/QuanLyChuyenMuc/edit', {
@@ -130,7 +129,6 @@ router.post('/quanlychuyenmuc/update', (req, res) => {
 router.get('/quanlychuyenmuc/add', (req, res) => {
     var p = AdminModel.getAllParentCat();
     p.then(rows => {
-        console.log(rows);
         res.render('vwAdmin/QuanLyChuyenMuc/add', {
             parentCat: rows,
             layout: 'adminQuanLyChuyenMuc.hbs',
@@ -160,7 +158,6 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
     var p2 = AdminModel.getAllParentCat();
 
     Promise.all([p, p2]).then(([rows, rows2]) => {
-        console.log(rows[0]);
         if (rows.length > 0) {
             if (rows[0].Parent_ID == null) {
                 res.render('vwAdmin/QuanLyChuyenMuc/restore', {
@@ -230,7 +227,6 @@ router.get('/quanlynhan/add', (req, res) => {
 router.post('/quanlynhan/add', (req, res) => {
     AdminModel.add(req.body)
         .then(id => {
-            console.log(id);
             res.render('vwAdmin/QuanLyNhan/add', {
                 layout: 'adminQuanLyNhan.hbs',
                 title: 'Thêm nhãn',
@@ -362,7 +358,6 @@ router.get('/quanlynguoidung/add', (req, res) => {
 router.post('/quanlynguoidung/add', (req, res) => {
     AdminModel.add(req.body)
         .then(id => {
-            console.log(id);
             res.render('vwAdmin/QuanLyNguoiDung/add', {
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Thêm người dùng',
