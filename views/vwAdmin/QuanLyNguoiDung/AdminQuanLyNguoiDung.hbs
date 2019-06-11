@@ -67,14 +67,14 @@
                                                         class="avatar img-circle" />
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{ID}}"
+                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{User_ID}}"
                                                         title="Chỉnh sửa" role="button">
                                                         <i class="fa fa-pencil" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="quanlynguoidung/delete/{{ID}}" role="button" title="Xóa">
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Xóa">
                                                         <i class="fa fa-trash" aria-hidden="true">
                                                         </i>
                                                     </a>
@@ -82,7 +82,7 @@
                                                     {{!-- Nếu người dùng là độc giả (Subcriber) --}}
                                                     {{#compare User_Cat_Name "===" "Subcriber"}}
                                                     <a class="btn btn-warning btn-sm"
-                                                        href="quanlynguoidung/delete/{{ID}}" role="button" title="Gia hạn tài khoản">
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Gia hạn tài khoản">
                                                         <i class="fa fa-level-up" aria-hidden="true">
                                                         </i>
                                                     </a>
@@ -91,7 +91,7 @@
                                                     {{!-- Nếu người dùng là biên tập viên (Editor) --}}
                                                      {{#compare User_Cat_Name "===" "Editor"}}
                                                     <a class="btn btn-success btn-sm"
-                                                        href="quanlynguoidung/delete/{{ID}}" role="button" title="Phân công chuyên mục">
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Phân công chuyên mục">
                                                         <i class="fa fa-magic" aria-hidden="true">
                                                         </i>
                                                     </a>

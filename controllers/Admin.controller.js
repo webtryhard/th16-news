@@ -370,25 +370,27 @@ router.post('/quanlynguoidung/add', (req, res) => {
 
 router.get('/quanlynguoidung/edit/:id', (req, res) => {
     var id = req.params.id;
-    var p = AdminModel.singleTag(id);
+    var p = AdminModel.singleUser(id);
 
     Promise.all([p]).then(([rows]) => {
         if (rows.length > 0) {
             res.render('vwAdmin/QuanLyNguoiDung/edit', {
-                tag: rows[0],
+                user: rows[0],
                 error: false,
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Quản lý người dùng',
                 logo: 'logo.png',
+                listCatUser:['Admin','Subcriber','Editor','Writter'],
             });
         }
         else {
             res.render('vwAdmin/QuanLyNguoiDung/edit', {
-                tag: rows[0],
+                user: rows[0],
                 error: true,
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Quản lý người dùng',
-                logo: 'logo.png'
+                logo: 'logo.png',
+                listCatUser:['Subcriber','Admin','Editor','Writter'],
             });
         }
     }).catch(err => {
@@ -398,7 +400,8 @@ router.get('/quanlynguoidung/edit/:id', (req, res) => {
 })
 
 router.post('/quanlynguoidung/update', (req, res) => {
-    AdminModel.update(req.body).then(n => {
+    AdminModel.updateUser(req.body).then(n => {
+        console.log(req.body);
         res.redirect('/admin/quanlynguoidung');
     }).catch(err => {
         console.log(err);
@@ -407,10 +410,10 @@ router.post('/quanlynguoidung/update', (req, res) => {
 })
 
 router.get('/quanlynguoidung/deleted', (req, res) => {
-    var p = AdminModel.getAllTagDeleted();
+    var p = AdminModel.getAllUserDeleted();
     p.then(rows => {
         res.render('vwAdmin/QuanLyNguoiDung/deleted.hbs', {
-            tag: rows,
+            user: rows,
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Danh sách người dùng đã xóa',
             logo: 'logo.png'
@@ -424,10 +427,10 @@ router.get('/quanlynguoidung/deleted', (req, res) => {
 router.get('/quanlynguoidung/delete/:id', (req, res) => {
     var id = req.params.id;
     var entity = {
-        TagID: id,
+        User_ID: id,
         Deleted: 1
     }
-    AdminModel.updateTag(entity).then(n => {
+    AdminModel.updateUser(entity).then(n => {
         res.redirect('/admin/quanlynguoidung');
     }).catch(err => {
         console.log(err);
@@ -438,11 +441,11 @@ router.get('/quanlynguoidung/delete/:id', (req, res) => {
 router.get('/quanlynguoidung/restore/:id', (req, res) => {
     var id = req.params.id;
     var entity = {
-        TagID: id,
+        User_ID: id,
         Deleted: 0
     }
-    AdminModel.updateTag(entity).then(n => {
-        res.redirect('/admin/quanlynguoidung');
+    AdminModel.updateUser(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung/deleted');
     }).catch(err => {
         console.log(err);
         res.end('error');
