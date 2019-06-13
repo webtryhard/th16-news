@@ -70,7 +70,7 @@ router.post("/register", async (req, res, next) => {
   }
   namedb = dbUsername[0].Username
   passworddb = dbUsername[0].Password
-  id = dbUsername[0].User_Cat_ID
+  id = dbUsername[0].User_Cat_Name
   // if (name!== namedb) {
   //   console.log('Ten dang nhap khong dung')
   //   res.end('Ten dang nhap hoac mat khau khong dung')
@@ -82,21 +82,23 @@ router.post("/register", async (req, res, next) => {
     return
   }
 
-  // req.cookies(namedb, passworddb);
-  // console.log(cookie);
+  res.cookie("username", namedb);
+  res.redirect('/')
+  //alert('Thanh cong')
   //res.end('thanh cong')
-  if(id===1){
-    res.end('thanh cong 1')
-    return
-  }
-  else if(id === 2){
-    res.end('thanh cong 2')
-    return
-  }
-  else{
-    res.end('thanh cong 3')
-    return
-  }
+  // if(id==='Subcriber'){
+  //   res.redirect('/')
+  //   //res.end('thanh cong 1')
+  //   return
+  // }
+  // else if(id === 'Writer'){
+  //   res.end('thanh cong 2')
+  //   return
+  // }
+  // else{
+  //   res.end('thanh cong 3')
+  //   return
+  // }
   //res.redirect('/admin/quanlychuyenmuc')
 });
 

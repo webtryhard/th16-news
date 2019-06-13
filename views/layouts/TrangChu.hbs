@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Basic Page Needs =====================================-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
 
   <!-- Site Title- -->
   <title>{{title}}</title>
 
 
-   {{#each style}}
-    <link rel="stylesheet" type="text/css" href="/css/{{this}}">
+  {{#each style}}
+  <link rel="stylesheet" type="text/css" href="/css/{{this}}">
   {{/each}}
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -19,19 +20,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   {{{_sections.css}}}
+}
 
 </head>
+
+
 <body>
-      <!-- BEGIN: logo -->
-  <div  class = "logo">
+  <!-- BEGIN: logo -->
+  <div class="logo">
     <div class="container">
-    <a href="/">
-      <img class="logo" src="/img/{{logo}}" alt="logo">
-    </a>
+      <a href="/">
+        <img class="logo" src="/img/{{logo}}" alt="logo">
+      </a>
     </div>
   </div>
   <!-- END: logo -->
-<!-- BEGIN:navbar menu -->
+  <!-- BEGIN:navbar menu -->
   <div class="menu">
     <nav class="navbar navbar-default sticky-top" role="navigation">
       <div class="container">
@@ -60,18 +64,39 @@
                     {{/each}}
                   </ul>
                 </li>
-                {{/each}}               
+                {{/each}}
               </ul>
             </div>
 
             <div class="right-menu">
               <ul class="nav navbar-nav navbar-justified">
                 <!-- icon login  -->
+                
+                {{#if isAuthenticated}}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Hi, <b>{{username}}</b>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/account/profile">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
+                      <i class="fa fa-sign-out" aria-hidden="true"></i>
+                      Sign Out
+                    </a>
+                  </div>
+                </li>
+                {{else}}
                 <li class="login_icon">
                   <a href="#" data-toggle="modal" data-target="#loginModal">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                   </a>
                 </li>
+                {{/if}}
                 <!-- icon search  -->
                 <li class="search_ hidden-xs hidden-sm">
                   <a href="#" class="color_fff " id="toggle-search">
@@ -82,7 +107,8 @@
                 <div class="div_search sr_none" style="height: 60px;margin-top: 1px">
                   <form method="get" action="#" class="formsearch hidden-xs hidden-sm" id="search-form">
                     <div class="search_fm">
-                      <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm" value="">
+                      <input type="search" class="form-control" id="ip_search" name="key" placeholder="Tìm kiếm"
+                        value="">
                       <button type="submit" class="btn btn-primary"><i class="fa fa-search"
                           aria-hidden="true"></i></button>
                     </div>
@@ -96,11 +122,11 @@
       </div>
     </nav>
   </div>
-    <!-- END:navbar menu -->
+  <!-- END:navbar menu -->
 
-    {{>register}}
+  {{>register}}
 
-    {{{body}}}
+  {{{body}}}
 
   <!--  BEGIN: THÔNG TIN LIÊN HỆ -->
   <footer style="position: relative;">
@@ -112,14 +138,20 @@
             Tổng biên tập: <strong>NGUYỄN ANH TUẤN</strong><br>
             Phó tổng biên tập phụ trách nội dung: <strong>TRẦN THỊ HỒNG THẮM</strong><br>
             Cơ quan chủ quản: Hội Làm vườn Việt Nam (VACVINA)<br>
-            Giấy phép hoạt động báo điện tử số <b>294/GP-BTTTT</b> do Bộ trưởng Bộ Thông tin và Truyền thông cấp ngày 23/6/2017 - ISSN 1859-2456.         
+            Giấy phép hoạt động báo điện tử số <b>294/GP-BTTTT</b> do Bộ trưởng Bộ Thông tin và Truyền thông cấp ngày
+            23/6/2017 - ISSN 1859-2456.
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <address class="text-right mb0">
-              <div class="hidden-xs"><a href="#"><img src="/img/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a></div>
-              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> -  <a href="#">toasoanTh16News@gmail.vn</a><br>
-              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
-              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM 
+              <div class="hidden-xs"><a href="#"><img src="/img/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a>
+              </div>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i
+                  class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> - <a
+                href="#">toasoanTh16News@gmail.vn</a><br>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i
+                  class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
+              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i
+                  class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM
             </address>
           </div>
         </div>
@@ -135,16 +167,23 @@
 
   <div id="backtotop" title="Lên đầu trang"><i class="fa fa-angle-double-up"></i></div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-    {{#each js}}
-      <script type="text/javascript" src="/js/{{this}}"></script>
-    {{/each}}
-    {{{_sections.js}}}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  {{#each js}}
+  <script type="text/javascript" src="/js/{{this}}"></script>
+  {{/each}}
+  {{{_sections.js}}}
 </body>
+
 </html>
