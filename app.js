@@ -19,9 +19,10 @@ require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
 
-// app.use(require('./middlewares/locals.mdw'));
+app.use(require('./middlewares/general.mdw'));
 
 app.use(express.static(path.join(__dirname, '/public')));
+
 
 dateFormat.i18n = {
     dayNames: [
@@ -44,6 +45,9 @@ app.engine('.hbs', exphbs({
         DateFormat: val =>{
             return dateFormat(val,'dddd, dd/mm/yyyy');
         },
+        DateCmtFormat: val =>{
+            return dateFormat(val,'dd/mm/yyyy');
+        },
         section: hbs_sections()
     },
     
@@ -56,18 +60,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
  
 app.get('/', function (req, res) {
 
-    var p1 = homeModel.getNewsHot();
     var p2 = homeModel.getLatestNews();
     var p3 = homeModel.getTop10Cat();
     var p4 = homeModel.getNewsTop10Cat();
     var p5 = homeModel.getNewsInWeek();
-    var p6 = homeModel.getAllCat();
 
-    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
+    Promise.all([p2, p3, p4, p5]).then(([rows2, rows3, rows4, rows5]) => {
 
         var latestNews1 = [rows2[0], rows2[1]];
         var latestNews2 = [];
-        var menu = [];
         
         for(i = 2; i <= 10; i++)
         {
@@ -105,30 +106,17 @@ app.get('/', function (req, res) {
         var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
         for(i = 1; i < 5; i++)
         {
+            if(rows5[i])
             newsHotWeek2.push(rows5[i]);
-        }
-
-        for(i = 0; i < rows6.length; i++)
-        {
-            if(rows6[i].Parent_ID === null)
-            {
-                var child = [];
-                for(j = 0; j < rows6.length; j++)
-                {
-                    if(rows6[j].Parent_ID === rows6[i].CatID)
-                    {
-                    child.push(rows6[j]);
-                    }
-                }
-                menu.push({parent: rows6[i], childs : child})
-            }
         }
         
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
-            newsHot : rows1,
-            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, menu,
+            newsHot : res.newsHot,
+            categories : res.categories,
+            menu: res.menu,
+            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, 
             style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
             js: ['jQuery.js', 'js.js', 'login-register.js'],
             logo: 'logo.png'
