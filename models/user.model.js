@@ -6,12 +6,19 @@ module.exports = {
   },
 
   single: id => {
-    return db.load(`select * from users where f_ID = ${id}`);
+    return db.load(`select * from users where User_Cat_ID = ${id}`);
   },
 
   singleByUserName: userName => {
-    return db.load(`select * from account where Username = '${userName}'`);
+    return db.load(`select * from user where Username = '${userName}'`);
   },
+
+  // singleByUserName: userName => {
+  //   return db.load(`select * 
+  //                   from account acc, subcriber sub
+  //                   where acc.Username = '${userName}', 
+  //                         acc.User_Cat_ID = sub.Sub_ID`);
+  // },
 
   add: entitySub => {
     return db.add('subcriber', entitySub);

@@ -77,7 +77,6 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
     var p2 = AdminModel.getAllParentCat();
 
     Promise.all([p, p2]).then(([rows, rows2]) => {
-        console.log(rows[0]);
         if (rows.length > 0) {
             if (rows[0].Parent_ID == null) {
                 res.render('vwAdmin/QuanLyChuyenMuc/edit', {
@@ -130,7 +129,6 @@ router.post('/quanlychuyenmuc/update', (req, res) => {
 router.get('/quanlychuyenmuc/add', (req, res) => {
     var p = AdminModel.getAllParentCat();
     p.then(rows => {
-        console.log(rows);
         res.render('vwAdmin/QuanLyChuyenMuc/add', {
             parentCat: rows,
             layout: 'adminQuanLyChuyenMuc.hbs',
@@ -160,7 +158,6 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
     var p2 = AdminModel.getAllParentCat();
 
     Promise.all([p, p2]).then(([rows, rows2]) => {
-        console.log(rows[0]);
         if (rows.length > 0) {
             if (rows[0].Parent_ID == null) {
                 res.render('vwAdmin/QuanLyChuyenMuc/restore', {
@@ -230,7 +227,6 @@ router.get('/quanlynhan/add', (req, res) => {
 router.post('/quanlynhan/add', (req, res) => {
     AdminModel.add(req.body)
         .then(id => {
-            console.log(id);
             res.render('vwAdmin/QuanLyNhan/add', {
                 layout: 'adminQuanLyNhan.hbs',
                 title: 'Thêm nhãn',
@@ -350,5 +346,109 @@ router.get('/quanlynguoidung', (req, res) => {
     });
 }
 )
+router.get('/quanlynguoidung/add', (req, res) => {
 
+    res.render('vwAdmin/QuanLyNguoiDung/add', {
+        layout: 'adminQuanLyNguoiDung.hbs',
+        title: 'Thêm người dùng',
+    });
+
+})
+
+router.post('/quanlynguoidung/add', (req, res) => {
+    AdminModel.add(req.body)
+        .then(id => {
+            res.render('vwAdmin/QuanLyNguoiDung/add', {
+                layout: 'adminQuanLyNguoiDung.hbs',
+                title: 'Thêm người dùng',
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+router.get('/quanlynguoidung/edit/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.singleUser(id);
+
+    Promise.all([p]).then(([rows]) => {
+        if (rows.length > 0) {
+            res.render('vwAdmin/QuanLyNguoiDung/edit', {
+                user: rows[0],
+                error: false,
+                layout: 'adminQuanLyNguoiDung.hbs',
+                title: 'Quản lý người dùng',
+                logo: 'logo.png',
+                listCatUser:['Admin','Subcriber','Editor','Writter'],
+            });
+        }
+        else {
+            res.render('vwAdmin/QuanLyNguoiDung/edit', {
+                user: rows[0],
+                error: true,
+                layout: 'adminQuanLyNguoiDung.hbs',
+                title: 'Quản lý người dùng',
+                logo: 'logo.png',
+                listCatUser:['Subcriber','Admin','Editor','Writter'],
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlynguoidung/update', (req, res) => {
+    AdminModel.updateUser(req.body).then(n => {
+        console.log(req.body);
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynguoidung/deleted', (req, res) => {
+    var p = AdminModel.getAllUserDeleted();
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyNguoiDung/deleted.hbs', {
+            user: rows,
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Danh sách người dùng đã xóa',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.get('/quanlynguoidung/delete/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        User_ID: id,
+        Deleted: 1
+    }
+    AdminModel.updateUser(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynguoidung/restore/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        User_ID: id,
+        Deleted: 0
+    }
+    AdminModel.updateUser(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung/deleted');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
 module.exports = router;

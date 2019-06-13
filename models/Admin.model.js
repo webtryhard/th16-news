@@ -40,13 +40,22 @@ module.exports = {
 
     //GET USER
     getAllUser: () => {
-        return db.load(`SELECT ac.*, uc.User_Cat_Name
-        FROM account ac JOIN user_catogories uc ON ac.User_Cat_ID=uc.User_Cat_ID
-        WHERE ac.Deleted!=1`)
+        return db.load(`SELECT *
+        FROM user us
+        WHERE us.Deleted!=1`)
     },
     getAllUserDeleted: () => {
-        return db.load(`SELECT ac.*, uc.User_Cat_Name
-        FROM account ac JOIN user_catogories uc ON ac.User_Cat_ID=uc.User_Cat_ID
-        WHERE ac.Deleted=1`)
-    }
+        return db.load(`SELECT *
+        FROM user us
+        WHERE us.Deleted=1`)
+    },
+    singleUser: id => {
+        return db.load(`SELECT * FROM user WHERE user.User_ID= ${id}`);
+    },
+    add: entity => {
+        return db.add('user', entity);
+    },
+    updateUser: entity => {
+        return db.update('user', 'User_ID', entity);
+    },
 };

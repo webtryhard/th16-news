@@ -29,7 +29,7 @@
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
                                                     style="width: 407px;">Tên nhãn</th>
-                                                <th data-orderable="false">
+                                                <th data-orderable="false" style="text-align: center">
                                                     <a class="btn btn-outline-success" href="quanlynhan/add"
                                                         role="button">
                                                         <i class="fa fa-plus" aria-hidden="true">
@@ -44,15 +44,15 @@
                                             <tr>
                                                 <th scope="row">{{TagID}}</th>
                                                 <td>{{Tag_Name}}</td>
-                                                <td>
+                                                <td style="text-align: center">
                                                     <a class="btn btn-primary btn-sm" href="quanlynhan/edit/{{TagID}}"
-                                                        role="button">
+                                                        role="button" title="Chỉnh sửa">
                                                         <i class="fa fa-pencil" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="quanlynhan/delete/{{TagID}}" role="button">
+                                                        href="quanlynhan/delete/{{TagID}}" role="button" title="Xóa">
                                                         <i class="fa fa-trash" aria-hidden="true">
                                                         </i>
                                                     </a>
