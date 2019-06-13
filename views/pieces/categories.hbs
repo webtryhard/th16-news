@@ -1,0 +1,17 @@
+<!-- BEGIN: Tin nhiều người đọc -->
+            <div class="model_right">
+              <div class="banner hidden righthome1" fix=""></div>
+              <div class="panel panel-info">
+                <div class="panel-heading panel-item text-center font-bold">
+                  <a title="Tin nhiều người đọc">Chuyên mục</a>
+                </div>
+                <div class="list-group list-group-flush">
+                    {{#each categories}}
+                    <a href="/list/{{CatID}}" class="list-group-item list-group-item-action">{{CatName}}
+                        <span class="pull-right">{{num_news}}</span>
+                    </a>
+                    {{/each}}                    
+                </div>
+              </div>
+            </div>
+            <!-- END: Tin nhiều người đọc -->

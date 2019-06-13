@@ -5,7 +5,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="display: flex;justify-content: space-between;">
-                        <strong class="card-title">Danh sách nhãn đã bị xóa</strong>
+                        <strong class="card-title">Danh sách người dùng</strong>
+                        <a class="btn btn-outline-danger" href="/admin/quanlynguoidung/deleted" role="button">
+                            <i class="fa fa-minus-square"> Những mục đã xóa</i>
+                        </a>
                     </div>
                     <div class="card-body">
                         <div id="bootstrap-data-table-export_wrapper"
@@ -21,13 +24,28 @@
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
-                                                    style="width: 247px;">Mã số</th>
+                                                   style="width: 100px;">Mã số</th>
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
-                                                    style="width: 407px;">Tên nhãn</th>
-                                                <th data-orderable="false">
-                                                    <a class="btn btn-primary" href="/admin/quanlynhan"
+                                                    style="width: 407px;">Username</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 407px;">Tên</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 370px;">Số điện thoại</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Office: activate to sort column ascending"
+                                                    style="width: 183px;">Loại User</th>
+                                                <th data-orderable="false" style="width: 183px;">
+                                                    Avatar
+                                                </th>
+                                               <th data-orderable="false">
+                                                    <a class="btn btn-primary" href="/admin/quanlynguoidung"
                                                         role="button">
                                                         <i class="fa fa-backward" aria-hidden="true"></i>
                                                         Quay lại
@@ -36,13 +54,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{#each this.tag}}
+                                            {{#each this.user}}
                                             <tr>
-                                                <th scope="row">{{TagID}}</th>
-                                                <td>{{Tag_Name}}</td>
+                                                <th scope="row">{{User_ID}}</th>
+                                                <td>{{Username}}</td>
+                                                <td>{{Name}}</td>
+                                                <td>{{Phone}}</td>
+                                                <td>{{User_Cat_Name}}</td>
+                                                <td>
+                                                    <img src={{Avatar}} style="max-width:50px;max-height:50px"
+                                                        class="avatar img-circle" />
+                                                </td>
                                                 <td style="text-align: center">
                                                     <a class="btn btn-success btn-sm"
-                                                        href="/admin/quanlynhan/restore/{{TagID}}" role="button" title="Khôi phục">
+                                                        href="/admin/quanlynguoidung/restore/{{User_ID}}" role="button" title="Khôi phục">
                                                         <i class="fa fa-plus-circle" aria-hidden="true">
                                                         </i>
                                                     </a>
@@ -57,6 +82,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div><!-- .animated -->
 </div>
