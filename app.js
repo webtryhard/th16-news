@@ -148,21 +148,6 @@ app.get('/', function (req, res) {
             newsHotWeek2.push(rows5[i]);
         }
 
-        for(i = 0; i < rows6.length; i++)
-        {
-            if(rows6[i].Parent_ID === null)
-            {
-                var child = [];
-                for(j = 0; j < rows6.length; j++)
-                {
-                    if(rows6[j].Parent_ID === rows6[i].CatID)
-                    {
-                    child.push(rows6[j]);
-                    }
-                }
-                menu.push({parent: rows6[i], childs : child})
-            }
-        }
         
         res.render('home', {
             layout: 'TrangChu.hbs',
@@ -186,6 +171,9 @@ app.use('/Admin', Admin);
 
 var account = require('./controllers/admin/account.controller');
 app.use('/account', account);
+
+var editor = require('./controllers/editor.controller');
+app.use('/editor', editor);
 
 app.listen(port);
 console.log('http://localhost:' + port);

@@ -3,7 +3,7 @@ var db = require('../utils/db');
 module.exports = {
 
     getAllNews: () => {
-        return db.load('select * from news where Deleted = 0 and State_ID = 4 and News_Category = 0');
+        return db.load('select * from news where Deleted = 0 and State_ID = 4');
     },
 
     getSingleNews: News_ID => {
