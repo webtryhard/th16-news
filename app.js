@@ -1,9 +1,9 @@
 var express = require('express');
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 var hbs_sections = require('express-handlebars-sections');
 var dateFormat = require('dateformat');
 var homeModel = require('./models/home.model');
-var path=require('path');
+var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -14,15 +14,19 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
+app.use(require('./middlewares/checklogin.middleware'));
 
 
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+var authMiddeware = require('./middlewares/checkauth.middleware');
+//var checklogin = require('./middlewares/checklogin.middleware');
 
-// app.use(require('./middlewares/locals.mdw'));
+app.use(require('./middlewares/general.mdw'));
 
 app.use(express.static(path.join(__dirname, '/public')));
+
 
 dateFormat.i18n = {
     dayNames: [
@@ -34,102 +38,181 @@ dateFormat.i18n = {
 };
 
 
-app.engine('.hbs', exphbs({
+const hbs = exphbs.create({
     extname: '.hbs',
     layoutsDir: 'views/layouts',
     partialsDir: 'views/pieces',
-    helpers:{
-        TimeFormat: val =>{
-            return dateFormat(val,'HH:MM');
+    helpers: {
+        TimeFormat: val => {
+            return dateFormat(val, 'HH:MM');
+<<<<<<< HEAD
         },
-        DateFormat: val =>{
-            return dateFormat(val,'dddd, dd/mm/yyyy');
+        DateFormat: val => {
+            return dateFormat(val, 'dddd, dd/mm/yyyy');
+=======
         },
-        section: hbs_sections()
+        DateFormat: val => {
+            return dateFormat(val, 'dddd, dd/mm/yyyy');
+        },
+        DateCmtFormat: val =>{
+            return dateFormat(val,'dd/mm/yyyy');
+>>>>>>> master
+        },
+        section: hbs_sections(),
+
+        compare: function (lvalue, operator, rvalue, options) {
+
+            var operators, result;
+            
+            if (arguments.length < 3) {
+                throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+            }
+            
+            if (options === undefined) {
+                options = rvalue;
+                rvalue = operator;
+                operator = "===";
+            }
+            
+            operators = {
+                '==': function (l, r) { return l == r; },
+                '===': function (l, r) { return l === r; },
+                '!=': function (l, r) { return l != r; },
+                '!==': function (l, r) { return l !== r; },
+                '<': function (l, r) { return l < r; },
+                '>': function (l, r) { return l > r; },
+                '<=': function (l, r) { return l <= r; },
+                '>=': function (l, r) { return l >= r; },
+                'typeof': function (l, r) { return typeof l == r; }
+            };
+            
+            if (!operators[operator]) {
+                throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
+            }
+            
+            result = operators[operator](lvalue, rvalue);
+            
+            if (result) {
+                return options.fn(this);
+            } else {
+                return options.inverse(this);
+            }
+        
+        }
     },
-    
+<<<<<<< HEAD
+
 }));
+=======
+})
+
+app.engine('.hbs', hbs.engine);
+>>>>>>> master
 
 
 app.set('view engine', '.hbs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
- 
-app.get('/', function (req, res) {
 
-    var p1 = homeModel.getNewsHot();
+<<<<<<< HEAD
+app.get('/', function(req, res) {
+=======
+app.get('/', function (req, res) {
+>>>>>>> master
+
     var p2 = homeModel.getLatestNews();
     var p3 = homeModel.getTop10Cat();
     var p4 = homeModel.getNewsTop10Cat();
     var p5 = homeModel.getNewsInWeek();
-    var p6 = homeModel.getAllCat();
 
-    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
+    Promise.all([p2, p3, p4, p5]).then(([rows2, rows3, rows4, rows5]) => {
 
         var latestNews1 = [rows2[0], rows2[1]];
         var latestNews2 = [];
+<<<<<<< HEAD
         var menu = [];
+
+        for (i = 2; i <= 10; i++) {
+            if (rows2[i])
+                latestNews2.push(rows2[i]);
+=======
         
         for(i = 2; i <= 10; i++)
         {
             if(rows2[i])
             latestNews2.push(rows2[i]);
+>>>>>>> master
         }
-        
+
         var topCat = [];
-        
-        for(i = 0; i < 10; i+=2)
-        {
+
+        for (i = 0; i < 10; i += 2) {
             var obj = [];
             obj.push(rows3[i]);
             obj.push(rows3[i + 1])
             var new1 = [];
             var new2 = [];
-            for(j = 0; j < rows4.length; j++)
-            {
-                if(rows4[j].CatID === rows3[i].CatID)
-                {
+            for (j = 0; j < rows4.length; j++) {
+                if (rows4[j].CatID === rows3[i].CatID) {
                     new1.push(rows4[j]);
                 }
 
-                if(rows4[j].CatID === rows3[i + 1].CatID)
-                {
+                if (rows4[j].CatID === rows3[i + 1].CatID) {
                     new2.push(rows4[j]);
                 }
             }
-            
+
             obj.push(new1);
             obj.push(new2);
             topCat.push(obj);
         }
 
-        var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
-        for(i = 1; i < 5; i++)
-        {
+<<<<<<< HEAD
+        var newsHotWeek1 = rows5[0],
+            newsHotWeek2 = [];
+        for (i = 1; i < 5; i++) {
             newsHotWeek2.push(rows5[i]);
         }
 
-        for(i = 0; i < rows6.length; i++)
-        {
-            if(rows6[i].Parent_ID === null)
-            {
+        for (i = 0; i < rows6.length; i++) {
+            if (rows6[i].Parent_ID === null) {
                 var child = [];
-                for(j = 0; j < rows6.length; j++)
-                {
-                    if(rows6[j].Parent_ID === rows6[i].CatID)
-                    {
-                    child.push(rows6[j]);
+                for (j = 0; j < rows6.length; j++) {
+                    if (rows6[j].Parent_ID === rows6[i].CatID) {
+                        child.push(rows6[j]);
                     }
                 }
-                menu.push({parent: rows6[i], childs : child})
+                menu.push({ parent: rows6[i], childs: child })
             }
         }
+
+        res.render('home', {
+            layout: 'TrangChu.hbs',
+            title: 'Trang chủ',
+            newsHot: rows1,
+            latestNews1,
+            latestNews2,
+            topCat,
+            newsHotWeek1,
+            newsHotWeek2,
+            menu,
+=======
+        var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
+        for(i = 1; i < 5; i++)
+        {
+            if(rows5[i])
+            newsHotWeek2.push(rows5[i]);
+        }
+
         
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
-            newsHot : rows1,
-            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, menu,
+            newsHot : res.newsHot,
+            categories : res.categories,
+            menu: res.menu,
+            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, 
+>>>>>>> master
             style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
             js: ['jQuery.js', 'js.js', 'login-register.js'],
             logo: 'logo.png'
@@ -137,15 +220,28 @@ app.get('/', function (req, res) {
     })
 });
 
-var list=require('./controllers/list.controller');
+var list = require('./controllers/list.controller');
 app.use('/list', list);
 
-var Admin=require('./controllers/admin.controller');
+var Admin = require('./controllers/admin.controller');
 app.use('/Admin', Admin);
+//app.use('/Admin', authMiddeware.requireAuth, Admin);
 
-var account=require('./controllers/admin/account.controller');
+// var login = require('./controllers/Admin.controller');
+// app.use('/Amin', checklogin, login);
+
+var account = require('./controllers/admin/account.controller');
 app.use('/account', account);
+
+<<<<<<< HEAD
+//var test = require('./views/pieces/register')
+=======
+var editor = require('./controllers/editor.controller');
+app.use('/editor', editor);
 
 app.listen(port);
 console.log('http://localhost:' + port);
+>>>>>>> master
 
+app.listen(port);
+console.log('http://localhost:' + port);

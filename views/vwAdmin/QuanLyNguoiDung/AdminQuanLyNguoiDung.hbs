@@ -24,16 +24,27 @@
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
-                                                    style="width: 247px;">Mã số</th>
+                                                    style="width: 100px;">Mã số</th>
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
                                                     style="width: 407px;">Username</th>
-                                                 <th class="sorting" tabindex="0"
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 407px;">Tên</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 370px;">Số điện thoại</th>
+                                                <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Office: activate to sort column ascending"
-                                                    style="width: 183px;">Quyền</th>
-                                                <th data-orderable="false">
+                                                    style="width: 183px;">Loại User</th>
+                                                <th data-orderable="false" style="width: 183px;">
+                                                    Avatar
+                                                </th>
+                                                <th data-orderable="false" style="text-align: center">
                                                     <a class="btn btn-outline-success" href="quanlynguoidung/add"
                                                         role="button">
                                                         <i class="fa fa-plus" aria-hidden="true">
@@ -46,21 +57,45 @@
                                         <tbody>
                                             {{#each this.user}}
                                             <tr>
-                                                <th scope="row">{{Account_ID}}</th>
+                                                <th scope="row">{{User_ID}}</th>
                                                 <td>{{Username}}</td>
+                                                <td>{{Name}}</td>
+                                                <td>{{Phone}}</td>
                                                 <td>{{User_Cat_Name}}</td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{ID}}"
-                                                        role="button">
+                                                    <img src={{Avatar}} style="max-width:50px;max-height:50px"
+                                                        class="avatar img-circle" />
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{User_ID}}"
+                                                        title="Chỉnh sửa" role="button">
                                                         <i class="fa fa-pencil" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="quanlynguoidung/delete/{{ID}}" role="button">
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Xóa">
                                                         <i class="fa fa-trash" aria-hidden="true">
                                                         </i>
                                                     </a>
+
+                                                    {{!-- Nếu người dùng là độc giả (Subcriber) --}}
+                                                    {{#compare User_Cat_Name "===" "Subcriber"}}
+                                                    <a class="btn btn-warning btn-sm"
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Gia hạn tài khoản">
+                                                        <i class="fa fa-level-up" aria-hidden="true">
+                                                        </i>
+                                                    </a>
+                                                    {{/compare}}
+
+                                                    {{!-- Nếu người dùng là biên tập viên (Editor) --}}
+                                                     {{#compare User_Cat_Name "===" "Editor"}}
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Phân công chuyên mục">
+                                                        <i class="fa fa-magic" aria-hidden="true">
+                                                        </i>
+                                                    </a>
+                                                    {{/compare}}
                                                 </td>
                                             </tr>
                                             {{/each}}

@@ -13,13 +13,6 @@ module.exports = {
     return db.load(`select * from user where Username = '${userName}'`);
   },
 
-  // singleByUserName: userName => {
-  //   return db.load(`select * 
-  //                   from account acc, subcriber sub
-  //                   where acc.Username = '${userName}', 
-  //                         acc.User_Cat_ID = sub.Sub_ID`);
-  // },
-
   add: entitySub => {
     return db.add('subcriber', entitySub);
   },

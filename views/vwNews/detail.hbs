@@ -70,46 +70,22 @@
         <div class="tab-content bg-white pt10">
         <div role="tabpanel" class="tab-pane fade in active" id="comment_facebook">
             <div class="panel panel-success">
-            <ul class="commentList">
-                <li>
-                <div class="commenterImage">
-                    <img src="https://i.pinimg.com/736x/84/2d/8b/842d8b89b19eb5bb043fff71861a1282.jpg" height="65px;" />
-                </div>
-                <div class="commentText">
-                    <div class="commentName">
-                    <h5>Trạng Nguyên</h5>
-                    <h6>29/04/2019</h6>
+                <ul class="commentList">
+                    {{#each comment}}
+                    <li>
+                    <div class="commenterImage">
+                        <img src="{{Avatar}}" height="65px;" />
                     </div>
-                    <p class="">Bài viết chi tiết.</p>
-                </div>
-                </li>
-                <li>
-                <div class="commenterImage">
-                    <img src="https://i.pinimg.com/236x/07/2c/a4/072ca41076bacd4b2fd76d36a77cd821.jpg" height="65px;" />
-                </div>
-                <div class="commentText">
-                    <div class="commentName">
-                    <h5>Vân Anh</h5>
-                    <h6>30/04/2019</h6>
+                    <div class="commentText">
+                        <div class="commentName">
+                        <h5>{{Username}}</h5>
+                        <h6>{{DateCmtFormat Time}}</h6>
+                        </div>
+                        <p class="">{{Content}}</p>
                     </div>
-                    <p class="">Bài viết rất hay.</p>
-                </div>
-                </li>
-                <li>
-                <div class="commenterImage">
-                    <img
-                    src="http://sohanews.sohacdn.com/thumb_w/660/2017/photo-1-1508055238841-117-0-514-640-crop-1508055269606.jpg"
-                    height="65px;" />
-                </div>
-                <div class="commentText">
-                    <div class="commentName">
-                    <h5>Tuấn Ngọc</h5>
-                    <h6>02/05/2019</h6>
-                    </div>
-                    <p class="">Thông tin hữu ích.</p>
-                </div>
-                </li>
-            </ul>
+                    </li>
+                    {{/each}}
+                </ul>
             </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="comment">
@@ -124,10 +100,6 @@
                 <div class="panel-body">
                     <textarea class="txtComment form-control required_c" id="c_content_27494" name="c_content" rows="5"
                     placeholder="Nội dung"></textarea>
-                    <br><input type="text" class="form-control required_c" placeholder="Họ tên" name="c_name"
-                    id="c_name_27494" style="display: none;"><br>
-                    <input type="email" class="form-control required_c" placeholder="Email" name="c_email"
-                    id="c_email_27494" style="display: none;">
                     <script>
                     $(document).ready(function () {
                         $("#c_name_27494,#c_email_27494").slideUp();
@@ -220,41 +192,12 @@
     </div>
     <!-- END -->
     <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3-right ">
-      <div class="model_right">
         <!-- BEGIN: Tin nhiều người đọc -->
-        <div class="model_right">
-          <div class="banner hidden righthome1" fix=""></div>
-          <div class="panel panel-info">
-            <div class="panel-heading panel-item text-center font-bold">
-              <a title="Tin nhiều người đọc">Tin nhiều người đọc</a>
-            </div>
-            <div class="panel-body">
-              {{#each this.newsHot}}
-              <div class="media bb-dashed mt0 pb7 mb7">
-                <a class="pull-left fix-image-11" href="/list/detail/{{News_ID}}" title="{{News_Name}}">
-                  <img src="{{Image_Avatar}}" alt="{{News_Name}}">
-                </a>
-    
-                <div class="media-body">
-                  <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
-                    <h4 class="fs-1 mall0" style="height: 50px">{{News_Name}}</h4>
-                  </a>
-                  <small class="meta text-muted">
-                    <span>
-                      <time class="friendly" datetime={{Time}}>
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
-                        <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
-                      </time>
-                    </span></small>
-                </div>
-              </div>
-              {{/each}}
-            </div>
-          </div>
-        </div>
-      </div>
+        {{>newsHot}}
+        <!-- END: Tin nhiều người đọc -->
+        {{>categories}}
     </div>
-    <!-- END: Tin nhiều người đọc -->
+    
 </section>
 <!-- END -->
 </main>

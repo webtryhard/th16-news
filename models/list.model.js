@@ -3,7 +3,7 @@ var db = require('../utils/db');
 module.exports = {
 
     getAllNews: () => {
-        return db.load('select * from news where Deleted = 0 and State_ID = 4 and News_Category = 0');
+        return db.load('select * from news where Deleted = 0 and State_ID = 4');
     },
 
     getSingleNews: News_ID => {
@@ -27,10 +27,6 @@ module.exports = {
         return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name FROM tags T,tags_news TN, (SELECT News_ID FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC LIMIT ${offset},${limit}) as N WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
     },
 
-    getNewsHot: () => {
-        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Views DESC LIMIT 0,10`);
-    },
-
     getCatAndChillByCatID: CatID => {
         return db.load(`select * from categories where (CatID = ${CatID} or Parent_ID = ${CatID}) and Deleted = 0`);
     },
@@ -50,5 +46,9 @@ module.exports = {
     getAllCat: ()=>{
         return db.load(`SELECT * FROM categories where Deleted = 0`);
     },
+
+    getComment: News_ID => {
+        return db.load(`SELECT m.*, u.Username, u.Avatar FROM comment m, user u WHERE m.News_ID = ${News_ID} and m.User_ID = u.User_ID order by time desc`);
+    }
 
 };

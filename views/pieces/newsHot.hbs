@@ -1,0 +1,32 @@
+<!-- BEGIN: Tin nhiều người đọc -->
+            <div class="model_right">
+              <div class="banner hidden righthome1" fix=""></div>
+              <div class="panel panel-info">
+                <div class="panel-heading panel-item text-center font-bold">
+                  <a title="Tin nhiều người đọc">Tin nhiều người đọc</a>
+                </div>
+                <div class="panel-body">
+                  {{#each this.newsHot}}
+                  <div class="media bb-dashed mt0 pb7 mb7">
+                    <a class="pull-left fix-image-11" href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                      <img src="{{Image_Avatar}}" alt="{{News_Name}}">
+                    </a>
+        
+                    <div class="media-body">
+                      <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                        <h4 class="fs-1 mall0" style="height: 50px">{{News_Name}}</h4>
+                      </a>
+                      <small class="meta text-muted">
+                        <span>
+                          <time class="friendly" datetime={{Time}}>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                            <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                          </time>
+                        </span></small>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+            <!-- END: Tin nhiều người đọc -->
