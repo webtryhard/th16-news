@@ -54,7 +54,8 @@ const hbs = exphbs.create({
         },
         section: hbs_sections(),
 
-        compare: function(lvalue, operator, rvalue, options) {
+        //So sánh giá trị
+        compare: function (lvalue, operator, rvalue, options) {
 
             var operators, result;
 
@@ -91,8 +92,19 @@ const hbs = exphbs.create({
             } else {
                 return options.inverse(this);
             }
+        
+        },
+        
+        getDate: function(){
+            return new Date();
+        },
 
-        }
+        //Tính ngày hết hạn
+        tinhNgayHetHan: function(date){
+            var ms = date.getTime() + 7*86400000;
+            var tomorrow = new Date(ms);
+            return tomorrow;
+        },
     },
 })
 
@@ -149,8 +161,7 @@ app.get('/', function(req, res) {
             if (rows5[i])
                 newsHotWeek2.push(rows5[i]);
         }
-
-
+        
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',

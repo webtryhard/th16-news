@@ -5,7 +5,8 @@
                 <form method="POST" action="/admin/quanlynguoidung/update">
                     <div class="form-group">
                         <label for="txtName">Mã số</label>
-                        <input readonly type="text" class="form-control" placeholder={{this.user.User_ID}} name="User_ID" value="{{this.user.User_ID}}">
+                        <input readonly type="text" class="form-control" placeholder={{this.user.User_ID}}
+                            name="User_ID" value="{{this.user.User_ID}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Username</label>
@@ -25,9 +26,9 @@
                     <div class="form-group">
                         <label for="txtCatParentName">Loại người dùng</label>
                         <select class="form-control" name="User_Cat_Name">
-                           {{#each listCatUser}}
-                               <option value="{{this}}">{{this}}</option>
-                           {{/each}}
+                            {{#each listCatUser}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
                         </select>
                     </div>
                     <div class="form-group">
@@ -42,7 +43,8 @@
                     </div>
                     <div class="form-group">
                         <label for="txtName">Email</label>
-                        <input type="text" class="form-control" id="txtName" name="Email" autofocus placeholder="{{this.user.Email}}">
+                        <input type="text" class="form-control" id="txtName" name="Email" autofocus
+                            placeholder="{{this.user.Email}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Địa chỉ</label>
@@ -54,14 +56,16 @@
                         <input type="date" class="form-control" id="txtName" name="Day_Issuance" autofocus
                             placeholder="{{this.user.Day_Issuance}}">
                     </div>
-                    <a class="btn btn-primary" href="/admin/quanlynguoidung" role="button">
-                        <i class="fa fa-backward" aria-hidden="true"></i>
-                        Quay lại danh sách
-                    </a>
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                        Lưu lại
-                    </button>
+                    <div class="form-group">
+                        <a class="btn btn-primary" href="/admin/quanlynguoidung" role="button">
+                            <i class="fa fa-backward" aria-hidden="true"></i>
+                            Quay lại danh sách
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Lưu lại
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,0 +1,116 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="txtName">Mã số</label>
+                        <input readonly type="text" class="form-control" placeholder="{{this.user.User_ID}}"
+                            name="User_ID" value="{{this.user.User_ID}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Username</label>
+                        <input readonly type="text" class="form-control" id="txtName" name="Username" autofocus
+                            placeholder="{{this.user.Username}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Password</label>
+                        <input readonly type="text" class="form-control" id="txtName" name="Password" autofocus
+                            placeholder="{{this.user.Password}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Họ Tên</label>
+                        <input readonly type="text" class="form-control" id="txtName" name="Name" autofocus
+                            placeholder="{{this.user.Name}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Ngày đã đăng kí/gia hạn</label>
+                        <input readonly type="text" class="form-control" id="ngayGiaHan"
+                            value="{{DateCmtFormat this.user.NgayGiaHan}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Ngày hết hạn</label>
+                        <input readonly type="text" class="form-control" id="ngayHetHan"
+                            placeholder="{{DateCmtFormat (tinhNgayHetHan this.user.NgayGiaHan)}}" value="{{DateCmtFormat (tinhNgayHetHan this.user.NgayGiaHan)}}"
+                            name="NgayHetHan" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Chọn ngày gia hạn mới</label>
+                        <input required type="date" class="form-control" id="ngayGiaHan" name="NgayGiaHan"/>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-primary" href="/admin/quanlynguoidung" role="button">
+                            <i class="fa fa-backward" aria-hidden="true"></i>
+                            Quay lại danh sách
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Lưu lại
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div>
+
+{{!-- Modal xác nhận gia hạn tài khoản --}}
+<div class="modal fade" id="xacNhanGiaHan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận gia hạn tài khoản</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h6>Tài khoản sẽ được gia hạn trong 7 ngày</h6>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="txtName">Ngày bắt đầu gia hạn: </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                <button type="submit" class="btn btn-primary">Đồng ý</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal {
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .modal:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+        width: 450px !important;
+    }
+</style>
+<script>
+    function myFunction() {
+        var x = document.getElementById("ngayGiaHan").value;
+
+        var result = DateCmtFormat x;
+
+        document.getElementById(
+            "ngayGiaHanDaChon").innerHTML = result;
+    } 
+</script>
