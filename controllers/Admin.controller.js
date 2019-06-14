@@ -129,6 +129,7 @@ router.post('/quanlychuyenmuc/update', (req, res) => {
 router.get('/quanlychuyenmuc/add', (req, res) => {
     var p = AdminModel.getAllParentCat();
     p.then(rows => {
+        console.log("=================" + rows[0]);
         res.render('vwAdmin/QuanLyChuyenMuc/add', {
             parentCat: rows,
             layout: 'adminQuanLyChuyenMuc.hbs',
@@ -140,7 +141,20 @@ router.get('/quanlychuyenmuc/add', (req, res) => {
 })
 
 router.post('/quanlychuyenmuc/add', (req, res) => {
-    AdminModel.add(req.body)
+    var temp = req.body.Parent_ID;
+    var entity;
+    if (temp === "") {
+        entity = {
+            CatName: req.body.CatName,
+        }
+    }
+    else {
+        entity = {
+            CatName: req.body.CatName,
+            Parent_ID: temp
+        }
+    }
+    AdminModel.addCat(entity)
         .then(id => {
             res.render('vwAdmin/QuanLyChuyenMuc/add', {
                 layout: 'adminQuanLyChuyenMuc.hbs',
@@ -225,7 +239,7 @@ router.get('/quanlynhan/add', (req, res) => {
 })
 
 router.post('/quanlynhan/add', (req, res) => {
-    AdminModel.add(req.body)
+    AdminModel.addTag(req.body)
         .then(id => {
             res.render('vwAdmin/QuanLyNhan/add', {
                 layout: 'adminQuanLyNhan.hbs',
@@ -356,7 +370,7 @@ router.get('/quanlynguoidung/add', (req, res) => {
 })
 
 router.post('/quanlynguoidung/add', (req, res) => {
-    AdminModel.add(req.body)
+    AdminModel.addUser(req.body)
         .then(id => {
             res.render('vwAdmin/QuanLyNguoiDung/add', {
                 layout: 'adminQuanLyNguoiDung.hbs',
@@ -380,7 +394,7 @@ router.get('/quanlynguoidung/edit/:id', (req, res) => {
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Quản lý người dùng',
                 logo: 'logo.png',
-                listCatUser:['Admin','Subcriber','Editor','Writter'],
+                listCatUser: ['Admin', 'Subcriber', 'Editor', 'Writter'],
             });
         }
         else {
@@ -390,7 +404,7 @@ router.get('/quanlynguoidung/edit/:id', (req, res) => {
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Quản lý người dùng',
                 logo: 'logo.png',
-                listCatUser:['Subcriber','Admin','Editor','Writter'],
+                listCatUser: ['Subcriber', 'Admin', 'Editor', 'Writter'],
             });
         }
     }).catch(err => {
@@ -400,8 +414,33 @@ router.get('/quanlynguoidung/edit/:id', (req, res) => {
 })
 
 router.post('/quanlynguoidung/update', (req, res) => {
+    res.render('vwAdmin/QuanLyNguoiDung/edit', {
+        user: rows[0],
+        error: true,
+        layout: 'adminQuanLyNguoiDung.hbs',
+        title: 'Quản lý người dùng',
+        logo: 'logo.png',
+        listCatUser: ['Subcriber', 'Admin', 'Editor', 'Writter'],
+    });
+})
+
+router.get('/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.singleUser(id);
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyNguoiDung/giaHanTaiKhoan.hbs', {
+            user: rows[0],
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Gia hạn tài khoản độc giả',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+})
+
+router.post('/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
     AdminModel.updateUser(req.body).then(n => {
-        console.log(req.body);
         res.redirect('/admin/quanlynguoidung');
     }).catch(err => {
         console.log(err);
