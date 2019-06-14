@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   Promise.all([p1, p2, p3]).then(([rows1, rows2, rows3]) => {
     for(i = 0; i < rows3.length; i++)
         {
-            if(rows3[i].Parent_ID === null)
+            if(rows3[i].Parent_ID === null || rows3[i].Parent_ID === 0)
             {
                 var child = [];
                 for(j = 0; j < rows3.length; j++)
