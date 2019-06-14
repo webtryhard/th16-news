@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic Page Needs =====================================-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Site Title- -->
+    <title>{{title}}</title>
+
+    <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/vendors/flag-icon-css/css/flag-icon.min.css">
+
+    <link rel="stylesheet" href="/vendors/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+
+  {{#each style}}
+  <link rel="stylesheet" type="text/css" href="/css/{{this}}">
+  {{/each}}
+
+</head>
+<body>
+
+   {{{body}}}
+
+  <div id="my_popup">
+    <div class="my_popup_content"></div>
+  </div>
+  <div style="position: absolute; top: 0px;">
+  </div>
+
+  <div id="backtotop" title="Lên đầu trang"><i class="fa fa-angle-double-up"></i></div>
+  <script src="/vendors/jquery/dist/jquery.min.js"></script>
+  <script src="/vendors/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/vendors/assets/js/main.js"></script>
+
+  {{#each js}}
+    <script type="text/javascript" src="/js/{{this}}"></script>
+  {{/each}}
+ 
+</body>
+</html>

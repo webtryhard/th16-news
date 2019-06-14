@@ -45,80 +45,65 @@ const hbs = exphbs.create({
     helpers: {
         TimeFormat: val => {
             return dateFormat(val, 'HH:MM');
-<<<<<<< HEAD
-        },
-        DateFormat: val => {
-            return dateFormat(val, 'dddd, dd/mm/yyyy');
-=======
         },
         DateFormat: val => {
             return dateFormat(val, 'dddd, dd/mm/yyyy');
         },
-        DateCmtFormat: val =>{
-            return dateFormat(val,'dd/mm/yyyy');
->>>>>>> master
+        DateCmtFormat: val => {
+            return dateFormat(val, 'dd/mm/yyyy');
         },
         section: hbs_sections(),
 
-        compare: function (lvalue, operator, rvalue, options) {
+        compare: function(lvalue, operator, rvalue, options) {
 
             var operators, result;
-            
+
             if (arguments.length < 3) {
                 throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
             }
-            
+
             if (options === undefined) {
                 options = rvalue;
                 rvalue = operator;
                 operator = "===";
             }
-            
+
             operators = {
-                '==': function (l, r) { return l == r; },
-                '===': function (l, r) { return l === r; },
-                '!=': function (l, r) { return l != r; },
-                '!==': function (l, r) { return l !== r; },
-                '<': function (l, r) { return l < r; },
-                '>': function (l, r) { return l > r; },
-                '<=': function (l, r) { return l <= r; },
-                '>=': function (l, r) { return l >= r; },
-                'typeof': function (l, r) { return typeof l == r; }
+                '==': function(l, r) { return l == r; },
+                '===': function(l, r) { return l === r; },
+                '!=': function(l, r) { return l != r; },
+                '!==': function(l, r) { return l !== r; },
+                '<': function(l, r) { return l < r; },
+                '>': function(l, r) { return l > r; },
+                '<=': function(l, r) { return l <= r; },
+                '>=': function(l, r) { return l >= r; },
+                'typeof': function(l, r) { return typeof l == r; }
             };
-            
+
             if (!operators[operator]) {
                 throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
             }
-            
+
             result = operators[operator](lvalue, rvalue);
-            
+
             if (result) {
                 return options.fn(this);
             } else {
                 return options.inverse(this);
             }
-        
+
         }
     },
-<<<<<<< HEAD
-
-}));
-=======
 })
 
 app.engine('.hbs', hbs.engine);
->>>>>>> master
 
 
 app.set('view engine', '.hbs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-<<<<<<< HEAD
 app.get('/', function(req, res) {
-=======
-app.get('/', function (req, res) {
->>>>>>> master
 
     var p2 = homeModel.getLatestNews();
     var p3 = homeModel.getTop10Cat();
@@ -129,19 +114,10 @@ app.get('/', function (req, res) {
 
         var latestNews1 = [rows2[0], rows2[1]];
         var latestNews2 = [];
-<<<<<<< HEAD
-        var menu = [];
 
         for (i = 2; i <= 10; i++) {
             if (rows2[i])
                 latestNews2.push(rows2[i]);
-=======
-        
-        for(i = 2; i <= 10; i++)
-        {
-            if(rows2[i])
-            latestNews2.push(rows2[i]);
->>>>>>> master
         }
 
         var topCat = [];
@@ -167,52 +143,25 @@ app.get('/', function (req, res) {
             topCat.push(obj);
         }
 
-<<<<<<< HEAD
         var newsHotWeek1 = rows5[0],
             newsHotWeek2 = [];
         for (i = 1; i < 5; i++) {
-            newsHotWeek2.push(rows5[i]);
+            if (rows5[i])
+                newsHotWeek2.push(rows5[i]);
         }
 
-        for (i = 0; i < rows6.length; i++) {
-            if (rows6[i].Parent_ID === null) {
-                var child = [];
-                for (j = 0; j < rows6.length; j++) {
-                    if (rows6[j].Parent_ID === rows6[i].CatID) {
-                        child.push(rows6[j]);
-                    }
-                }
-                menu.push({ parent: rows6[i], childs: child })
-            }
-        }
 
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
-            newsHot: rows1,
+            newsHot: res.newsHot,
+            categories: res.categories,
+            menu: res.menu,
             latestNews1,
             latestNews2,
             topCat,
             newsHotWeek1,
             newsHotWeek2,
-            menu,
-=======
-        var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
-        for(i = 1; i < 5; i++)
-        {
-            if(rows5[i])
-            newsHotWeek2.push(rows5[i]);
-        }
-
-        
-        res.render('home', {
-            layout: 'TrangChu.hbs',
-            title: 'Trang chủ',
-            newsHot : res.newsHot,
-            categories : res.categories,
-            menu: res.menu,
-            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, 
->>>>>>> master
             style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
             js: ['jQuery.js', 'js.js', 'login-register.js'],
             logo: 'logo.png'
@@ -233,15 +182,11 @@ app.use('/Admin', Admin);
 var account = require('./controllers/admin/account.controller');
 app.use('/account', account);
 
-<<<<<<< HEAD
-//var test = require('./views/pieces/register')
-=======
 var editor = require('./controllers/editor.controller');
 app.use('/editor', editor);
 
-app.listen(port);
-console.log('http://localhost:' + port);
->>>>>>> master
+var writer = require('./controllers/writer.controller');
+app.use('/writer', writer);
 
 app.listen(port);
 console.log('http://localhost:' + port);

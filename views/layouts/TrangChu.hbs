@@ -12,11 +12,7 @@
 
 
   {{#each style}}
-<<<<<<< HEAD
   <link rel="stylesheet" type="text/css" href="/css/{{this}}">
-=======
-    <link rel="stylesheet" type="text/css" href="/css/{{this}}">
->>>>>>> master
   {{/each}}
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -24,18 +20,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   {{{_sections.css}}}
-}
 
 </head>
 
 
 <body>
   <!-- BEGIN: logo -->
-<<<<<<< HEAD
   <div class="logo">
-=======
-  <div  class = "logo">
->>>>>>> master
     <div class="container">
       <a href="/">
         <img class="logo" src="/img/{{logo}}" alt="logo">
@@ -76,35 +67,17 @@
               </ul>
             </div>
 
+       
+
             <div class="right-menu">
               <ul class="nav navbar-nav navbar-justified">
                 <!-- icon login  -->
-                
-                {{#if isAuthenticated}}
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Hi, <b>{{username}}</b>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/account/profile">
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                      Profile
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
-                      <i class="fa fa-sign-out" aria-hidden="true"></i>
-                      Sign Out
-                    </a>
-                  </div>
-                </li>
-                {{else}}
-                <li class="login_icon">
+
+                <li class="login_icon" id="loginIconX">
                   <a href="#" data-toggle="modal" data-target="#loginModal">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                   </a>
                 </li>
-                {{/if}}
                 <!-- icon search  -->
                 <li class="search_ hidden-xs hidden-sm">
                   <a href="#" class="color_fff " id="toggle-search">
@@ -132,6 +105,7 @@
   </div>
   <!-- END:navbar menu -->
 
+
   {{>register}}
 
   {{{body}}}
@@ -151,8 +125,7 @@
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <address class="text-right mb0">
-<<<<<<< HEAD
-              <div class="hidden-xs"><a href="#"><img src="/img/logo.png" alt="Báo Kinh Tế Nông Thôn" width="120px"></a>
+              <div class="hidden-xs"><a href="/"><img src="/img/{{logo}}" alt="Báo Kinh Tế Nông Thôn" width="120px"></a>
               </div>
               <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i
                   class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> - <a
@@ -161,12 +134,6 @@
                   class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
               <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i
                   class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM
-=======
-              <div class="hidden-xs"><a href="/"><img src="/img/{{logo}}" alt="Báo Kinh Tế Nông Thôn" width="120px"></a></div>
-              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> -  <a href="#">toasoanTh16News@gmail.vn</a><br>
-              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Di động" title=""><i class="fa fa-mobile"></i> Di động:</abbr> 0909 009 009 <br>
-              <abbr data-toggle="tooltip" data-placement="top" data-original-title="Tòa soạn" title=""><i class="fa fa-building-o"></i> Tòa soạn:</abbr> 227 Nguyễn Văn Cừ, Quận 5, TP. HCM 
->>>>>>> master
             </address>
           </div>
         </div>
@@ -199,6 +166,54 @@
   <script type="text/javascript" src="/js/{{this}}"></script>
   {{/each}}
   {{{_sections.js}}}
+  <script>
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+
+
+
+    $(document).ready(() => {
+      if (getCookie("username") !== "") {
+        $("#loginIconX").removeClass(["login_icon"])
+        //$("#loginIconX").html("Hello " +getCookie("username"))
+        let t = `
+  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Hi, ${getCookie("username")}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/account/profile">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              Trang ca nhan
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              Dang xuat
+            </a>
+          </div>
+        </li> `
+        $("#loginIconX").html(t)
+        $('#loginIconX').addClass([""])
+      }
+    })
+  </script>
+
 </body>
 
 </html>

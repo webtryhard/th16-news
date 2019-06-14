@@ -49,53 +49,44 @@
 
         $("#registerForm").validate({
             rules: {
-                username: {
+                dkusername: {
                     required: true,
-                    remove:{
-                        url:'/account/is-available'
-                    }
                 },
-                password: {
+                dkpassword: {
                     required: true,
                     minlength: 8
                 },
-                password_confirmation: {
+                dkpassword_confirmation: {
                     required: true,
-                    equalTo: $('[name="password"]')
+                    equalTo: $('[name="dkpassword"]')
                 },
-                name: {
+                dkname: {
                     required: true
                 },
-                email: {
+                dkemail: {
                     required: true,
                     email: true
                 },
-                {{!-- DOB: {
-                    required: true
-                }, --}}
             },
             messages: {
-                username: {
+                dkusername: {
                     required: 'Vui long nhap username cua ban',
                 },
-                password: {
+                dkpassword: {
                     required: 'Nhap mat khau cua ban',
                     minlength: 'Mat khau it nhat 8 ki tu'
                 },
-                password_confirmation: {
+                dkpassword_confirmation: {
                     required: 'Nhap lai mat khau cua ban',
                     equalTo: 'Mat khau chua trung'
                 },
-                name: {
+                dkname: {
                     required: 'Nhap ho va ten',
                 },
-                email: {
+                dkemail: {
                     required: 'Nhap email cua ban',
                     email: 'Chua dung dinh dang email'
                 }
-                {{!-- DOb: {
-                    required: 'Nhap ngay thang nam sinh'
-                } --}}
             },
 
             errorElement: 'small',
@@ -150,19 +141,18 @@
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
                         <div class="form">
-                            <form method="" html="{:multipart=>true}" data-remote="true" action=""
+                            <form method="post" html="{:multipart=>true}" data-remote="true" action="/account/register"
                                 accept-charset="UTF-8" id="registerForm">
-                                <input id="username" class="form-control" type="text" placeholder="Username"
-                                    name="username" autofocus>
-                                <input id="password" class="form-control" type="password" placeholder="Password"
-                                    name="password">
-                                <input id="password_confirmation" class="form-control" type="password"
-                                    placeholder="Repeat Password" name="password_confirmation">
-                                <input id="name" class="form-control" type="text" placeholder="Name" name="name">
-                                <input id="email" class="form-control" type="email" placeholder="Email" name="email">
+                                <input id="dkusername" class="form-control" type="text" placeholder="Username"
+                                    name="dkusername" autofocus>
+                                <input id="dkpassword" class="form-control" type="password" placeholder="Password"
+                                    name="dkpassword">
+                                <input id="dkpassword_confirmation" class="form-control" type="password"
+                                    placeholder="Repeat Password" name="dkpassword_confirmation">
+                                <input id="dkname" class="form-control" type="text" placeholder="Name" name="dkname">
+                                <input id="dkemail" class="form-control" type="email" placeholder="Email" name="dkemail">
                                 {{!-- <input id="DOB" class="form-control" type="text" name="DOB"> --}}
-                                <input class="btn btn-default btn-register" type="submit" value="Create account"
-                                    name="commit">
+                                <input class="btn btn-default btn-register" type="submit" value="Create account">
                             </form>
                         </div>
                     </div>
