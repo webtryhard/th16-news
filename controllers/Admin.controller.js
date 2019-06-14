@@ -448,6 +448,67 @@ router.post('/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
     })
 })
 
+router.get('/quanlynguoidung/phancongchuyenmuc/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.getAllCatFromTask(id);
+    var p2 = AdminModel.singleUser(id);
+    Promise.all([p, p2]).then(([rows, rows2]) => {
+        res.render('vwAdmin/QuanLyNguoiDung/phancongchuyenmuc.hbs', {
+            cat: rows,
+            user: rows2[0],
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Phân công chuyên mục',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+})
+
+router.get('/quanlynguoidung/chuyenmucdaphancong/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.getAllCatFromEditor(id);
+    var p2 = AdminModel.singleUser(id);
+    Promise.all([p, p2]).then(([rows, rows2]) => {
+        res.render('vwAdmin/QuanLyNguoiDung/chuyenmucdaphancong.hbs', {
+            cat: rows,
+            user: rows2[0],
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Chuyên mục đã phân công',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+})
+
+router.get('/quanlynguoidung/phancong/:ide/:idc', (req, res) => {
+    var ide = req.params.ide;
+    var idc = req.params.idc;
+    var entity = {
+        ID_Editor: ide,
+        ID_Cat: idc
+    }
+    AdminModel.addTask(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung/phancongchuyenmuc/' + ide);
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynguoidung/xoamucphancong/:ide/:idc', (req, res) => {
+    var ide = req.params.ide;
+    var idc = req.params.idc;
+
+    AdminModel.deleteTask(ide, idc).then(n => {
+        res.redirect('/admin/quanlynguoidung/chuyenmucdaphancong/' + ide);
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
 router.get('/quanlynguoidung/deleted', (req, res) => {
     var p = AdminModel.getAllUserDeleted();
     p.then(rows => {

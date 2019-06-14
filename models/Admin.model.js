@@ -49,6 +49,25 @@ module.exports = {
         FROM user us
         WHERE us.Deleted=1`)
     },
+
+    getAllCatFromTask: id => {
+        return db.load(`SELECT A.*, user.Username
+        FROM (SELECT ct.CatID, ct.CatName, ct.Parent_ID, ct2.CatName ParentName, ta.ID_Editor, ta.Deleted
+              FROM categories ct LEFT JOIN categories ct2 on ct.Parent_ID=ct2.CatID
+                                      LEFT JOIN task_editor ta ON ct.CatId=ta.ID_Cat) A
+                 LEFT JOIN user on A.ID_Editor = user.User_ID
+        WHERE A.ID_Editor is null ||  A.ID_Editor!=${id}`);
+    },
+
+    getAllCatFromEditor: id => {
+        return db.load(`SELECT A.*, user.Username
+        FROM (SELECT ct.CatID, ct.CatName, ct.Parent_ID, ct2.CatName ParentName, ta.ID_Editor, ta.Deleted
+              FROM categories ct LEFT JOIN categories ct2 on ct.Parent_ID=ct2.CatID
+                                      LEFT JOIN task_editor ta ON ct.CatId=ta.ID_Cat) A
+                 LEFT JOIN user on A.ID_Editor = user.User_ID
+        WHERE A.ID_Editor=${id}`);
+    },
+
     singleUser: id => {
         return db.load(`SELECT * FROM user WHERE user.User_ID= ${id}`);
     },
@@ -58,4 +77,10 @@ module.exports = {
     updateUser: entity => {
         return db.update('user', 'User_ID', entity);
     },
+    addTask: entity => {
+        return db.add('task_editor', entity);
+    },
+    deleteTask: (id, id2) => {
+        return db.delete('task_editor', 'ID_Editor', 'ID_Cat', id, id2);
+    }
 };
