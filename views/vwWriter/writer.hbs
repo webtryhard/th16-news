@@ -1,0 +1,201 @@
+{{#section 'js'}}
+<script
+  src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=yks6xzs027jswh0kal9dm6ujfhx8jbb6cuf9ges5ygfb7tnm"></script>
+  {{!-- <script src="https://cdn.tiny.cloud/1/yks6xzs027jswh0kal9dm6ujfhx8jbb6cuf9ges5ygfb7tnm/tinymce/5/tinymce.min.js"></script> --}}
+<script>
+  $(function () {
+    tinymce.init({
+      selector: '#txtFullDes'
+      height: 500,
+      menubar: false,
+      plugins: 'paste image link autolink lists table media',
+      toolbar: [
+        'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+        'forecolor backcolor',
+        'table link image media',
+      ],
+    });
+  })
+</script>
+{{/section}}
+
+<!-- Left Panel -->
+
+
+
+<aside id="left-panel" class="left-panel">
+    <div class="container">
+        <img src="../img/avatar-writer1.jpg" class="avatar-writer">
+        <div class="name-writer"><b>nguyenvana</b></div>
+    </div>
+    <div class="writer_info">
+        <div class="text-center" style="font-size: 20px; margin-bottom:10px;"><strong>Thông tin cá nhân</strong></div>
+        <div style="margin-bottom:10px;">Tên: Ngô Bảo Huy</div>
+        <div style="margin-bottom:10px;">Vị trí: Biên tập viên</div>
+        <div style="margin-bottom:10px;">Chủ đề quản lý: Thời sự, Khuyến nông, Doanh nghiệp</div>
+        <div style="margin-bottom:10px;">Điện thoại: 0365124431</div>
+        <div style="margin-bottom:10px;">Email: ngobaohuy1901@gmail.com</div>
+        <div style="margin-bottom:10px;">Địa chỉ: Thành phố Hồ Chí Minh</div>
+        </p>
+    </div>
+</aside>
+
+<!-- Left Panel -->
+
+<!-- Right Panel -->
+
+<div id="right-panel" class="right-panel">
+
+    <!-- Header-->
+    <header id="header" class="header">
+
+        <div class="header-menu">
+
+            <div class="col-sm-7">
+                <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                <div class="header-left">
+                    <button class="search-trigger"><i class="fa fa-search"></i></button>
+                    <div class="form-inline">
+                        <form class="search-form">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search ..."
+                                aria-label="Search">
+                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="../img/avatar-writer1.jpg" alt="User Avatar">
+                    </a>
+
+                    <div class="user-menu dropdown-menu">
+                        <a class="nav-link" href="#"><i class="fa fa-user"></i> Cập nhật thông tin</a>
+
+                        <a class="nav-link" href="#"><i class="fa fa-cog"></i> Đổi mật khẩu</a>
+
+                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header><!-- /header -->
+    <!-- Header-->
+    <div class="card shadow">
+        <h4 class = "card-header">
+            WYSIWYG
+        </h4>
+    <div class="card-body">
+        <form method="POST">
+            <div class="form-group">
+                <label for="txtFullDes">Description</label>
+                <textarea class="form-control" id = "txtFullDes" name="FullDes"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Save
+            </button>
+            
+        </form>
+    </div>
+    </div>
+
+
+    {{!-- <div class="breadcrumbs">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1 style="width:100%" class="text-center">Dashboard</h1>
+                </div>
+            </div>
+    </div>
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="bootstrap-data-table-export_wrapper"
+                                class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="panel">
+                                    {{#each draft}}
+                                    <article class="row">
+                                        <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb5">
+                                        <div class="media">
+                                            <a class="pull-left" href="/list/detail/{{News_ID}}">
+                                            <img class="media-object" src="{{Image_Avatar}}" alt="{{News_Name}}" title="{{News_Name}}" width="230px" height="140px" style="max-width: none;">
+                                            </a>
+                                            <div class="">
+                                            <header>
+                                                <p class="title mb0">
+                                                <a href="/list/detail/{{News_ID}}" title="{{News_Name}}"><b style="font-size: 22px;">{{News_Name}}</b>
+                                                </a>
+                                                </p>
+                                                <small class="meta text-muted">
+                                                <span>
+                                                    <time class="friendly" datetime={{Time}}>
+                                                    <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                                                    </time>
+                                                </span>
+                                                </small>
+                                            </header>
+                                            <p class="summary mb0">{{Summary}}</p>
+                                            </div>
+                                        </div>
+                                        </aside>
+                                        <p>
+                                            <font class="fwb"><i class="fa fa-tags"></i><b>Tags: </b></font>
+                                            {{!-- {{#each tag}}
+                                            <a href="/tags/{{TagID}}" title="{{Tag_Name}}">
+                                                <span class="tag_in_item label label-default">{{Tag_Name}}</span>
+                                            </a>
+                                            {{/each}} --}}
+                                        {{!-- </p>   
+                                    </article>
+                                    <div class="list"></div>
+                                    {{/each}}                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-7">
+                                        <div class="dataTables_paginate paging_simple_numbers"
+                                            id="bootstrap-data-table-export_paginate">
+                                            <ul class="pagination">
+                                                <li class="paginate_button page-item previous disabled"
+                                                    id="bootstrap-data-table-export_previous"><a href="#"
+                                                        aria-controls="bootstrap-data-table-export" data-dt-idx="0"
+                                                        tabindex="0" class="page-link">Previous</a></li>
+                                                <li class="paginate_button page-item active"><a href="#"
+                                                        aria-controls="bootstrap-data-table-export" data-dt-idx="1"
+                                                        tabindex="0" class="page-link">1</a></li>
+                                                <li class="paginate_button page-item "><a href="#"
+                                                        aria-controls="bootstrap-data-table-export" data-dt-idx="2"
+                                                        tabindex="0" class="page-link">2</a></li>
+                                                <li class="paginate_button page-item "><a href="#"
+                                                        aria-controls="bootstrap-data-table-export" data-dt-idx="3"
+                                                        tabindex="0" class="page-link">3</a></li>
+                                                <li class="paginate_button page-item next"
+                                                    id="bootstrap-data-table-export_next"><a href="#"
+                                                        aria-controls="bootstrap-data-table-export" data-dt-idx="7"
+                                                        tabindex="0" class="page-link">Next</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
+{{!-- 
+            </div>
+        </div><!-- .animated -->
+    </div> --}} 
+</div><!-- /#right-panel -->
+
+<!-- Right Panel -->

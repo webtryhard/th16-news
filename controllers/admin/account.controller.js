@@ -7,29 +7,29 @@ var userModel = require("../../models/user.model");
 var router = express.Router();
 
 router.get("/is-available", (req, res, next) => {
-  var user = req.query.username;
-  userModel.singleByUserName(user).then(rows => {
-    if (rows.length > 0) {
-      return res.json(false);
-    }
+    var user = req.query.username;
+    userModel.singleByUserName(user).then(rows => {
+        if (rows.length > 0) {
+            return res.json(false);
+        }
 
-    return res.json(true);
-  });
+        return res.json(true);
+    });
 });
 
 router.get("/register", (req, res, next) => {
-  res.render("pieces/register", {
-    layout: "TrangChu.hbs",
-    style: [
-      "style1.css",
-      "style2.css",
-      "login.css",
-      "signup.css",
-      "login-register.css"
-    ],
-    js: ["jQuery.js", "js.js", "login-register.js"],
-    logo: "logo.png"
-  });
+    res.render("pieces/register", {
+        layout: "TrangChu.hbs",
+        style: [
+            "style1.css",
+            "style2.css",
+            "login.css",
+            "signup.css",
+            "login-register.css"
+        ],
+        js: ["jQuery.js", "js.js", "login-register.js"],
+        logo: "logo.png"
+    });
 });
 
 // router.post("/register", (req, res, next) => {
@@ -54,52 +54,51 @@ router.get("/register", (req, res, next) => {
 // });
 
 router.get("/login", (req, res, next) => {
-  res.render('pieces/login',{layout: false});
+    res.render('pieces/login', { layout: false });
 });
 
-router.post("/register", async (req, res, next) => {
-  var name = req.body.dnusername
-  var password = req.body.dnpassword
-  var namedb, passworddb, id
+router.post("/register", async(req, res, next) => {
+    var name = req.body.dnusername
+    var password = req.body.dnpassword
+    var namedb, passworddb
 
-  var dbUsername = await userModel.singleByUserName(name)
-  if (dbUsername === undefined || dbUsername === null || Object.keys(dbUsername).length === 0 ){
-    console.log('Khong co ten dang nhap trong db')
-    res.end("Ten dang nhap hoac mat khau khong dung")
-    return
-  }
-  namedb = dbUsername[0].Username
-  passworddb = dbUsername[0].Password
-  id = dbUsername[0].User_Cat_Name
-  // if (name!== namedb) {
-  //   console.log('Ten dang nhap khong dung')
-  //   res.end('Ten dang nhap hoac mat khau khong dung')
-  //   return
-  // } 
-  if (password !== passworddb) {
-    console.log('Mat khau khong dung')
-    res.end('Ten dang nhap hoac mat khau khong dung')
-    return
-  }
+    if (name != null && password != null) {
+        var dbUsername = await userModel.singleByUserName(name)
+        if (dbUsername === undefined || dbUsername === null || Object.keys(dbUsername).length === 0) {
+            console.log('Khong co ten dang nhap trong db')
+            res.end("Ten dang nhap hoac mat khau khong dung")
+            return
+        }
+        namedb = dbUsername[0].Username
+        passworddb = dbUsername[0].Password
+        id = dbUsername[0].User_Cat_Name
+        if (password !== passworddb) {
+            console.log('Mat khau khong dung')
+            res.end('Ten dang nhap hoac mat khau khong dung')
+            return
+        }
 
-  res.cookie("username", namedb);
-  res.redirect('/')
-  //alert('Thanh cong')
-  //res.end('thanh cong')
-  // if(id==='Subcriber'){
-  //   res.redirect('/')
-  //   //res.end('thanh cong 1')
-  //   return
-  // }
-  // else if(id === 'Writer'){
-  //   res.end('thanh cong 2')
-  //   return
-  // }
-  // else{
-  //   res.end('thanh cong 3')
-  //   return
-  // }
-  //res.redirect('/admin/quanlychuyenmuc')
+        console.log('vo duoc dang nhap')
+
+        res.cookie("username", namedb);
+        res.redirect('/')
+        return
+    } else if (req.body.dkusername != null && req.body.dkpassword != null && req.body.dkpassword_confirmation != null && req.body.dkname != null && req.body.dkemail != null) {
+        var entity = {
+            Username: req.body.dkusername,
+            Password: req.body.dkpassword,
+            Name: req.body.dkname,
+            Email: req.body.dkemail,
+        }
+        userModel.add_acc(entity).then(data => {
+                console.log('vo dc dang ki')
+                res.redirect('/')
+            })
+            .catch(err => {
+                throw err
+            })
+
+    }
 });
 
 module.exports = router;
