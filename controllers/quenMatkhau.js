@@ -24,7 +24,7 @@ router.post('/quenmatkhau', (req, res) => {
             if (users.length == 0) {
                 res.render("pieces/quenmatkhau", {
                     layout: false,
-                    notices: "Ð?a ch? mail chua du?c dang kí. Ðang kí ngay!"
+                    notices: "Email chua duoc dang ki"
                 });
             } else {
                 // gui mail
@@ -65,27 +65,28 @@ router.post('/quenmatkhau', (req, res) => {
                             service: "Gmail",
                             secure: true, // true for 465, false for other ports
                             auth: {
-                                user: process.env.EMAIL_SENDER,
-                                pass: process.env.EMAIL_PASS
+                                user: 'viettham1998@gmail.com',
+                                pass: '0972371457'
                             }
                         });
                         console.log('3333')
-
+                        console.log('token: ' + token);
                         var mailOptions = {
                             to: userMail,
-                            from: `"16TH - NEWS" <${process.env.EMAIL_SENDER}>`,
-                            subject: '16TH_News | Password Reset',
-                            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                                'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                                'http://localhost:3000/datlaimatkhau/' + token + '\n\n' +
-                                'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                            from: `"16TH_News" <viettham1998@gmail.com>`,
+                            subject: '16TH_News | Đặt lại mật khẩu',
+                            text: 'Bạn nhận được email này vì quên mật khẩu đăng nhập ứng dụng.\n\n' +
+                                'Nhấn vào link sau đây hoặc mở nó trong trình duyệt của bạn để đặt lại mật khẩu:\n\n' +
+                                'http://localhost:3000/password/thaydoimatkhau/' + token + '\n\n' +
+                                'Nếu không phải bạn, vui lòng bỏ qua email này.\n'
                         };
                         transporter.sendMail(mailOptions, function(err) {});
 
                         console.log('gui mail reset done: ', userMail);
+                        // console.log('mail: ', process.env.EMAIL_SENDER);
                         res.render('pieces/quenMatKhau', {
                             layout: false,
-                            notices: ["M?t mail xác nh?n dã du?c g?i vào h?p thu c?a b?n. Ki?m tra ngay!"]
+                            notices: ["Một email xác nhận đã được gửi vào mail cá nhân của bạn, hãy kiểm tra mail nhé!"]
                         });
                     }
                 ], function(err, result) {
@@ -101,68 +102,35 @@ router.post('/quenmatkhau', (req, res) => {
 
 })
 
-router.get('/thaydoimatkhau', (req, res) => {
-    async.waterfall([
-        function(done) {
-            let checkToken = authModel.checkToken(req.params.token)
+router.get('/thaydoimatkhau/:token', (req, res) => {
+    if (!req.params.token) {
+        res.redirect('/')
+        return
+    }
 
-            checkToken
-                .then(user => {
-                    var userMail = user.rows[0].email
+    let checkToken = userModel.checkToken(req.params.token)
 
-                    let entity = {
-                        User_ID: user.rows[0].id,
-                        Password: bcrypt.hashSync(req.body.password, saltRounds),
-                        token: null
-                    }
+    checkToken
+        .then(user => {
+            if (user.rowCount == 0) {
+                res.redirect('/')
+                return
+            }
 
-                    let changePass = authModel.update(entity)
+            res.render('/pieces/datLaiMatKhau', {
+                layout: false
+            })
+        })
+        .catch(err => {
+            throw err
+        })
 
-                    changePass
-                        .then(data => {
-                            done(null, userMail)
-                        })
-                        .catch(err => {
-                            throw err
-                        })
-                })
-                .catch(err => {
-                    throw err
-                })
-        },
-        function(userMail, done) {
-            var smtpTransport = nodemailer.createTransport({
-                service: "Gmail",
-                secure: true, // true for 465, false for other ports
-                auth: {
-                    user: process.env.EMAIL_SENDER,
-                    pass: process.env.EMAIL_PASS
-                }
-            });
-
-            var mailOptions = {
-                to: userMail,
-                from: `"Salad News" <${process.env.EMAIL_SENDER}>`,
-                subject: 'SaladNews | Your password has been changed',
-                text: 'Hello,\n\n' +
-                    'This is a confirmation that the password for your account ' + userMail + ' at Salad News has just been changed.\n'
-            };
-            smtpTransport.sendMail(mailOptions, function(err) {
-                done(err);
-            });
-
-            res.render('pieces/quenMatKhau', {
-                layout: false,
-                notices: ['B?n dã d?i m?t kh?u thành công.']
-            });
-        }
-    ], function(err) {});
-})
+}, )
 
 router.post('/thaydoimatkhau', (req, res) => {
     async.waterfall([
         function(done) {
-            let checkToken = authModel.checkToken(req.params.token)
+            let checkToken = userModel.checkToken(req.params.token)
 
             checkToken
                 .then(user => {
@@ -174,7 +142,7 @@ router.post('/thaydoimatkhau', (req, res) => {
                         token: null
                     }
 
-                    let changePass = authModel.update(entity)
+                    let changePass = userModel.updateEmail(entity)
 
                     changePass
                         .then(data => {
@@ -193,17 +161,17 @@ router.post('/thaydoimatkhau', (req, res) => {
                 service: "Gmail",
                 secure: true, // true for 465, false for other ports
                 auth: {
-                    user: process.env.EMAIL_SENDER,
-                    pass: process.env.EMAIL_PASS
+                    user: 'viettham1998@gmail.com',
+                    pass: '0972371457'
                 }
             });
 
             var mailOptions = {
                 to: userMail,
-                from: `"Salad News" <${process.env.EMAIL_SENDER}>`,
-                subject: 'SaladNews | Your password has been changed',
-                text: 'Hello,\n\n' +
-                    'This is a confirmation that the password for your account ' + userMail + ' at Salad News has just been changed.\n'
+                from: `"16TH_News" <viettham1998@gmail.com>`,
+                subject: '16TH_News | Thay đổi mật khẩu thành công',
+                text: 'Chào bạn,\n\n' +
+                    'Email này gửi đến bạn để xác nhận tài khoản ' + userMail + ' đã được thay đổi mật khẩu.\n'
             };
             smtpTransport.sendMail(mailOptions, function(err) {
                 done(err);
@@ -211,7 +179,7 @@ router.post('/thaydoimatkhau', (req, res) => {
 
             res.render('pieces/quenMatKhau', {
                 layout: false,
-                notices: ['B?n dã d?i m?t kh?u thành công.']
+                notices: ['Đặt mật khẩu thành công.']
             });
         }
     ], function(err) {});
