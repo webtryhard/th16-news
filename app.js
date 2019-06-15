@@ -14,14 +14,11 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
-app.use(require('./middlewares/checklogin.middleware'));
 
 
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
-var authMiddeware = require('./middlewares/checkauth.middleware');
-//var checklogin = require('./middlewares/checklogin.middleware');
 
 app.use(require('./middlewares/general.mdw'));
 
@@ -49,65 +46,53 @@ const hbs = exphbs.create({
         DateFormat: val => {
             return dateFormat(val, 'dddd, dd/mm/yyyy');
         },
-        DateCmtFormat: val => {
-            return dateFormat(val, 'dd/mm/yyyy');
+        DateCmtFormat: val =>{
+            return dateFormat(val,'dd/mm/yyyy');
         },
         DateTimeFormat: val =>{
             return dateFormat(val,'dd/mm/yyyy HH:MM');
         },
         section: hbs_sections(),
 
-        //So sánh giá trị
-        compare: function(lvalue, operator, rvalue, options) {
+        compare: function (lvalue, operator, rvalue, options) {
 
             var operators, result;
-
+            
             if (arguments.length < 3) {
                 throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
             }
-
+            
             if (options === undefined) {
                 options = rvalue;
                 rvalue = operator;
                 operator = "===";
             }
-
+            
             operators = {
-                '==': function(l, r) { return l == r; },
-                '===': function(l, r) { return l === r; },
-                '!=': function(l, r) { return l != r; },
-                '!==': function(l, r) { return l !== r; },
-                '<': function(l, r) { return l < r; },
-                '>': function(l, r) { return l > r; },
-                '<=': function(l, r) { return l <= r; },
-                '>=': function(l, r) { return l >= r; },
-                'typeof': function(l, r) { return typeof l == r; }
+                '==': function (l, r) { return l == r; },
+                '===': function (l, r) { return l === r; },
+                '!=': function (l, r) { return l != r; },
+                '!==': function (l, r) { return l !== r; },
+                '<': function (l, r) { return l < r; },
+                '>': function (l, r) { return l > r; },
+                '<=': function (l, r) { return l <= r; },
+                '>=': function (l, r) { return l >= r; },
+                'typeof': function (l, r) { return typeof l == r; }
             };
-
+            
             if (!operators[operator]) {
                 throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
             }
-
+            
             result = operators[operator](lvalue, rvalue);
-
+            
             if (result) {
                 return options.fn(this);
             } else {
                 return options.inverse(this);
             }
-
-        },
-
-        getDate: function() {
-            return new Date();
-        },
-
-        //Tính ngày hết hạn
-        tinhNgayHetHan: function(date) {
-            var ms = date.getTime() + 7 * 86400000;
-            var tomorrow = new Date(ms);
-            return tomorrow;
-        },
+        
+        }
     },
 })
 
@@ -115,12 +100,10 @@ app.engine('.hbs', hbs.engine);
 
 
 app.set('view engine', '.hbs');
-app.set('views', './views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json())
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
 
     var p2 = homeModel.getLatestNews();
     var p3 = homeModel.getTop10Cat();
@@ -131,10 +114,11 @@ app.get('/', function(req, res) {
 
         var latestNews1 = [rows2[0], rows2[1]];
         var latestNews2 = [];
-
-        for (i = 2; i <= 10; i++) {
-            if (rows2[i])
-                latestNews2.push(rows2[i]);
+        
+        for(i = 2; i <= 10; i++)
+        {
+            if(rows2[i])
+            latestNews2.push(rows2[i]);
         }
 
         var topCat = [];
@@ -160,18 +144,20 @@ app.get('/', function(req, res) {
             topCat.push(obj);
         }
 
+        var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
+        for(i = 1; i < 5; i++){
+            if(rows5[i])
             {
+            newsHotWeek2.push(rows5[i]);
+            }
+        }     
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
-            newsHot: res.newsHot,
-            categories: res.categories,
+            newsHot : res.newsHot,
+            categories : res.categories,
             menu: res.menu,
-            latestNews1,
-            latestNews2,
-            topCat,
-            newsHotWeek1,
-            newsHotWeek2,
+            latestNews1, latestNews2, topCat, newsHotWeek1, newsHotWeek2, 
             style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
             js: ['jQuery.js', 'js.js', 'login-register.js'],
             logo: 'logo.png'
@@ -186,10 +172,6 @@ app.use('/list', list);
 
 var Admin = require('./controllers/admin.controller');
 app.use('/Admin', Admin);
-//app.use('/Admin', authMiddeware.requireAuth, Admin);
-
-// var login = require('./controllers/Admin.controller');
-// app.use('/Amin', checklogin, login);
 
 var account = require('./controllers/admin/account.controller');
 app.use('/account', account);
@@ -197,28 +179,6 @@ app.use('/account', account);
 var editor = require('./controllers/editor.controller');
 app.use('/editor', editor);
 
-var writer = require('./controllers/writer.controller');
-app.use('/writer', writer);
-
-var quenmk = require('./controllers/quenMatkhau');
-app.use('/password', quenmk);
-
-// var passport = require('passport'),
-//     FacebookStrategy = require('passport-facebook').Strategy;
-
-// passport.use(new FacebookStrategy({
-//         clientID: FACEBOOK_APP_ID,
-//         clientSecret: FACEBOOK_APP_SECRET,
-//         callbackURL: "http://www.example.com/auth/facebook/callback"
-//     },
-//     function(accessToken, refreshToken, profile, done) {
-//         User.findOrCreate(..., function(err, user) {
-//             if (err) { return done(err); }
-//             done(null, user);
-//         });
-//     }
-// ));
-
-
 app.listen(port);
 console.log('http://localhost:' + port);
+
