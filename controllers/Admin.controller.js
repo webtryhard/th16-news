@@ -3,22 +3,34 @@ var router = express.Router();
 var AdminModel = require('../models/admin.model');
 
 router.get('/', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllUser();
 
-    //console.log(rows);
-    res.render('vwAdmin/administrator.hbs', {
-        layout: 'Admin.hbs',
-        title: 'Admin',
-        logo: 'logo.png'
+    Promise.all([p1, p2]).then(([row1, row2]) => {
+        res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
+            admin: row1[0],
+            user: row2,
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Trang quản lý của admin',
+            logo: 'logo.png',
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }
 )
 
 //QUẢN LÝ CHUYÊN MỤC
 router.get('/quanlychuyenmuc', (req, res) => {
-    var p = AdminModel.getAllCat();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllCat();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyChuyenMuc/adminQuanLyChuyenMuc.hbs', {
-            cat: rows,
+            admin: row1[0],
+            cat: row2,
             layout: 'adminQuanLyChuyenMuc.hbs',
             title: 'Quản lý chuyên mục',
             logo: 'logo.png'
@@ -29,10 +41,14 @@ router.get('/quanlychuyenmuc', (req, res) => {
 })
 
 router.get('/quanlychuyenmuc/deleted', (req, res) => {
-    var p = AdminModel.getAllCatDeleted();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllCatDeleted();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyChuyenMuc/deleted.hbs', {
-            cat: rows,
+            admin: row1[0],
+            cat: row2,
             layout: 'adminQuanLyChuyenMuc.hbs',
             title: 'Các chuyên mục đã xóa',
             logo: 'logo.png'
@@ -215,11 +231,14 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
 
 //QUẢN LÝ NHÃN
 router.get('/quanlynhan', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllTag();
 
-    var p = AdminModel.getAllTag();
-    p.then(rows => {
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNhan/adminQuanLyNhan.hbs', {
-            tag: rows,
+            admin: row1[0],
+            tag: row2,
             layout: 'adminQuanLyNhan.hbs',
             title: 'Quản lý nhãn',
             logo: 'logo.png'
@@ -290,10 +309,14 @@ router.post('/quanlynhan/update', (req, res) => {
 })
 
 router.get('/quanlynhan/deleted', (req, res) => {
-    var p = AdminModel.getAllTagDeleted();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllTagDeleted();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNhan/deleted.hbs', {
-            tag: rows,
+            admin: row1[0],
+            tag: row2,
             layout: 'adminQuanLyNhan.hbs',
             title: 'Các nhãn đã xóa',
             logo: 'logo.png'
@@ -335,10 +358,14 @@ router.get('/quanlynhan/restore/:id', (req, res) => {
 
 //QUẢN LÝ BÀI VIẾT
 router.get('/quanlybaiviet', (req, res) => {
-    var p = AdminModel.getAllNews();
-    p.then(rows => {
-        res.render('vwAdmin/QuanLyBaiViet/AdminQuanLyBaiViet.hbs', {
-            news: rows,
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllNews();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
+        res.render('vwAdmin/QuanLyBaiViet/adminQuanLyBaiViet.hbs', {
+            admin: row1[0],
+            news: row2,
             layout: 'adminQuanLyBaiViet.hbs',
             title: 'Quản lý bài viết',
             logo: 'logo.png'
@@ -457,11 +484,14 @@ router.get('/quanlybaiviet/xuatban/:id', (req, res) => {
 
 //QUẢN LÝ NGƯỜI DÙNG
 router.get('/quanlynguoidung', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllUser();
 
-    var p = AdminModel.getAllUser();
-    p.then(rows => {
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
-            user: rows,
+            admin: row1[0],
+            user: row2,
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Quản lý người dùng',
             logo: 'logo.png'
@@ -525,13 +555,11 @@ router.get('/quanlynguoidung/edit/:id', (req, res) => {
 })
 
 router.post('/quanlynguoidung/update', (req, res) => {
-    res.render('vwAdmin/QuanLyNguoiDung/edit', {
-        user: rows[0],
-        error: true,
-        layout: 'adminQuanLyNguoiDung.hbs',
-        title: 'Quản lý người dùng',
-        logo: 'logo.png',
-        listCatUser: ['Subcriber', 'Admin', 'Editor', 'Writter'],
+    AdminModel.updateUser(req.body).then(n => {
+        console.log(req.body);
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
     });
 })
 
@@ -621,10 +649,14 @@ router.get('/quanlynguoidung/xoamucphancong/:ide/:idc', (req, res) => {
 })
 
 router.get('/quanlynguoidung/deleted', (req, res) => {
-    var p = AdminModel.getAllUserDeleted();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllUserDeleted();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNguoiDung/deleted.hbs', {
-            user: rows,
+            admin: row1[0],
+            user: row2,
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Danh sách người dùng đã xóa',
             logo: 'logo.png'
