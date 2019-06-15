@@ -49,7 +49,7 @@ router.get('/quanlychuyenmuc/delete/:id', (req, res) => {
         CatID: id,
         Deleted: 1
     }
-    AdminModel.update(entity).then(n => {
+    AdminModel.updateCat(entity).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
     }).catch(err => {
         console.log(err);
@@ -63,7 +63,7 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
         CatID: id,
         Deleted: 0
     }
-    AdminModel.update(entity).then(n => {
+    AdminModel.updateCat(entity).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
     }).catch(err => {
         console.log(err);
@@ -94,7 +94,7 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
                     parentCat: rows2,
                     error: false,
                     layout: 'adminQuanLyChuyenMuc.hbs',
-                    title: 'Quản lý chuyên mục',
+                    title: 'Chỉnh sửa chuyên mục',
                     logo: 'logo.png',
                     isNull: false
                 });
@@ -118,7 +118,7 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
 })
 
 router.post('/quanlychuyenmuc/update', (req, res) => {
-    AdminModel.update(req.body).then(n => {
+    AdminModel.updateCat(req.body).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
     }).catch(err => {
         console.log(err);
@@ -261,7 +261,7 @@ router.get('/quanlynhan/edit/:id', (req, res) => {
                 tag: rows[0],
                 error: false,
                 layout: 'adminQuanLyNhan.hbs',
-                title: 'Quản lý nhãn',
+                title: 'Chỉnh sửa nhãn',
                 logo: 'logo.png',
             });
         }
@@ -270,7 +270,7 @@ router.get('/quanlynhan/edit/:id', (req, res) => {
                 tag: rows[0],
                 error: true,
                 layout: 'adminQuanLyNhan.hbs',
-                title: 'Quản lý nhãn',
+                title: 'Chỉnh sửa nhãn',
                 logo: 'logo.png'
             });
         }
@@ -281,7 +281,7 @@ router.get('/quanlynhan/edit/:id', (req, res) => {
 })
 
 router.post('/quanlynhan/update', (req, res) => {
-    AdminModel.update(req.body).then(n => {
+    AdminModel.updateCat(req.body).then(n => {
         res.redirect('/admin/quanlynhan');
     }).catch(err => {
         console.log(err);
@@ -332,17 +332,81 @@ router.get('/quanlynhan/restore/:id', (req, res) => {
     })
 })
 
-router.get('/quanlybaiviet', (req, res) => {
 
-    //console.log(rows);
-    res.render('vwAdmin/AdminQuanLyBaiViet.hbs', {
-        layout: 'Admin.hbs',
-        title: 'Quản lý bài viết',
-        logo: 'logo.png'
+//QUẢN LÝ BÀI VIẾT
+router.get('/quanlybaiviet', (req, res) => {
+    var p = AdminModel.getAllNews();
+    p.then(rows => {
+        res.render('vwAdmin/QuanLyBaiViet/AdminQuanLyBaiViet.hbs', {
+            news: rows,
+            layout: 'adminQuanLyBaiViet.hbs',
+            title: 'Quản lý bài viết',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }
 )
 
+router.get('/quanlybaiviet/edit/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.singleNew(id);
+    var p2 = AdminModel.getAllNewState();
+    var p3 = AdminModel.getAllCat();
+
+    Promise.all([p, p2, p3]).then(([rows, row2, row3]) => {
+        if (rows.length > 0) {
+            res.render('vwAdmin/QuanLyBaiViet/edit.hbs', {
+                news: rows[0],
+                newState: row2,
+                cat: row3,
+                error: false,
+                layout: 'adminQuanLyBaiViet.hbs',
+                title: 'Chỉnh sửa bài viết',
+                logo: 'logo.png',
+            });
+        }
+        else {
+            res.render('vwAdmin/QuanLyBaiViet/AdminQuanLyBaiViet.hbs', {
+                news: rows[0],
+                newState: row2,
+                cat: row3,
+                error: true,
+                layout: 'adminQuanLyBaiViet.hbs',
+                title: 'Chỉnh sửa bài viết',
+                logo: 'logo.png',
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlybaiviet/update', (req, res) => {
+    AdminModel.updateNew(req.body).then(n => {
+        res.redirect('/admin/quanlybaiviet');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlybaiviet/xuatban/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        News_ID: id,
+        State_ID: 4
+    }
+
+    AdminModel.updateNew(entity).then(n=>{
+        res.redirect('/admin/quanlybaiviet');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
 
 //QUẢN LÝ NGƯỜI DÙNG
 router.get('/quanlynguoidung', (req, res) => {

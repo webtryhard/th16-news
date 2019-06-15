@@ -82,5 +82,25 @@ module.exports = {
     },
     deleteTask: (id, id2) => {
         return db.delete('task_editor', 'ID_Editor', 'ID_Cat', id, id2);
-    }
+    },
+
+    //GET NEWS
+    getAllNews: () => {
+        return db.load(`SELECT *
+        FROM news JOIN categories ct ON news.CatID=ct.CatID
+                    JOIN news_state ns ON news.State_ID=ns.State_ID
+        WHERE news.Deleted=0`);
+    },
+    singleNew: id => {
+        return db.load(`SELECT *
+        FROM news JOIN categories ct ON news.CatID=ct.CatID
+                    JOIN news_state ns ON news.State_ID=ns.State_ID
+        WHERE news.News_ID=${id}`);
+    },
+    getAllNewState: () => {
+        return db.load(`SELECT * FROM news_state`);
+    },
+    updateNew: entity => {
+        return db.update('news', 'News_ID', entity);
+    },
 };
