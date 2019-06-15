@@ -1,0 +1,117 @@
+   <div class="breadcrumbs">
+      <div class="page-header">
+          <div class="page-title">
+              <h1 style="width:100%" class="text-center">Draft</h1>
+          </div>
+      </div>
+    </div>
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                  {{#each draft}}
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Chủ đề: </strong>{{CatName}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Tên bài viết: </strong>{{News_Name}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Tóm tắt: </strong>{{Summary}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h ><strong>Phóng viên: </strong> {{Writer}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Thời gian nhận:</strong></h>
+                      <small class="meta text-muted" style="font-size: 14px;">
+                        <span>
+                          <time class="friendly" datetime={{Time}}>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                            <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                          </time>
+                        </span>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <font class="fwb"><i class="fa fa-tags"></i><b>Tags: </b></font>
+                        {{#each ../this.tags}}
+                        <a title="{{Tag_Name}}">
+                            <span style="font-size: 14px;" class="tag_in_item label label-default">{{Tag_Name}}</span>
+                        </a>
+                        {{/each}}
+                    </div>
+                  </div> 
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 style="margin-bottom: 10px;"><strong>Nội dung: </strong></h2>
+                      <div class="container" style="width: 95%">
+                        <div class="row ">   
+                          {{{Content}}}
+                          </div>             
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                   <!--  BEGIN: Modal refuse-->
+                  <div class="modal fade login" id="RefuseModal">
+                    <div class="modal-dialog login animated">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="refuse-modal">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--  END: Modal refuse -->
+                  <!--  BEGIN: Modal browse-->
+                  <div class="modal fade" id="BrowseModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <h2 style="font-size: 30px;">Hiệu chỉnh thông tin</h2>
+
+                        <div class="browse-modal">
+                          <form> 
+                            <div class="browse-form container">
+                              <label for="category">Chuyên mục</label>     
+                              <input type="text" name="category"required>
+                              <label for="tags">Tags:</label>
+                              <input type="text" name="tags" required>
+                              <label for="datetime">Ngày xuất bản</label>
+                              <input type="datetime" name="datetime"  required>
+                              <div class="browse-button">
+                                <input type="submit" value="Duyệt">
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--  END: Modal browse -->
+                </div>
+                <div class="container" >
+                  <div  class="editor_browse_news">
+                    <a href="/editor/{{idE}}/draft/browse/{{idN}}" role="button">Duyệt bài</a>
+                    <a href="/editor/{{idE}}/draft/refuse/{{idN}}" role="button">Từ chối</a>
+                  </div>
+        </div>
+            </div>
+        </div><!-- .animated -->
+    </div>

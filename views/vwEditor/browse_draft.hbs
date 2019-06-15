@@ -1,0 +1,121 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header"><strong style="font-size: 20px;">Hiệu chỉnh thông tin bài viết đã duyệt</strong></div>
+                    <div class="card-body">
+                        <form method="POST" action="/admin/quanlynhan/update">
+                            <div class="form-group">
+                                <label for="txtNewsID">Mã số</label>
+                                <input readonly type="text" class="form-control" id="txtNewsID" id="News_ID" value="{{draft.News_ID}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtNewsName">Tên bài viết</label>
+                                <input readonly type="text" class="form-control" id="txtNewsName" name="News_Name" autofocus placeholder="{{draft.News_Name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCatName">Chuyên mục</label>
+                
+                                <select class="form-control" id="txtCatName" name="CatName">
+                                    {{#each this.allcat}}
+                                    <option value="{{CatID}}">{{CatName}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTags">Tags</label>
+                                <input required type="text" class="form-control" id="txtTags" name="TagName" autofocus placeholder="{{draft.CatName}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="tags">Chọn Tags mới</label>
+                                <div id="tagsform">
+                                    <select class="form-control" id="tags" name="Tag" multiple>
+                                    {{#each this.allTags}}
+                                    <option value="{{Tag_ID}}" id="{{Tag_Name}}">{{Tag_Name}}</option>
+                                    {{/each}}
+                                    </select>
+                                
+                                    <div id="buttonselect">
+                                        <input type="button" class="btn btn-success" onclick="selectTags()" value=">"></input>
+                                        <input type="button" class="btn btn-success" onclick="selectAllTags()" value=">>"></input>
+                                        <input type="button" class="btn btn-success" onclick="removeTags()" value="<"></input>
+                                        <input type="button" class="btn btn-success" onclick="removeAllTags()" value="<<"></input>
+                                    </div>
+                                
+                                    <select multiple class="form-control" id="tagsselected" name="Tag_selected">
+                                    </select>
+                                
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTime">Thời gian xuất bản</label>
+                                <input required type="datetime-local" class="form-control" id="txtTime" name="Time">
+                            </div>
+                            <a class="btn btn-primary" href="/editor/{{idE}}/draft/show/{{idN}}" role="button">
+                                <i class="fa fa-backward" aria-hidden="true"></i>
+                                Quay lại bài viết
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                Lưu
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div>
+	<script>
+		function selectTags(){
+			var src = document.getElementById("tags");
+			var des = document.getElementById("tagsselected");
+			var sub = src.options[src.selectedIndex].id;
+			moveSubject(src, des, sub);
+			src.remove(src.selectedIndex); 
+			}
+
+		function selectAllTags(){
+			var src = document.getElementById("tags");
+			var des = document.getElementById("tagsselected");
+			for(i = 0; i < src.options.length; i++)
+			{
+				moveSubject(src,des,src.options[i].id);
+			}
+			for(i = src.options.length - 1; i >= 0; i--)
+			{
+				src.remove(i); 
+			}
+		}
+
+		function removeTags(){
+			var src = document.getElementById("tagsselected");
+			var des = document.getElementById("tags");
+			var sub = src.options[src.selectedIndex].id;
+			moveSubject(src, des, sub);
+			src.remove(src.selectedIndex); 
+		}
+
+		function removeAllTags(){
+			var src = document.getElementById("tagsselected");
+			var des = document.getElementById("tags");
+			for(i = 0; i < src.options.length; i++)
+			{
+				moveSubject(src,des,src.options[i].id);
+			}
+			for(i = src.options.length - 1; i >= 0; i--)
+			{
+				src.remove(i); 
+			}
+		}
+
+		function moveSubject(src, des, sub)
+		{
+			var opt = document.createElement('option');
+			opt.appendChild(document.createTextNode(sub));
+			opt.id = sub; 
+			des.appendChild(opt);
+		}
+
+	</script>

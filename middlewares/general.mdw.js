@@ -25,5 +25,7 @@ module.exports = (req, res, next) => {
     res.newsHot = rows1;
     res.categories = rows2;
     next();
-  })
+  }).catch(err => {
+    console.log(err);
+});
 }

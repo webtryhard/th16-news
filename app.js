@@ -49,6 +49,9 @@ const hbs = exphbs.create({
         DateCmtFormat: val =>{
             return dateFormat(val,'dd/mm/yyyy');
         },
+        DateTimeFormat: val =>{
+            return dateFormat(val,'dd/mm/yyyy HH:MM');
+        },
         section: hbs_sections(),
 
         compare: function (lvalue, operator, rvalue, options) {
@@ -142,13 +145,12 @@ app.get('/', function (req, res) {
         }
 
         var newsHotWeek1 = rows5[0] , newsHotWeek2 = [];
-        for(i = 1; i < 5; i++)
-        {
+        for(i = 1; i < 5; i++){
             if(rows5[i])
+            {
             newsHotWeek2.push(rows5[i]);
-        }
-
-        
+            }
+        }     
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
@@ -160,7 +162,9 @@ app.get('/', function (req, res) {
             js: ['jQuery.js', 'js.js', 'login-register.js'],
             logo: 'logo.png'
         });
-    })
+    }).catch(err => {
+        console.log(err);
+    });
 });
 
 var list = require('./controllers/list.controller');
