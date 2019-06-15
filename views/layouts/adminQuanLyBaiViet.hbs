@@ -14,8 +14,22 @@
     <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="/vendors/flag-icon-css/css/flag-icon.min.css">
-     <link rel="stylesheet" href="/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <script
+        src="https://cdn.tiny.cloud/1/lj0jr96lalez7ao376e63vu9cu774jyh4grtqzzwhjp81mbl/tinymce/5/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector: '#txtFullDes',
+            height: 500,
+            menubar: false,
+            plugins: 'paste image link autolink lists table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                'forecolor backcolor',
+                'table link image media',
+            ],
+        });</script>
 
     <link rel="stylesheet" href="/vendors/assets/css/style.css">
 
@@ -28,7 +42,7 @@
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
-            <div class="navbar-header">
+           <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
@@ -37,16 +51,18 @@
                 <a class="navbar-brand hidden" href="./"><img src="/vendors/images/logo2.png" alt="Logo"></a>
             </div>
 
+
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="active">
                         <a href="/admin/quanlybaiviet"> <i class="menu-icon fa fa-list"></i>Quản lý bài viết </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/admin/quanlychuyenmuc"> <i class="menu-icon fa fa-th-list"></i>Quản lý chuyên mục </a>
                     </li>
                     <li>
-                        <a href="/admin/quanlynguoidung"> <i class="menu-icon fa fa-th-large"></i>Quản lý người dùng </a>
+                        <a href="/admin/quanlynguoidung"> <i class="menu-icon fa fa-th-large"></i>Quản lý người dùng
+                        </a>
                     </li>
                     <li>
                         <a href="/admin/quanlynhan"> <i class="menu-icon fa fa-table"></i>Quản lý nhãn </a>
@@ -171,7 +187,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Quản lý chuyên mục</h1>
+                        <h1>Quản lý bài viết</h1>
                     </div>
                 </div>
             </div>
@@ -200,4 +216,5 @@
     <script src="/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="/vendors/assets/js/init-scripts/data-table/datatables-init.js"></script>
 </body>
+
 </html>

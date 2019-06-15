@@ -1,41 +1,39 @@
 var db = require('../utils/db');
 
 module.exports = {
-  all: () => {
-    return db.load('select * from users');
-  },
+    all: () => {
+        return db.load('select * from user');
+    },
 
-  single: id => {
-    return db.load(`select * from users where User_Cat_ID = ${id}`);
-  },
+    single: id => {
+        return db.load(`select * from user where User_Cat_ID = ${id}`);
+    },
 
-  singleByUserName: userName => {
-    return db.load(`select * from user where Username = '${userName}'`);
-  },
+    singleEmail: email => {
+        return db.load(`select * from user where Email = '${email}'`);
+    },
 
-  // singleByUserName: userName => {
-  //   return db.load(`select * 
-  //                   from account acc, subcriber sub
-  //                   where acc.Username = '${userName}', 
-  //                         acc.User_Cat_ID = sub.Sub_ID`);
-  // },
+    updateEmail: entity => {
+        return db.update('user', 'Email', entity);
+    },
 
-  add: entitySub => {
-    return db.add('subcriber', entitySub);
-  },
+    singleByUserName: userName => {
+        return db.load(`select * from user where Username = '${userName}'`);
+    },
 
-  add_acc: entityAcc=>{
-    return db.add_acc('account', entityAcc);
-  },
+    add_acc: entityAcc => {
+        return db.add('user', entityAcc);
+    },
 
+    add: entitySub => {
+        return db.add('subcriber', entitySub);
+    },
 
-  update: entity => {
-    var id = entity.f_ID;
-    delete entity.f_ID;
-    return db.update('users', 'f_ID', entity, id);
-  },
+    update: entity => {
+        return db.update('user', entity);
+    },
 
-  delete: id => {
-    return db.delete('users', 'f_ID', id);
-  }
+    delete: id => {
+        return db.delete('users', 'f_ID', id);
+    }
 };

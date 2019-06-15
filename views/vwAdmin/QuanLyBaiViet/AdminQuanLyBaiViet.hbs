@@ -5,10 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="display: flex;justify-content: space-between;">
-                        <strong class="card-title">Danh sách người dùng</strong>
-                        <a class="btn btn-outline-danger" href="/admin/quanlynguoidung/deleted" role="button">
-                            <i class="fa fa-minus-square"> Những mục đã xóa</i>
-                        </a>
+                        <strong class="card-title">Danh sách bài viết</strong>
                     </div>
                     <div class="card-body">
                         <div id="bootstrap-data-table-export_wrapper"
@@ -28,24 +25,24 @@
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
-                                                    style="width: 407px;">Username</th>
+                                                    style="width: 407px;">Tiêu đề</th>
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
-                                                    style="width: 407px;">Tên</th>
+                                                    style="width: 407px;">Nội dung tóm tắt</th>
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Position: activate to sort column ascending"
-                                                    style="width: 370px;">Số điện thoại</th>
+                                                    style="width: 370px;">Chuyên mục</th>
                                                 <th class="sorting" tabindex="0"
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Office: activate to sort column ascending"
-                                                    style="width: 183px;">Loại User</th>
+                                                    style="width: 183px;">Trạng thái bài viết</th>
                                                 <th data-orderable="false" style="width: 183px;">
-                                                    Avatar
+                                                    Ảnh bài viết
                                                 </th>
                                                 <th data-orderable="false" style="text-align: center">
-                                                    <a class="btn btn-outline-success" href="quanlynguoidung/add"
+                                                    <a class="btn btn-outline-success" href="quanlybaiviet/add"
                                                         role="button">
                                                         <i class="fa fa-plus" aria-hidden="true">
                                                             Thêm mới
@@ -55,44 +52,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{#each this.user}}
+                                            {{#each this.news}}
                                             <tr>
-                                                <th scope="row">{{User_ID}}</th>
-                                                <td>{{Username}}</td>
-                                                <td>{{Name}}</td>
-                                                <td>{{Phone}}</td>
-                                                <td>{{User_Cat_Name}}</td>
+                                                <th scope="row">{{News_ID}}</th>
+                                                <td>{{News_Name}}</td>
+                                                <td>{{Summary}}</td>
+                                                <td>{{CatName}}</td>
+                                                <td>{{State_Name}}</td>
                                                 <td>
-                                                    <img src={{Avatar}} style="max-width:50px;max-height:50px"
+                                                    <img src={{Image_Avatar}} style="max-width:50px;max-height:50px"
                                                         class="avatar img-circle" />
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{User_ID}}"
+                                                    <a class="btn btn-primary btn-sm" href="quanlybaiviet/edit/{{News_ID}}"
                                                         title="Chỉnh sửa" role="button">
                                                         <i class="fa fa-pencil" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Xóa">
+                                                        href="quanlybaiviet/delete/{{News_ID}}" role="button" title="Xóa">
                                                         <i class="fa fa-trash" aria-hidden="true">
                                                         </i>
                                                     </a>
 
-                                                    {{!-- Nếu người dùng là độc giả (Subcriber) --}}
-                                                    {{#compare User_Cat_Name "===" "Subcriber"}}
+                                                    {{!-- Phê duyệt trạng thái --}}
+                                                    {{#compare State_ID "!=" 4}}
                                                     <a class="btn btn-warning btn-sm"
-                                                        href="quanlynguoidung/giahantaikhoan/{{User_ID}}" role="button" title="Gia hạn tài khoản">
+                                                        href="quanlybaiviet/xuatban/{{News_ID}}" role="button" title="Xuất bản bài viết nhanh">
                                                         <i class="fa fa-level-up" aria-hidden="true">
-                                                        </i>
-                                                    </a>
-                                                    {{/compare}}
-
-                                                    {{!-- Nếu người dùng là biên tập viên (Editor) --}}
-                                                     {{#compare User_Cat_Name "===" "Editor"}}
-                                                    <a class="btn btn-success btn-sm"
-                                                        href="quanlynguoidung/phancongchuyenmuc/{{User_ID}}" role="button" title="Phân công chuyên mục">
-                                                        <i class="fa fa-magic" aria-hidden="true">
                                                         </i>
                                                     </a>
                                                     {{/compare}}

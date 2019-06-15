@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Quen Mat Khau</title>
+</head>
+<body>
+    <h3>Quen mat khau</h3>
+
+    {{#if notices}}
+        <div class="alert alert-info" role="alert">
+    {{this}}
+    </div>
+    {{/if}}
+    <form method="POST" action="">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input name="email"type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
+

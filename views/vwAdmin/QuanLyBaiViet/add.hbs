@@ -2,30 +2,22 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/admin/quanlybaiviet/update">
-                    <div class="form-group">
-                        <label for="txtName">Mã số</label>
-                        <input readonly type="text" class="form-control" placeholder={{this.news.News_ID}}
-                            name="News_ID" value="{{this.news.News_ID}}">
-                    </div>
+                <form method="POST">
                     <div class="form-group">
                         <label for="txtName">Tiêu đề</label>
-                        <input required type="text" class="form-control" id="txtName" name="News_Name" autofocus
-                            placeholder="{{this.news.News_Name}}">
+                        <input type="text" class="form-control" id="txtName" name="News_Name" autofocus required>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung tóm tắt</label>
-                        <input required type="text" class="form-control" id="txtName" name="Summary" autofocus
-                            placeholder="{{this.news.Summary}}">
+                        <input type="text" class="form-control" id="txtName" name="Summary" autofocus required>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung bài viết</label>
-                        <textarea required type="text" class="form-control" id="txtFullDes" name="Content" autofocus
-                            placeholder={{{this.news.Content}}}></textarea>
+                        <textarea type="text" class="form-control" id="txtFullDes" name="Content" autofocus></textarea>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Chuyên mục</label>
-                         <select required class="form-control" name="CatID" placeholder="{{this.user.CatName}}">
+                        <select class="form-control" name="CatID">
                             {{#each cat}}
                             <option value="{{ID}}">{{TenCM}}</option>
                             {{/each}}
@@ -34,18 +26,25 @@
 
                     <div class="form-group">
                         <label for="image_uploads">Ảnh bài viết</label>
-                        <input type="text" class="form-control" id="txtName" name="Image_Avatar" autofocus
-                            placeholder="{{this.news.Image_Avatar}}">
+                        <input type="text" class="form-control" id="txtName" name="Image_Avatar" autofocus>
                     </div>
-                   <div class="form-group">
+                    <div class="form-group">
                         <label for="txtName">Ngày được viết</label>
-                        <input required type="date" class="form-control" name="Time"/>
+                        <input required type="date" class="form-control" name="Time" />
                     </div>
                     <div class="form-group">
                         <label for="txtCatParentName">Trạng thái bài viết</label>
-                        <select required class="form-control" name="State_ID" placeholder="{{this.user.State_ID}}">
+                        <select class="form-control" name="State_ID">
                             {{#each newState}}
                             <option value="{{State_ID}}">{{State_Name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCatParentName">Người viết</label>
+                        <select class="form-control" name="Writer_ID">
+                            {{#each user}}
+                            <option value="{{User_ID}}">{{User_ID}}_{{Username}}</option>
                             {{/each}}
                         </select>
                     </div>

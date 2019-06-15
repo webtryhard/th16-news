@@ -10,22 +10,22 @@
                     </div>
                     <div class="form-group">
                         <label for="txtName">Tiêu đề</label>
-                        <input required type="text" class="form-control" id="txtName" name="News_Name" autofocus
-                            placeholder="{{this.news.News_Name}}">
+                        <input type="text" class="form-control" id="txtName" name="News_Name" autofocus
+                            placeholder="{{this.news.News_Name}}" value="{{this.news.News_Name}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung tóm tắt</label>
-                        <input required type="text" class="form-control" id="txtName" name="Summary" autofocus
-                            placeholder="{{this.news.Summary}}">
+                        <input type="text" class="form-control" id="txtName" name="Summary" autofocus
+                            placeholder="{{this.news.Summary}}" value="{{this.news.Summary}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung bài viết</label>
-                        <textarea required type="text" class="form-control" id="txtFullDes" name="Content" autofocus
+                        <textarea type="text" class="form-control" id="txtFullDes" name="Content" autofocus
                             placeholder={{{this.news.Content}}}></textarea>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Chuyên mục</label>
-                         <select required class="form-control" name="CatID" placeholder="{{this.user.CatName}}">
+                         <select class="form-control" name="CatID" placeholder="{{this.user.CatName}}">
                             {{#each cat}}
                             <option value="{{ID}}">{{TenCM}}</option>
                             {{/each}}
@@ -35,15 +35,16 @@
                     <div class="form-group">
                         <label for="image_uploads">Ảnh bài viết</label>
                         <input type="text" class="form-control" id="txtName" name="Image_Avatar" autofocus
-                            placeholder="{{this.news.Image_Avatar}}">
+                            placeholder="{{this.news.Image_Avatar}}" value="{{this.news.Image_Avatar}}">
                     </div>
-                   <div class="form-group">
+                    <div class="form-group">
                         <label for="txtName">Ngày được viết</label>
-                        <input required type="date" class="form-control" name="Time"/>
+                        <input readonly type="text" class="form-control"
+                            placeholder="{{DateCmtFormat this.news.Time}}" value="{{DateCmtFormat this.news.Time}}"/>
                     </div>
                     <div class="form-group">
                         <label for="txtCatParentName">Trạng thái bài viết</label>
-                        <select required class="form-control" name="State_ID" placeholder="{{this.user.State_ID}}">
+                        <select class="form-control" name="State_ID" placeholder="{{this.user.State_ID}}">
                             {{#each newState}}
                             <option value="{{State_ID}}">{{State_Name}}</option>
                             {{/each}}

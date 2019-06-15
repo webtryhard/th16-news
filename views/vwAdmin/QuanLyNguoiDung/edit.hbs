@@ -5,63 +5,72 @@
                 <form method="POST" action="/admin/quanlynguoidung/update">
                     <div class="form-group">
                         <label for="txtName">Mã số</label>
-                        <input readonly type="text" class="form-control" placeholder={{this.user.User_ID}} name="User_ID" value="{{this.user.User_ID}}">
+                        <input readonly type="text" class="form-control" placeholder={{this.user.User_ID}}
+                            name="User_ID" value="{{this.user.User_ID}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Username</label>
                         <input type="text" class="form-control" id="txtName" name="Username" autofocus
-                            placeholder="{{this.user.Username}}">
+                            placeholder="{{this.user.Username}}" value="{{this.user.Username}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Password</label>
                         <input type="text" class="form-control" id="txtName" name="Password" autofocus
-                            placeholder="{{this.user.Password}}">
+                            placeholder="{{this.user.Password}}" value="{{this.user.Password}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Họ Tên</label>
                         <input type="text" class="form-control" id="txtName" name="Name" autofocus
-                            placeholder="{{this.user.Name}}">
+                            placeholder="{{this.user.Name}}" value="{{this.user.Name}}">
                     </div>
                     <div class="form-group">
                         <label for="txtCatParentName">Loại người dùng</label>
                         <select class="form-control" name="User_Cat_Name">
-                           {{#each listCatUser}}
-                               <option value="{{this}}">{{this}}</option>
-                           {{/each}}
+                            {{#each listCatUser}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="image_uploads">Avatar</label>
                         <input type="text" class="form-control" id="txtName" name="Avatar" autofocus
-                            placeholder="{{this.user.Avatar}}">
+                            placeholder="{{this.user.Avatar}}" value="{{this.user.Avatar}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Số điện thoại</label>
                         <input type="text" class="form-control" id="txtName" name="Phone" autofocus
-                            placeholder="{{this.user.Phone}}">
+                            placeholder="{{this.user.Phone}}" value="{{this.user.Phone}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Email</label>
-                        <input type="text" class="form-control" id="txtName" name="Email" autofocus placeholder="{{this.user.Email}}">
+                        <input type="text" class="form-control" id="txtName" name="Email" autofocus
+                            placeholder="{{this.user.Email}}" value="{{this.user.Email}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Địa chỉ</label>
                         <input type="text" class="form-control" id="txtName" name="Address" autofocus
-                            placeholder="{{this.user.Address}}">
+                            placeholder="{{this.user.Address}}" value="{{this.user.Address}}">
                     </div>
                     <div class="form-group">
-                        <label for="txtName">Ngày cấp</label>
-                        <input type="date" class="form-control" id="txtName" name="Day_Issuance" autofocus
-                            placeholder="{{this.user.Day_Issuance}}">
+                        <label for="txtName">Ngày đã cấp</label>
+                        <input readonly type="text" class="form-control"
+                            value="{{DateCmtFormat this.user.Day_Issuance}}" />
                     </div>
-                    <a class="btn btn-primary" href="/admin/quanlynguoidung" role="button">
-                        <i class="fa fa-backward" aria-hidden="true"></i>
-                        Quay lại danh sách
-                    </a>
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                        Lưu lại
-                    </button>
+                    <div class="form-group">
+                        <label for="txtName">Chọn ngày cấp mới</label>
+                        <input type="date" class="form-control" id="txtName" name="Day_Issuance" autofocus
+                            placeholder="{{this.user.Day_Issuance}}" value="{{this.user.Day_Issuance}}">
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-primary" href="/admin/quanlynguoidung" role="button">
+                            <i class="fa fa-backward" aria-hidden="true"></i>
+                            Quay lại danh sách
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Lưu lại
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
