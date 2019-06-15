@@ -100,6 +100,9 @@ module.exports = {
     getAllNewState: () => {
         return db.load(`SELECT * FROM news_state`);
     },
+    addNew: entity => {
+        return db.add('news', entity);
+    },
     updateNew: entity => {
         return db.update('news', 'News_ID', entity);
     },

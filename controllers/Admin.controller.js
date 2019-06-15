@@ -349,6 +349,39 @@ router.get('/quanlybaiviet', (req, res) => {
 }
 )
 
+router.get('/quanlybaiviet/add', (req, res) => {
+    var p1 = AdminModel.getAllUser();
+    var p2 = AdminModel.getAllNewState();
+    var p3 = AdminModel.getAllCat();
+    Promise.all([p1, p2, p3]).then(([row1, row2, row3]) => {
+        res.render('vwAdmin/QuanLyBaiViet/add.hbs', {
+            user: row1,
+            newState: row2,
+            cat: row3,
+            layout: 'adminQuanLyBaiViet.hbs',
+            title: 'Thêm bài viết',
+            logo: 'logo.png',
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlybaiviet/add', (req, res) => {
+    AdminModel.addNew(req.body)
+        .then(id => {
+            res.render('vwAdmin/QuanLyBaiViet/add', {
+                layout: 'adminQuanLyBaiViet.hbs',
+                title: 'Thêm bài viết',
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+
 router.get('/quanlybaiviet/edit/:id', (req, res) => {
     var id = req.params.id;
     var p = AdminModel.singleNew(id);
@@ -393,6 +426,20 @@ router.post('/quanlybaiviet/update', (req, res) => {
     })
 })
 
+router.get('/quanlybaiviet/delete/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        News_ID: id,
+        Deleted: 1
+    }
+    AdminModel.updateNew(entity).then(n => {
+        res.redirect('/admin/quanlybaiviet');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
 router.get('/quanlybaiviet/xuatban/:id', (req, res) => {
     var id = req.params.id;
     var entity = {
@@ -400,7 +447,7 @@ router.get('/quanlybaiviet/xuatban/:id', (req, res) => {
         State_ID: 4
     }
 
-    AdminModel.updateNew(entity).then(n=>{
+    AdminModel.updateNew(entity).then(n => {
         res.redirect('/admin/quanlybaiviet');
     }).catch(err => {
         console.log(err);
@@ -424,8 +471,8 @@ router.get('/quanlynguoidung', (req, res) => {
     });
 }
 )
-router.get('/quanlynguoidung/add', (req, res) => {
 
+router.get('/quanlynguoidung/add', (req, res) => {
     res.render('vwAdmin/QuanLyNguoiDung/add', {
         layout: 'adminQuanLyNguoiDung.hbs',
         title: 'Thêm người dùng',
