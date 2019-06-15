@@ -92,7 +92,18 @@ const hbs = exphbs.create({
                 return options.inverse(this);
             }
         
-        }
+        },
+
+        getDate: function(){
+            return new Date();
+        },
+
+        //Tính ngày hết hạn
+        tinhNgayHetHan: function(date){
+            var ms = date.getTime() + 7*86400000;
+            var tomorrow = new Date(ms);
+            return tomorrow;
+        },
     },
 })
 
@@ -178,6 +189,9 @@ app.use('/account', account);
 
 var editor = require('./controllers/editor.controller');
 app.use('/editor', editor);
+
+var writer = require('./controllers/writer.controller');
+app.use('/writer', writer);
 
 app.listen(port);
 console.log('http://localhost:' + port);
