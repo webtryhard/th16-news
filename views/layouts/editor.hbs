@@ -2,31 +2,105 @@
 <html>
 
 <head>
-    <!-- Basic Page Needs =====================================-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Basic Page Needs =====================================-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <!-- Site Title- -->
-    <title>{{title}}</title>
+  <!-- Site Title- -->
+  <title>{{title}}</title>
 
-    <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/vendors/themify-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="/vendors/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/vendors/themify-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="/vendors/flag-icon-css/css/flag-icon.min.css">
 
-    <link rel="stylesheet" href="/vendors/assets/css/style.css">
+  <link rel="stylesheet" href="/vendors/assets/css/style.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   {{#each style}}
   <link rel="stylesheet" type="text/css" href="/css/{{this}}">
   {{/each}}
 
 </head>
+
 <body>
 
-   {{{body}}}
+  <!-- Left Panel -->
+
+  <aside id="left-panel" class="left-panel">
+    {{#each editor}}
+    <div class="container">
+      <img src="{{info.Avatar}}" class="avatar-editor">
+      <div class="name-editor"><b>{{info.Username}}</b></div>
+    </div>
+    <div class="editor_info">
+      <div class="text-center" style="font-size: 20px;"><strong>Thông tin cá nhân</strong></div>
+      <div>Tên: {{info.Name}}</div>
+      <div>Vị trí: Biên tập viên</div>
+      <div>Chủ đề quản lý:
+        {{#each cat}}
+        {{#if @last}}
+        {{CatName}}.
+        {{else}}
+        {{CatName}},
+        {{/if}}
+        {{/each}}
+      </div>
+      <div>Điện thoại: {{info.Phone}}</div>
+      <div>Email: {{info.Email}}</div>
+      <div>Địa chỉ: {{info.Address}}</div>
+      </p>
+    </div>
+    {{/each}}
+  </aside>
+  <!-- Left Panel -->
+  <!-- Right Panel -->
+
+  <div id="right-panel" class="right-panel">
+
+    <!-- Header-->
+    <header id="header" class="header">
+
+      <div class="header-menu">
+
+        <div class="col-sm-7">
+          <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+          <div class="header-left">
+            <button class="search-trigger"><i class="fa fa-search"></i></button>
+            <div class="form-inline">
+              <form class="search-form">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <div class="user-area dropdown float-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="user-avatar rounded-circle" src="{{editor.0.info.Avatar}}" alt="User Avatar">
+            </a>
+            <div class="user-menu dropdown-menu">
+              <a class="nav-link" href="#"><i class="fa fa-user"></i> Cập nhật thông tin</a>
+
+              <a class="nav-link" href="#"><i class="fa fa-cog"></i> Đổi mật khẩu</a>
+
+              <a class="nav-link" href="/"><i class="fa fa-power-off"></i> Đăng xuất</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </header>
+    <!-- /header -->
+    {{{body}}}
+  </div><!-- /#right-panel -->
+
+  <!-- Right Panel -->
 
   <div id="my_popup">
     <div class="my_popup_content"></div>
@@ -40,9 +114,11 @@
   <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/vendors/assets/js/main.js"></script>
 
+
   {{#each js}}
-    <script type="text/javascript" src="/js/{{this}}"></script>
+  <script type="text/javascript" src="/js/{{this}}"></script>
   {{/each}}
- 
+
 </body>
+
 </html>

@@ -24,7 +24,7 @@ module.exports = {
     },
 
     getAllTagsManyNews: (CatID, offset, limit) => {
-        return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name FROM tags T,tags_news TN, (SELECT News_ID FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC LIMIT ${offset},${limit}) as N WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
+        return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name FROM tags T,tags_news TN, (SELECT News_ID FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 ORDER BY Time DESC LIMIT ${offset},${limit}) as N WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
     },
 
     getCatAndChillByCatID: CatID => {
@@ -32,15 +32,15 @@ module.exports = {
     },
 
     getNewsByCat: (CatID) => {
-        return db.load(`SELECT * FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC`);
+        return db.load(`SELECT * FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 ORDER BY Time DESC`);
     },
 
     countNewsByCat: (CatID) => {
-        return db.load(`SELECT count(*) as total FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 and News_Category = 0 `);
+        return db.load(`SELECT count(*) as total FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4`);
     },
 
     getNewsSameCat: (CatID, News_ID) => {
-        return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} and Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC LIMIT 0,8`);
+        return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} and Deleted = 0 and State_ID = 4 ORDER BY Time DESC LIMIT 0,8`);
     },
 
     getAllCat: ()=>{

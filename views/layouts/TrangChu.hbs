@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Site Title- -->
   <title>{{title}}</title>
 
@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   {{{_sections.css}}}
-}
 
 </head>
 
@@ -68,7 +67,7 @@
               </ul>
             </div>
 
-       
+
 
             <div class="right-menu">
               <ul class="nav navbar-nav navbar-justified">
@@ -79,7 +78,7 @@
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                   </a>
                 </li>
-                {{/if}}
+
                 <!-- icon search  -->
                 <li class="search_ hidden-xs hidden-sm">
                   <a href="#" class="color_fff " id="toggle-search">
@@ -186,14 +185,24 @@
     }
 
 
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
 
     $(document).ready(() => {
+      console.log("Hi")
+
       if (getCookie("username") !== "") {
+        console.log("Hi")
+
         $("#loginIconX").removeClass(["login_icon"])
         //$("#loginIconX").html("Hello " +getCookie("username"))
         let t = `
-  <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Hi, ${getCookie("username")}
@@ -213,8 +222,65 @@
         $("#loginIconX").html(t)
         $('#loginIconX').addClass([""])
       }
+
+      let loginForm = document.getElementById("loginForm")
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+        console.log("Hihi")
+
+        fetch("/account/api/login",
+          {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              dnusername: document.getElementById("dnusername").value,
+              dnpassword: document.getElementById("dnpassword").value,
+            })
+          }).then(res => res.json()).then(
+            res => {
+              console.log(res)
+              if (res.success === true) {
+                location.reload()
+              }
+            }
+          );
+      })
+
+      let registerForm = document.getElementById("registerForm")
+      registerForm.addEventListener("submit", (event) => {
+        event.preventDefault()
+
+        console.log(grecaptcha.getResponse())
+
+        fetch("/account/api/register",
+          {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              dkusername: document.getElementById("dkusername").value,
+              dkpassword: document.getElementById("dkpassword").value,
+              dkname: document.getElementById("dkname").value,
+              dkemail: document.getElementById("dkemail").value,
+              captcha: grecaptcha.getResponse()
+            })
+          }).then(res => res.json()).then(
+            res => {
+              console.log(res)
+              if (res.success === true) {
+                location.reload()
+              }
+            }
+          );
+      })
     })
   </script>
+
 
 </body>
 

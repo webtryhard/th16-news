@@ -128,7 +128,7 @@
                         </div>
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <form method="POST" action="/account/register" accept-charset="UTF-8" id="loginForm">
+                            <form accept-charset="UTF-8" id="loginForm">
                                 <input id="dnusername" class="form-control" type="text" placeholder="Username"
                                     name="dnusername" autofocus>
                                 <input id="dnpassword" class="form-control" type="password" placeholder="Password"
@@ -141,8 +141,8 @@
                 <div class="box">
                     <div class="content registerBox" style="display:none;">
                         <div class="form">
-                            <form method="post" html="{:multipart=>true}" data-remote="true" action="/account/register"
-                                accept-charset="UTF-8" id="registerForm">
+                            <form html="{:multipart=>true}" data-remote="true" accept-charset="UTF-8"
+                                id="registerForm">
                                 <input id="dkusername" class="form-control" type="text" placeholder="Username"
                                     name="dkusername" autofocus>
                                 <input id="dkpassword" class="form-control" type="password" placeholder="Password"
@@ -150,9 +150,20 @@
                                 <input id="dkpassword_confirmation" class="form-control" type="password"
                                     placeholder="Repeat Password" name="dkpassword_confirmation">
                                 <input id="dkname" class="form-control" type="text" placeholder="Name" name="dkname">
-                                <input id="dkemail" class="form-control" type="email" placeholder="Email" name="dkemail">
-                                {{!-- <input id="DOB" class="form-control" type="text" name="DOB"> --}}
+                                <input id="dkemail" class="form-control" type="email" placeholder="Email"
+                                    name="dkemail">
+
+
+                                {{!-- <form action="?" method="POST" id="captcha"> --}}
+                                <div id="captcha" name="captcha" class="g-recaptcha"
+                                    data-sitekey="6LdwBKkUAAAAAAOwExf92QKAHkR_RIX5l519_Q-M"></div>
+                                <br />
                                 <input class="btn btn-default btn-register" type="submit" value="Create account">
+                                {{!-- </form> --}}
+
+
+                                {{!-- <input id="DOB" class="form-control" type="text" name="DOB"> --}}
+
                             </form>
                         </div>
                     </div>

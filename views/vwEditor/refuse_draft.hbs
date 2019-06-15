@@ -1,0 +1,35 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header"><strong style="font-size: 20px;">Từ chối bài viết</strong></div>
+                    <div class="card-body">
+                        <form method="POST" action="/editor/refuse/update">
+                            <div class="form-group">
+                                <label for="txtNewsID">Mã số</label>
+                                <input readonly type="text" class="form-control" id="txtNewsID" name="News_ID" value="{{draft.News_ID}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtName">Tên bài viết</label>
+                                <input readonly type="text" class="form-control" id="txtName" name="Name" value="{{draft.News_Name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtRefuse">Lý do từ chối</label>
+                                <input type="text" class="form-control" id="txtRefuse" name="Reason_Refuse" autofocus placeholder="Lý do từ chối" required>
+                            </div>
+                            <a class="btn btn-primary" href="/editor/{{idE}}/draft/show/{{idN}}" role="button">
+                                <i class="fa fa-backward" aria-hidden="true"></i>
+                                Quay lại bài viết
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                Lưu lại
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div>
