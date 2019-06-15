@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label for="txtCatName">Chuyên mục</label>
                         <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus
-                            placeholder="{{this.cat.CatName}}">
+                            placeholder="{{this.cat.CatName}}" value="{{this.cat.CatName}}">
                     </div>
 
                     {{#if isNull}}
@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="txtCatParentName">Chuyên mục cha hiện tại</label>
                         <input readonly type="text" class="form-control" id="txtCatParentName"
-                            placeholder="{{this.cat.TenCM}}">
+                            placeholder="{{this.cat.TenCM}}" value="{{this.cat.TenCM}}">
                     </div>
                     {{/if}}
 

@@ -55,7 +55,7 @@ const hbs = exphbs.create({
         section: hbs_sections(),
 
         //So sánh giá trị
-        compare: function (lvalue, operator, rvalue, options) {
+        compare: function(lvalue, operator, rvalue, options) {
 
             var operators, result;
 
@@ -92,16 +92,16 @@ const hbs = exphbs.create({
             } else {
                 return options.inverse(this);
             }
-        
+
         },
-        
-        getDate: function(){
+
+        getDate: function() {
             return new Date();
         },
 
         //Tính ngày hết hạn
-        tinhNgayHetHan: function(date){
-            var ms = date.getTime() + 7*86400000;
+        tinhNgayHetHan: function(date) {
+            var ms = date.getTime() + 7 * 86400000;
             var tomorrow = new Date(ms);
             return tomorrow;
         },
@@ -112,8 +112,10 @@ app.engine('.hbs', hbs.engine);
 
 
 app.set('view engine', '.hbs');
+app.set('views', './views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json())
 
 app.get('/', function(req, res) {
 
@@ -161,7 +163,7 @@ app.get('/', function(req, res) {
             if (rows5[i])
                 newsHotWeek2.push(rows5[i]);
         }
-        
+
         res.render('home', {
             layout: 'TrangChu.hbs',
             title: 'Trang chủ',
@@ -198,6 +200,26 @@ app.use('/editor', editor);
 
 var writer = require('./controllers/writer.controller');
 app.use('/writer', writer);
+
+var quenmk = require('./controllers/quenMatkhau');
+app.use('/password', quenmk);
+
+// var passport = require('passport'),
+//     FacebookStrategy = require('passport-facebook').Strategy;
+
+// passport.use(new FacebookStrategy({
+//         clientID: FACEBOOK_APP_ID,
+//         clientSecret: FACEBOOK_APP_SECRET,
+//         callbackURL: "http://www.example.com/auth/facebook/callback"
+//     },
+//     function(accessToken, refreshToken, profile, done) {
+//         User.findOrCreate(..., function(err, user) {
+//             if (err) { return done(err); }
+//             done(null, user);
+//         });
+//     }
+// ));
+
 
 app.listen(port);
 console.log('http://localhost:' + port);

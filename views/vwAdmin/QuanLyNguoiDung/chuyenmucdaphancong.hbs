@@ -1,0 +1,75 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" style="display: flex;justify-content: space-between;">
+                        <div> Biên tập viên:
+                            <h5>{{this.user.Username}}
+                            </h5>
+                        </div>
+                        <a class="btn btn-outline-danger" href="/admin/quanlynguoidung/chuyenmucdaphancong/{{this.user.User_ID}}" role="button">
+                            <i class="fa fa-minus-square"> Những mục đã phân công</i>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div id="bootstrap-data-table-export_wrapper"
+                            class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="bootstrap-data-table-export"
+                                        class="table table-striped table-bordered dataTable no-footer" role="grid"
+                                        aria-describedby="bootstrap-data-table-export_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-sort="ascending"
+                                                    aria-label="Name: activate to sort column descending"
+                                                    style="width: 247px;">Mã số</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 407px;">Tên chuyên mục</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Office: activate to sort column ascending"
+                                                    style="width: 183px;">Chuyên mục cha</th>
+                                                <th data-orderable="false">
+                                                    <a class="btn btn-primary" href="/admin/quanlynguoidung"
+                                                        role="button">
+                                                        <i class="fa fa-backward" aria-hidden="true"></i>
+                                                        Quay lại
+                                                    </a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each this.cat}}
+                                            <tr role="row" class="odd">
+                                                <th class="sorting_1">{{CatID}}</th>
+                                                <td>{{CatName}}</td>
+                                                <td>{{ParentName}}</td>
+                                                <td style="text-align: center">
+                                                    <a class="btn btn-danger btn-sm"
+                                                        href="/admin/quanlynguoidung/xoamucphancong/{{../this.user.User_ID}}/{{CatID}}" role="button"
+                                                        title="Xóa mục đã phân công">
+                                                        <i class="fa fa-trash" aria-hidden="true">
+                                                        </i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div><!-- .animated -->
+</div>

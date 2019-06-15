@@ -9,6 +9,14 @@ module.exports = {
         return db.load(`select * from user where User_Cat_ID = ${id}`);
     },
 
+    singleEmail: email => {
+        return db.load(`select * from user where Email = '${email}'`);
+    },
+
+    updateEmail: entity => {
+        return db.update('user', 'Email', entity);
+    },
+
     singleByUserName: userName => {
         return db.load(`select * from user where Username = '${userName}'`);
     },
@@ -22,9 +30,7 @@ module.exports = {
     },
 
     update: entity => {
-        var id = entity.f_ID;
-        delete entity.f_ID;
-        return db.update('users', 'f_ID', entity, id);
+        return db.update('user', entity);
     },
 
     delete: id => {

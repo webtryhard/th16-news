@@ -3,22 +3,34 @@ var router = express.Router();
 var AdminModel = require('../models/admin.model');
 
 router.get('/', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllUser();
 
-    //console.log(rows);
-    res.render('vwAdmin/administrator.hbs', {
-        layout: 'Admin.hbs',
-        title: 'Admin',
-        logo: 'logo.png'
+    Promise.all([p1, p2]).then(([row1, row2]) => {
+        res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
+            admin: row1[0],
+            user: row2,
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Trang quản lý của admin',
+            logo: 'logo.png',
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }
 )
 
 //QUẢN LÝ CHUYÊN MỤC
 router.get('/quanlychuyenmuc', (req, res) => {
-    var p = AdminModel.getAllCat();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllCat();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyChuyenMuc/adminQuanLyChuyenMuc.hbs', {
-            cat: rows,
+            admin: row1[0],
+            cat: row2,
             layout: 'adminQuanLyChuyenMuc.hbs',
             title: 'Quản lý chuyên mục',
             logo: 'logo.png'
@@ -29,10 +41,14 @@ router.get('/quanlychuyenmuc', (req, res) => {
 })
 
 router.get('/quanlychuyenmuc/deleted', (req, res) => {
-    var p = AdminModel.getAllCatDeleted();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllCatDeleted();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyChuyenMuc/deleted.hbs', {
-            cat: rows,
+            admin: row1[0],
+            cat: row2,
             layout: 'adminQuanLyChuyenMuc.hbs',
             title: 'Các chuyên mục đã xóa',
             logo: 'logo.png'
@@ -49,7 +65,7 @@ router.get('/quanlychuyenmuc/delete/:id', (req, res) => {
         CatID: id,
         Deleted: 1
     }
-    AdminModel.update(entity).then(n => {
+    AdminModel.updateCat(entity).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
     }).catch(err => {
         console.log(err);
@@ -63,7 +79,7 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
         CatID: id,
         Deleted: 0
     }
-    AdminModel.update(entity).then(n => {
+    AdminModel.updateCat(entity).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
     }).catch(err => {
         console.log(err);
@@ -94,7 +110,7 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
                     parentCat: rows2,
                     error: false,
                     layout: 'adminQuanLyChuyenMuc.hbs',
-                    title: 'Quản lý chuyên mục',
+                    title: 'Chỉnh sửa chuyên mục',
                     logo: 'logo.png',
                     isNull: false
                 });
@@ -118,7 +134,7 @@ router.get('/quanlychuyenmuc/edit/:id', (req, res) => {
 })
 
 router.post('/quanlychuyenmuc/update', (req, res) => {
-    AdminModel.update(req.body).then(n => {
+    AdminModel.updateCat(req.body).then(n => {
         res.redirect('/admin/quanlychuyenmuc');
     }).catch(err => {
         console.log(err);
@@ -215,11 +231,14 @@ router.get('/quanlychuyenmuc/restore/:id', (req, res) => {
 
 //QUẢN LÝ NHÃN
 router.get('/quanlynhan', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllTag();
 
-    var p = AdminModel.getAllTag();
-    p.then(rows => {
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNhan/adminQuanLyNhan.hbs', {
-            tag: rows,
+            admin: row1[0],
+            tag: row2,
             layout: 'adminQuanLyNhan.hbs',
             title: 'Quản lý nhãn',
             logo: 'logo.png'
@@ -261,7 +280,7 @@ router.get('/quanlynhan/edit/:id', (req, res) => {
                 tag: rows[0],
                 error: false,
                 layout: 'adminQuanLyNhan.hbs',
-                title: 'Quản lý nhãn',
+                title: 'Chỉnh sửa nhãn',
                 logo: 'logo.png',
             });
         }
@@ -270,7 +289,7 @@ router.get('/quanlynhan/edit/:id', (req, res) => {
                 tag: rows[0],
                 error: true,
                 layout: 'adminQuanLyNhan.hbs',
-                title: 'Quản lý nhãn',
+                title: 'Chỉnh sửa nhãn',
                 logo: 'logo.png'
             });
         }
@@ -281,7 +300,7 @@ router.get('/quanlynhan/edit/:id', (req, res) => {
 })
 
 router.post('/quanlynhan/update', (req, res) => {
-    AdminModel.update(req.body).then(n => {
+    AdminModel.updateCat(req.body).then(n => {
         res.redirect('/admin/quanlynhan');
     }).catch(err => {
         console.log(err);
@@ -290,10 +309,14 @@ router.post('/quanlynhan/update', (req, res) => {
 })
 
 router.get('/quanlynhan/deleted', (req, res) => {
-    var p = AdminModel.getAllTagDeleted();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllTagDeleted();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNhan/deleted.hbs', {
-            tag: rows,
+            admin: row1[0],
+            tag: row2,
             layout: 'adminQuanLyNhan.hbs',
             title: 'Các nhãn đã xóa',
             logo: 'logo.png'
@@ -332,25 +355,143 @@ router.get('/quanlynhan/restore/:id', (req, res) => {
     })
 })
 
-router.get('/quanlybaiviet', (req, res) => {
 
-    //console.log(rows);
-    res.render('vwAdmin/AdminQuanLyBaiViet.hbs', {
-        layout: 'Admin.hbs',
-        title: 'Quản lý bài viết',
-        logo: 'logo.png'
+//QUẢN LÝ BÀI VIẾT
+router.get('/quanlybaiviet', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllNews();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
+        res.render('vwAdmin/QuanLyBaiViet/adminQuanLyBaiViet.hbs', {
+            admin: row1[0],
+            news: row2,
+            layout: 'adminQuanLyBaiViet.hbs',
+            title: 'Quản lý bài viết',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }
 )
 
+router.get('/quanlybaiviet/add', (req, res) => {
+    var p1 = AdminModel.getAllUser();
+    var p2 = AdminModel.getAllNewState();
+    var p3 = AdminModel.getAllCat();
+    Promise.all([p1, p2, p3]).then(([row1, row2, row3]) => {
+        res.render('vwAdmin/QuanLyBaiViet/add.hbs', {
+            user: row1,
+            newState: row2,
+            cat: row3,
+            layout: 'adminQuanLyBaiViet.hbs',
+            title: 'Thêm bài viết',
+            logo: 'logo.png',
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlybaiviet/add', (req, res) => {
+    AdminModel.addNew(req.body)
+        .then(id => {
+            res.render('vwAdmin/QuanLyBaiViet/add', {
+                layout: 'adminQuanLyBaiViet.hbs',
+                title: 'Thêm bài viết',
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+
+router.get('/quanlybaiviet/edit/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.singleNew(id);
+    var p2 = AdminModel.getAllNewState();
+    var p3 = AdminModel.getAllCat();
+
+    Promise.all([p, p2, p3]).then(([rows, row2, row3]) => {
+        if (rows.length > 0) {
+            res.render('vwAdmin/QuanLyBaiViet/edit.hbs', {
+                news: rows[0],
+                newState: row2,
+                cat: row3,
+                error: false,
+                layout: 'adminQuanLyBaiViet.hbs',
+                title: 'Chỉnh sửa bài viết',
+                logo: 'logo.png',
+            });
+        }
+        else {
+            res.render('vwAdmin/QuanLyBaiViet/AdminQuanLyBaiViet.hbs', {
+                news: rows[0],
+                newState: row2,
+                cat: row3,
+                error: true,
+                layout: 'adminQuanLyBaiViet.hbs',
+                title: 'Chỉnh sửa bài viết',
+                logo: 'logo.png',
+            });
+        }
+    }).catch(err => {
+        console.log(err);
+    });
+
+})
+
+router.post('/quanlybaiviet/update', (req, res) => {
+    AdminModel.updateNew(req.body).then(n => {
+        res.redirect('/admin/quanlybaiviet');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlybaiviet/delete/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        News_ID: id,
+        Deleted: 1
+    }
+    AdminModel.updateNew(entity).then(n => {
+        res.redirect('/admin/quanlybaiviet');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlybaiviet/xuatban/:id', (req, res) => {
+    var id = req.params.id;
+    var entity = {
+        News_ID: id,
+        State_ID: 4
+    }
+
+    AdminModel.updateNew(entity).then(n => {
+        res.redirect('/admin/quanlybaiviet');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
 
 //QUẢN LÝ NGƯỜI DÙNG
 router.get('/quanlynguoidung', (req, res) => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllUser();
 
-    var p = AdminModel.getAllUser();
-    p.then(rows => {
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
-            user: rows,
+            admin: row1[0],
+            user: row2,
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Quản lý người dùng',
             logo: 'logo.png'
@@ -360,8 +501,8 @@ router.get('/quanlynguoidung', (req, res) => {
     });
 }
 )
-router.get('/quanlynguoidung/add', (req, res) => {
 
+router.get('/quanlynguoidung/add', (req, res) => {
     res.render('vwAdmin/QuanLyNguoiDung/add', {
         layout: 'adminQuanLyNguoiDung.hbs',
         title: 'Thêm người dùng',
@@ -414,13 +555,11 @@ router.get('/quanlynguoidung/edit/:id', (req, res) => {
 })
 
 router.post('/quanlynguoidung/update', (req, res) => {
-    res.render('vwAdmin/QuanLyNguoiDung/edit', {
-        user: rows[0],
-        error: true,
-        layout: 'adminQuanLyNguoiDung.hbs',
-        title: 'Quản lý người dùng',
-        logo: 'logo.png',
-        listCatUser: ['Subcriber', 'Admin', 'Editor', 'Writter'],
+    AdminModel.updateUser(req.body).then(n => {
+        console.log(req.body);
+        res.redirect('/admin/quanlynguoidung');
+    }).catch(err => {
+        console.log(err);
     });
 })
 
@@ -448,11 +587,76 @@ router.post('/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
     })
 })
 
+router.get('/quanlynguoidung/phancongchuyenmuc/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.getAllCatFromTask(id);
+    var p2 = AdminModel.singleUser(id);
+    Promise.all([p, p2]).then(([rows, rows2]) => {
+        res.render('vwAdmin/QuanLyNguoiDung/phancongchuyenmuc.hbs', {
+            cat: rows,
+            user: rows2[0],
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Phân công chuyên mục',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+})
+
+router.get('/quanlynguoidung/chuyenmucdaphancong/:id', (req, res) => {
+    var id = req.params.id;
+    var p = AdminModel.getAllCatFromEditor(id);
+    var p2 = AdminModel.singleUser(id);
+    Promise.all([p, p2]).then(([rows, rows2]) => {
+        res.render('vwAdmin/QuanLyNguoiDung/chuyenmucdaphancong.hbs', {
+            cat: rows,
+            user: rows2[0],
+            layout: 'adminQuanLyNguoiDung.hbs',
+            title: 'Chuyên mục đã phân công',
+            logo: 'logo.png'
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+})
+
+router.get('/quanlynguoidung/phancong/:ide/:idc', (req, res) => {
+    var ide = req.params.ide;
+    var idc = req.params.idc;
+    var entity = {
+        ID_Editor: ide,
+        ID_Cat: idc
+    }
+    AdminModel.addTask(entity).then(n => {
+        res.redirect('/admin/quanlynguoidung/phancongchuyenmuc/' + ide);
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
+router.get('/quanlynguoidung/xoamucphancong/:ide/:idc', (req, res) => {
+    var ide = req.params.ide;
+    var idc = req.params.idc;
+
+    AdminModel.deleteTask(ide, idc).then(n => {
+        res.redirect('/admin/quanlynguoidung/chuyenmucdaphancong/' + ide);
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
+})
+
 router.get('/quanlynguoidung/deleted', (req, res) => {
-    var p = AdminModel.getAllUserDeleted();
-    p.then(rows => {
+    var id = 17;
+    var p1 = AdminModel.singleUser(id);
+    var p2 = AdminModel.getAllUserDeleted();
+
+    Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNguoiDung/deleted.hbs', {
-            user: rows,
+            admin: row1[0],
+            user: row2,
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Danh sách người dùng đã xóa',
             logo: 'logo.png'

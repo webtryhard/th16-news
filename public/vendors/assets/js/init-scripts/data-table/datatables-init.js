@@ -15,12 +15,6 @@
 	});
 
 	$('#row-select').DataTable({
-		language:{
-			paginate:{
-				next:"Kế tiếp",
-				previous:"Trước đó"
-			}
-		},
 		initComplete: function () {
 			this.api().columns().every(function () {
 				var column = this;
