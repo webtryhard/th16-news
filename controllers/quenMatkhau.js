@@ -12,20 +12,24 @@ router.get('/quenmatkhau', (req, res) => {
 
 router.post('/quenmatkhau', (req, res) => {
     let email = req.body.email
-    console.log('email: ' + email)
-    var entity = {
-        Email: email,
-        token: '123',
-    }
-    var checkEmail = userModel.updateEmail(entity);
+        // console.log('email: ' + email)
+        // var entity = {
+        //     Email: email,
+        //     token: '123',
+        // }
+    let checkEmail = userModel.checkEmail(email);
     // console.log(checkEmail)
     checkEmail
-        .then(users => {
-            if (users.length == 0) {
+        .then(user => {
+            console.log('check email: ', checkEmail)
+            console.log('user: ', user)
+            if (!user || !user.length) {
                 res.render("pieces/quenmatkhau", {
                     layout: false,
-                    notices: "Email chua duoc dang ki"
+                    notices: "Email chua duoc dang ki",
+                    alert: "email chưa được đăng kí",
                 });
+                console.log("vao ham chua co mail");
             } else {
                 // gui mail
 
@@ -93,7 +97,6 @@ router.post('/quenmatkhau', (req, res) => {
                     if (err) throw err;
                 });
             }
-
             // res.redirect("/auth/login");
         })
         .catch(err => {
