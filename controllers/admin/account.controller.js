@@ -33,27 +33,6 @@ router.get("/register", (req, res, next) => {
     });
 });
 
-// router.post("/register", (req, res, next) => {
-//   var saltRounds = 10;
-//   var hash = bcrypt.hashSync(req.body.password, saltRounds);
-//   var dob = moment(req.body.dob, "DD/MM/YYYY").format("YYYY-MM--DD");
-
-//   var entityAcc={
-//     Username: req.body.username,
-//     Password: hash,
-//   };
-//   var entitySub = {
-//     Sub_Name: req.body.name,
-//     Sub_Email: req.body.email,
-//     Sub_BirthDay: dob,
-//     f_Permission: 0
-//   };
-
-//   userModel.addAcc(entityAcc).then(id => {
-//     res.redirect("/account/login");
-//   });
-// });
-
 router.get("/login", (req, res, next) => {
     res.render("pieces/login", { layout: false });
 });
@@ -175,8 +154,12 @@ router.post("/api/register", async(req, res, next) => {
 //                 throw err;
 //             });
 //     } else {
-//         console.log("sad :(");
+//         console.log("sad :(");       
 //     }
 // });
-
+router.post('/logout', (req, res, next) => {
+    req.logOut();
+    location.reload();
+    console.log('logout roi ne')
+})
 module.exports = router;

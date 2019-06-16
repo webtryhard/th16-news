@@ -117,7 +117,7 @@ router.get('/thaydoimatkhau/:token', (req, res) => {
                 return
             }
 
-            res.render('/pieces/datLaiMatKhau', {
+            res.render('pieces/datLaiMatKhau', {
                 layout: false
             })
         })
@@ -127,18 +127,21 @@ router.get('/thaydoimatkhau/:token', (req, res) => {
 
 }, )
 
-router.post('/thaydoimatkhau', (req, res) => {
+router.post('/thaydoimatkhau/:token', (req, res) => {
     async.waterfall([
         function(done) {
             let checkToken = userModel.checkToken(req.params.token)
 
             checkToken
                 .then(user => {
-                    var userMail = user.rows[0].email
-
+                    var userMail = user[0].Email
+                    console.log('user checktoken: ', user);
+                    //console.log('pass', user[0].Password);
+                    // console.log('token tdmk: ', checkToken);
                     let entity = {
-                        User_ID: user.rows[0].id,
-                        Password: bcrypt.hashSync(req.body.password, saltRounds),
+                        Email: userMail,
+                        //Password: bcrypt.hashSync(req.body.password, saltRounds),
+                        Password: req.body.Password,
                         token: null
                     }
 
@@ -177,10 +180,7 @@ router.post('/thaydoimatkhau', (req, res) => {
                 done(err);
             });
 
-            res.render('pieces/quenMatKhau', {
-                layout: false,
-                notices: ['Đặt mật khẩu thành công.']
-            });
+            res.redirect('/');
         }
     ], function(err) {});
 })

@@ -35,5 +35,10 @@ module.exports = {
 
     delete: id => {
         return db.delete('users', 'f_ID', id);
+    },
+
+    checkToken: token => {
+        return db.load(`select * from user where token = '${token}'`);
     }
+
 };
