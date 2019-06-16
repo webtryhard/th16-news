@@ -157,9 +157,8 @@ router.post("/api/register", async(req, res, next) => {
 //         console.log("sad :(");       
 //     }
 // });
-router.post('/logout', (req, res, next) => {
-    req.logOut();
-    location.reload();
-    console.log('logout roi ne')
+router.get("/logout", (req, res) => {
+    res.clearCookie("username");
+    res.redirect('/');
 })
 module.exports = router;
