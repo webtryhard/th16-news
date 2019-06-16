@@ -162,8 +162,148 @@ routers.get('/:Editor_ID/draft/browse/:News_ID', (req, res) => {
 
 });
 
+routers.get('/:id/my_refused_draft', (req, res) => {
+    var id = req.params.id;
+    var page = req.query.page || 1;
+    if (page < 1) page = 1;
+    var limit = 5;
+    var offset = (page - 1) * limit;
+    var draft = [];
+
+    var p1 = editorModel.getRefusedDraft(id, offset);
+    var p2 = editorModel.countRefusedDraftOfEditor(id);
+    var p3 = editorModel.getSingleEditor(id);
+    var p4 = editorModel.getCatOfEditor(id);
+    var p5 = editorModel.getAllTagsManyRefusedDraft(id, offset, limit);
+
+    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
+
+        var total = rows2[0].total;
+        var npage = Math.floor(total / limit);
+        if (total % limit > 0) npage++;
+        var pages = [];
+
+
+        var prev, next, first, last;
+        if (page > 1) {
+            prev = page - 1;
+            first = 1;
+        }
+
+        if (page < npage) {
+            next = +page + 1;
+            last = npage;
+        }
+
+        for (i = page - 1; i <= +page + 1; i++) {
+            if (i > 0 && i <= npage) {
+                var obj = { value: i, active: i === +page };
+                pages.push(obj);
+            }
+        }
+
+        var editor = [];
+        editor.push({ info: rows3[0], cat: rows4 });
+
+        for (i = 0; i < limit; i++) {
+            if (rows1[i]) {
+                var tags = [];
+                for (j = 0; j < rows5.length; j++) {
+                    if (rows5[j].News_ID === rows1[i].News_ID) {
+                        tags.push(rows5[j]);
+                    }
+                }
+                draft.push({ new: rows1[i], tag: tags });
+            }
+        }
+
+        res.render('vwEditor/my_refused_draft.hbs', {
+            draft,
+            editor,
+            pages, first, last, prev, next,
+            layout: 'editor.hbs',
+            title: 'Bài viết đã từ chối',
+            logo: 'logo.png',
+            style: ['style1.css', 'style2.css', 'editor.css'],
+            js: ['jQuery.js', 'js.js'],
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+routers.get('/:id/my_browsed_draft', (req, res) => {
+    var id = req.params.id;
+    var page = req.query.page || 1;
+    if (page < 1) page = 1;
+    var limit = 5;
+    var offset = (page - 1) * limit;
+    var draft = [];
+
+    var p1 = editorModel.getBrowsedDraft(id, offset);
+    var p2 = editorModel.countBrowsedDraftOfEditor(id);
+    var p3 = editorModel.getSingleEditor(id);
+    var p4 = editorModel.getCatOfEditor(id);
+    var p5 = editorModel.getAllTagsManyBrowsedDraft(id, offset, limit);
+
+    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
+
+        var total = rows2[0].total;
+        var npage = Math.floor(total / limit);
+        if (total % limit > 0) npage++;
+        var pages = [];
+
+
+        var prev, next, first, last;
+        if (page > 1) {
+            prev = page - 1;
+            first = 1;
+        }
+
+        if (page < npage) {
+            next = +page + 1;
+            last = npage;
+        }
+
+        for (i = page - 1; i <= +page + 1; i++) {
+            if (i > 0 && i <= npage) {
+                var obj = { value: i, active: i === +page };
+                pages.push(obj);
+            }
+        }
+
+        var editor = [];
+        editor.push({ info: rows3[0], cat: rows4 });
+
+        for (i = 0; i < limit; i++) {
+            if (rows1[i]) {
+                var tags = [];
+                for (j = 0; j < rows5.length; j++) {
+                    if (rows5[j].News_ID === rows1[i].News_ID) {
+                        tags.push(rows5[j]);
+                    }
+                }
+                draft.push({ new: rows1[i], tag: tags });
+            }
+        }
+
+        res.render('vwEditor/my_browsed_draft.hbs', {
+            draft,
+            editor,
+            pages, first, last, prev, next,
+            layout: 'editor.hbs',
+            title: 'Bài viết đã từ duyệt',
+            logo: 'logo.png',
+            style: ['style1.css', 'style2.css', 'editor.css'],
+            js: ['jQuery.js', 'js.js'],
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
 routers.post('/browse/add', (req, res) => {
-    var list=req.body['Tag_selected[]'];
+    var list=req.body;
     console.log("=========================="+list);
     var entity = [
         { News_ID: 1, TagID: 20 }
@@ -177,19 +317,62 @@ routers.post('/browse/add', (req, res) => {
         })
 })
 
-// routers.post('/browse/update', (req, res) => {
-//     var entity = {
-//         News_ID: req.body.News_ID,
-//         Reason_Refuse: req.body.Reason_Refuse,
-//         State_ID: 3
-//     }
-//     editorModel.updateRefuse(entity).then(n => {
-//         res.end("thành công rồi");
-//     }).catch(err => {
-//         console.log(err);
-//         res.end('error');
-//     })
-// });
+routers.get('/:Editor_ID/draft/refused/:News_ID', (req, res) => {
+    var idE = req.params.Editor_ID;
+    var idN = req.params.News_ID;
+    var p1 = editorModel.getSingleEditor(idE);
+    var p2 = editorModel.getCatOfEditor(idE);
+    var p3 = editorModel.getInfoSingleDraft(idN);
+    var p4 = editorModel.getAllTagsOfDraft(idN);
+
+    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+
+        var editor = [];
+        editor.push({ info: rows1[0], cat: rows2 });
+
+        res.render('vwEditor/refused_draft.hbs', {
+            editor, idE, idN,
+            draft: rows3,
+            tags: rows4,
+            layout: 'editor.hbs',
+            title: 'Xem chi tiết bài viết đã từ chối',
+            logo: 'logo.png',
+            style: ['style1.css', 'style2.css', 'editor.css'],
+            js: ['jQuery.js', 'js.js'],
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+routers.get('/:Editor_ID/draft/browsed/:News_ID', (req, res) => {
+    var idE = req.params.Editor_ID;
+    var idN = req.params.News_ID;
+    var p1 = editorModel.getSingleEditor(idE);
+    var p2 = editorModel.getCatOfEditor(idE);
+    var p3 = editorModel.getInfoSingleDraft(idN);
+    var p4 = editorModel.getAllTagsOfDraft(idN);
+
+    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+
+        var editor = [];
+        editor.push({ info: rows1[0], cat: rows2 });
+
+        res.render('vwEditor/browsed_draft.hbs', {
+            editor, idE, idN,
+            draft: rows3,
+            tags: rows4,
+            layout: 'editor.hbs',
+            title: 'Xem chi tiết bài viết đã duyệt',
+            logo: 'logo.png',
+            style: ['style1.css', 'style2.css', 'editor.css'],
+            js: ['jQuery.js', 'js.js'],
+        });
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
 
 routers.post('/refuse/update', (req, res) => {
     

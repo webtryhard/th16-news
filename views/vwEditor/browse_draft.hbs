@@ -41,10 +41,13 @@
                                 
                                 </div>
                             </div>
+                            <select multiple class="form-control" id="temp" name="temp">
+                                        <option value="lala">lala</option>
+                                    </select>
                             <div class="form-group">
                                 <label for="tags">Chọn Tags mới</label>
                                 <div id="tagsform" >
-                                    <select class="form-control" type="text" id="tags" name="Tag[]" multiple>
+                                    <select class="form-control" id="tags" name="Tag" multiple>
                                     {{#each this.allTags}}
                                     <option value="{{TagID}}" id="{{Tag_Name}}">{{Tag_Name}}</option>
                                     {{/each}}
@@ -57,7 +60,7 @@
                                         <input type="button" class="btn btn-success" onclick="removeAllTags()" value="<<"></input>
                                     </div>
                                 
-                                    <select multiple type="text" class="form-control" id="tagsselected" name="Tag_selected[]">
+                                    <select multiple class="form-control" id="tagsselected" name="Tag_selected">
                                     </select>
                                 
                                 </div>

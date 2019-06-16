@@ -1,0 +1,73 @@
+   <div class="breadcrumbs">
+      <div class="page-header">
+          <div class="page-title">
+              <h1 style="width:100%" class="text-center">Bài viết đã từ chối</h1>
+          </div>
+      </div>
+    </div>
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                  {{#each draft}}
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Chủ đề: </strong>{{CatName}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Tên bài viết: </strong>{{News_Name}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Tóm tắt: </strong>{{Summary}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h ><strong>Phóng viên: </strong> {{Writer}}</h>
+                    </div>                   
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <h><strong>Thời gian duyệt:</strong></h>
+                      <small class="meta text-muted" style="font-size: 14px;">
+                        <span>
+                          <time class="friendly" datetime={{Time}}>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                            <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                          </time>
+                        </span>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <font class="fwb"><i class="fa fa-tags"></i><b>Tags: </b></font>
+                        {{#each ../this.tags}}
+                        <a title="{{Tag_Name}}">
+                            <span style="font-size: 14px;" class="tag_in_item label label-default">{{Tag_Name}}</span>
+                        </a>
+                        {{/each}}
+                    </div>
+                  </div> 
+                  <div class="card">
+                    <div class="card-body">
+                      <h2 style="margin-bottom: 10px;"><strong>Nội dung: </strong></h2>
+                      <div class="container" style="width: 95%">
+                        <div class="row ">   
+                          {{{Content}}}
+                          </div>             
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+        </div>
+            </div>
+        </div><!-- .animated -->
+    </div>

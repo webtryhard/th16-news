@@ -1,7 +1,7 @@
 <div class="breadcrumbs">
     <div class="page-header">
         <div class="page-title">
-            <h1 style="width:100%" class="text-center">Dashboard</h1>
+            <h1 style="width:100%" class="text-center">Bài viết đã từ chối</h1>
         </div>
     </div>
 </div>
@@ -18,7 +18,7 @@
                             <article class="row">
                                 <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb5">
                                     <div class="media">
-                                        <a class="pull-left" href="/editor/{{../this.editor.0.info.User_ID}}/draft/show/{{new.News_ID}}">
+                                        <a class="pull-left" href="/editor/{{../this.editor.0.info.User_ID}}/draft/refused/{{new.News_ID}}">
                                             <img class="media-object" src="{{new.Image_Avatar}}" alt="{{new.News_Name}}"
                                                 title="{{new.News_Name}}" width="230px" height="140px"
                                                 style="max-width: none;">
@@ -26,7 +26,7 @@
                                         <div class="">
                                             <header>
                                                 <p class="title mb0">
-                                                    <a href="/editor/{{../this.editor.0.info.User_ID}}/draft/show/{{new.News_ID}}"><b
+                                                    <a href="/editor/{{../this.editor.0.info.User_ID}}/draft/refused/{{new.News_ID}}"><b
                                                             style="font-size: 22px;">{{new.News_Name}}</b>
                                                     </a>
                                                 </p>
@@ -48,12 +48,8 @@
                                     </div>
                                 </aside>
                                 <p>
-                                    <font class="fwb"><i class="fa fa-tags"></i><b>Tags: </b></font>
-                                    {{#each tag}}
-                                    <a href="/tags/{{TagID}}" title="{{Tag_Name}}">
-                                        <span class="tag_in_item label label-default">{{Tag_Name}}</span>
-                                    </a>
-                                    {{/each}}
+                                    <font class="fwb"><b>Lý do từ chối: </b></font>
+                                    {{new.Reason_Refuse}}
                                 </p>
                             </article>
                             <div class="list"></div>
@@ -92,8 +88,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div><!-- .animated -->
 </div>

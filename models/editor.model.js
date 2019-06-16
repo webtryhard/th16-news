@@ -15,19 +15,59 @@ module.exports = {
     getDraft: (User_ID, offset) => {
         return db.load(`SELECT ac.User_ID as Editor_ID, c.CatName,u.Name as writer,  n.* 
                         from assigned_categories ac, news n, user u, categories c 
-                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 4 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
+                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 1 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
+                        ORDER BY Time DESC LIMIT ${offset},5`);
+    },
+
+    getRefusedDraft: (User_ID, offset) => {
+        return db.load(`SELECT ac.User_ID as Editor_ID, c.CatName,u.Name as writer,  n.* 
+                        from assigned_categories ac, news n, user u, categories c 
+                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 3 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
+                        ORDER BY Time DESC LIMIT ${offset},5`);
+    },
+
+    getBrowsedDraft: (User_ID, offset) => {
+        return db.load(`SELECT ac.User_ID as Editor_ID, c.CatName,u.Name as writer,  n.* 
+                        from assigned_categories ac, news n, user u, categories c 
+                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 2 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
                         ORDER BY Time DESC LIMIT ${offset},5`);
     },
 
     countNewsOfEditor: (User_ID) => {
-        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 4 `);
+        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 1 `);
+    },
+
+    countRefusedDraftOfEditor: (User_ID) => {
+        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 3 `);
+    },
+
+    countBrowsedDraftOfEditor: (User_ID) => {
+        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 2 `);
     },
 
     getAllTagsManyNews: (User_ID, offset, limit) => {
         return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name 
                         FROM tags T,tags_news TN, (SELECT n.News_ID 
                                                     from assigned_categories ac, news n
-                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 4 
+                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 1 
+                                                    ORDER BY Time DESC LIMIT ${offset},${limit}) as N 
+                        WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
+    },
+
+    getAllTagsManyRefusedDraft: (User_ID, offset, limit) => {
+        return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name 
+                        FROM tags T,tags_news TN, (SELECT n.News_ID 
+                                                    from assigned_categories ac, news n
+                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 3 
+                                                    ORDER BY Time DESC LIMIT ${offset},${limit}) as N 
+                        WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
+    },
+
+    getAllTagsManyBrowsedDraft: (User_ID, offset, limit) => {
+        return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name 
+                        FROM tags T,tags_news TN, (SELECT n.News_ID 
+                                                    from assigned_categories ac, news n
+                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 2 
                                                     ORDER BY Time DESC LIMIT ${offset},${limit}) as N 
                         WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
     },
