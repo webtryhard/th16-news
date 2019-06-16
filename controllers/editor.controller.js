@@ -17,13 +17,13 @@ routers.get('/:id', (req, res) => {
     var p4 = editorModel.getCatOfEditor(id);
     var p5 = editorModel.getAllTagsManyNews(id, offset, limit);
 
-    Promise.all([p1, p2, p3, p4, p5]).then( ([rows1, rows2, rows3, rows4, rows5]) => {
+    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
 
         var total = rows2[0].total;
-        var npage = Math.floor(total/ limit);
-        if(total % limit > 0) npage++;
+        var npage = Math.floor(total / limit);
+        if (total % limit > 0) npage++;
         var pages = [];
-        
+
 
         var prev, next, first, last;
         if (page > 1) {
@@ -44,7 +44,7 @@ routers.get('/:id', (req, res) => {
         }
 
         var editor = [];
-        editor.push({info: rows3[0], cat: rows4});
+        editor.push({ info: rows3[0], cat: rows4 });
 
         for (i = 0; i < limit; i++) {
             if (rows1[i]) {
@@ -81,10 +81,10 @@ routers.get('/:Editor_ID/draft/show/:News_ID', (req, res) => {
     var p3 = editorModel.getInfoSingleDraft(idN);
     var p4 = editorModel.getAllTagsOfDraft(idN);
 
-    Promise.all([p1, p2, p3, p4]).then( ([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
 
         var editor = [];
-        editor.push({info: rows1[0], cat: rows2});
+        editor.push({ info: rows1[0], cat: rows2 });
 
         res.render('vwEditor/draft.hbs', {
             editor, idE, idN,
@@ -93,7 +93,7 @@ routers.get('/:Editor_ID/draft/show/:News_ID', (req, res) => {
             layout: 'editor.hbs',
             title: 'Xem bài viết nháp',
             logo: 'logo.png',
-            style: ['style1.css','style2.css', 'editor.css'],
+            style: ['style1.css', 'style2.css', 'editor.css'],
             js: ['jQuery.js', 'js.js'],
         });
     }).catch(err => {
@@ -109,10 +109,10 @@ routers.get('/:Editor_ID/draft/refuse/:News_ID', (req, res) => {
     var p3 = editorModel.getInfoSingleDraft(idN);
     var p4 = editorModel.getAllTagsOfDraft(idN);
 
-    Promise.all([p1, p2, p3, p4]).then( ([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
 
         var editor = [];
-        editor.push({info: rows1[0], cat: rows2});
+        editor.push({ info: rows1[0], cat: rows2 });
 
         res.render('vwEditor/refuse_draft.hbs', {
             editor, idE, idN,
@@ -121,7 +121,7 @@ routers.get('/:Editor_ID/draft/refuse/:News_ID', (req, res) => {
             layout: 'editor.hbs',
             title: 'Từ chối bài viết',
             logo: 'logo.png',
-            style: ['style1.css','style2.css', 'editor.css'],
+            style: ['style1.css', 'style2.css', 'editor.css'],
             js: ['jQuery.js', 'js.js'],
         });
     }).catch(err => {
@@ -139,10 +139,10 @@ routers.get('/:Editor_ID/draft/browse/:News_ID', (req, res) => {
     var p5 = editorModel.getAllTags();
     var p6 = editorModel.getAllCat();
 
-    Promise.all([p1, p2, p3, p4, p5, p6]).then( ([rows1, rows2, rows3, rows4, rows5, rows6]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var editor = [];
-        editor.push({info: rows1[0], cat: rows2});
+        editor.push({ info: rows1[0], cat: rows2 });
 
         res.render('vwEditor/browse_draft.hbs', {
             editor, idE, idN,
@@ -153,19 +153,50 @@ routers.get('/:Editor_ID/draft/browse/:News_ID', (req, res) => {
             layout: 'editor.hbs',
             title: 'Duyệt bài viết',
             logo: 'logo.png',
-            style: ['style1.css','style2.css', 'editor.css'],
+            style: ['style1.css', 'style2.css', 'editor.css'],
             js: ['jQuery.js', 'js.js'],
         });
     }).catch(err => {
         console.log(err);
     });
+
 });
 
+routers.post('/browse/add', (req, res) => {
+    var list=req.body['Tag_selected[]'];
+    console.log("=========================="+list);
+    var entity = [
+        { News_ID: 1, TagID: 20 }
+    ];
+    editorModel.addTag(entity)
+        .then(n => {
+            res.end('/editor/quanlynhan');
+        }).catch(err => {
+            console.log(err);
+            res.end('error');
+        })
+})
+
+// routers.post('/browse/update', (req, res) => {
+//     var entity = {
+//         News_ID: req.body.News_ID,
+//         Reason_Refuse: req.body.Reason_Refuse,
+//         State_ID: 3
+//     }
+//     editorModel.updateRefuse(entity).then(n => {
+//         res.end("thành công rồi");
+//     }).catch(err => {
+//         console.log(err);
+//         res.end('error');
+//     })
+// });
+
 routers.post('/refuse/update', (req, res) => {
+    
     var entity = {
-        News_ID : req.body.News_ID,
-        Reason_Refuse : req.body.Reason_Refuse,
-        State_ID : 3
+        News_ID: req.body.News_ID,
+        Reason_Refuse: req.body.Reason_Refuse,
+        State_ID: 3
     }
     editorModel.updateRefuse(entity).then(n => {
         res.end("thành công rồi");

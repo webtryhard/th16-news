@@ -170,3 +170,11 @@ p {
 	justify-content:space-around;
 	margin-bottom: 15px;
 }
+
+.tags{
+	box-shadow: 0.5px 0.5px 0.5px 0.5px #aaaaaa80;
+    border: 1px solid #aaaaaa80;
+    box-shadow: 2px gray;
+    border-radius: 4px;
+    padding: 11px;
+}

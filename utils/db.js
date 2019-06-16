@@ -42,6 +42,24 @@ module.exports = {
         });
     },
 
+    addTags: (tableName, entity) => {
+        return new Promise((resolve, reject) => {
+            for(i = 0; i < entity.length; i++){
+            var sql = `insert into ${tableName} set ?`;
+            var connection = createConnection();
+            connection.connect();
+            connection.query(sql, entity[i], (error, value) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(value.insertId);
+                }
+                connection.end();
+            });
+        }
+        });
+    },
+
     update: (tableName, idField, entity) => {
         return new Promise((resolve, reject) => {
           var id = entity[idField];

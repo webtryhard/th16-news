@@ -53,5 +53,7 @@ module.exports = {
     updateRefuse: entity => {
         return db.update('news', 'News_ID', entity);
     },
-    
+    addTag: entity => {
+        return db.addTags('tags_news', entity);
+    },
 };
