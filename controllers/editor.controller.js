@@ -302,19 +302,45 @@ routers.get('/:id/my_browsed_draft', (req, res) => {
     });
 });
 
-routers.post('/browse/add', (req, res) => {
-    var list=req.body;
-    console.log("=========================="+list);
-    var entity = [
-        { News_ID: 1, TagID: 20 }
-    ];
-    editorModel.addTag(entity)
-        .then(n => {
-            res.end('/editor/quanlynhan');
+routers.post('/:id/browse/update', (req, res) => {
+    var News_ID = req.body.News_ID;
+    var list = req.body.Tag_selected;
+    var entity = [];
+    var id = req.params.id;
+
+    if (typeof list !== 'undefined') {
+        for (i = 0; i < list.length; i++) {
+            entity.push({
+                News_ID: News_ID,
+                TagID: list[i]
+            })
+        }
+
+        var p = editorModel.getAllTagsOfDraft(News_ID);
+
+        p.then(row => {
+            for (i = 0; i < row.length; i++) {
+                editorModel.deleteTag(News_ID, row[i].TagID);
+            }
         }).catch(err => {
             console.log(err);
-            res.end('error');
         })
+
+        editorModel.addTag(entity);
+    }
+
+    var entity = {
+        CatID: req.body.CatID,
+        Time: req.body.Time,
+        State_ID: 2
+    }
+
+    editorModel.updateRefuse(entity).then(n => {
+        res.redirect('/editor/' + id);
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
 })
 
 routers.get('/:Editor_ID/draft/refused/:News_ID', (req, res) => {

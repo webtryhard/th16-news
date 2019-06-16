@@ -96,4 +96,7 @@ module.exports = {
     addTag: entity => {
         return db.addTags('tags_news', entity);
     },
+    deleteTag: (id, id2) => {
+        return db.delete('tags_news', 'News_ID', 'TagID', id, id2);
+    },
 };
