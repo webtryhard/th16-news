@@ -1,0 +1,53 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="txtCatParentName">Mã số tác giả</label>
+                        <input readonly type="text" class="form-control" id="txtName" name="Writer_ID" value="{{this.writer.User_ID}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Tiêu đề</label>
+                        <input type="text" class="form-control" id="txtName" name="News_Name" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Nội dung tóm tắt</label>
+                        <input type="text" class="form-control" id="txtName" name="Summary" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Nội dung bài viết</label>
+                        <textarea type="text" class="form-control" id="txtFullDes" name="Content" autofocus></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Chuyên mục</label>
+                        <select class="form-control" name="CatID">
+                            {{#each cat}}
+                            <option value="{{CatID}}">{{CatName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image_uploads">Ảnh bài viết</label>
+                        <input type="text" class="form-control" id="txtName" name="Image_Avatar" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Ngày được viết</label>
+                        <input required type="date" class="form-control" name="Time" />
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-primary" href="/writer/{{this.writer.User_ID}}" role="button">
+                            <i class="fa fa-backward" aria-hidden="true"></i>
+                            Quay lại danh sách
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Lưu lại
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div>
