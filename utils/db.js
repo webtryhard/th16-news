@@ -1,13 +1,13 @@
 var mysql = require('mysql');
 
 var createConnection = () => {
-  return mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'thamtran',
-    database: 'news'
-  });
+    return mysql.createConnection({
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        password: 'thamtran',
+        database: 'news'
+    });
 }
 
 module.exports = {
@@ -44,47 +44,47 @@ module.exports = {
 
     addTags: (tableName, entity) => {
         return new Promise((resolve, reject) => {
-            for(i = 0; i < entity.length; i++){
-            var sql = `insert into ${tableName} set ?`;
-            var connection = createConnection();
-            connection.connect();
-            connection.query(sql, entity[i], (error, value) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(value.insertId);
-                }
-                connection.end();
-            });
-        }
+            for (i = 0; i < entity.length; i++) {
+                var sql = `insert into ${tableName} set ?`;
+                var connection = createConnection();
+                connection.connect();
+                connection.query(sql, entity[i], (error, value) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(value.insertId);
+                    }
+                    connection.end();
+                });
+            }
         });
     },
 
     update: (tableName, idField, entity) => {
         return new Promise((resolve, reject) => {
-          var id = entity[idField];
-          delete entity[idField];
-    
-          var sql = `update ${tableName} set ? where ${idField} = ?`;
-          var connection = createConnection();
-          connection.connect();
-          connection.query(sql, [entity, id], (error, value) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(value.changedRows);
-            }
-            connection.end();
-          });
+            var id = entity[idField];
+            delete entity[idField];
+
+            var sql = `update ${tableName} set ? where ${idField} = ?`;
+            var connection = createConnection();
+            connection.connect();
+            connection.query(sql, [entity, id], (error, value) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(value.changedRows);
+                }
+                connection.end();
+            });
         });
     },
 
-    delete: (tableName, idField, id) => {
+    delete: (tableName, idField, idField2, id, id2) => {
         return new Promise((resolve, reject) => {
-            var sql = `delete from ${tableName} where ${idField} = ?`;
+            var sql = `delete from ${tableName} where ${idField} = ? and  ${idField2} = ?`;
             var connection = createConnection();
             connection.connect();
-            connection.query(sql, id, (error, value) => {
+            connection.query(sql, [id, id2], (error, value) => {
                 if (error) {
                     reject(error);
                 } else {
