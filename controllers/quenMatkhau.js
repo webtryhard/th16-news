@@ -12,13 +12,7 @@ router.get('/quenmatkhau', (req, res) => {
 
 router.post('/quenmatkhau', (req, res) => {
     let email = req.body.email
-        // console.log('email: ' + email)
-        // var entity = {
-        //     Email: email,
-        //     token: '123',
-        // }
     let checkEmail = userModel.checkEmail(email);
-    // console.log(checkEmail)
     checkEmail
         .then(user => {
             console.log('check email: ', checkEmail)
@@ -27,7 +21,6 @@ router.post('/quenmatkhau', (req, res) => {
                 res.render("pieces/quenmatkhau", {
                     layout: false,
                     notices: "Email chua duoc dang ki",
-                    alert: "email chưa được đăng kí",
                 });
                 console.log("vao ham chua co mail");
             } else {
@@ -67,7 +60,7 @@ router.post('/quenmatkhau', (req, res) => {
                     function(token) {
                         var transporter = nodemailer.createTransport({
                             service: "Gmail",
-                            secure: true, // true for 465, false for other ports
+                            secure: true,
                             auth: {
                                 user: 'viettham1998@gmail.com',
                                 pass: '0972371457'

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic Page Needs =====================================-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Site Title- -->
+    <title>THAY ĐỔI THÔNG TIN CÁ NHÂN</title>
+
+    <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+
+    <script
+        src="https://cdn.tiny.cloud/1/lj0jr96lalez7ao376e63vu9cu774jyh4grtqzzwhjp81mbl/tinymce/5/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector: '#txtFullDes',
+            height: 500,
+            menubar: false,
+            plugins: 'paste image link autolink lists table media',
+            toolbar: [
+                'undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright',
+                'forecolor backcolor',
+                'table link image media',
+            ],
+        });</script>
+
+    <link rel="stylesheet" href="/vendors/assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <aside id="left-panel" class="left-panel" style="background:bottom; width:40%">
+    </aside>
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel" style="vertical-align:middle">
+
+        <!-- Header-->
+
+        <h3>THAY ĐỔI THÔNG TIN CÁ NHÂN</h3>
+        <form method="POST" style="width:30%" id="updateUser">
+            <input id="udusername" class="form-control" type="text" placeholder="Username" name="udusername" autofocus>
+            <input id="udpassword" class="form-control" type="password" placeholder="Password" name="udpassword">
+            <input id="udpassword_confirmation" class="form-control" type="password" placeholder="Repeat Password"
+                name="udpassword_confirmation">
+            <input id="udname" class="form-control" type="text" placeholder="Name" name="udname">
+            <input id="udphone" class="form-control" type="tel" placeholder="Phone number" name="udphone">
+            <input id="udemail" class="form-control" type="email" placeholder="Email" name="udemail">
+            <input id="udaddress" class="form-control" type="text" placeholder="Address" name="udaddress">
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </form>
+
+
+    </div><!-- /#right-panel -->
+
+    <script src="/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendors/assets/js/main.js"></script>
+
+    <script src="/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/vendors/assets/js/init-scripts/data-table/datatables-init.js"></script>
+</body>
+
+</html>

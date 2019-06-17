@@ -17,6 +17,14 @@ module.exports = {
         return db.update('user', 'Email', entity);
     },
 
+    // updateUser: (userId, entity) => {
+    //     return db.update('user', `${userId}`, entity);
+    // },
+
+    updateUser: entity => {
+        return db.update('user', 'User_ID', entity);
+    },
+
     singleByUserName: userName => {
         return db.load(`select * from user where Username = '${userName}'`);
     },
