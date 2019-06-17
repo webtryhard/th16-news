@@ -95,20 +95,48 @@ router.get('/thaydoithongtin', (req, res) => {
     })
 });
 
-router.post('/thaydoithongtin', (req, res) => {
+router.post('/thaydoithongtin', async(req, res) => {
     // console.log('cookie id: ', userId)
     console.log('cookie: ', req.cookies.username)
     console.log('cookie id2: ', req.cookies.userId)
+    var enUsername = req.body.udusername;
+    var enPassword = req.body.udpassword;
+    var enName = req.body.udname;
+    var enEmail = req.body.udemail;
+    var enAddress = req.body.udaddress;
+    var enPhone = req.body.udphone;
+    var dbUser = await userModel.singleByID(req.cookies.userId);
+    console.log('dbuser: ', dbUser);
+    if (enUsername === "") {
+        enUsername = dbUser[0].Username;
+    }
+    if (enPassword === "") {
+        enPassword = dbUser[0].Password;
+    }
+    if (enName === "") {
+        enName = dbUser[0].Username;
+    }
+    if (enEmail === "") {
+        enEmail = dbUser[0].Email;
+    }
+    if (enAddress === "") {
+        enAddress = dbUser[0].Address;
+    }
+    if (enPhone === "") {
+        enPhone = dbUser[0].Phone;
+    }
     var entity = {
         User_ID: req.cookies.userId,
-        Username: req.body.udusername,
-        Password: req.body.udpassword,
-        Name: req.body.udname,
-        Email: req.body.udemail,
-        Address: req.body.udaddress,
-        Phone: req.body.udphone,
+        Username: enUsername,
+        Password: enPassword,
+        Name: enName,
+        Email: enEmail,
+        Address: enAddress,
+        Phone: enPhone,
     }
     userModel.updateUser(entity);
+    res.clearCookie("username");
+    res.cookie("username", enUsername);
     res.redirect('/');
 });
 

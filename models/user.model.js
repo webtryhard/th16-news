@@ -29,6 +29,10 @@ module.exports = {
         return db.load(`select * from user where Username = '${userName}'`);
     },
 
+    singleByID: ID => {
+        return db.load(`select * from user where User_ID = '${ID}'`);
+    },
+
     add_acc: entityAcc => {
         return db.add('user', entityAcc);
     },
