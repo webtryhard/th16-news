@@ -12,14 +12,14 @@
               <hgroup class="panel-heading">
                 <ul class="list-inline">
                   <li class="active">
-                    <a href="/list/{{this.catName.0.CatID}}" title="{{this.catName.0.CatName}}"><h2 class="font-bold">{{this.catName.0.CatName}}</h2>
+                    <a href="/subcriber/{{idS}}/list/{{this.catName.0.CatID}}" title="{{this.catName.0.CatName}}"><h2 class="font-bold">{{this.catName.0.CatName}}</h2>
                     </a>
                   </li>
                   <li class="hidden-xs ">
-                    <a href="/list/{{this.catName.1.CatID}}" title="{{this.catName.1.CatName}}">{{this.catName.1.CatName}}</a>
+                    <a href="/subcriber/{{idS}}/list/{{this.catName.1.CatID}}" title="{{this.catName.1.CatName}}">{{this.catName.1.CatName}}</a>
                   </li>
                   <li class="hidden-xs ">
-                    <a href="/list/{{this.catName.2.CatID}}" title="{{this.catName.2.CatName}}">{{this.catName.2.CatName}}</a>
+                    <a href="/subcriber/{{idS}}/list/{{this.catName.2.CatID}}" title="{{this.catName.2.CatName}}">{{this.catName.2.CatName}}</a>
                   </li>
                 </ul>
               </hgroup>
@@ -30,11 +30,11 @@
                 <div class="ovlhidd col-md-7 large">
                   <div class="row">
                     <div class="grid-feature-item ">
-                      <a href="/list/detail/{{News_ID}}" class="fixhieght hieght_col">
+                      <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" class="fixhieght hieght_col">
                         <img class="media-object" src="{{Image_Avatar}}" alt="{{News_Name}}" title="{{News_Name}}" width="100%" height="100%">
                       </a>
                       <div class="title_top_header">
-                        <a href="/list/detail/{{News_ID}}">
+                        <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}">
                           <h4> {{News_Name}}</h4>
                         </a>
                         <p class="meta text-muted fs-08 font-normal">
@@ -54,11 +54,11 @@
                 <div class="ovlhidd col-sm-7 col-md-5 small">
                   <div class="row">
                     <div class="grid-feature-item ">
-                      <a href="/list/detail/{{News_ID}}" class="fixhieght hieght_col">
+                      <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" class="fixhieght hieght_col">
                         <img class="media-object" src="{{Image_Avatar}}" alt="{{News_Name}}" title="{{News_Name}}" width="100%" height="100%">
                       </a>
                       <div class="title_top_header">
-                        <a href="/list/detail/{{News_ID}}">
+                        <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}">
                           <h4> {{News_Name}}</h4>
                         </a>
                         <p class="meta text-muted fs-08 font-normal">
@@ -82,12 +82,12 @@
                   {{#each this.newsList1}}
                   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
                     <div class="media media_item_home">
-                      <a class="align_items_center" href="/list/detail/{{News_ID}}">
+                      <a class="align_items_center" href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}">
                         <img class="media-object" src="{{Image_Avatar}}" alt="{{News_Name}}" title="{{News_Name}}" width="100%" height="180px">
                       </a>
                       <div class="media-body">
                         <h3 class="fs-12 pt5" style="height: 120px;">
-                          <a href="/list/detail/{{News_ID}}" title="{{News_Name}}" style="font-size: 22px;">{{News_Name}}
+                          <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}" style="font-size: 22px;">{{News_Name}}
                           </a>
                         </h3>
                         <small class="meta text-muted">
@@ -110,13 +110,13 @@
               <article class="row">
                 <aside class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb5">
                   <div class="media">
-                    <a class="pull-left" href="/list/detail/{{new.News_ID}}">
+                    <a class="pull-left" href="/subcriber/{{../this.idS}}/list/detail/{{new.News_ID}}">
                       <img class="media-object" src="{{new.Image_Avatar}}" alt="{{new.News_Name}}" title="{{new.News_Name}}" width="230px" height="140px">
                     </a>
                     <div class="">
                       <header>
                         <p class="title mb0">
-                          <a href="/list/detail/{{new.News_ID}}" title="{{new.News_Name}}"><b style="font-size: 22px;">{{new.News_Name}}</b>
+                          <a href="/subcriber/{{../this.idS}}/list/detail/{{new.News_ID}}" title="{{new.News_Name}}"><b style="font-size: 22px;">{{new.News_Name}}</b>
                           </a>
                         </p>
                         <small class="meta text-muted">

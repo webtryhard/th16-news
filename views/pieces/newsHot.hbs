@@ -8,14 +8,26 @@
     <div class="panel-body">
       {{#each this.newsHot}}
       <div class="media bb-dashed mt0 pb7 mb7">
+        {{#if ../this/idS}}
+        <a class="pull-left fix-image-11" href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
+          <img src="{{Image_Avatar}}" alt="{{News_Name}}">
+        </a>
+        {{else}}
         <a class="pull-left fix-image-11" href="/list/detail/{{News_ID}}" title="{{News_Name}}">
           <img src="{{Image_Avatar}}" alt="{{News_Name}}">
         </a>
+        {{/if}}
 
         <div class="media-body">
+          {{#if ../this/idS}}
+          <a href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
+            <h4 class="fs-1 mall0" style="height: 50px">{{News_Name}}</h4>
+          </a>
+          {{else}}
           <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
             <h4 class="fs-1 mall0" style="height: 50px">{{News_Name}}</h4>
           </a>
+          {{/if}}
           <small class="meta text-muted">
             <span>
               <time class="friendly" datetime={{Time}}>
