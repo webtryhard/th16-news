@@ -59,6 +59,7 @@ router.post("/api/login", async(req, res, next) => {
 
     res.cookie("username", namedb);
     res.cookie("userId", dbUsername[0].User_ID);
+    res.cookie("userCatName", id)
     return res.json({ success: true, msg: "OK" });
 });
 
@@ -146,6 +147,7 @@ router.post('/thaydoithongtin', async(req, res) => {
 router.get("/logout", (req, res) => {
     res.clearCookie("username");
     res.clearCookie("userId");
+    res.clearCookie("userCatName");
     res.redirect('/');
 });
 module.exports = router;

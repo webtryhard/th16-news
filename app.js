@@ -192,13 +192,13 @@ var account = require('./controllers/admin/account.controller');
 app.use('/account', account);
 
 var editor = require('./controllers/editor.controller');
-app.use('/editor', editor);
+app.use('/editor', authMiddleware.requireEditor, editor);
 
 var writer = require('./controllers/writer.controller');
-app.use('/writer', writer);
+app.use('/writer', authMiddleware.requireWriter, writer);
 
 var subcriber = require('./controllers/subcriber.controller');
-app.use('/subcriber', subcriber);
+app.use('/subcriber', authMiddleware.requireSubcriber, subcriber);
 
 var sentEmail = require('./controllers/quenMatkhau');
 app.use('/password', sentEmail);
