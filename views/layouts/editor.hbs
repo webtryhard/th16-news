@@ -59,14 +59,14 @@
               <div class="banner hidden righthome1" fix=""></div>
               <div class="panel panel-info">
                 <div class="panel-heading panel-item text-center font-bold">
-                  <a title="Tin nhiều người đọc">Bài viết của tối</a>
+                  <a title="Tin nhiều người đọc">Bài viết của tôi</a>
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="/editor/{{editor.0.info.User_ID}}/my_refused_draft" class="list-group-item list-group-item-action">Bài viết đã từ chối
-                        <span class="pull-right">1</span>
+                        <span class="pull-right">{{numRe.0.total}}</span>
                     </a>  
                     <a href="/editor/{{editor.0.info.User_ID}}/my_browsed_draft" class="list-group-item list-group-item-action">Bài viết đã duyệt
-                        <span class="pull-right">1</span>
+                        <span class="pull-right">{{numBr.0.total}}</span>
                     </a>                 
                 </div>
               </div>
@@ -102,15 +102,15 @@
             </a>
             <div class="user-menu dropdown-menu">
 
-              <a class="nav-link" href="/editor/{{editor.0.info.User_ID}}"><i class="fa fa-user"></i> Trang của tôi</a>
+              <a class="nav-link" href="/editor/{{editor.0.info.User_ID}}"> Trang của tôi</a>
 
-              <a class="nav-link" href="/"><i class="fa fa-home"></i> Trang chủ </a>
+              <a class="nav-link" href="/"> Trang chủ </a>
 
-              <a class="nav-link" href="#"><i class="fa fa-user"></i> Cập nhật thông tin</a>
+              <a class="nav-link" href="#"> Cập nhật thông tin</a>
 
-              <a class="nav-link" href="#"><i class="fa fa-cog"></i> Đổi mật khẩu</a>
+              <a class="nav-link" href="#"> Đổi mật khẩu</a>
 
-              <a class="nav-link" href="/"><i class="fa fa-power-off"></i> Đăng xuất</a>
+              <a class="nav-link" href="/"> Đăng xuất</a>
             </div>
           </div>
 

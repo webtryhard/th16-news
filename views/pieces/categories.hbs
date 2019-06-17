@@ -7,9 +7,15 @@
                 </div>
                 <div class="list-group list-group-flush">
                     {{#each categories}}
+                    {{#if ../this.idS}}
+                    <a href="/subcriber/{{../this.idS}}/list/{{CatID}}" class="list-group-item list-group-item-action">{{CatName}}
+                        <span class="pull-right">{{num_news}}</span>
+                    </a>
+                    {{else}}
                     <a href="/list/{{CatID}}" class="list-group-item list-group-item-action">{{CatName}}
                         <span class="pull-right">{{num_news}}</span>
                     </a>
+                    {{/if}}
                     {{/each}}                    
                 </div>
               </div>

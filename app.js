@@ -196,6 +196,9 @@ app.use('/editor', editor);
 var writer = require('./controllers/writer.controller');
 app.use('/writer', writer);
 
+var subcriber = require('./controllers/subcriber.controller');
+app.use('/subcriber', subcriber);
+
 var sentEmail = require('./controllers/quenMatkhau');
 app.use('/password', sentEmail);
 
