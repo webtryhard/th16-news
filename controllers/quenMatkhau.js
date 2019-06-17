@@ -12,20 +12,17 @@ router.get('/quenmatkhau', (req, res) => {
 
 router.post('/quenmatkhau', (req, res) => {
     let email = req.body.email
-    console.log('email: ' + email)
-    var entity = {
-        Email: email,
-        token: '123',
-    }
-    var checkEmail = userModel.updateEmail(entity);
-    // console.log(checkEmail)
+    let checkEmail = userModel.checkEmail(email);
     checkEmail
-        .then(users => {
-            if (users.length == 0) {
+        .then(user => {
+            console.log('check email: ', checkEmail)
+            console.log('user: ', user)
+            if (!user || !user.length) {
                 res.render("pieces/quenmatkhau", {
                     layout: false,
-                    notices: "Email chua duoc dang ki"
+                    notices: "Email chua duoc dang ki",
                 });
+                console.log("vao ham chua co mail");
             } else {
                 // gui mail
 
@@ -63,7 +60,7 @@ router.post('/quenmatkhau', (req, res) => {
                     function(token) {
                         var transporter = nodemailer.createTransport({
                             service: "Gmail",
-                            secure: true, // true for 465, false for other ports
+                            secure: true,
                             auth: {
                                 user: 'viettham1998@gmail.com',
                                 pass: '0972371457'
@@ -93,7 +90,6 @@ router.post('/quenmatkhau', (req, res) => {
                     if (err) throw err;
                 });
             }
-
             // res.redirect("/auth/login");
         })
         .catch(err => {
@@ -117,7 +113,7 @@ router.get('/thaydoimatkhau/:token', (req, res) => {
                 return
             }
 
-            res.render('/pieces/datLaiMatKhau', {
+            res.render('pieces/datLaiMatKhau', {
                 layout: false
             })
         })
@@ -127,18 +123,21 @@ router.get('/thaydoimatkhau/:token', (req, res) => {
 
 }, )
 
-router.post('/thaydoimatkhau', (req, res) => {
+router.post('/thaydoimatkhau/:token', (req, res) => {
     async.waterfall([
         function(done) {
             let checkToken = userModel.checkToken(req.params.token)
 
             checkToken
                 .then(user => {
-                    var userMail = user.rows[0].email
-
+                    var userMail = user[0].Email
+                    console.log('user checktoken: ', user);
+                    //console.log('pass', user[0].Password);
+                    // console.log('token tdmk: ', checkToken);
                     let entity = {
-                        User_ID: user.rows[0].id,
-                        Password: bcrypt.hashSync(req.body.password, saltRounds),
+                        Email: userMail,
+                        //Password: bcrypt.hashSync(req.body.password, saltRounds),
+                        Password: req.body.Password,
                         token: null
                     }
 
@@ -177,10 +176,7 @@ router.post('/thaydoimatkhau', (req, res) => {
                 done(err);
             });
 
-            res.render('pieces/quenMatKhau', {
-                layout: false,
-                notices: ['Đặt mật khẩu thành công.']
-            });
+            res.redirect('/');
         }
     ], function(err) {});
 })

@@ -17,8 +17,20 @@ module.exports = {
         return db.update('user', 'Email', entity);
     },
 
+    // updateUser: (userId, entity) => {
+    //     return db.update('user', `${userId}`, entity);
+    // },
+
+    updateUser: entity => {
+        return db.update('user', 'User_ID', entity);
+    },
+
     singleByUserName: userName => {
         return db.load(`select * from user where Username = '${userName}'`);
+    },
+
+    singleByID: ID => {
+        return db.load(`select * from user where User_ID = '${ID}'`);
     },
 
     add_acc: entityAcc => {
@@ -35,5 +47,13 @@ module.exports = {
 
     delete: id => {
         return db.delete('users', 'f_ID', id);
+    },
+
+    checkEmail: email => {
+        return db.load(`select * from user where Email='${email}'`);
+    },
+    checkToken: token => {
+        return db.load(`select * from user where token = '${token}'`);
     }
+
 };

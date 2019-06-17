@@ -33,27 +33,6 @@ router.get("/register", (req, res, next) => {
     });
 });
 
-// router.post("/register", (req, res, next) => {
-//   var saltRounds = 10;
-//   var hash = bcrypt.hashSync(req.body.password, saltRounds);
-//   var dob = moment(req.body.dob, "DD/MM/YYYY").format("YYYY-MM--DD");
-
-//   var entityAcc={
-//     Username: req.body.username,
-//     Password: hash,
-//   };
-//   var entitySub = {
-//     Sub_Name: req.body.name,
-//     Sub_Email: req.body.email,
-//     Sub_BirthDay: dob,
-//     f_Permission: 0
-//   };
-
-//   userModel.addAcc(entityAcc).then(id => {
-//     res.redirect("/account/login");
-//   });
-// });
-
 router.get("/login", (req, res, next) => {
     res.render("pieces/login", { layout: false });
 });
@@ -77,6 +56,7 @@ router.post("/api/login", async(req, res, next) => {
     }
 
     res.cookie("username", namedb);
+    res.cookie("userId", dbUsername[0].User_ID);
     return res.json({ success: true, msg: "OK" });
 });
 
@@ -109,74 +89,61 @@ router.post("/api/register", async(req, res, next) => {
     }
 });
 
-// router.post("/register", async(req, res, next) => {
-//     console.log(req.body);
-//     var name = req.body.dnusername;
-//     var password = req.body.dnpassword;
-//     var namedb, passworddb;
-//     // var checkCaptcha = req.bode.captcha
-//     // console.log('captcha: ' + captcha)
+router.get('/thaydoithongtin', (req, res) => {
+    res.render('pieces/thayDoiThongTinCaNhan', {
+        layout: false
+    })
+});
 
-//     var recaptcha = req.body.captcha;
-//     console.log("recaptcha: " + recaptcha);
+router.post('/thaydoithongtin', async(req, res) => {
+    // console.log('cookie id: ', userId)
+    console.log('cookie: ', req.cookies.username)
+    console.log('cookie id2: ', req.cookies.userId)
+    var enUsername = req.body.udusername;
+    var enPassword = req.body.udpassword;
+    var enName = req.body.udname;
+    var enEmail = req.body.udemail;
+    var enAddress = req.body.udaddress;
+    var enPhone = req.body.udphone;
+    var dbUser = await userModel.singleByID(req.cookies.userId);
+    console.log('dbuser: ', dbUser);
+    if (enUsername === "") {
+        enUsername = dbUser[0].Username;
+    }
+    if (enPassword === "") {
+        enPassword = dbUser[0].Password;
+    }
+    if (enName === "") {
+        enName = dbUser[0].Username;
+    }
+    if (enEmail === "") {
+        enEmail = dbUser[0].Email;
+    }
+    if (enAddress === "") {
+        enAddress = dbUser[0].Address;
+    }
+    if (enPhone === "") {
+        enPhone = dbUser[0].Phone;
+    }
+    var entity = {
+        User_ID: req.cookies.userId,
+        Username: enUsername,
+        Password: enPassword,
+        Name: enName,
+        Email: enEmail,
+        Address: enAddress,
+        Phone: enPhone,
+    }
+    userModel.updateUser(entity);
+    res.clearCookie("username");
+    res.cookie("username", enUsername);
+    res.redirect('/');
+});
 
-//     const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=6LdwBKkUAAAAAAOwExf92QKAHkR_RIX5l519_Q-M&response=${
-//     req.body.captcha
-//   }&remoteip=${req.connection.remoteAddress}`;
-//     console.log("verifyUrl: " + verifyUrl);
-//     if (name != "" && password != "") {
-//         var dbUsername = await userModel.singleByUserName(name);
-//         if (
-//             dbUsername === undefined ||
-//             dbUsername === null ||
-//             Object.keys(dbUsername).length === 0
-//         ) {
-//             console.log("Khong co ten dang nhap trong db");
-//             res.end("Ten dang nhap hoac mat khau khong dung");
-//             return;
-//         }
-//         namedb = dbUsername[0].Username;
-//         passworddb = dbUsername[0].Password;
-//         id = dbUsername[0].User_Cat_Name;
-//         if (password !== passworddb) {
-//             console.log("Mat khau khong dung");
-//             res.end("Ten dang nhap hoac mat khau khong dung");
-//             return;
-//         }
 
-//         console.log("vo duoc dang nhap");
-
-//         res.cookie("username", namedb);
-//         res.redirect("/");
-//         return;
-//     } else if (!req.body.captcha) {
-//         console.log("capchaaaaaaaaaaaaaaaaaaaaa");
-//         return res.json({ success: false, msg: "Please select captcha" });
-//     } else if (
-//         req.body.dkusername &&
-//         req.body.dkpassword &&
-//         req.body.dkpassword_confirmation &&
-//         req.body.dkname &&
-//         req.body.dkemail
-//     ) {
-//         var entity = {
-//             Username: req.body.dkusername,
-//             Password: req.body.dkpassword,
-//             Name: req.body.dkname,
-//             Email: req.body.dkemail
-//         };
-//         userModel
-//             .add_acc(entity)
-//             .then(data => {
-//                 console.log("vo dc dang ki");
-//                 res.redirect("/");
-//             })
-//             .catch(err => {
-//                 throw err;
-//             });
-//     } else {
-//         console.log("sad :(");
-//     }
-// });
-
+router.get("/logout", (req, res) => {
+    res.clearCookie("username");
+    res.clearCookie("userId");
+    res.redirect('/');
+});
 module.exports = router;

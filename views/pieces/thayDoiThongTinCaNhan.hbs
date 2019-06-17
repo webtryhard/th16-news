@@ -1,29 +1,3 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Dat lai mat khau</h3>
-    <form method="POST">
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input name="Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-  </div>
-    <div class="form-group">
-    <label for="exampleInputPassword1">ReEnter</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</body>
-</html> --}}
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +8,7 @@
 
 
     <!-- Site Title- -->
-    <title>ĐẶT LẠI MẬT KHẨU</title>
+    <title>THAY ĐỔI THÔNG TIN CÁ NHÂN</title>
 
     <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
@@ -76,19 +50,19 @@
 
         <!-- Header-->
 
- <h3>ĐẶT LẠI MẬT KHẨU</h3>
-    <form method="POST" style="width:30%" id="resetpass">
-  <div class="form-group">
-    <label for="exampleInputPassword1">Nhập mật khẩu mới</label>
-    <input name="Password" type="password" class="form-control" id="Password"  placeholder="Password" required>
-  </div>
-    <div class="form-group">
-    <label for="exampleInputPassword1">Nhập lại mật khẩu mới</label>
-    <input name="rePassword" type="password" class="form-control" id="rePassword" placeholder="rePassword" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Gửi</button>
-</form>
-        
+        <h3>THAY ĐỔI THÔNG TIN CÁ NHÂN</h3>
+        <form method="POST" style="width:30%" id="updateUser">
+            <input id="udusername" class="form-control" type="text" placeholder="Username" name="udusername" autofocus>
+            <input id="udpassword" class="form-control" type="password" placeholder="Password" name="udpassword">
+            <input id="udpassword_confirmation" class="form-control" type="password" placeholder="Repeat Password"
+                name="udpassword_confirmation">
+            <input id="udname" class="form-control" type="text" placeholder="Name" name="udname">
+            <input id="udphone" class="form-control" type="tel" placeholder="Phone number" name="udphone">
+            <input id="udemail" class="form-control" type="email" placeholder="Email" name="udemail">
+            <input id="udaddress" class="form-control" type="text" placeholder="Address" name="udaddress">
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </form>
+
 
     </div><!-- /#right-panel -->
 
@@ -108,42 +82,6 @@
     <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="/vendors/assets/js/init-scripts/data-table/datatables-init.js"></script>
-   {{#section 'js'}}
-    <script>
-      $(function (){
-        $("#resetpass").validate({
-          rules:{
-            Password:{
-              required:true,
-              minlength:5
-            },
-            rePassword:{
-              required:true,
-              equalTo: $('[name="Password"]')
-            }
-          },
-          messages:{
-            Password:{
-              required:'Vui long nhap mat khau cua ban',
-            },
-            rePassword:{
-              required:'Nhap lai mat khau cua ban',
-              equalTo:'Mat khau chua trung'
-            }
-          },
-          errorElement: 'small',
-            errorClass: 'help-block text-danger',
-            highlight: function (e) {
-                $(e).removeClass('is-valid').addClass('is-invalid');
-            },
-            unhighlight: function (e) {
-                $(e).removeClass('is-invalid').addClass('is-valid');
-            },
-        });
-      })
-    </script>
-    {{/section}}
 </body>
 
 </html>
-
