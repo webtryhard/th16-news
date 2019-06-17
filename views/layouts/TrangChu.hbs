@@ -195,10 +195,9 @@ function setCookie(cname, cvalue, exdays) {
 
     $(document).ready(() => {
       console.log("Hi")
-
       if (getCookie("username") !== "") {
         console.log("Hi")
-
+        
         $("#loginIconX").removeClass(["login_icon"])
         //$("#loginIconX").html("Hello " +getCookie("username"))
         let t = `
@@ -211,6 +210,11 @@ function setCookie(cname, cvalue, exdays) {
             <a class="dropdown-item" href="/account/thaydoithongtin">
               <i class="fa fa-user" aria-hidden="true"></i>
               Thay đổi thông tin
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/${getCookie("userCatName")}/${getCookie("userId")}">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              Trang của tôi
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="account/logout">
