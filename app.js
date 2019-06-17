@@ -19,6 +19,7 @@ app.use(cookieParser());
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+var authMiddleware = require('./middlewares/checkauth.middleware')
 
 app.use(require('./middlewares/general.mdw'));
 
@@ -185,7 +186,7 @@ var list = require('./controllers/list.controller');
 app.use('/list', list);
 
 var Admin = require('./controllers/admin.controller');
-app.use('/Admin', Admin);
+app.use('/Admin', authMiddleware.requireAdmin, Admin);
 
 var account = require('./controllers/admin/account.controller');
 app.use('/account', account);

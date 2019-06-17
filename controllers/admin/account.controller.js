@@ -44,6 +44,7 @@ router.post("/api/login", async(req, res, next) => {
     var dbUsername = await userModel.singleByUserName(req.body.dnusername);
     if (!dbUsername) {
         console.log("Khong co ten dang nhap trong db");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Ten or MK sai" });
     }
 
@@ -52,6 +53,7 @@ router.post("/api/login", async(req, res, next) => {
     id = dbUsername[0].User_Cat_Name;
     if (req.body.dnpassword !== passworddb) {
         console.log("Mat khau khong dung");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Ten or MK sai" });
     }
 

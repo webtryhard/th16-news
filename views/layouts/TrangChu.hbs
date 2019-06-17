@@ -73,7 +73,7 @@
               <ul class="nav navbar-nav navbar-justified">
                 <!-- icon login  -->
 
-                <li class="login_icon" id="loginIconX" style="width:130px">
+                <li class="login_icon" id="loginIconX">
                   <a href="#" data-toggle="modal" data-target="#loginModal">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                   </a>
@@ -202,20 +202,20 @@ function setCookie(cname, cvalue, exdays) {
         $("#loginIconX").removeClass(["login_icon"])
         //$("#loginIconX").html("Hello " +getCookie("username"))
         let t = `
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="width: 150px">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Hi, ${getCookie("username")}
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/account/profile">
+            <a class="dropdown-item" href="/account/thaydoithongtin">
               <i class="fa fa-user" aria-hidden="true"></i>
-              Trang ca nhan
+              Thay đổi thông tin
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="account/logout">
               <i class="fa fa-sign-out" aria-hidden="true"></i>
-              Dang xuat
+              Đăng xuất
             </a>
           </div>
         </li> `
