@@ -11,9 +11,13 @@
                 {{#each newsList}}
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                     <article class="article-thumb pb7 mb15 bb-dashed">
-                        
+                         {{#if News_Category}}
+                    <span class="badge badge-warning">Premium</span>
+                    {{/if}}
+                      {{#if News_Category}}
+                      {{#compare (tinhThoiHanTaiKhoan ../this.subcriber.0.NgayGiaHan) 0}}                    
                         <figure class="article-thumb-img ">
-                            <a href="/list/detail/{{News_ID}}"
+                            <a href="#" data-toggle="modal" data-target="#GiaHanTaiKhoan-modal"
                                 title="{{News_Name}}"
                                 class="flex_image"><img
                                     src="{{Image_Avatar}}"
@@ -21,11 +25,43 @@
                                     width="100%" height="180px;"></a>
                         </figure>
                         <header class="article-thumb-header mt7">
-                            <a href="/list/detail/{{News_ID}}"
+                            <a href="#" data-toggle="modal" data-target="#GiaHanTaiKhoan-modal"
                                 title="{{News_Name}}" >
                                 <h2 class="font-2 fs-12">{{News_Name}}</h2>
                             </a>
                         </header>
+                        {{else}}
+                        <figure class="article-thumb-img ">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}"
+                                title="{{News_Name}}"
+                                class="flex_image"><img
+                                    src="{{Image_Avatar}}"
+                                    alt="{{News_Name}}"
+                                    width="100%" height="180px;"></a>
+                        </figure>
+                        <header class="article-thumb-header mt7">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}"
+                                title="{{News_Name}}" >
+                                <h2 class="font-2 fs-12">{{News_Name}}</h2>
+                            </a>
+                        </header> 
+                        {{/compare}}
+                        {{else}}
+                        <figure class="article-thumb-img ">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}"
+                                title="{{News_Name}}"
+                                class="flex_image"><img
+                                    src="{{Image_Avatar}}"
+                                    alt="{{News_Name}}"
+                                    width="100%" height="180px;"></a>
+                        </figure>
+                        <header class="article-thumb-header mt7">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}"
+                                title="{{News_Name}}" >
+                                <h2 class="font-2 fs-12">{{News_Name}}</h2>
+                            </a>
+                        </header>        
+                    {{/if}}
                     </article>
                 </div>
                 {{/each}}

@@ -114,7 +114,7 @@ router.post("/api/search", async(req, res, next) => {
         //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Tim khong ra" });
     } else {
-        console.log('co du lieu');
+        res.redirect("/search/:" + req.body.ip_search);
     }
     return res.json({ success: true, msg: "OK" });
 });

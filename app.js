@@ -202,6 +202,9 @@ app.get('/', function(req, res) {
     });
 });
 
+var tags = require('./controllers/tag.controller');
+app.use('/tags', tags);
+
 var list = require('./controllers/list.controller');
 app.use('/list', list);
 

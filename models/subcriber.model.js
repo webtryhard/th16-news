@@ -95,5 +95,13 @@ module.exports = {
     addComment: entity => {
         return db.add('comment', entity);
     },
+
+    viewListFollowTag : TagID =>{
+        return db.load(`SELECT N.*, T.Tag_Name FROM tags T, news N, tags_news TN WHERE T.TagID = ${TagID} and T.TagID = TN.TagID and TN.News_ID = N.News_ID`);
+    },
+
+    viewListFollowTagSub : TagID =>{
+        return db.load(`SELECT N.*, T.Tag_Name FROM tags T, news N, tags_news TN WHERE T.TagID = ${TagID} and T.TagID = TN.TagID and TN.News_ID = N.News_ID order by N.News_Category DESC`);
+    }
     
 };
