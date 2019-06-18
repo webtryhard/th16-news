@@ -34,7 +34,6 @@ module.exports = {
     },
 
     searchNewsName: key => {
-        console.log(key)
         return db.load(`ALTER TABLE news ADD FULLTEXT (News_Name, Summary, Content); select * from news where match (News_Name, Summary, Content) against ("${key}" in natural language mode)`)
     },
 

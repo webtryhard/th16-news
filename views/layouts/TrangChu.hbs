@@ -298,24 +298,9 @@
         event.preventDefault()
         console.log("vao search")
 
-        fetch("/account/api/search",
-          {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              ip_search: document.getElementById("ip_search").value,
-            })
-          }).then(res => res.json()).then(
-            res => {
-              console.log(res)
-              if (res.success === true) {
-                location.reload()
-              }
-            }
-          );
+        location.href = "/account/search" + "?ip_search=" + document.getElementById("ip_search").value
+
+       
       })
     })
   </script>
