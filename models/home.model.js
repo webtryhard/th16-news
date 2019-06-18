@@ -3,7 +3,7 @@ var db = require('../utils/db');
 module.exports = {
 
     getNewsHot: () => {
-        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Views DESC LIMIT 0,10`);
+        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 and News_Category = 0 and News_Category = 0 ORDER BY Views DESC LIMIT 0,10`);
     },
 
     getAllCat: ()=>{
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getLatestNews: () =>{
-        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 ORDER BY Time DESC LIMIT 0,10`);
+        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC LIMIT 0,10`);
     },
 
     getTop10Cat: () =>{
@@ -31,7 +31,7 @@ module.exports = {
         return db.load(`SELECT M.*
         FROM (SELECT t1.* 
             FROM news t1 JOIN news t2 ON t1.CatID = t2.CatID and t1.Time <= t2.Time
-            WHERE t1.Deleted = 0 and t1.State_ID = 4 and t2.Deleted = 0 and t2.State_ID = 4
+            WHERE t1.Deleted = 0 and t1.State_ID = 4 and t2.Deleted = 0 and t2.State_ID = 4 and t1.News_Category = 0 and t2.News_Category = 0
             GROUP BY t1.CatID, t1.News_ID 
             HAVING COUNT(*) <= 3) as M, 
             (SELECT CatID 
@@ -44,7 +44,7 @@ module.exports = {
     }, 
 
     getNewsInWeek: ()=>{
-        return db.load(`SELECT * FROM news n WHERE TIMESTAMPDIFF(minute,n.Time,Now()) <= 10080 and n.Deleted = 0 and n.State_ID = 4 ORDER BY n.Views DESC LIMIT 5`);
+        return db.load(`SELECT * FROM news n WHERE TIMESTAMPDIFF(minute,n.Time,Now()) <= 10080 and n.Deleted = 0 and n.State_ID = 4 and News_Category = 0 ORDER BY n.Views DESC LIMIT 5`);
     },
     
 };

@@ -3,7 +3,7 @@ var db = require('../utils/db');
 module.exports = {
 
     getAllNews: () => {
-        return db.load('select * from news where Deleted = 0 and State_ID = 4');
+        return db.load('select * from news where Deleted = 0 and State_ID = 4 and News_Category = 0');
     },
 
     getSingleNews: News_ID => {
@@ -32,15 +32,15 @@ module.exports = {
     },
 
     getNewsByCat: (CatID) => {
-        return db.load(`SELECT * FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 ORDER BY Time DESC`);
+        return db.load(`SELECT * FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC`);
     },
 
     countNewsByCat: (CatID) => {
-        return db.load(`SELECT count(*) as total FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4`);
+        return db.load(`SELECT count(*) as total FROM news where CatID = ${CatID} and Deleted = 0 and State_ID = 4 and News_Category = 0`);
     },
 
     getNewsSameCat: (CatID, News_ID) => {
-        return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} and Deleted = 0 and State_ID = 4 ORDER BY Time DESC LIMIT 0,8`);
+        return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} and Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC LIMIT 0,8`);
     },
 
     getAllCat: ()=>{

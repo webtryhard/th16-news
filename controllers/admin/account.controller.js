@@ -101,9 +101,49 @@ router.get('/search', async(req, res) => {
     var dbSearch = await userModel.searchNewsName(ip_search);
     dbSearch = dbSearch[1]
 
-    console.log(dbSearch)
+    var page = req.query.page || 1;
+    if (page < 1) page = 1;
+    var limit = 8;
+    var offset = (page - 1) * limit;
+    var newsList = new Array();
+
+    var total = dbSearch.length;
+        
+        var npage = Math.floor(total / limit);
+        if(total % limit > 0) npage++;
+        var pages = [];
+
+        var prev, next, first, last;
+        if(page > 1) 
+        {
+            prev = page - 1;
+            first = 1;
+        }
+
+        if(page < npage) 
+        {
+            next = +page + 1;
+            last = npage;
+        }
+
+        for(i = page - 1; i <= +page + 1; i++)
+        {
+            if(i > 0 && i <= npage)
+            {
+            var obj = {value : i, active : i === +page};
+            pages.push(obj);
+            }
+        }
+        
+        for (i = offset; i < offset + limit; i++) {
+            if (dbSearch[i]) {
+                newsList.push(dbSearch[i]);
+            }
+        }
 
     res.render('vwTag/tag', {
+        menu: res.menu,
+        newsList, pages, first, last, prev, next,
         layout: "TrangChu.hbs",
         style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
         js: ['jQuery.js', 'js.js', 'login-register.js'],
