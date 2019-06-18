@@ -93,31 +93,40 @@ router.post("/api/register", async(req, res, next) => {
     }
 });
 
-// router.get('/search', (req, res) => {
-//     res.render('pieces/search', {
-//         layout: "TrangChu.hbs",
-//         style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
-//         js: ['jQuery.js', 'js.js', 'login-register.js'],
-//         logo: 'logo.png'
-//     })
-// })
+router.get('/search', async(req, res) => {
+    let ip_search = req.query.ip_search
+    if (!ip_search) {
+        return
+    }
+    var dbSearch = await userModel.searchNewsName(ip_search);
+    dbSearch = dbSearch[1]
 
-router.post("/api/search", async(req, res, next) => {
-    console.log('hello')
-    if (!req.body.ip_search) {
-        console.log('vo ham hong co')
-        return res.json({ success: false, msg: "Missnggg" });
-    }
-    var dbSearch = await userModel.searchNewsName(req.body.ip_search);
-    if (!dbSearch[1]) {
-        console.log("Khong co tu tim kiem trong db");
-        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
-        return res.json({ success: false, msg: "Tim khong ra" });
-    } else {
-        console.log('co du lieu');
-    }
-    return res.json({ success: true, msg: "OK" });
-});
+    console.log(dbSearch)
+
+    res.render('vwTag/tag', {
+        layout: "TrangChu.hbs",
+        style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
+        js: ['jQuery.js', 'js.js', 'login-register.js'],
+        logo: 'logo.png'
+    })
+})
+
+// router.post("/api/search", async(req, res, next) => {
+//     console.log('hello')
+//     if (!req.body.ip_search) {
+//         console.log('vo ham hong co')
+//         return res.json({ success: false, msg: "Missnggg" });
+//     }
+//     var dbSearch = await userModel.searchNewsName(req.body.ip_search);
+//     if (!dbSearch[1]) {
+//         console.log("Khong co tu tim kiem trong db");
+//         //alert('Tên đăng nhập hoặc mật khẩu không đúng');
+//         return res.json({ success: false, msg: "Tim khong ra" });
+//     } else {
+//         console.log('co du lieu');
+//     }
+//     return res.json({ success: true, msg: "OK" });
+// });
 
 router.get('/thaydoithongtin', (req, res) => {
     res.render('pieces/thayDoiThongTinCaNhan', {
