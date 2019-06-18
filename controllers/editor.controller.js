@@ -348,15 +348,15 @@ routers.post('/:id/browse/update', (req, res) => {
         editorModel.addTag(entity);
     }
 
-    var entity = {
+    var entity2 = {
         News_ID : req.body.News_ID,
         CatID: req.body.CatID,
         Time: req.body.Time,
         State_ID: 2
     }
 
-    editorModel.updateRefuse(entity).then(n => {
-        res.redirect('/');
+    editorModel.updateRefuse(entity2).then(n => {
+        res.redirect('/editor/'+id);
     }).catch(err => {
         console.log(err);
         res.end('error');
@@ -365,6 +365,7 @@ routers.post('/:id/browse/update', (req, res) => {
 
 routers.post('/:id/refuse/update', (req, res) => {
 
+    var id = req.params.id;
     var p = editorModel.getTimeNow();
     p.then(rows => {
 
@@ -377,7 +378,7 @@ routers.post('/:id/refuse/update', (req, res) => {
             Time : time
         }
         editorModel.updateRefuse(entity).then(n => {
-            res.end('thành công rồi');
+            res.redirect('/editor/'+id);
         }).catch(err => {
             console.log(err);
             res.end('error');
