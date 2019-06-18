@@ -2,7 +2,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/admin/quanlynguoidung/update">
+                <form method="POST" action="/admin/{{this.admin.User_ID}}/quanlynguoidung/update">
                     <div class="form-group">
                         <label for="txtName">Mã số</label>
                         <input readonly type="text" class="form-control" placeholder={{this.user.User_ID}}
@@ -15,8 +15,8 @@
                     </div>
                     <div class="form-group">
                         <label for="txtName">Password</label>
-                        <input type="text" class="form-control" id="txtName" name="Password" autofocus
-                            placeholder="{{this.user.Password}}" value="{{this.user.Password}}">
+                        <input type="password" class="form-control" id="txtName" name="Password" autofocus
+                            placeholder="Nhập password mới tại đây." value="{{this.user.Password}}">
                     </div>
                     <div class="form-group">
                         <label for="txtName">Họ Tên</label>
@@ -52,17 +52,7 @@
                             placeholder="{{this.user.Address}}" value="{{this.user.Address}}">
                     </div>
                     <div class="form-group">
-                        <label for="txtName">Ngày đã cấp</label>
-                        <input readonly type="text" class="form-control"
-                            value="{{DateCmtFormat this.user.Day_Issuance}}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="txtName">Chọn ngày cấp mới</label>
-                        <input type="date" class="form-control" id="txtName" name="Day_Issuance" autofocus
-                            placeholder="{{this.user.Day_Issuance}}" value="{{this.user.Day_Issuance}}">
-                    </div>
-                    <div class="form-group">
-                        <a class="btn btn-primary" href="/admin/quanlynguoidung" role="button">
+                        <a class="btn btn-primary" href="/admin/{{this.admin.User_ID}}/quanlynguoidung" role="button">
                             <i class="fa fa-backward" aria-hidden="true"></i>
                             Quay lại danh sách
                         </a>

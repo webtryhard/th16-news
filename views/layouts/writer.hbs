@@ -41,8 +41,10 @@
 
     <aside id="left-panel" class="left-panel" style="color: white">
         <div class="card-body">
-            <div class="mx-auto d-block" style="margin-top: 10px; padding-bottom: 10px;border-bottom: 2px solid #ddd;text-align: center;font-size: 20px;">
-                <img class="rounded-circle mx-auto d-block" src="{{this.writer.Avatar}}" alt="Card image cap">
+            <div class="mx-auto d-block"
+                style="margin-top: 10px; padding-bottom: 10px;border-bottom: 2px solid #ddd;text-align: center;font-size: 20px;">
+                <img style="border-radius:100%" class="rounded-circle mx-auto d-block" src="{{this.writer.Avatar}}"
+                    alt="Card image cap">
                 <h5 class="text-sm-center mt-2 mb-1">{{this.writer.Username}}</h5>
             </div>
         </div>
@@ -51,7 +53,6 @@
             </div>
             <div style="margin-bottom:10px; padding-left: 18px;">Tên: {{this.writer.Name}}</div>
             <div style="margin-bottom:10px; padding-left: 18px;">Vị trí: Biên tập viên</div>
-            <div style="margin-bottom:10px; padding-left: 18px;">Chủ đề quản lý: Thời sự, Khuyến nông, Doanh nghiệp</div>
             <div style="margin-bottom:10px; padding-left: 18px;">Điện thoại: {{this.writer.Phone}}</div>
             <div style="margin-bottom:10px; padding-left: 18px;">Email: {{this.writer.Email}}</div>
             <div style="margin-bottom:10px; padding-left: 18px;">Địa chỉ: {{this.writer.Address}}</div>
@@ -117,7 +118,6 @@
     <script src="/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="/vendors/assets/js/init-scripts/data-table/datatables-init.js"></script>
-
 </body>
 
 </html>

@@ -44,11 +44,11 @@ module.exports = {
 
     addTags: (tableName, entity) => {
         return new Promise((resolve, reject) => {
-            for (i = 0; i < entity.length; i++) {
+           
                 var sql = `insert into ${tableName} set ?`;
                 var connection = createConnection();
                 connection.connect();
-                connection.query(sql, entity[i], (error, value) => {
+                connection.query(sql, entity, (error, value) => {
                     if (error) {
                         reject(error);
                     } else {
@@ -56,7 +56,7 @@ module.exports = {
                     }
                     connection.end();
                 });
-            }
+            
         });
     },
 

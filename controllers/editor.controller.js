@@ -302,8 +302,8 @@ routers.get('/:id/my_browsed_draft', (req, res) => {
     });
 });
 
-routers.post('/:id/browse/update', (req, res) => {
-    var News_ID = req.body.News_ID;
+routers.post('/:id/browse/update/:idn', (req, res) => {
+    var News_ID = req.params.idn;
     var list = req.body.Tag_selected;
     var entity = [];
     var id = req.params.id;
@@ -318,24 +318,25 @@ routers.post('/:id/browse/update', (req, res) => {
 
         var p = editorModel.getAllTagsOfDraft(News_ID);
 
-        p.then(row => {
+        (p.then(row => {
             for (i = 0; i < row.length; i++) {
                 editorModel.deleteTag(News_ID, row[i].TagID);
             }
-        }).catch(err => {
-            console.log(err);
+        })).then(() => {
+            for (i = 0; i < entity.length; i++) {
+                editorModel.addTag(entity[i]);
+            }
         })
-
-        editorModel.addTag(entity);
     }
 
-    var entity = {
+    var entity2 = {
+        News_ID: News_ID,
         CatID: req.body.CatID,
         Time: req.body.Time,
         State_ID: 2
     }
 
-    editorModel.updateRefuse(entity).then(n => {
+    editorModel.updateRefuse(entity2).then(n => {
         res.redirect('/editor/' + id);
     }).catch(err => {
         console.log(err);
@@ -401,7 +402,7 @@ routers.get('/:Editor_ID/draft/browsed/:News_ID', (req, res) => {
 
 
 routers.post('/refuse/update', (req, res) => {
-    
+
     var entity = {
         News_ID: req.body.News_ID,
         Reason_Refuse: req.body.Reason_Refuse,

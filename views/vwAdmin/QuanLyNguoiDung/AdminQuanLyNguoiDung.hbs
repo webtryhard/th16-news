@@ -6,7 +6,8 @@
                 <div class="card">
                     <div class="card-header" style="display: flex;justify-content: space-between;">
                         <strong class="card-title">Danh sách người dùng</strong>
-                        <a class="btn btn-outline-danger" href="/admin/quanlynguoidung/deleted" role="button">
+                        <a class="btn btn-outline-danger" href="/admin/{{this.admin.User_ID}}/quanlynguoidung/deleted"
+                            role="button">
                             <i class="fa fa-minus-square"> Những mục đã xóa</i>
                         </a>
                     </div>
@@ -67,31 +68,37 @@
                                                         class="avatar img-circle" />
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="quanlynguoidung/edit/{{User_ID}}"
-                                                        title="Chỉnh sửa" role="button">
+                                                    <a class="btn btn-primary btn-sm"
+                                                        href="quanlynguoidung/edit/{{User_ID}}" title="Chỉnh sửa"
+                                                        role="button">
                                                         <i class="fa fa-pencil" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button" title="Xóa">
+                                                        href="quanlynguoidung/delete/{{User_ID}}" role="button"
+                                                        title="Xóa">
                                                         <i class="fa fa-trash" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     {{!-- Nếu người dùng là độc giả (Subcriber) --}}
                                                     {{#compare User_Cat_Name "===" "Subcriber"}}
+                                                    {{#compare yeuCauGiaHan 1}}
                                                     <a class="btn btn-warning btn-sm"
-                                                        href="quanlynguoidung/giahantaikhoan/{{User_ID}}" role="button" title="Gia hạn tài khoản">
+                                                        href="quanlynguoidung/giahantaikhoan/{{User_ID}}" role="button"
+                                                        title="Gia hạn tài khoản">
                                                         <i class="fa fa-level-up" aria-hidden="true">
                                                         </i>
                                                     </a>
                                                     {{/compare}}
+                                                    {{/compare}}
 
                                                     {{!-- Nếu người dùng là biên tập viên (Editor) --}}
-                                                     {{#compare User_Cat_Name "===" "Editor"}}
+                                                    {{#compare User_Cat_Name "===" "Editor"}}
                                                     <a class="btn btn-success btn-sm"
-                                                        href="quanlynguoidung/phancongchuyenmuc/{{User_ID}}" role="button" title="Phân công chuyên mục">
+                                                        href="quanlynguoidung/phancongchuyenmuc/{{User_ID}}"
+                                                        role="button" title="Phân công chuyên mục">
                                                         <i class="fa fa-magic" aria-hidden="true">
                                                         </i>
                                                     </a>
