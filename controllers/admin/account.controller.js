@@ -93,25 +93,28 @@ router.post("/api/register", async(req, res, next) => {
     }
 });
 
-router.get('/search', (req, res) => {
-    res.render('pieces/search', {
-        layout: "TrangChu.hbs",
-        style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
-        js: ['jQuery.js', 'js.js', 'login-register.js'],
-        logo: 'logo.png'
-    })
-})
+// router.get('/search', (req, res) => {
+//     res.render('pieces/search', {
+//         layout: "TrangChu.hbs",
+//         style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
+//         js: ['jQuery.js', 'js.js', 'login-register.js'],
+//         logo: 'logo.png'
+//     })
+// })
 
 router.post("/api/search", async(req, res, next) => {
     console.log('hello')
     if (!req.body.ip_search) {
+        console.log('vo ham hong co')
         return res.json({ success: false, msg: "Missnggg" });
     }
     var dbSearch = await userModel.searchNewsName(req.body.ip_search);
-    if (!dbSearch) {
+    if (!dbSearch[1]) {
         console.log("Khong co tu tim kiem trong db");
         //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Tim khong ra" });
+    } else {
+        console.log('co du lieu');
     }
     return res.json({ success: true, msg: "OK" });
 });
