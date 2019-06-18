@@ -78,7 +78,8 @@ router.post("/api/register", async(req, res, next) => {
             Username: req.body.dkusername,
             Password: req.body.dkpassword,
             Name: req.body.dkname,
-            Email: req.body.dkemail
+            Email: req.body.dkemail,
+            User_Cat_Name: 'Subcriber',
         };
         userModel
             .add_acc(entity)
@@ -90,6 +91,29 @@ router.post("/api/register", async(req, res, next) => {
                 return res.json({ success: false, msg: "Sad boy" });
             });
     }
+});
+
+router.get('/search', (req, res) => {
+    res.render('pieces/search', {
+        layout: "TrangChu.hbs",
+        style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
+        js: ['jQuery.js', 'js.js', 'login-register.js'],
+        logo: 'logo.png'
+    })
+})
+
+router.post("/api/search", async(req, res, next) => {
+    console.log('hello')
+    if (!req.body.ip_search) {
+        return res.json({ success: false, msg: "Missnggg" });
+    }
+    var dbSearch = await userModel.searchNewsName(req.body.ip_search);
+    if (!dbSearch) {
+        console.log("Khong co tu tim kiem trong db");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
+        return res.json({ success: false, msg: "Tim khong ra" });
+    }
+    return res.json({ success: true, msg: "OK" });
 });
 
 router.get('/thaydoithongtin', (req, res) => {
