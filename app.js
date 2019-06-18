@@ -53,6 +53,9 @@ const hbs = exphbs.create({
         DateTimeFormat: val => {
             return dateFormat(val, 'dd/mm/yyyy HH:MM');
         },
+        DateFormatForPost: val => {
+            return dateFormat(val, 'yyyy/mm/dd');
+        },
         section: hbs_sections(),
 
         compare: function(lvalue, operator, rvalue, options) {

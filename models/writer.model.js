@@ -21,6 +21,9 @@ module.exports = {
                     JOIN news_state ns ON news.State_ID=ns.State_ID
         WHERE news.News_ID=${id}`);
     },
+    getAllTag: () => {
+        return db.load(`SELECT * FROM tags WHERE Deleted=0`);
+    },
     getAllNewState: () => {
         return db.load(`SELECT * FROM news_state`);
     },

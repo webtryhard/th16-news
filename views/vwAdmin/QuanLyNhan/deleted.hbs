@@ -27,7 +27,7 @@
                                                     aria-label="Position: activate to sort column ascending"
                                                     style="width: 407px;">Tên nhãn</th>
                                                 <th data-orderable="false">
-                                                    <a class="btn btn-primary" href="/admin/quanlynhan"
+                                                    <a class="btn btn-primary" href="/admin/{{this.admin.User_ID}}/quanlynhan"
                                                         role="button">
                                                         <i class="fa fa-backward" aria-hidden="true"></i>
                                                         Quay lại
@@ -42,7 +42,7 @@
                                                 <td>{{Tag_Name}}</td>
                                                 <td style="text-align: center">
                                                     <a class="btn btn-success btn-sm"
-                                                        href="/admin/quanlynhan/restore/{{TagID}}" role="button" title="Khôi phục">
+                                                        href="/admin/{{../this.admin.User_ID}}/quanlynhan/restore/{{TagID}}" role="button" title="Khôi phục">
                                                         <i class="fa fa-plus-circle" aria-hidden="true">
                                                         </i>
                                                     </a>
