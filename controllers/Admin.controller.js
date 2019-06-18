@@ -7,6 +7,11 @@ router.get('/:id', (req, res) => {
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllUser();
 
+    if (id !== req.cookies.userId) {
+        res.redirect("/")
+        return
+    }
+
     Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
             admin: row1[0],
@@ -18,12 +23,15 @@ router.get('/:id', (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-}
-)
+})
 
 //QUẢN LÝ CHUYÊN MỤC
 router.get('/:id/quanlychuyenmuc', (req, res) => {
     var id = req.params.id;
+    if (id !== req.cookies.userId) {
+        res.redirect("/")
+        return
+    }
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllCat();
 
@@ -42,6 +50,10 @@ router.get('/:id/quanlychuyenmuc', (req, res) => {
 
 router.get('/:id/quanlychuyenmuc/deleted', (req, res) => {
     var id = req.params.id;
+    if (id !== req.cookies.userId) {
+        res.redirect("/")
+        return
+    }
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllCatDeleted();
 
@@ -122,8 +134,7 @@ router.get('/:ida/quanlychuyenmuc/edit/:id', (req, res) => {
                 });
             }
 
-        }
-        else {
+        } else {
             res.render('vwAdmin/QuanLyChuyenMuc/edit', {
                 cat: rows[0],
                 parentCat: rows2,
@@ -176,8 +187,7 @@ router.post('/:ida/quanlychuyenmuc/add', (req, res) => {
         entity = {
             CatName: req.body.CatName,
         }
-    }
-    else {
+    } else {
         entity = {
             CatName: req.body.CatName,
             Parent_ID: temp
@@ -228,8 +238,7 @@ router.get('/:ida/quanlychuyenmuc/restore/:id', (req, res) => {
                 });
             }
 
-        }
-        else {
+        } else {
             res.render('vwAdmin/QuanLyChuyenMuc/restore', {
                 cat: rows[0],
                 parentCat: rows2,
@@ -264,18 +273,17 @@ router.get('/:ida/quanlynhan', (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-}
-)
+})
 router.get('/:ida/quanlynhan/add', (req, res) => {
     var ida = req.params.ida;
-    var admin=AdminModel.singleUser(ida);
-    admin.then(row=>{
+    var admin = AdminModel.singleUser(ida);
+    admin.then(row => {
         res.render('vwAdmin/QuanLyNhan/add', {
-        layout: 'adminQuanLyNhan.hbs',
-        title: 'Thêm nhãn',
-        admin:row[0],
+            layout: 'adminQuanLyNhan.hbs',
+            title: 'Thêm nhãn',
+            admin: row[0],
         });
-    }).catch(err=>{
+    }).catch(err => {
 
     })
 })
@@ -284,34 +292,33 @@ router.post('/:ida/quanlynhan/add', (req, res) => {
     AdminModel.addTag(req.body)
         .then(id => {
             res.redirect('/admin/' + id + '/quanlynhan');
-    }).catch(err => {
-        console.log(err);
-        res.end('error');
-    })
+        }).catch(err => {
+            console.log(err);
+            res.end('error');
+        })
 })
 
 router.get('/:ida/quanlynhan/edit/:id', (req, res) => {
     var id = req.params.id;
-    var ida=req.params.ida;
-    var admin=AdminModel.singleUser(ida);
+    var ida = req.params.ida;
+    var admin = AdminModel.singleUser(ida);
     var p = AdminModel.singleTag(id);
 
-    Promise.all([p,admin]).then(([rows,admin]) => {
+    Promise.all([p, admin]).then(([rows, admin]) => {
         if (rows.length > 0) {
             res.render('vwAdmin/QuanLyNhan/edit', {
                 tag: rows[0],
                 error: false,
-                admin:admin[0],
+                admin: admin[0],
                 layout: 'adminQuanLyNhan.hbs',
                 title: 'Chỉnh sửa nhãn',
                 logo: 'logo.png',
             });
-        }
-        else {
+        } else {
             res.render('vwAdmin/QuanLyChuyenMuc/edit', {
                 tag: rows[0],
                 error: true,
-                admin:admin[0],
+                admin: admin[0],
                 layout: 'adminQuanLyNhan.hbs',
                 title: 'Chỉnh sửa nhãn',
                 logo: 'logo.png'
@@ -400,8 +407,7 @@ router.get('/:id/quanlybaiviet', (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-}
-)
+})
 
 router.get('/:id/quanlybaiviet/add', (req, res) => {
     var id = req.params.id;
@@ -426,10 +432,10 @@ router.get('/:id/quanlybaiviet/add', (req, res) => {
 })
 
 router.post('/:ida/quanlybaiviet/add', (req, res) => {
-    var ida=req.params.ida;
+    var ida = req.params.ida;
     AdminModel.addNew(req.body)
         .then(id => {
-           res.redirect('/admin/' + ida + '/quanlybaiviet');
+            res.redirect('/admin/' + ida + '/quanlybaiviet');
         })
         .catch(err => {
             console.log(err);
@@ -438,32 +444,31 @@ router.post('/:ida/quanlybaiviet/add', (req, res) => {
 
 
 router.get('/:ida/quanlybaiviet/edit/:id', (req, res) => {
-    var ida=req.params.ida;
-    var admin=AdminModel.singleUser(ida);
+    var ida = req.params.ida;
+    var admin = AdminModel.singleUser(ida);
     var id = req.params.id;
     var p = AdminModel.singleNew(id);
     var p2 = AdminModel.getAllNewState();
     var p3 = AdminModel.getAllCat();
 
-    Promise.all([p, p2, p3,admin]).then(([rows, row2, row3, admin]) => {
+    Promise.all([p, p2, p3, admin]).then(([rows, row2, row3, admin]) => {
         if (rows.length > 0) {
             res.render('vwAdmin/QuanLyBaiViet/edit.hbs', {
                 news: rows[0],
                 newState: row2,
-                admin:admin[0],
+                admin: admin[0],
                 cat: row3,
                 error: false,
                 layout: 'adminQuanLyBaiViet.hbs',
                 title: 'Chỉnh sửa bài viết',
                 logo: 'logo.png',
             });
-        }
-        else {
+        } else {
             res.render('vwAdmin/QuanLyBaiViet/AdminQuanLyBaiViet.hbs', {
                 news: rows[0],
                 newState: row2,
                 cat: row3,
-                admin:admin[0],
+                admin: admin[0],
                 error: true,
                 layout: 'adminQuanLyBaiViet.hbs',
                 title: 'Chỉnh sửa bài viết',
@@ -487,14 +492,14 @@ router.post('/:ida/quanlybaiviet/update', (req, res) => {
 })
 
 router.get('/:ida/quanlybaiviet/delete/:id', (req, res) => {
-    var ida=req.params.ida;
+    var ida = req.params.ida;
     var id = req.params.id;
     var entity = {
         News_ID: id,
         Deleted: 1
     }
     AdminModel.updateNew(entity).then(n => {
-        res.redirect('/admin/'+ida+'/quanlybaiviet');
+        res.redirect('/admin/' + ida + '/quanlybaiviet');
     }).catch(err => {
         console.log(err);
         res.end('error');
@@ -502,7 +507,7 @@ router.get('/:ida/quanlybaiviet/delete/:id', (req, res) => {
 })
 
 router.get('/:ida/quanlybaiviet/xuatban/:id', (req, res) => {
-    var ida=req.params.ida;
+    var ida = req.params.ida;
     var id = req.params.id;
     var entity = {
         News_ID: id,
@@ -510,7 +515,7 @@ router.get('/:ida/quanlybaiviet/xuatban/:id', (req, res) => {
     }
 
     AdminModel.updateNew(entity).then(n => {
-        res.redirect('/admin/'+ida+'/quanlybaiviet');
+        res.redirect('/admin/' + ida + '/quanlybaiviet');
     }).catch(err => {
         console.log(err);
         res.end('error');
@@ -534,19 +539,18 @@ router.get('/:ida/quanlynguoidung', (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-}
-)
+})
 
 router.get('/:ida/quanlynguoidung/add', (req, res) => {
-    var id=req.params.ida;
-    var admin=AdminModel.singleUser(id);
-    admin.then(row=>{
+    var id = req.params.ida;
+    var admin = AdminModel.singleUser(id);
+    admin.then(row => {
         res.render('vwAdmin/QuanLyNguoiDung/add', {
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Thêm người dùng',
-            admin:row[0]
+            admin: row[0]
         });
-    }).catch(err=>{
+    }).catch(err => {
 
     })
 
@@ -567,27 +571,26 @@ router.post('/:ida/quanlynguoidung/add', (req, res) => {
 
 router.get('/:ida/quanlynguoidung/edit/:id', (req, res) => {
     var id = req.params.id;
-    var ida=req.params.ida;
+    var ida = req.params.ida;
     var p = AdminModel.singleUser(id);
-    var admin=AdminModel.singleUser(ida);
+    var admin = AdminModel.singleUser(ida);
 
-    Promise.all([p,admin]).then(([rows,admin]) => {
+    Promise.all([p, admin]).then(([rows, admin]) => {
         if (rows.length > 0) {
             res.render('vwAdmin/QuanLyNguoiDung/edit', {
                 user: rows[0],
                 error: false,
-                admin:admin[0],
+                admin: admin[0],
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Quản lý người dùng',
                 logo: 'logo.png',
                 listCatUser: ['Admin', 'Subcriber', 'Editor', 'Writter'],
             });
-        }
-        else {
+        } else {
             res.render('vwAdmin/QuanLyNguoiDung/edit', {
                 user: rows[0],
                 error: true,
-                admin:admin[0],
+                admin: admin[0],
                 layout: 'adminQuanLyNguoiDung.hbs',
                 title: 'Quản lý người dùng',
                 logo: 'logo.png',
@@ -640,15 +643,15 @@ router.post('/:id/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
 
 router.get('/:ida/quanlynguoidung/phancongchuyenmuc/:id', (req, res) => {
     var id = req.params.id;
-    var ida=req.params.ida;
-    var admin=AdminModel.singleUser(ida);
+    var ida = req.params.ida;
+    var admin = AdminModel.singleUser(ida);
     var p = AdminModel.getAllCatFromTask(id);
     var p2 = AdminModel.singleUser(id);
-    Promise.all([p, p2,admin]).then(([rows, rows2,admin]) => {
+    Promise.all([p, p2, admin]).then(([rows, rows2, admin]) => {
         res.render('vwAdmin/QuanLyNguoiDung/phancongchuyenmuc.hbs', {
             cat: rows,
             user: rows2[0],
-            admin:admin[0],
+            admin: admin[0],
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Phân công chuyên mục',
             logo: 'logo.png'
@@ -659,16 +662,16 @@ router.get('/:ida/quanlynguoidung/phancongchuyenmuc/:id', (req, res) => {
 })
 
 router.get('/:ida/quanlynguoidung/chuyenmucdaphancong/:id', (req, res) => {
-    var ida=req.params.ida;
-    var admin=AdminModel.singleUser(ida);
+    var ida = req.params.ida;
+    var admin = AdminModel.singleUser(ida);
     var id = req.params.id;
     var p = AdminModel.getAllCatFromEditor(id);
     var p2 = AdminModel.singleUser(id);
-    Promise.all([p, p2,admin]).then(([rows, rows2,admin]) => {
+    Promise.all([p, p2, admin]).then(([rows, rows2, admin]) => {
         res.render('vwAdmin/QuanLyNguoiDung/chuyenmucdaphancong.hbs', {
             cat: rows,
             user: rows2[0],
-            admin:admin[0],
+            admin: admin[0],
             layout: 'adminQuanLyNguoiDung.hbs',
             title: 'Chuyên mục đã phân công',
             logo: 'logo.png'
