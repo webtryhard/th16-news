@@ -33,6 +33,10 @@ module.exports = {
         return db.load(`select * from user where User_ID = '${ID}'`);
     },
 
+    searchNewsName: key => {
+        return db.load(`select *, match (News_Name) against ('${key}') from news where match(News_Name) against ('${key}') >0`)
+    },
+
     add_acc: entityAcc => {
         return db.add('user', entityAcc);
     },

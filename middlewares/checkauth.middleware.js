@@ -1,5 +1,5 @@
 module.exports.requireAdmin = (req, res, next) => {
-    if (req.cookies.userCatName !== 'admin') {
+    if (req.cookies.userCatName !== 'Admin') {
         res.redirect('/')
         return
     }

@@ -203,5 +203,7 @@ app.use('/subcriber', authMiddleware.requireSubcriber, subcriber);
 var sentEmail = require('./controllers/quenMatkhau');
 app.use('/password', sentEmail);
 
+var search = require('./')
+
 app.listen(port);
 console.log('http://localhost:' + port);
