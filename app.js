@@ -108,6 +108,23 @@ const hbs = exphbs.create({
             var tomorrow = new Date(ms);
             return tomorrow;
         },
+
+        //Tính ngày hết hạn
+        tinhThoiHanTaiKhoan: function(date) {
+            var dateS = new Date();
+            var ms = date.getTime() +  7 * 86400000 - dateS.getTime() ;
+            var day;
+            if(ms > 0)
+            {
+            day = Math.floor(ms / 86400000);
+            if ( ms % 86400000 > 0 ) day ++;
+            }
+            else
+            {
+                day = 0;
+            }
+            return (+day);
+        },
     },
 })
 

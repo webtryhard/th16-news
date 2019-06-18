@@ -6,12 +6,13 @@ var routers = express.Router();
 routers.get('/:Sub_ID', function(req, res) {
     var idS = req.params.Sub_ID;
 
+    var p1 = subModel.getSingleSubcriber(idS);
     var p2 = subModel.getLatestNews();
     var p3 = subModel.getTop10Cat();
     var p4 = subModel.getNewsTop10Cat();
     var p5 = subModel.getNewsInWeek();
 
-    Promise.all([p2, p3, p4, p5]).then(([rows2, rows3, rows4, rows5]) => {
+    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
 
         var latestNews1 = [rows2[0], rows2[1]];
         var latestNews2 = [];
@@ -54,6 +55,7 @@ routers.get('/:Sub_ID', function(req, res) {
         res.render('vwSubcriber/subcriber.hbs', {
             layout: 'subcriber.hbs',
             title: 'Trang chủ của độc giả',
+            subcriber : rows1, 
             newsHot: res.newsHot,
             categories: res.categories,
             menu: res.menu,
@@ -79,10 +81,11 @@ routers.get('/:Sub_ID/list/:CatID', (req, res) => {
 
     var p1 = subModel.getCatAndChillByCatID(idC);
     var p2 = subModel.getNewsByCat(idC);
+    var p3 = subModel.getSingleSubcriber(idS);
     var p4 = subModel.getAllTagsManyNews(idC, offset + 3, limit - 3);
     var p5 = subModel.countNewsByCat(idC);
 
-    Promise.all([p1, p2, p4, p5]).then(([rows, rows2, rows4, count_rows]) => {
+    Promise.all([p1, p2, p3, p4, p5]).then(([rows, rows2, rows3, rows4, count_rows]) => {
 
         var total = count_rows[0].total;
         var npage = Math.floor((total - 3) / limit);
@@ -135,6 +138,7 @@ routers.get('/:Sub_ID/list/:CatID', (req, res) => {
             newsHot: res.newsHot,
             categories: res.categories,
             menu: res.menu,
+            subcriber: rows3,
             newsHead1: [rows2[0]],
             newsHead2: [rows2[1], rows2[2]],
             newsList1, newsList2, pages, first, last, prev, next, idS,
@@ -159,8 +163,9 @@ routers.get('/:Sub_ID/list/detail/:News_ID', (req, res) => {
         var p4 = subModel.getAllTagsOfNews(rows1[0].News_ID);
         var p5 = subModel.getNewsSameCat(rows1[0].CatID, rows1[0].News_ID);
         var p6 = subModel.getComment(idN);
+        var p7 = subModel.getSingleSubcriber(idS);
 
-        Promise.all([p2, p3, p4, p5, p6]).then(([rows2, rows3, rows4, rows5, rows6]) => {
+        Promise.all([p2, p3, p4, p5, p6, p7]).then(([rows2, rows3, rows4, rows5, rows6, rows7]) => {
             res.render('vwSubcriber/sub_detail.hbs', {
                 singlenews: rows1[0],
                 singlecategory: rows2[0],
@@ -168,6 +173,7 @@ routers.get('/:Sub_ID/list/detail/:News_ID', (req, res) => {
                 tags: rows4,
                 newsSameCat: rows5,
                 comment: rows6,
+                subcriber : rows7,
                 newsHot: res.newsHot,
                 menu: res.menu,
                 categories: res.categories,
@@ -184,5 +190,40 @@ routers.get('/:Sub_ID/list/detail/:News_ID', (req, res) => {
     })
 })
 
+routers.post('/:Sub_ID/renewals', (req, res) => {
+
+    var idS = req.params.Sub_ID;
+    var entity = {
+        User_ID: idS,
+        YeuCauGiaHan: 1
+    }
+        subModel.updateSub(entity).then(n => {
+            res.redirect('/Subcriber/' + idS);
+        }).catch(err => {
+            console.log(err);
+            res.end('error');
+        })
+    
+});
+
+routers.post('/:Sub_ID/comment/:News_ID', (req, res) => {
+
+    var idS = req.params.Sub_ID;
+    var idN = req.params.News_ID;
+    var time = new Date();
+    var entity = {
+        News_ID: idN,
+        User_ID: idS,
+        Content: req.body.Content,
+        Time : time
+    }
+        subModel.addComment(entity).then(n => {
+            res.redirect('/Subcriber/' + idS + '/list/detail/' + idN);
+        }).catch(err => {
+            console.log(err);
+            res.end('error');
+        })
+    
+});
 
 module.exports = routers;

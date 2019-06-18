@@ -72,15 +72,14 @@
             <div class="right-menu">
               <ul class="nav navbar-nav navbar-justified">
                 <!-- icon login  -->
-
-                           <!-- icon login  -->
+            {{#each subcriber}}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="img/avatar-editor.jpg" style="width: 33px; height: 33px;">
+                <img src="{{Avatar}}" style="width: 22px; height: 22px; border-radius: 10px;">
                 <i class="fa fa-angle-down"></i>
                 </a><ul class="dropdown-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <li class="userSub">
-                    <h5>Đặng Vân Anh</h5>
+                    <h5>{{Name}}</h5>
                   </li>
 
                   <li role="separator" class="divider"></li>
@@ -88,7 +87,7 @@
                   </a>
                   
                   <li>
-                    <span style="padding-left: 20px;font-weight: bold;">Thời hạn: 6 ngày
+                    <span style="padding-left: 20px;font-weight: bold;">Thời hạn: {{tinhThoiHanTaiKhoan NgayGiaHan}} ngày
                     </span>
                   </li>
 
@@ -117,6 +116,7 @@
                   </li>
                 </ul>
             </li>
+            {{/each}}
             <!-- icon search  -->
 
                 <!-- icon search  -->
@@ -150,6 +150,7 @@
 
       <!-- Modal content-->
       <div class="modal-content">
+        <form method="POST" action="/subcriber/{{idS}}/renewals">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h3 class="modal-title">Gia hạn tài khoản</h3>
@@ -158,9 +159,33 @@
           <p>Bạn có muốn tiến hành gia hạn tài khoản không?</p>
         </div>
         <div class="modal-footer">          
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Đồng ý</button>
-          <button type="button" class="btn btn-danger">Hủy</button>
+          <button type="submit" class="btn btn-warning">Đồng ý</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
         </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+   <!-- Modal gia hạn tài khoản 2 -->
+  <div class="modal fade" id="GiaHanTaiKhoan-modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <form method="POST" action="/subcriber/{{idS}}/renewals">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Gia hạn tài khoản</h3>
+        </div>
+        <div class="modal-body">
+          <p>Tài khoản của bạn đã hết hạn. Để xem bài viết <strong>Premium</strong> vui lòng gia hạn tài khoản.</p>
+          <p style="font-size: 16px;">Bạn có muốn tiến hành gia hạn tài khoản không?</p>
+        </div>
+        <div class="modal-footer">          
+          <button type="submit" class="btn btn-warning">Đồng ý</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+        </div>
+        </form>
       </div>
     </div>
   </div> 

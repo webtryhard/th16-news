@@ -440,7 +440,7 @@ body.blur:after{
     top: 0;
     height: 25px !important;
     width: 80px !important;
-    z-index: 0;
+    z-index: 1;
     background-color: #f36600bf;
     color: black;
     cursor: pointer;

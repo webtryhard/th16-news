@@ -92,13 +92,13 @@
             <!-- BEGIN:COMMENTS -->
             <script src="#"></script>
             <section class="comments-box">
-            <form class="frm-comment">
+            <form method="POST" action="/subcriber/{{idS}}/comment/{{this.singlenews.News_ID}}" class="frm-comment">
                 <div class="panel panel-success">
                 <header class="panel-heading">
                     <h3 class="panel-title font-2">Ý kiến của bạn <sup><i class="fa fa-comment-o"></i></sup></h3>
                 </header>
                 <div class="panel-body">
-                    <textarea class="txtComment form-control required_c" id="c_content_27494" name="c_content" rows="5"
+                    <textarea class="txtComment form-control required_c" id="c_content_27494" name="Content" rows="5"
                     placeholder="Nội dung"></textarea>
                     <script>
                     $(document).ready(function () {
@@ -116,8 +116,8 @@
                     </script>
                 </div>
                 <div class="panel-footer">
-                    <a class="btn btn-ico btn-sm btn-success ajSendComment" c_news="27494"><i class="fa fa-send-o"></i>
-                    Gửi bình luận</a>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-send-o"></i>
+                    Gửi bình luận</button>
                 </div>
                 </div>
             </form>
@@ -150,18 +150,42 @@
             {{#each this.newsSameCat}}
             <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
                 <article class="media mb7 bb-dashed">
-                <figure class="article-thumb-img">
-                    <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}"
-                    class="fixhieght height150"><img
-                        src="{{Image_Avatar}}"
-                        alt="{{News_Name}}" width="100%"
-                        height="150px;"></a>
-
-                </figure>
-                <header class="article-thumb-header mt5 mb5">
-                    <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
-                    <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
-                    </a>
+                    {{#if News_Category}}
+                    <span class="badge badge-warning">Premium</span>
+                    {{/if}}
+                      {{#if News_Category}}
+                      {{#compare (tinhThoiHanTaiKhoan ../this.subcriber.0.NgayGiaHan) 0}}
+                        <figure class="article-thumb-img">
+                            <a href="#" data-toggle="modal" data-target="#GiaHanTaiKhoan-modal" title="{{News_Name}}" class="fixhieght height150"><img
+                                    src="{{Image_Avatar}}" alt="{{News_Name}}" width="100%" height="150px;"></a>
+                        
+                        </figure>
+                        <header class="article-thumb-header mt5 mb5">
+                            <a href="#" data-toggle="modal" data-target="#GiaHanTaiKhoan-modal" title="{{News_Name}}">
+                                <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
+                            </a>
+                        {{else}}
+                        <figure class="article-thumb-img">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}" class="fixhieght height150"><img
+                                    src="{{Image_Avatar}}" alt="{{News_Name}}" width="100%" height="150px;"></a>
+                        
+                        </figure>
+                        <header class="article-thumb-header mt5 mb5">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
+                                <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
+                            </a> 
+                        {{/compare}}
+                        {{else}}
+                        <figure class="article-thumb-img">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}" class="fixhieght height150"><img
+                                    src="{{Image_Avatar}}" alt="{{News_Name}}" width="100%" height="150px;"></a>
+                        
+                        </figure>
+                        <header class="article-thumb-header mt5 mb5">
+                            <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
+                                <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
+                            </a>        
+                    {{/if}}
                     <small class="meta text-muted">
                       <span>
                         <time class="friendly" datetime={{Time}}>
