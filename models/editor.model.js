@@ -99,4 +99,8 @@ module.exports = {
     deleteTag: (id, id2) => {
         return db.delete('tags_news', 'News_ID', 'TagID', id, id2);
     },
+
+    getTimeNow: () => {
+        return db.load(`SELECT Now() as Time`);
+    }
 };

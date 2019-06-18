@@ -12,7 +12,7 @@
           <div class="ovlhidd col-md-6 large">
             <div class="row">
               <div class="grid-feature-item ">
-                <a href="/list/detail/{{newsHotWeek1.News_ID}}" title="{{newsHotWeek1.News_Name}}">
+                <a href="/subcriber/{{idS}}/list/detail/{{newsHotWeek1.News_ID}}" title="{{newsHotWeek1.News_Name}}">
                   <!-- <img src="" alt="" width="100%"> -->
                   <div class="bg_cover"
                     style="background-image: url({{newsHotWeek1.Image_Avatar}}); width: 100%;height: 100%; background-size: cover;">
@@ -20,7 +20,7 @@
                 </a>
                 <div class="title_top_header">
       
-                  <a href="/list/detail/{{newsHotWeek1.News_ID}}" title="{{newsHotWeek1.News_Name}}">
+                  <a href="/subcriber/{{idS}}/list/detail/{{newsHotWeek1.News_ID}}" title="{{newsHotWeek1.News_Name}}">
                     <h4>{{newsHotWeek1.News_Name}}</h4>
                   </a>
                   <p class="meta text-muted fs-08 font-normal">
@@ -39,12 +39,12 @@
           <div class="ovlhidd col-sm-6 col-md-3 small">
             <div class="row">
               <div class="grid-feature-item ">
-                <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
                   <!-- <img src="" alt="" width="100%"> -->
                   <div class="bg_cover" style="background-image: url({{Image_Avatar}}); width: 100%;height: 100%; background-size: cover;"></div>
                 </a>
                 <div class="title_top_header">         
-                  <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">
+                  <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
                     <h4>{{News_Name}}</h4>
                   </a>
                   <p class="meta text-muted fs-08 font-normal">
@@ -77,26 +77,26 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                           <div class="item active">
-                            <a href="/list/detail/{{newsHotWeek1.News_ID}}">
+                            <a href="/subcriber/{{../this/idS}}/list/detail/{{newsHotWeek1.News_ID}}">
                               <img src="{{newsHotWeek1.Image_Avatar}}"
                                 width="100%">
                             </a>
                             <div class="carousel-caption">
                               <h3 class="title_newshot font_19 mall0 font_a">
-                                <a href="/list/detail/{{newsHotWeek1.News_ID}}">{{newsHotWeek1.News_Name}}
+                                <a href="/subcriber/{{../this/idS}}/list/detail/{{newsHotWeek1.News_ID}}">{{newsHotWeek1.News_Name}}
                                 </a>
                               </h3>
                             </div>
                           </div>
                           {{#each newsHotWeek2}}
                           <div class="item">
-                            <a href="/list/detail/{{News_ID}}">
+                            <a href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}">
                               <img src="{{Image_Avatar}}" width="100%">
                             </a>
       
                             <div class="carousel-caption">
                               <h3 class="title_newshot font_19 mall0 font_a">
-                                <a href="/list/detail/{{News_ID}}">{{News_Name}}</a>
+                                <a href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}">{{News_Name}}</a>
                               </h3>
                             </div>
                           </div>
@@ -166,12 +166,13 @@
                         {{#each this.latestNews1}}
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                           <div class="media media_item_home ">
-                            <a class="img_vdsk align_items_center" href="/list/detail/{{News_ID}}">
+                            <span class="badge badge-warning">Premium</span>
+                            <a class="img_vdsk align_items_center" href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}">
                               <img class="media-object" src="{{Image_Avatar}}" title="{{News_Name}}" alt="{{News_Name}}" width="100%" height="300px;">
                             </a>
                             <div class="media-body">
                               <h3 class="fs-12 pt5">
-                                <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">{{News_Name}}</a>
+                                <a href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">{{News_Name}}</a>
                               </h3>
                               <small class="meta text-muted">
                                 <span>
@@ -189,11 +190,11 @@
                           {{#each latestNews2}}
                           <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
                             <article>
-                              <a href="/list/detail/{{News_ID}}" class="fixhieght hieght_col">
+                              <a href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}" class="fixhieght hieght_col">
                                 <img class="media-object" src="{{Image_Avatar}}" alt="{{News_Name}}" title="{{News_Name}}" width="100%" height="150px;">
                               </a>
                               <h3 class="fs-1 pt5" style="height: 60px;">
-                                <a href="/list/detail/{{News_ID}}" title="{{News_Name}}">{{News_Name}}</a>
+                                <a href="/subcriber/{{../this/idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">{{News_Name}}</a>
                               </h3>
                               <small class="meta text-muted">
                                 <time class="friendly" datetime={{Time}}>
@@ -224,7 +225,7 @@
                               <hgroup class="panel-heading">
                                 <ul class="list-inline mb0">
                                   <li class="active">
-                                    <a href="/list/{{this.0.CatID}}" title="{{this.0.CatName}}">{{this.0.CatName}}</a>
+                                    <a href="/subcriber/{{../this/idS}}/list/{{this.0.CatID}}" title="{{this.0.CatName}}">{{this.0.CatName}}</a>
                                   </li>
                                 </ul>
                               </hgroup>
@@ -232,12 +233,12 @@
                                 <div class="row ">
                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                                     <div class="media media_item_home">
-                                      <a class="hieght_col_300 align_items_center" href="/list/detail/{{this.2.0.News_ID}}">
+                                      <a class="hieght_col_300 align_items_center" href="/subcriber/{{../this/idS}}/list/detail/{{this.2.0.News_ID}}">
                                         <img class="media-object" src="{{this.2.0.Image_Avatar}}" alt="{{this.2.0.News_Name}}" title="{{this.2.0.News_Name}}" width="100%" height="270px">
                                       </a>
                                       <div class="media-body">
                                         <h3 class="fs-12 pt5">
-                                          <a href="/list/detail/{{this.2.0.News_ID}}" title="{{this.2.0.News_Name}}">{{this.2.0.News_Name}}
+                                          <a href="/subcriber/{{../this/idS}}/list/detail/{{this.2.0.News_ID}}" title="{{this.2.0.News_Name}}">{{this.2.0.News_Name}}
                                           </a>
                                         </h3>
                                         <small class="meta text-muted">
@@ -258,13 +259,13 @@
                                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="media ">
                                           <div class="media-left">
-                                            <a href="/list/detail/{{this.2.1.News_ID}}" class="images_360_small">
+                                            <a href="/subcriber/{{../this/idS}}/list/detail/{{this.2.1.News_ID}}" class="images_360_small">
                                               <img class="media-object" src="{{this.2.1.Image_Avatar}}" alt="{{this.2.1.News_Name}}" title="{{this.2.1.News_Name}}" width="100%" height="75px">
                                             </a>                                              
                                           </div>
                                           <div class="media-body">        
                                             <h3 class="fs-12">
-                                              <a href="/list/detail/{{this.2.1.News_ID}}" title="{{this.2.1.News_Name}}">{{this.2.1.News_Name}}</a>
+                                              <a href="/subcriber/{{../this/idS}}/list/detail/{{this.2.1.News_ID}}" title="{{this.2.1.News_Name}}">{{this.2.1.News_Name}}</a>
                                             </h3>
                                             <small class="meta text-muted">
                                               <span>
@@ -281,13 +282,13 @@
                                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="media ">
                                           <div class="media-left">
-                                            <a href="/list/detail/{{this.2.2.News_ID}}" class="images_360_small">
+                                            <a href="/subcriber/{{../this/idS}}/list/detail/{{this.2.2.News_ID}}" class="images_360_small">
                                               <img class="media-object" src="{{this.2.2.Image_Avatar}}" alt="{{this.2.2.News_Name}}" title="{{this.2.2.News_Name}}" width="100%" height="75px">
                                             </a>                                              
                                           </div>
                                           <div class="media-body">        
                                             <h3 class="fs-12">
-                                              <a href="/list/detail/{{this.2.2.News_ID}}" title="{{this.2.2.News_Name}}">{{this.2.2.News_Name}}</a>
+                                              <a href="/subcriber/{{../this/idS}}/list/detail/{{this.2.2.News_ID}}" title="{{this.2.2.News_Name}}">{{this.2.2.News_Name}}</a>
                                             </h3>
                                             <small class="meta text-muted">
                                               <span>
@@ -314,7 +315,7 @@
                               <hgroup class="panel-heading">
                                 <ul class="list-inline mb0">
                                   <li class="active">
-                                    <a href="/list/{{this.1.CatID}}" title="{{this.1.CatName}}">{{this.1.CatName}}</a>
+                                    <a href="/subcriber/{{../this/idS}}/list/{{this.1.CatID}}" title="{{this.1.CatName}}">{{this.1.CatName}}</a>
                                   </li>
                                 </ul>
                               </hgroup>
@@ -322,12 +323,12 @@
                                 <div class="row ">
                                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                                     <div class="media media_item_home">
-                                      <a class="hieght_col_300 align_items_center" href="/list/detail/{{this.3.0.News_ID}}">
+                                      <a class="hieght_col_300 align_items_center" href="/subcriber/{{../this/idS}}/list/detail/{{this.3.0.News_ID}}">
                                         <img class="media-object" src="{{this.3.0.Image_Avatar}}" alt="{{this.3.0.News_Name}}" title="{{this.3.0.News_Name}}" width="100%" height="270px">
                                       </a>
                                       <div class="media-body">
                                         <h3 class="fs-12 pt5">
-                                          <a href="/list/detail/{{this.3.0.News_ID}}" title="{{this.3.0.News_Name}}">{{this.3.0.News_Name}}
+                                          <a href="/subcriber/{{../this/idS}}/list/detail/{{this.3.0.News_ID}}" title="{{this.3.0.News_Name}}">{{this.3.0.News_Name}}
                                           </a>
                                         </h3>
                                         <small class="meta text-muted">
@@ -348,13 +349,13 @@
                                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="media ">
                                           <div class="media-left">
-                                            <a href="/list/detail/{{this.3.1.News_ID}}" class="images_360_small">
+                                            <a href="/subcriber/{{../this/idS}}/list/detail/{{this.3.1.News_ID}}" class="images_360_small">
                                               <img class="media-object" src="{{this.3.1.Image_Avatar}}" alt="{{this.3.1.News_Name}}" title="{{this.3.1.News_Name}}" width="100%" height="75px">
                                             </a>                                              
                                           </div>
                                           <div class="media-body">        
                                             <h3 class="fs-12">
-                                              <a href="/list/detail/{{this.3.1.News_ID}}" title="{{this.3.1.News_Name}}">{{this.3.1.News_Name}}</a>
+                                              <a href="/subcriber/{{../this/idS}}/list/detail/{{this.3.1.News_ID}}" title="{{this.3.1.News_Name}}">{{this.3.1.News_Name}}</a>
                                             </h3>
                                             <small class="meta text-muted">
                                               <span>
@@ -371,13 +372,13 @@
                                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="media ">
                                           <div class="media-left">
-                                            <a href="/list/detail/{{this.3.2.News_ID}}" class="images_360_small">
+                                            <a href="/subcriber/{{../this/idS}}/list/detail/{{this.3.2.News_ID}}" class="images_360_small">
                                               <img class="media-object" src="{{this.3.2.Image_Avatar}}" alt="{{this.3.2.News_Name}}" title="{{this.3.2.News_Name}}" width="100%" height="75px">
                                             </a>                                              
                                           </div>
                                           <div class="media-body">        
                                             <h3 class="fs-12">
-                                              <a href="/list/detail/{{this.3.2.News_ID}}" title="{{this.3.2.News_Name}}">{{this.3.2.News_Name}}</a>
+                                              <a href="/subcriber/{{../this/idS}}/list/detail/{{this.3.2.News_ID}}" title="{{this.3.2.News_Name}}">{{this.3.2.News_Name}}</a>
                                             </h3>
                                             <small class="meta text-muted">
                                               <span>

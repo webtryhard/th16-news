@@ -1,15 +1,28 @@
-module.exports.requireAuth = function(req, res, next) {
-    // if(!req.cookies.username){
-    //     res.redirect('/')
-    //     return
-    // }
-    if (req.cookies.username !== 'admin') {
+module.exports.requireAdmin = (req, res, next) => {
+    if (req.cookies.userCatName !== 'admin') {
         res.redirect('/')
         return
     }
-    // res.locals.isAuthenticated = true;
-    // res.locals.username = req.cookies.username;
-
     next()
-
+}
+module.exports.requireEditor = (req, res, next) => {
+    if (req.cookies.userCatName !== 'Editor') {
+        res.redirect('/')
+        return
+    }
+    next()
+}
+module.exports.requireSubcriber = (req, res, next) => {
+    if (req.cookies.userCatName !== 'Subcriber') {
+        res.redirect('/')
+        return
+    }
+    next()
+}
+module.exports.requireWriter = (req, res, next) => {
+    if (req.cookies.userCatName !== 'Writer') {
+        res.redirect('/')
+        return
+    }
+    next()
 }

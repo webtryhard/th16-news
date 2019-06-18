@@ -28,7 +28,7 @@
   <!-- BEGIN: logo -->
   <div class="logo">
     <div class="container">
-      <a href="/">
+      <a href="/subcriber/{{idS}}">
         <img class="logo" src="/img/{{logo}}" alt="logo">
       </a>
     </div>
@@ -52,13 +52,13 @@
                 <!--  menu-->
                 {{#each this.menu}}
                 <li class="font-bold">
-                  <a class="dropdown-toggle" href="/list/{{parent.CatID}}">
+                  <a class="dropdown-toggle" href="/subcriber/{{../this.idS}}/list/{{parent.CatID}}">
                     {{parent.CatName}}
                   </a>
                   <ul class="dropdown-menu">
                     {{#each childs}}
                     <li class="">
-                      <a href="/list/{{CatID}}" data-color="#d9534f" class="cat_c">{{CatName}}</a>
+                      <a href="/subcriber/{{../this.idS}}/list/{{CatID}}" data-color="#d9534f" class="cat_c">{{CatName}}</a>
                     </li>
                     {{/each}}
                   </ul>
@@ -73,11 +73,51 @@
               <ul class="nav navbar-nav navbar-justified">
                 <!-- icon login  -->
 
-                <li class="login_icon" id="loginIconX">
-                  <a href="#" data-toggle="modal" data-target="#loginModal">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                           <!-- icon login  -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="img/avatar-editor.jpg" style="width: 33px; height: 33px;">
+                <i class="fa fa-angle-down"></i>
+                </a><ul class="dropdown-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <li class="userSub">
+                    <h5>Đặng Vân Anh</h5>
+                  </li>
+
+                  <li role="separator" class="divider"></li>
+
                   </a>
-                </li>
+                  
+                  <li>
+                    <span style="padding-left: 20px;font-weight: bold;">Thời hạn: 6 ngày
+                    </span>
+                  </li>
+
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#giaHan-modal">
+                      <span class="dropdown-link-text">Gia hạn tài khoản</span>
+                    </a>
+                  </li>
+                  
+                   <li role="separator" class="divider"></li>
+
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#chinhSuaThongTin-modal">
+                      <span class="dropdown-link-text">Chỉnh sửa thông tin</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#doiMatKhau-modal">
+                      <span class="dropdown-link-text">Đổi mật khẩu</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="home.html">
+                      <span class="dropdown-link-text">Đăng xuất</span>
+                    </a>
+                  </li>
+                </ul>
+            </li>
+            <!-- icon search  -->
 
                 <!-- icon search  -->
                 <li class="search_ hidden-xs hidden-sm">
@@ -104,6 +144,94 @@
       </div>
     </nav>
   </div>
+    <!-- Modal gia hạn tài khoản -->
+  <div class="modal fade" id="giaHan-modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Gia hạn tài khoản</h3>
+        </div>
+        <div class="modal-body">
+          <p>Bạn có muốn tiến hành gia hạn tài khoản không?</p>
+        </div>
+        <div class="modal-footer">          
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Đồng ý</button>
+          <button type="button" class="btn btn-danger">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Modal chỉnh sửa thông tin -->
+  <div class="modal fade" id="chinhSuaThongTin-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Chỉnh sửa thông tin</h3>
+      </div>
+      <form id="contactForm" name="contact" role="form">
+        <div class="modal-body">        
+          <div class="form-group">
+            <label for="name">Tên hiển thị</label>
+            <input type="text" name="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="phone" name="phone" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="dateBirth">Ngày sinh</label>
+            <input type="Date" name="dateBirth" class="form-control">
+          </div>          
+        </div>
+        <div class="modal-footer">          
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Lưu lại</button>
+          <button type="button" class="btn btn-danger">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal đổi mật khẩu -->
+  <div class="modal fade" id="doiMatKhau-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Thay đổi mật khẩu</h3>
+      </div>
+      <form id="contactForm" name="contact" role="form">
+        <div class="modal-body">        
+          <div class="form-group">
+            <label for="currentPassword">Mật khẩu hiện tại</label>
+            <input type="password" name="currentPassword" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Mật khẩu mới</label>
+            <input type="password" name="newPassword" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Xác nhận mật khẩu mới</label>
+            <input type="password" name="confirmPassword" class="form-control">
+          </div>    
+        </div>
+        <div class="modal-footer">          
+         <button type="button" class="btn btn-warning" data-dismiss="modal">Lưu lại</button>
+         <button type="button" class="btn btn-danger">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
   <!-- END:navbar menu -->
 
 
@@ -126,7 +254,7 @@
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <address class="text-right mb0">
-              <div class="hidden-xs"><a href="/"><img src="/img/{{logo}}" alt="Báo Kinh Tế Nông Thôn" width="120px"></a>
+              <div class="hidden-xs"><a href="/subcriber/{{idS}}"><img src="/img/{{logo}}" alt="Báo Kinh Tế Nông Thôn" width="120px"></a>
               </div>
               <abbr data-toggle="tooltip" data-placement="top" data-original-title="Gửi Mail" title=""><i
                   class="fa fa-envelope-o"></i> E-Mail:</abbr> <a href="#">th16News@gmail.com</a> - <a
@@ -195,31 +323,27 @@ function setCookie(cname, cvalue, exdays) {
 
     $(document).ready(() => {
       console.log("Hi")
+
       if (getCookie("username") !== "") {
         console.log("Hi")
-        
+
         $("#loginIconX").removeClass(["login_icon"])
         //$("#loginIconX").html("Hello " +getCookie("username"))
         let t = `
-        <li class="nav-item dropdown" style="width: 150px">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Hi, ${getCookie("username")}
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/account/thaydoithongtin">
+            <a class="dropdown-item" href="/account/profile">
               <i class="fa fa-user" aria-hidden="true"></i>
-              Thay đổi thông tin
+              Trang ca nhan
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/${getCookie("userCatName")}/${getCookie("userId")}">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              Trang của tôi
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="account/logout">
+            <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
               <i class="fa fa-sign-out" aria-hidden="true"></i>
-              Đăng xuất
+              Dang xuat
             </a>
           </div>
         </li> `

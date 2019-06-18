@@ -19,6 +19,7 @@ app.use(cookieParser());
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+var authMiddleware = require('./middlewares/checkauth.middleware')
 
 app.use(require('./middlewares/general.mdw'));
 
@@ -188,16 +189,19 @@ var list = require('./controllers/list.controller');
 app.use('/list', list);
 
 var Admin = require('./controllers/admin.controller');
-app.use('/Admin', Admin);
+app.use('/Admin', authMiddleware.requireAdmin, Admin);
 
 var account = require('./controllers/admin/account.controller');
 app.use('/account', account);
 
 var editor = require('./controllers/editor.controller');
-app.use('/editor', editor);
+app.use('/editor', authMiddleware.requireEditor, editor);
 
 var writer = require('./controllers/writer.controller');
-app.use('/writer', writer);
+app.use('/writer', authMiddleware.requireWriter, writer);
+
+var subcriber = require('./controllers/subcriber.controller');
+app.use('/subcriber', authMiddleware.requireSubcriber, subcriber);
 
 var sentEmail = require('./controllers/quenMatkhau');
 app.use('/password', sentEmail);

@@ -44,6 +44,7 @@ router.post("/api/login", async(req, res, next) => {
     var dbUsername = await userModel.singleByUserName(req.body.dnusername);
     if (!dbUsername) {
         console.log("Khong co ten dang nhap trong db");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Ten or MK sai" });
     }
 
@@ -52,11 +53,13 @@ router.post("/api/login", async(req, res, next) => {
     id = dbUsername[0].User_Cat_Name;
     if (req.body.dnpassword !== passworddb) {
         console.log("Mat khau khong dung");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Ten or MK sai" });
     }
 
     res.cookie("username", namedb);
     res.cookie("userId", dbUsername[0].User_ID);
+    res.cookie("userCatName", id)
     return res.json({ success: true, msg: "OK" });
 });
 
@@ -144,6 +147,7 @@ router.post('/thaydoithongtin', async(req, res) => {
 router.get("/logout", (req, res) => {
     res.clearCookie("username");
     res.clearCookie("userId");
+    res.clearCookie("userCatName");
     res.redirect('/');
 });
 module.exports = router;

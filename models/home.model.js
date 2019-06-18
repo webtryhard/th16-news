@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getLatestNews: () =>{
-        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 and News_Category = 0 ORDER BY Time DESC LIMIT 0,10`);
+        return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 ORDER BY Time DESC LIMIT 0,10`);
     },
 
     getTop10Cat: () =>{
@@ -44,7 +44,7 @@ module.exports = {
     }, 
 
     getNewsInWeek: ()=>{
-        return db.load(`SELECT * FROM news n WHERE TIMESTAMPDIFF(minute,n.Time,Now()) <= 10080 and n.Deleted = 0 and n.State_ID = 4 and n.News_Category = 0 ORDER BY n.Views DESC LIMIT 5`);
+        return db.load(`SELECT * FROM news n WHERE TIMESTAMPDIFF(minute,n.Time,Now()) <= 10080 and n.Deleted = 0 and n.State_ID = 4 ORDER BY n.Views DESC LIMIT 5`);
     },
     
 };

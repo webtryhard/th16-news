@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "alert-node": "^1.2.5",
     "async": "^3.0.1",
     "basic-auth-connect": "latest",
     "bcrypt": "^3.0.6",

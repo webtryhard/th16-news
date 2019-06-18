@@ -16,8 +16,10 @@ routers.get('/:id', (req, res) => {
     var p3 = editorModel.getSingleEditor(id);
     var p4 = editorModel.getCatOfEditor(id);
     var p5 = editorModel.getAllTagsManyNews(id, offset, limit);
+    var p6 = editorModel.countRefusedDraftOfEditor(id);
+    var p7 = editorModel.countBrowsedDraftOfEditor(id);
 
-    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6, p7]).then(([rows1, rows2, rows3, rows4, rows5, rows6, rows7]) => {
 
         var total = rows2[0].total;
         var npage = Math.floor(total / limit);
@@ -62,6 +64,7 @@ routers.get('/:id', (req, res) => {
             draft,
             editor,
             pages, first, last, prev, next,
+            numRe : rows6, numBr: rows7,
             layout: 'editor.hbs',
             title: 'Biên tập viên',
             logo: 'logo.png',
@@ -73,15 +76,17 @@ routers.get('/:id', (req, res) => {
     });
 });
 
-routers.get('/:Editor_ID/draft/show/:News_ID', (req, res) => {
+routers.get('/:Editor_ID/draft/detail/:News_ID', (req, res) => {
     var idE = req.params.Editor_ID;
     var idN = req.params.News_ID;
     var p1 = editorModel.getSingleEditor(idE);
     var p2 = editorModel.getCatOfEditor(idE);
     var p3 = editorModel.getInfoSingleDraft(idN);
     var p4 = editorModel.getAllTagsOfDraft(idN);
+    var p5 = editorModel.countRefusedDraftOfEditor(idE);
+    var p6 = editorModel.countBrowsedDraftOfEditor(idE);
 
-    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var editor = [];
         editor.push({ info: rows1[0], cat: rows2 });
@@ -90,6 +95,7 @@ routers.get('/:Editor_ID/draft/show/:News_ID', (req, res) => {
             editor, idE, idN,
             draft: rows3,
             tags: rows4,
+            numRe : rows5 , numBr : rows6,
             layout: 'editor.hbs',
             title: 'Xem bài viết nháp',
             logo: 'logo.png',
@@ -108,8 +114,10 @@ routers.get('/:Editor_ID/draft/refuse/:News_ID', (req, res) => {
     var p2 = editorModel.getCatOfEditor(idE);
     var p3 = editorModel.getInfoSingleDraft(idN);
     var p4 = editorModel.getAllTagsOfDraft(idN);
+    var p5 = editorModel.countRefusedDraftOfEditor(idE);
+    var p6 = editorModel.countBrowsedDraftOfEditor(idE);
 
-    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var editor = [];
         editor.push({ info: rows1[0], cat: rows2 });
@@ -118,6 +126,7 @@ routers.get('/:Editor_ID/draft/refuse/:News_ID', (req, res) => {
             editor, idE, idN,
             draft: rows3[0],
             tags: rows4,
+            numRe : rows5, numBr: rows6,
             layout: 'editor.hbs',
             title: 'Từ chối bài viết',
             logo: 'logo.png',
@@ -138,8 +147,10 @@ routers.get('/:Editor_ID/draft/browse/:News_ID', (req, res) => {
     var p4 = editorModel.getAllTagsOfDraft(idN);
     var p5 = editorModel.getAllTags();
     var p6 = editorModel.getAllCat();
+    var p7 = editorModel.countRefusedDraftOfEditor(idE);
+    var p8 = editorModel.countBrowsedDraftOfEditor(idE);
 
-    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6, p7, p8]).then(([rows1, rows2, rows3, rows4, rows5, rows6, rows7, rows8]) => {
 
         var editor = [];
         editor.push({ info: rows1[0], cat: rows2 });
@@ -150,6 +161,7 @@ routers.get('/:Editor_ID/draft/browse/:News_ID', (req, res) => {
             tags: rows4,
             allcat: rows6,
             allTags: rows5,
+            numRe:rows7, numBr: rows8,
             layout: 'editor.hbs',
             title: 'Duyệt bài viết',
             logo: 'logo.png',
@@ -175,8 +187,9 @@ routers.get('/:id/my_refused_draft', (req, res) => {
     var p3 = editorModel.getSingleEditor(id);
     var p4 = editorModel.getCatOfEditor(id);
     var p5 = editorModel.getAllTagsManyRefusedDraft(id, offset, limit);
+    var p6 = editorModel.countBrowsedDraftOfEditor(id);
 
-    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var total = rows2[0].total;
         var npage = Math.floor(total / limit);
@@ -221,6 +234,7 @@ routers.get('/:id/my_refused_draft', (req, res) => {
             draft,
             editor,
             pages, first, last, prev, next,
+            numRe:rows2, numBr:rows6,
             layout: 'editor.hbs',
             title: 'Bài viết đã từ chối',
             logo: 'logo.png',
@@ -245,8 +259,9 @@ routers.get('/:id/my_browsed_draft', (req, res) => {
     var p3 = editorModel.getSingleEditor(id);
     var p4 = editorModel.getCatOfEditor(id);
     var p5 = editorModel.getAllTagsManyBrowsedDraft(id, offset, limit);
+    var p6 = editorModel.countRefusedDraftOfEditor(id);
 
-    Promise.all([p1, p2, p3, p4, p5]).then(([rows1, rows2, rows3, rows4, rows5]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var total = rows2[0].total;
         var npage = Math.floor(total / limit);
@@ -291,6 +306,7 @@ routers.get('/:id/my_browsed_draft', (req, res) => {
             draft,
             editor,
             pages, first, last, prev, next,
+            numRe: rows6, numBr:rows2,
             layout: 'editor.hbs',
             title: 'Bài viết đã từ duyệt',
             logo: 'logo.png',
@@ -344,6 +360,28 @@ routers.post('/:id/browse/update/:idn', (req, res) => {
     })
 })
 
+routers.post('/:id/refuse/update', (req, res) => {
+    var id=req.params.id;
+    var p = editorModel.getTimeNow();
+    p.then(rows => {
+
+        var time = rows.Time || new Date;
+        
+        var entity = {
+            News_ID: req.body.News_ID,
+            Reason_Refuse: req.body.Reason_Refuse,
+            State_ID: 3,
+            Time : time
+        }
+        editorModel.updateRefuse(entity).then(n => {
+            res.redirect('/editor/' + id);
+        }).catch(err => {
+            console.log(err);
+            res.end('error');
+        })
+    })
+});
+
 routers.get('/:Editor_ID/draft/refused/:News_ID', (req, res) => {
     var idE = req.params.Editor_ID;
     var idN = req.params.News_ID;
@@ -351,8 +389,10 @@ routers.get('/:Editor_ID/draft/refused/:News_ID', (req, res) => {
     var p2 = editorModel.getCatOfEditor(idE);
     var p3 = editorModel.getInfoSingleDraft(idN);
     var p4 = editorModel.getAllTagsOfDraft(idN);
+    var p5 = editorModel.countRefusedDraftOfEditor(idE);
+    var p6 = editorModel.countBrowsedDraftOfEditor(idE);
 
-    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var editor = [];
         editor.push({ info: rows1[0], cat: rows2 });
@@ -361,6 +401,7 @@ routers.get('/:Editor_ID/draft/refused/:News_ID', (req, res) => {
             editor, idE, idN,
             draft: rows3,
             tags: rows4,
+            numRe : rows5, numBr : rows6,
             layout: 'editor.hbs',
             title: 'Xem chi tiết bài viết đã từ chối',
             logo: 'logo.png',
@@ -379,8 +420,10 @@ routers.get('/:Editor_ID/draft/browsed/:News_ID', (req, res) => {
     var p2 = editorModel.getCatOfEditor(idE);
     var p3 = editorModel.getInfoSingleDraft(idN);
     var p4 = editorModel.getAllTagsOfDraft(idN);
+    var p5 = editorModel.countRefusedDraftOfEditor(idE);
+    var p6 = editorModel.countBrowsedDraftOfEditor(idE);
 
-    Promise.all([p1, p2, p3, p4]).then(([rows1, rows2, rows3, rows4]) => {
+    Promise.all([p1, p2, p3, p4, p5, p6]).then(([rows1, rows2, rows3, rows4, rows5, rows6]) => {
 
         var editor = [];
         editor.push({ info: rows1[0], cat: rows2 });
@@ -389,6 +432,7 @@ routers.get('/:Editor_ID/draft/browsed/:News_ID', (req, res) => {
             editor, idE, idN,
             draft: rows3,
             tags: rows4,
+            numRe: rows5, numBr : rows6,
             layout: 'editor.hbs',
             title: 'Xem chi tiết bài viết đã duyệt',
             logo: 'logo.png',
@@ -398,22 +442,6 @@ routers.get('/:Editor_ID/draft/browsed/:News_ID', (req, res) => {
     }).catch(err => {
         console.log(err);
     });
-});
-
-
-routers.post('/refuse/update', (req, res) => {
-
-    var entity = {
-        News_ID: req.body.News_ID,
-        Reason_Refuse: req.body.Reason_Refuse,
-        State_ID: 3
-    }
-    editorModel.updateRefuse(entity).then(n => {
-        res.end("thành công rồi");
-    }).catch(err => {
-        console.log(err);
-        res.end('error');
-    })
 });
 
 module.exports = routers;

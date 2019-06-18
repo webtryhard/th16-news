@@ -1,0 +1,206 @@
+
+<div class="container">
+<!-- BEGIN-MAIN -->
+<main>
+<!-- BEGIN:ROW1 -->
+<section class="row">
+    <!-- BEGIN:tin hot nhất -->
+    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+    <header class="jumbotron pall30 mb15">
+        <h1 class="fs-21">
+            {{this.singlenews.News_Name}}
+            
+        </h1>
+        <small class="meta text-muted">
+        <span>
+            <time class="friendly" datetime={{this.singlenews.Time}}>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat this.singlenews.Time}} -
+            <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat this.singlenews.Time}}
+            </time>
+        </span>
+        </small>
+        <p class="mb0">
+          <span class="label label-success">{{this.singlecategory.CatName}}</span>{{this.singlenews.Summary}}</p>
+    </header>
+    <style>
+    </style>
+    <div class="row ">
+
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 detail_ct" style="width: 100%">
+        <!-- BEGIN: Nội dung -->
+            {{{this.singlenews.Content}}}
+        <!-- END: Nội dung -->
+        <div class="article-bottom">
+            <div class="authors text-right font-bold">
+            <i class="fa fa-pencil"></i>{{this.singlewriter.Name}}
+            </div>
+            <hr>
+        </div>
+
+        </div>
+    </div>
+
+    <!-- BEGIN: Tags -->
+    <ul class="list-inline border0 tags-list mt7 mb7 font-2">
+        <li class="font-bold">
+        <i class="fa fa-tags"></i> Tags:
+        </li>
+        {{#each this.tags}}
+        <li>
+        <a href="/tags/{{TagID}}">
+            <h5 class="mb5 mt0">
+            <span class="label-default label">{{Tag_Name}}</span>
+            </h5>
+        </a>
+        </li>
+        {{/each}}
+        
+    </ul><!-- END: Tags -->
+
+    <!-- BEGIN: Bình luận -->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active cmm"><a href="#comment_facebook" aria-controls="comment_facebook"
+            role="tab" data-toggle="tab">Danh sách bình luận</a></li>
+        <li role="presentation" class=" cmm"><a href="#comment" aria-controls="comment" role="tab"
+            data-toggle="tab">Bình luận</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content bg-white pt10">
+        <div role="tabpanel" class="tab-pane fade in active" id="comment_facebook">
+            <div class="panel panel-success">
+                <ul class="commentList">
+                    {{#each comment}}
+                    <li>
+                    <div class="commenterImage">
+                        <img src="{{Avatar}}" height="65px;" />
+                    </div>
+                    <div class="commentText">
+                        <div class="commentName">
+                        <h5>{{Username}}</h5>
+                        <h6>{{DateCmtFormat Time}}</h6>
+                        </div>
+                        <p class="">{{Content}}</p>
+                    </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="comment">
+            <!-- BEGIN:COMMENTS -->
+            <script src="#"></script>
+            <section class="comments-box">
+            <form class="frm-comment">
+                <div class="panel panel-success">
+                <header class="panel-heading">
+                    <h3 class="panel-title font-2">Ý kiến của bạn <sup><i class="fa fa-comment-o"></i></sup></h3>
+                </header>
+                <div class="panel-body">
+                    <textarea class="txtComment form-control required_c" id="c_content_27494" name="c_content" rows="5"
+                    placeholder="Nội dung"></textarea>
+                    <script>
+                    $(document).ready(function () {
+                        $("#c_name_27494,#c_email_27494").slideUp();
+                        var c_content = document.getElementById('c_content_27494');
+                        c_content.onkeyup = c_content.onkeypress = function () {
+                        var _val = this.value;
+                        if (_val != '') {
+                            $("#c_name_27494,#c_email_27494").slideDown();
+                        } else {
+                            $("#c_name_27494,#c_email_27494").slideUp();
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-ico btn-sm btn-success ajSendComment" c_news="27494"><i class="fa fa-send-o"></i>
+                    Gửi bình luận</a>
+                </div>
+                </div>
+            </form>
+
+            <div id="view_comment"></div>
+            </section>
+            <!-- END:COMMENTS -->
+            <div id="view_comment"></div>
+        </div>
+        </div>
+    </div>
+    <!-- END: Bình luận -->
+
+    <!-- BEGIN: Tin cùng chuyên mục -->
+    <div class="tab_item">
+        <div class="panel panel-success">
+        <hgroup class="panel-heading">
+            <ul class="list-inline mb0 ">
+            <style>
+            </style>
+            <li class="active">
+                <a href="#" title="Tin cùng chuyên mục">
+                <h2 class="font-bold">Tin cùng chuyên mục</h2>
+                </a>
+            </li>
+            </ul>
+        </hgroup>
+        <article class="panel-body">
+            <div class="row-7 flex-wrap">
+            {{#each this.newsSameCat}}
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 mb7">
+                <article class="media mb7 bb-dashed">
+                <figure class="article-thumb-img">
+                    <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}"
+                    class="fixhieght height150"><img
+                        src="{{Image_Avatar}}"
+                        alt="{{News_Name}}" width="100%"
+                        height="150px;"></a>
+
+                </figure>
+                <header class="article-thumb-header mt5 mb5">
+                    <a href="/subcriber/{{../this.idS}}/list/detail/{{News_ID}}" title="{{News_Name}}">
+                    <h4 class="fs-1 mb0" style="height: 50px">{{News_Name}}</h4>
+                    </a>
+                    <small class="meta text-muted">
+                      <span>
+                        <time class="friendly" datetime={{Time}}>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>{{TimeFormat Time}} -
+                        <i class="fa fa-calendar" aria-hidden="true"></i>{{DateFormat Time}}
+                        </time>
+                      </span></small>
+                </header>
+                </article>
+            </div>
+            {{/each}}
+            </div>
+        </article>
+        </div>
+    </div>
+    <!-- END: Tin cùng chuyên mục -->
+    <style>
+        li.links-ads:before {
+        content: 'Tài trợ';
+        background: #5cb85c;
+        color: #fff;
+        padding: 2px;
+        border-radius: 5px;
+        margin-right: 5px;
+        font-size: 12px;
+        }
+    </style>
+    </div>
+    <!-- END -->
+    <div class="hidden-xs hidden-sm col-sm-3 col-md-3 col-lg-3-right ">
+        <!-- BEGIN: Tin nhiều người đọc -->
+        {{>newsHot}}
+        <!-- END: Tin nhiều người đọc -->
+        {{>categories}}
+    </div>
+    
+</section>
+<!-- END -->
+</main>
+<!-- END-MAIN -->
+</div>
+</div>
