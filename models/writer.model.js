@@ -36,4 +36,26 @@ module.exports = {
     updateNew: entity => {
         return db.update('news', 'News_ID', entity);
     },
+    addTag: entity => {
+        return db.addTags('tags_news', entity);
+    },
+    deleteTag: (id, id2) => {
+        return db.delete('tags_news', 'News_ID', 'TagID', id, id2);
+    },
+    getLastNewsID: () => {
+        return db.load(`SELECT    news.News_ID
+        FROM      news
+        ORDER BY  News_ID DESC
+        LIMIT     1;`);
+    },
+    singleTag: id => {
+        return db.load(`SELECT*
+        FROM tags_news tn JOIN tags t ON tn.TagID=t.TagID
+        WHERE tn.News_ID=${id}`);
+    },
+    singleCat: id => {
+        return db.load(`SELECT *
+        FROM news JOIN categories ON news.CatID=categories.CatID
+        WHERE news.News_ID=${id}`);
+    },
 };

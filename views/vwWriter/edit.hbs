@@ -5,27 +5,45 @@
                 <form method="POST" action="/writer/{{this.writer.User_ID}}/update">
                     <div class="form-group">
                         <label for="txtCatParentName">Mã số tác giả</label>
-                        <input readonly type="text" class="form-control" id="txtName" name="Writer_ID" value="{{this.writer.User_ID}}" required>
+                        <input readonly type="text" class="form-control" id="txtName" name="Writer_ID"
+                            value="{{this.writer.User_ID}}" required>
                     </div>
                     <div class="form-group">
                         <label for="txtCatParentName">Mã số bài viết</label>
-                        <input readonly type="text" class="form-control" id="txtName" name="News_ID" value="{{this.news.News_ID}}" required>
+                        <input readonly type="text" class="form-control" id="txtName" name="News_ID"
+                            value="{{this.news.News_ID}}" required>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Tiêu đề</label>
-                        <input type="text" class="form-control" id="txtName" name="News_Name" value="{{this.news.News_Name}}" placeholder="{{this.news.News_Name}}" autofocus required>
+                        <input type="text" class="form-control" id="txtName" name="News_Name"
+                            value="{{this.news.News_Name}}" placeholder="{{this.news.News_Name}}" autofocus required>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung tóm tắt</label>
-                        <input type="text" class="form-control" id="txtName" name="Summary" value="{{this.news.Summary}}" placeholder="{{this.news.Summary}}" autofocus required>
+                        <input type="text" class="form-control" id="txtName" name="Summary"
+                            value="{{this.news.Summary}}" placeholder="{{this.news.Summary}}" autofocus required>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung bài viết</label>
-                        <textarea type="text" class="form-control" id="txtFullDes" name="Content">{{{this.news.Content}}}</textarea>
+                        <textarea type="text" class="form-control" id="txtFullDes"
+                            name="Content">{{{this.news.Content}}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Chuyên mục</label>
+                        <input readonly type="text" class="form-control" id="txtName" value="{{this.cat.CatName}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtName">Nhãn (Tag) đã chọn</label>
+                        <span class="form-control">
+                        {{#each this.tag}}
+                            {{Tag_Name}}.   
+                        {{/each}}
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="image_uploads">Ảnh bài viết</label>
-                        <input type="text" class="form-control" id="txtName" name="Image_Avatar" value="{{this.news.Image_Avatar}}" placeholder="{{this.news.Image_Avatar}}" autofocus>
+                        <input type="text" class="form-control" id="txtName" name="Image_Avatar"
+                            value="{{this.news.Image_Avatar}}" placeholder="{{this.news.Image_Avatar}}" autofocus>
                     </div>
                     <div class="form-group">
                         <a class="btn btn-primary" href="/writer/{{this.writer.User_ID}}" role="button">
@@ -42,3 +60,15 @@
         </div>
     </div><!-- .animated -->
 </div>
+
+<script>
+    $("#multiple")
+        .change(function () {
+            var str = "";
+            $("#multiple option:selected").each(function () {
+                str += $(this).text() + ". ";
+            });
+            $("#text").text(str);
+        })
+        .trigger("change");
+</script>
