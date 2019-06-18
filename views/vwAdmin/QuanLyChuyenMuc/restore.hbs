@@ -2,7 +2,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/admin/quanlychuyenmuc/restore">
+                <form method="POST" action="/admin/{{this.admin.User_ID}}/quanlychuyenmuc/restore">
                     <div class="form-group">
                         <label for="txtCatID">Mã số</label>
                         <input readonly type="text" class="form-control" id="txtCatID" name="CatID"
@@ -27,7 +27,7 @@
                     </div>
                     {{/if}}
 
-                    <a class="btn btn-primary" href="/admin/quanlychuyenmuc" role="button">
+                    <a class="btn btn-primary" href="/admin/{{this.admin.User_ID}}/quanlychuyenmuc" role="button">
                         <i class="fa fa-backward" aria-hidden="true"></i>
                         Quay lại
                     </a>

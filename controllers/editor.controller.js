@@ -318,8 +318,8 @@ routers.get('/:id/my_browsed_draft', (req, res) => {
     });
 });
 
-routers.post('/:id/browse/update', (req, res) => {
-    var News_ID = req.body.News_ID;
+routers.post('/:id/browse/update/:idn', (req, res) => {
+    var News_ID = req.params.idn;
     var list = req.body.Tag_selected;
     var entity = [];
     var id = req.params.id;
@@ -334,29 +334,26 @@ routers.post('/:id/browse/update', (req, res) => {
 
         var p = editorModel.getAllTagsOfDraft(News_ID);
 
-        p.then(row => {
-
+        (p.then(row => {
             for (i = 0; i < row.length; i++) {
                 editorModel.deleteTag(News_ID, row[i].TagID);
             }
-
-        }).catch(err => {
-            console.log(err);
-            res.end('error');
+        })).then(() => {
+            for (i = 0; i < entity.length; i++) {
+                editorModel.addTag(entity[i]);
+            }
         })
-
-        editorModel.addTag(entity);
     }
 
     var entity2 = {
-        News_ID : req.body.News_ID,
+        News_ID: News_ID,
         CatID: req.body.CatID,
         Time: req.body.Time,
         State_ID: 2
     }
 
     editorModel.updateRefuse(entity2).then(n => {
-        res.redirect('/editor/'+id);
+        res.redirect('/editor/' + id);
     }).catch(err => {
         console.log(err);
         res.end('error');
@@ -364,8 +361,7 @@ routers.post('/:id/browse/update', (req, res) => {
 })
 
 routers.post('/:id/refuse/update', (req, res) => {
-
-    var id = req.params.id;
+    var id=req.params.id;
     var p = editorModel.getTimeNow();
     p.then(rows => {
 
@@ -378,7 +374,7 @@ routers.post('/:id/refuse/update', (req, res) => {
             Time : time
         }
         editorModel.updateRefuse(entity).then(n => {
-            res.redirect('/editor/'+id);
+            res.redirect('/editor/' + id);
         }).catch(err => {
             console.log(err);
             res.end('error');

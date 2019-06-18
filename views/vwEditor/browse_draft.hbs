@@ -6,7 +6,7 @@
                     <div class="card-header"><strong style="font-size: 20px;">Hiệu chỉnh thông tin bài viết đã
                             duyệt</strong></div>
                     <div class="card-body">
-                        <form method="POST" action="/editor/{{this.idE}}/browse/update">
+                        <form method="POST" action="/editor/{{this.idE}}/browse/update/{{this.draft.News_ID}}">
                             <div class="form-group">
                                 <label for="txtNewsID">Mã số</label>
                                 <input readonly type="text" class="form-control" id="txtNewsID" name="News_ID"
@@ -44,6 +44,10 @@
 
                                 </div>
                             </div>
+<<<<<<< HEAD
+                            
+=======
+>>>>>>> master
                             <div class="form-group">
                                 <label for="tags">Chọn Tags mới</label>
                                 <div id="tagsform">

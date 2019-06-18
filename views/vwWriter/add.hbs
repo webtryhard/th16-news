@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 <div class="content mt-3">
     <div class="animated fadeIn">
         <div class="row">
@@ -5,7 +7,8 @@
                 <form method="POST">
                     <div class="form-group">
                         <label for="txtCatParentName">Mã số tác giả</label>
-                        <input readonly type="text" class="form-control" id="txtName" name="Writer_ID" value="{{this.writer.User_ID}}" required>
+                        <input readonly type="text" class="form-control" id="txtName" name="Writer_ID"
+                            value="{{this.writer.User_ID}}" required>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Tiêu đề</label>
@@ -17,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label for="txtName">Nội dung bài viết</label>
-                        <textarea type="text" class="form-control" id="txtFullDes" name="Content" autofocus></textarea>
+                        <textarea type="text" class="form-control" id="txtFullDes" name="Content"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Chuyên mục</label>
@@ -27,14 +30,25 @@
                             {{/each}}
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="txtName">Nhãn (Tag)</label>
 
+                        <select class="form-control" multiple="multiple" size="7" id="multiple" name="TagID[]">
+                            {{#each tag}}
+                            <option value="{{TagID}}">{{Tag_Name}}</option>
+                            {{/each}}
+                        </select>
+                         <label for="txtName">Nhãn (Tag) đã chọn</label>
+                         <textarea class="form-control" id="text"></textarea>
+                    </div>
                     <div class="form-group">
                         <label for="image_uploads">Ảnh bài viết</label>
                         <input type="text" class="form-control" id="txtName" name="Image_Avatar" autofocus>
                     </div>
                     <div class="form-group">
                         <label for="txtName">Ngày được viết</label>
-                        <input required type="date" class="form-control" name="Time" />
+                        <input readonly type="text" class="form-control" name="Time"
+                            value="{{DateCmtFormat (getDate)}}">
                     </div>
                     <div class="form-group">
                         <a class="btn btn-primary" href="/writer/{{this.writer.User_ID}}" role="button">
@@ -51,3 +65,15 @@
         </div>
     </div><!-- .animated -->
 </div>
+
+<script>
+    $("#multiple")
+        .change(function () {
+            var str = "";
+            $("#multiple option:selected").each(function () {
+                str += $(this).text() + ". ";
+            });
+            $("#text").text(str);
+        })
+        .trigger("change");
+</script>

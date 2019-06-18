@@ -65,26 +65,17 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-primary btn-sm"
-                                                        href="/writer/{{../this.writer.User_ID}}/edit/{{News_ID}}"
-                                                        title="Chỉnh sửa" role="button">
-                                                        <i class="fa fa-pencil" aria-hidden="true">
+                                                        href="/writer/{{../this.writer.User_ID}}/detail/{{News_ID}}"
+                                                        title="Xem bài viết" role="button">
+                                                        <i class="fa fa-eye" aria-hidden="true">
                                                         </i>
                                                     </a>
 
-                                                    {{#compare State_ID "===" 1}}
+                                                    {{#compare State_ID "<" 3}}
                                                     <a class="btn btn-success btn-sm"
-                                                        href="/writer/{{../this.writer.User_ID}}/duyet/{{News_ID}}" role="button"
-                                                        title="Chuyển thành chưa được duyệt">
-                                                        <i class="fa fa-level-up" aria-hidden="true">
-                                                        </i>
-                                                    </a>
-                                                    {{/compare}}
-
-                                                    {{#compare State_ID "===" 2}}
-                                                    <a class="btn btn-success btn-sm"
-                                                        href="/writer/{{../this.writer.User_ID}}/tuchoi/{{News_ID}}" role="button"
-                                                        title="Chuyển thành bị từ chối">
-                                                        <i class="fa fa-level-up" aria-hidden="true">
+                                                        href="/writer/{{../this.writer.User_ID}}/edit/{{News_ID}}" role="button"
+                                                        title="Chỉnh sửa">
+                                                        <i class="fa fa-edit" aria-hidden="true">
                                                         </i>
                                                     </a>
                                                     {{/compare}}

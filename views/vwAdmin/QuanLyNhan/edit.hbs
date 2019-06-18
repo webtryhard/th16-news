@@ -2,7 +2,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-md-12">
-                <form method="POST" action="/admin/quanlynhan/update">
+                <form method="POST" action="/admin/{{this.admin.User_ID}}/quanlynhan/update">
                     <div class="form-group">
                         <label for="txtTagID">Mã số</label>
                         <input readonly type="text" class="form-control" id="txtTagID" name="TagID"
@@ -13,7 +13,7 @@
                         <input type="text" class="form-control" id="txtCatName" name="Tag_Name" autofocus
                             placeholder="{{this.tag.Tag_Name}}" value="{{this.tag.Tag_Name}}">
                     </div>
-                    <a class="btn btn-primary" href="/admin/quanlynhan" role="button">
+                    <a class="btn btn-primary" href="/admin/{{this.admin.User_ID}}/quanlynhan" role="button">
                         <i class="fa fa-backward" aria-hidden="true"></i>
                         Quay lại danh sách
                     </a>

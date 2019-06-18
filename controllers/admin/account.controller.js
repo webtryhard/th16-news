@@ -44,6 +44,7 @@ router.post("/api/login", async(req, res, next) => {
     var dbUsername = await userModel.singleByUserName(req.body.dnusername);
     if (!dbUsername) {
         console.log("Khong co ten dang nhap trong db");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Ten or MK sai" });
     }
 
@@ -52,11 +53,13 @@ router.post("/api/login", async(req, res, next) => {
     id = dbUsername[0].User_Cat_Name;
     if (req.body.dnpassword !== passworddb) {
         console.log("Mat khau khong dung");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
         return res.json({ success: false, msg: "Ten or MK sai" });
     }
 
     res.cookie("username", namedb);
     res.cookie("userId", dbUsername[0].User_ID);
+    res.cookie("userCatName", id)
     return res.json({ success: true, msg: "OK" });
 });
 
@@ -75,7 +78,8 @@ router.post("/api/register", async(req, res, next) => {
             Username: req.body.dkusername,
             Password: req.body.dkpassword,
             Name: req.body.dkname,
-            Email: req.body.dkemail
+            Email: req.body.dkemail,
+            User_Cat_Name: 'Subcriber',
         };
         userModel
             .add_acc(entity)
@@ -87,6 +91,32 @@ router.post("/api/register", async(req, res, next) => {
                 return res.json({ success: false, msg: "Sad boy" });
             });
     }
+});
+
+// router.get('/search', (req, res) => {
+//     res.render('pieces/search', {
+//         layout: "TrangChu.hbs",
+//         style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
+//         js: ['jQuery.js', 'js.js', 'login-register.js'],
+//         logo: 'logo.png'
+//     })
+// })
+
+router.post("/api/search", async(req, res, next) => {
+    console.log('hello')
+    if (!req.body.ip_search) {
+        console.log('vo ham hong co')
+        return res.json({ success: false, msg: "Missnggg" });
+    }
+    var dbSearch = await userModel.searchNewsName(req.body.ip_search);
+    if (!dbSearch[1]) {
+        console.log("Khong co tu tim kiem trong db");
+        //alert('Tên đăng nhập hoặc mật khẩu không đúng');
+        return res.json({ success: false, msg: "Tim khong ra" });
+    } else {
+        console.log('co du lieu');
+    }
+    return res.json({ success: true, msg: "OK" });
 });
 
 router.get('/thaydoithongtin', (req, res) => {
@@ -144,6 +174,7 @@ router.post('/thaydoithongtin', async(req, res) => {
 router.get("/logout", (req, res) => {
     res.clearCookie("username");
     res.clearCookie("userId");
+    res.clearCookie("userCatName");
     res.redirect('/');
 });
 module.exports = router;
