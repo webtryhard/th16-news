@@ -37,7 +37,7 @@ router.get("/login", (req, res, next) => {
     res.render("pieces/login", { layout: false });
 });
 
-router.post("/api/login", async(req, res, next) => {
+router.post("/api/login", async (req, res, next) => {
     if (!req.body.dnusername || !req.body.dnpassword) {
         return res.json({ success: false, msg: "Missnggg" });
     }
@@ -63,7 +63,7 @@ router.post("/api/login", async(req, res, next) => {
     return res.json({ success: true, msg: "OK" });
 });
 
-router.post("/api/register", async(req, res, next) => {
+router.post("/api/register", async (req, res, next) => {
     console.log(req.body);
     if (!req.body.dkusername ||
         !req.body.dkpassword ||
@@ -93,7 +93,7 @@ router.post("/api/register", async(req, res, next) => {
     }
 });
 
-router.get('/search', async(req, res) => {
+router.get('/search', async (req, res) => {
     let ip_search = req.query.ip_search
     if (!ip_search) {
         return
@@ -101,49 +101,9 @@ router.get('/search', async(req, res) => {
     var dbSearch = await userModel.searchNewsName(ip_search);
     dbSearch = dbSearch[1]
 
-    var page = req.query.page || 1;
-    if (page < 1) page = 1;
-    var limit = 8;
-    var offset = (page - 1) * limit;
-    var newsList = new Array();
-
-    var total = dbSearch.length;
-        
-        var npage = Math.floor(total / limit);
-        if(total % limit > 0) npage++;
-        var pages = [];
-
-        var prev, next, first, last;
-        if(page > 1) 
-        {
-            prev = page - 1;
-            first = 1;
-        }
-
-        if(page < npage) 
-        {
-            next = +page + 1;
-            last = npage;
-        }
-
-        for(i = page - 1; i <= +page + 1; i++)
-        {
-            if(i > 0 && i <= npage)
-            {
-            var obj = {value : i, active : i === +page};
-            pages.push(obj);
-            }
-        }
-        
-        for (i = offset; i < offset + limit; i++) {
-            if (dbSearch[i]) {
-                newsList.push(dbSearch[i]);
-            }
-        }
-
-    res.render('vwTag/tag', {
+    res.render('vwTag/tag.hbs', {
         menu: res.menu,
-        newsList, pages, first, last, prev, next,
+        newsList: dbSearch,
         layout: "TrangChu.hbs",
         style: ['style1.css', 'style2.css', 'login.css', 'signup.css', 'login-register.css'],
         js: ['jQuery.js', 'js.js', 'login-register.js'],
@@ -174,7 +134,7 @@ router.get('/thaydoithongtin', (req, res) => {
     })
 });
 
-router.post('/thaydoithongtin', async(req, res) => {
+router.post('/thaydoithongtin', async (req, res) => {
     // console.log('cookie id: ', userId)
     console.log('cookie: ', req.cookies.username)
     console.log('cookie id2: ', req.cookies.userId)

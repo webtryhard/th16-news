@@ -34,7 +34,7 @@ module.exports = {
     },
 
     searchNewsName: key => {
-        return db.load(`ALTER TABLE news ADD FULLTEXT (News_Name, Summary, Content); select * from news where match (News_Name, Summary, Content) against ("${key}" in natural language mode)`)
+        return db.load(`ALTER TABLE news ADD FULLTEXT (News_Name, Summary, Content); select * from news where match (News_Name, Summary, Content) against ("${key}" in natural language mode) AND news.Time < now()`)
     },
 
     add_acc: entityAcc => {

@@ -38,6 +38,10 @@
                                                     aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
                                                     aria-label="Office: activate to sort column ascending"
                                                     style="width: 183px;">Trạng thái bài viết</th>
+                                                <th class="sorting" tabindex="0"
+                                                    aria-controls="bootstrap-data-table-export" rowspan="1" colspan="1"
+                                                    aria-label="Office: activate to sort column ascending"
+                                                    style="width: 183px;">Loại bài viết</th>
                                                 <th data-orderable="false" style="width: 183px;">
                                                     Ảnh bài viết
                                                 </th>
@@ -59,19 +63,26 @@
                                                 <td>{{Summary}}</td>
                                                 <td>{{CatName}}</td>
                                                 <td>{{State_Name}}</td>
+                                                {{#if News_Category }}
+                                                <td>Premium</td>
+                                                {{else}}
+                                                <td>Thường</td>
+                                                {{/if}}
                                                 <td>
                                                     <img src={{Image_Avatar}} style="max-width:50px;max-height:50px"
                                                         class="avatar img-circle" />
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="quanlybaiviet/edit/{{News_ID}}"
-                                                        title="Chỉnh sửa" role="button">
+                                                    <a class="btn btn-primary btn-sm"
+                                                        href="quanlybaiviet/edit/{{News_ID}}" title="Chỉnh sửa"
+                                                        role="button">
                                                         <i class="fa fa-pencil" aria-hidden="true">
                                                         </i>
                                                     </a>
 
                                                     <a class="btn btn-danger btn-sm"
-                                                        href="quanlybaiviet/delete/{{News_ID}}" role="button" title="Xóa">
+                                                        href="quanlybaiviet/delete/{{News_ID}}" role="button"
+                                                        title="Xóa">
                                                         <i class="fa fa-trash" aria-hidden="true">
                                                         </i>
                                                     </a>
@@ -79,7 +90,8 @@
                                                     {{!-- Phê duyệt trạng thái --}}
                                                     {{#compare State_ID "!=" 4}}
                                                     <a class="btn btn-warning btn-sm"
-                                                        href="quanlybaiviet/xuatban/{{News_ID}}" role="button" title="Xuất bản bài viết nhanh">
+                                                        href="quanlybaiviet/xuatban/{{News_ID}}" role="button"
+                                                        title="Xuất bản bài viết nhanh">
                                                         <i class="fa fa-level-up" aria-hidden="true">
                                                         </i>
                                                     </a>

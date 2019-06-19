@@ -6,20 +6,20 @@ module.exports = {
         return db.load(`select * from user where User_ID = ${User_ID}`);
     },
 
-    getLatestNews: () =>{
+    getLatestNews: () => {
         return db.load(`SELECT * FROM news where Deleted = 0 and State_ID = 4 ORDER BY Time DESC LIMIT 0,10`);
     },
 
-    getTop10Cat: () =>{
+    getTop10Cat: () => {
         return db.load(`SELECT * 
                         FROM (SELECT C.CatID, C.CatName, SUM(N.Views) ttViews 
                                 FROM categories C LEFT JOIN news N ON C.CatID = N.CatID 
                                 where C.Deleted = 0 
                                 GROUP by C.CatID, C.CatName) TC 
                         ORDER BY TC.ttViews DESC LIMIT 0,10`);
-    }, 
+    },
 
-    getNewsTop10Cat: () =>{
+    getNewsTop10Cat: () => {
         return db.load(`SELECT M.*
         FROM (SELECT t1.* 
             FROM news t1 JOIN news t2 ON t1.CatID = t2.CatID and t1.Time <= t2.Time
@@ -33,9 +33,9 @@ module.exports = {
                     GROUP by C.CatID, C.CatName) TC 
             ORDER BY TC.ttViews DESC LIMIT 10) as N
         WHERE M.CatID = N.CatID`);
-    }, 
+    },
 
-    getNewsInWeek: ()=>{
+    getNewsInWeek: () => {
         return db.load(`SELECT * FROM news n WHERE TIMESTAMPDIFF(minute,n.Time,Now()) <= 10080 and n.Deleted = 0 and n.State_ID = 4 ORDER BY News_Category desc, n.Views DESC LIMIT 5`);
     },
 
@@ -80,7 +80,7 @@ module.exports = {
         return db.load(`SELECT * FROM news where CatID = ${CatID} and News_ID != ${News_ID} and Deleted = 0 and State_ID = 4 ORDER BY News_Category desc,Time DESC LIMIT 0,8`);
     },
 
-    getAllCat: ()=>{
+    getAllCat: () => {
         return db.load(`SELECT * FROM categories where Deleted = 0`);
     },
 
@@ -96,12 +96,22 @@ module.exports = {
         return db.add('comment', entity);
     },
 
-    viewListFollowTag : TagID =>{
+    viewListFollowTag: TagID => {
         return db.load(`SELECT N.*, T.Tag_Name FROM tags T, news N, tags_news TN WHERE T.TagID = ${TagID} and T.TagID = TN.TagID and TN.News_ID = N.News_ID`);
     },
 
-    viewListFollowTagSub : TagID =>{
+    viewListFollowTagSub: TagID => {
         return db.load(`SELECT N.*, T.Tag_Name FROM tags T, news N, tags_news TN WHERE T.TagID = ${TagID} and T.TagID = TN.TagID and TN.News_ID = N.News_ID order by N.News_Category DESC`);
     }
-    
+    ,
+
+    searchTitle: value => {
+        return db.load(`SELECT * FROM news WHERE news.News_Name LIKE "%${value}%"`)
+    },
+    searchContent: value => {
+        return db.load(`SELECT * FROM news WHERE news.Content LIKE "%${value}%"`)
+    },
+    searchAbstract: value => {
+        return db.load(`SELECT * FROM news WHERE news.Summary LIKE "%${value}%"`)
+    },
 };

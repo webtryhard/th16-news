@@ -209,7 +209,7 @@ var list = require('./controllers/list.controller');
 app.use('/list', list);
 
 var Admin = require('./controllers/admin.controller');
-app.use('/Admin', authMiddleware.requireAdmin, Admin);
+app.use('/admin', authMiddleware.requireAdmin, Admin);
 
 var account = require('./controllers/admin/account.controller');
 app.use('/account', account);

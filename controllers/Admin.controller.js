@@ -7,10 +7,6 @@ router.get('/:id', (req, res) => {
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllUser();
 
-    if (id !== req.cookies.userId) {
-        res.redirect("/admin/" + req.cookies.userId);
-        return
-    }
 
     Promise.all([p1, p2]).then(([row1, row2]) => {
         res.render('vwAdmin/QuanLyNguoiDung/adminQuanLyNguoiDung.hbs', {
@@ -28,10 +24,7 @@ router.get('/:id', (req, res) => {
 //QUẢN LÝ CHUYÊN MỤC
 router.get('/:id/quanlychuyenmuc', (req, res) => {
     var id = req.params.id;
-    if (id !== req.cookies.userId) {
-        res.redirect("/admin/" + req.cookies.userId + "/quanlychuyenmuc");
-        return
-    }
+
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllCat();
 
@@ -50,10 +43,7 @@ router.get('/:id/quanlychuyenmuc', (req, res) => {
 
 router.get('/:id/quanlychuyenmuc/deleted', (req, res) => {
     var id = req.params.id;
-    if (id !== req.cookies.userId) {
-        res.redirect("/admin/" + req.cookies.userId + "/quanlychuyenmuc/deleted");
-        return
-    }
+
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllCatDeleted();
 
@@ -256,10 +246,7 @@ router.get('/:ida/quanlychuyenmuc/restore/:id', (req, res) => {
 //QUẢN LÝ NHÃN
 router.get('/:ida/quanlynhan', (req, res) => {
     var id = req.params.ida;
-    if (id !== req.cookies.userId) {
-        res.redirect("/admin/" + req.cookies.userId + "/quanlynhan");
-        return
-    }
+   
     var p1 = AdminModel.singleUser(id);
     var p2 = AdminModel.getAllTag();
 

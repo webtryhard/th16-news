@@ -66,13 +66,14 @@ routers.post('/:id/add', (req, res) => {
         })
 
     }
+    var Time=new Date();
 
     var entity2 = {
         Writer_ID: id,
         CatID: req.body.CatID,
         News_Name: req.body.News_Name,
         Summary: req.body.Summary,
-        Time: req.body.Time,
+        Time: Time,
         State_ID: 1,
         Image_Avatar: req.body.Image_Avatar,
         Content: req.body.Content,

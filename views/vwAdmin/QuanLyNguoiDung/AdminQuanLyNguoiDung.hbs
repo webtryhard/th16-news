@@ -86,7 +86,7 @@
                                                     {{#compare User_Cat_Name "===" "Subcriber"}}
                                                     {{#compare YeuCauGiaHan 1}}
                                                     <a class="btn btn-warning btn-sm"
-                                                        href="quanlynguoidung/giahantaikhoan/{{User_ID}}" role="button"
+                                                        href="/admin/{{../this.admin.User_ID}}/quanlynguoidung/giahantaikhoan/{{User_ID}}" role="button"
                                                         title="Gia hạn tài khoản">
                                                         <i class="fa fa-level-up" aria-hidden="true">
                                                         </i>
@@ -97,7 +97,7 @@
                                                     {{!-- Nếu người dùng là biên tập viên (Editor) --}}
                                                     {{#compare User_Cat_Name "===" "Editor"}}
                                                     <a class="btn btn-success btn-sm"
-                                                        href="quanlynguoidung/phancongchuyenmuc/{{User_ID}}"
+                                                        href="/admin/{{../this.admin.User_ID}}/quanlynguoidung/phancongchuyenmuc/{{User_ID}}"
                                                         role="button" title="Phân công chuyên mục">
                                                         <i class="fa fa-magic" aria-hidden="true">
                                                         </i>

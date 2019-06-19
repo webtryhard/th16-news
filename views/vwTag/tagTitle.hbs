@@ -1,19 +1,12 @@
 <main id="content" class="content">
     <div class="container">
         <header class="text-center font-2 mt15 mb15">
-            <div>
-                <button type="button" class="btn btn-success">
-                    <a href="/search/title">Theo title</a>
-                </button>
-                <button type="button" class="btn btn-info">
-                    <a href="/search/content">Theo nội dung</a>
-                </button>
-                <button type="button" class="btn btn-warning">
-                    <a href="/search/summary">Theo abstract</a>
-                </button>
-            </div>
+            <h1 style="font-size:2.1em">
+                <small class="text-primary"><i class="fa fa-keyboard-o"></i> Từ khóa: </small>
+                <span class="text-success">{{newsList.0.Tag_Name}}</span>
+            </h1>
         </header>
-       <section>
+        <section>
             <div class="row box-list-news box-list-news_search">
                 {{#each newsList}}
                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
@@ -40,6 +33,30 @@
             </div>
             <div class="clearfix"></div>
             <div class="row text-center">
+            <nav aria-label="Page navigation">
+              <ul class="pagination mall0"> 
+                
+                {{#if first}}
+                <li class="pstate" data-id="{{first}}"><a href="?page={{first}}">Trang đầu</a></li>
+                {{/if}}
+                {{#if prev}}
+                <li class="pstate" data-id="{{prev}}"><a href="?page={{first}}">«</a></li>
+                {{/if}}
+                {{#each this.pages}}
+                {{#if active}}
+                <li class="pstate active" data-id="{{value}}"><a href="?page={{value}}">{{value}}</a></li> 
+                {{else}}
+                <li class="pstate" data-id="{{value}}"><a href="?page={{value}}">{{value}}</a></li>
+                {{/if}}
+                {{/each}}
+                {{#if next}}
+                <li class="pstate" data-id="{{next}}"><a href="?page={{next}}">»</a></li>
+                {{/if}}
+                {{#if last}}
+                <li class="pstate" data-id="{{last}}"><a href="?page={{last}}">Trang cuối</a></li>
+                {{/if}}               
+              </ul>
+            </nav>
         </div>
         </section>
     </div>

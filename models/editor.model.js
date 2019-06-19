@@ -8,48 +8,48 @@ module.exports = {
 
     getCatOfEditor: User_ID => {
         return db.load(`select c.CatName 
-                        from user u, assigned_categories ac, categories c 
-                        where u.User_ID = ${User_ID} and u.User_ID = ac.User_ID and ac.CatID = c.CatID and c.Deleted = 0`);
+                        from user u, task_editor ac, categories c 
+                        where u.User_ID = ${User_ID} and u.User_ID = ac.ID_Editor and ac.ID_Cat = c.CatID and c.Deleted = 0`);
     },
 
     getDraft: (User_ID, offset) => {
-        return db.load(`SELECT ac.User_ID as Editor_ID, c.CatName,u.Name as writer,  n.* 
-                        from assigned_categories ac, news n, user u, categories c 
-                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 1 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
+        return db.load(`SELECT ac.ID_Editor as Editor_ID, c.CatName,u.Name as writer,  n.* 
+                        from task_editor ac, news n, user u, categories c 
+                        WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 1 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
                         ORDER BY Time DESC LIMIT ${offset},5`);
     },
 
     getRefusedDraft: (User_ID, offset) => {
-        return db.load(`SELECT ac.User_ID as Editor_ID, c.CatName,u.Name as writer,  n.* 
-                        from assigned_categories ac, news n, user u, categories c 
-                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 3 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
+        return db.load(`SELECT ac.ID_Editor as Editor_ID, c.CatName,u.Name as writer,  n.* 
+                        from task_editor ac, news n, user u, categories c 
+                        WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 3 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
                         ORDER BY Time DESC LIMIT ${offset},5`);
     },
 
     getBrowsedDraft: (User_ID, offset) => {
-        return db.load(`SELECT ac.User_ID as Editor_ID, c.CatName,u.Name as writer,  n.* 
-                        from assigned_categories ac, news n, user u, categories c 
-                        WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 2 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
+        return db.load(`SELECT ac.ID_Editor as Editor_ID, c.CatName,u.Name as writer,  n.* 
+                        from task_editor ac, news n, user u, categories c 
+                        WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 2 and n.Writer_ID = u.User_ID and n.CatID = c.CatID 
                         ORDER BY Time DESC LIMIT ${offset},5`);
     },
 
     countNewsOfEditor: (User_ID) => {
-        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 1 `);
+        return db.load(`SELECT count(*) as total from task_editor ac, news n WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 1 `);
     },
 
     countRefusedDraftOfEditor: (User_ID) => {
-        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 3 `);
+        return db.load(`SELECT count(*) as total from task_editor ac, news n WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 3 `);
     },
 
     countBrowsedDraftOfEditor: (User_ID) => {
-        return db.load(`SELECT count(*) as total from assigned_categories ac, news n WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 2 `);
+        return db.load(`SELECT count(*) as total from task_editor ac, news n WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 2 `);
     },
 
     getAllTagsManyNews: (User_ID, offset, limit) => {
         return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name 
                         FROM tags T,tags_news TN, (SELECT n.News_ID 
-                                                    from assigned_categories ac, news n
-                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 1 
+                                                    from task_editor ac, news n
+                                                    WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 1 
                                                     ORDER BY Time DESC LIMIT ${offset},${limit}) as N 
                         WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
     },
@@ -57,8 +57,8 @@ module.exports = {
     getAllTagsManyRefusedDraft: (User_ID, offset, limit) => {
         return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name 
                         FROM tags T,tags_news TN, (SELECT n.News_ID 
-                                                    from assigned_categories ac, news n
-                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 3 
+                                                    from task_editor ac, news n
+                                                    WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 3 
                                                     ORDER BY Time DESC LIMIT ${offset},${limit}) as N 
                         WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
     },
@@ -66,8 +66,8 @@ module.exports = {
     getAllTagsManyBrowsedDraft: (User_ID, offset, limit) => {
         return db.load(`SELECT N.News_ID, TN.TagID, T.Tag_Name 
                         FROM tags T,tags_news TN, (SELECT n.News_ID 
-                                                    from assigned_categories ac, news n
-                                                    WHERE ac.User_ID = ${User_ID} and ac.CatID = n.CatID and n.State_ID = 2 
+                                                    from task_editor ac, news n
+                                                    WHERE ac.ID_Editor = ${User_ID} and ac.ID_Cat = n.CatID and n.State_ID = 2 
                                                     ORDER BY Time DESC LIMIT ${offset},${limit}) as N 
                         WHERE TN.News_ID = N.News_ID and TN.TagID = T.TagID and T.Deleted = 0`);
     },
