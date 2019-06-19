@@ -94,7 +94,7 @@ router.get('/:ida/quanlychuyenmuc/restore/:id', (req, res) => {
         Deleted: 0
     }
     AdminModel.updateCat(entity).then(n => {
-        res.redirect('/admin' + ida + '/quanlychuyenmuc');
+        res.redirect('/admin/' + ida + '/quanlychuyenmuc/deleted');
     }).catch(err => {
         console.log(err);
         res.end('error');
@@ -195,14 +195,11 @@ router.post('/:ida/quanlychuyenmuc/add', (req, res) => {
     }
     AdminModel.addCat(entity)
         .then(id => {
-            res.render('vwAdmin/QuanLyChuyenMuc/add', {
-                layout: 'adminQuanLyChuyenMuc.hbs',
-                title: 'Thêm chuyên mục',
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            res.redirect('/admin/' + ida + '/quanlychuyenmuc');
+    }).catch(err => {
+        console.log(err);
+        res.end('error');
+    })
 })
 
 router.get('/:ida/quanlychuyenmuc/restore/:id', (req, res) => {
