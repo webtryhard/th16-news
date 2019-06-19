@@ -635,10 +635,17 @@ router.get('/:ida/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
     });
 })
 
-router.post('/:id/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
+router.post('/:ida/quanlynguoidung/giahantaikhoan/:id', (req, res) => {
+    var ida = req.params.ida;
     var p = req.params.id;
-    AdminModel.updateUser(req.body).then(n => {
-        res.redirect('/admin/' + id + '/quanlynguoidung');
+
+    var entity = {
+        User_ID: p,
+        NgayGiaHan: req.body.NgayGiaHan,
+        YeuCauGiaHan: 0,
+    }
+    AdminModel.updateUser(entity).then(n => {
+        res.redirect('/admin/' + ida + '/quanlynguoidung');
     }).catch(err => {
         console.log(err);
         res.end('error');
