@@ -4,7 +4,7 @@
     "private": true,
     "dependencies": {
         "alert-node": "^1.2.5",
-        "async": "^3.0.1",
+        "async": "^3.2.2",
         "basic-auth-connect": "latest",
         "bcrypt": "^3.0.6",
         "bcrypt-nodejs": "0.0.3",
