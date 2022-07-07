@@ -27,7 +27,7 @@
         "http-proxy": "latest",
         "md5": "^2.2.1",
         "mime": "latest",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "mongoose": "latest",
         "morgan": "^1.9.1",
         "multer": "latest",
